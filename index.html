@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#BAC5BB">
+<meta name="theme-color" content="#1845F5">
 <title>Chongqing City</title>
 <link rel="manifest" href="manifest.json">
 <style>
@@ -1285,6 +1285,2837 @@ body{font-weight:400!important}
   .booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{padding-left:34px!important}
 }
 
+
+/* v28 — breathing room + sage surface contrast */
+:root{
+  --ds-warmgray:#D8D2C8;
+  --ds-warmgray-2:#CFC8BD;
+  --ds-inner:9px;
+}
+
+/* ------------------------------------------------
+   1. Consistent inner inset:
+   no label/number should visually stick to a rule.
+------------------------------------------------- */
+.system-head-no{
+  padding-left:var(--ds-inner)!important;
+}
+.system-head-main{
+  padding-left:2px;
+}
+.system-head-meta{
+  padding-right:var(--ds-inner)!important;
+}
+
+.editorial-filters{
+  padding-left:var(--ds-inner)!important;
+  padding-right:var(--ds-inner)!important;
+}
+.editorial-filters .filter:first-child{
+  grid-column:2!important;
+}
+
+/* index rows keep the same grid, but contents sit inside it */
+.editorial-index-row{
+  padding-left:var(--ds-inner)!important;
+  padding-right:var(--ds-inner)!important;
+}
+.editorial-index-no{
+  padding-left:3px!important;
+  padding-top:3px!important;
+}
+.editorial-index-main{
+  padding-left:3px!important;
+}
+.editorial-index-date{
+  padding-right:2px!important;
+}
+.editorial-index-arrow{
+  padding-right:2px!important;
+}
+
+/* MORE uses exactly the same breathing rule */
+.system-tool-row{
+  padding-left:var(--ds-inner)!important;
+  padding-right:var(--ds-inner)!important;
+}
+.system-tool-no{
+  padding-left:3px!important;
+}
+.system-tool-main{
+  padding-left:3px!important;
+}
+
+/* secondary rows should not begin directly on their guide column */
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,
+.weather-card,.status-card,.notice-card,.emergency-card{
+  padding-left:calc(42px + var(--ds-inner))!important;
+  padding-right:var(--ds-inner)!important;
+}
+
+/* ------------------------------------------------
+   2. PLAN: larger internal inset, especially numbers.
+------------------------------------------------- */
+.plan-rail .pass-sheet{
+  padding:22px 22px 20px!important;
+}
+.pass-head{
+  padding:0 3px!important;
+}
+.pass-eyebrow{
+  display:inline-block;
+  padding-left:2px!important;
+}
+.pass-date{
+  margin-top:9px!important;
+  padding-left:1px!important;
+}
+.pass-day{
+  padding-right:2px!important;
+}
+.pass-route,.pass-meta{
+  padding-left:3px!important;
+  padding-right:3px!important;
+}
+.pass-perf{
+  margin-left:-22px!important;
+  margin-right:-22px!important;
+}
+
+/* event times used to sit too close to the left rule */
+.pass-event{
+  grid-template-columns:58px minmax(0,1fr) 18px!important;
+  gap:11px!important;
+  padding:11px 10px!important;
+}
+.pass-time{
+  padding:2px 0 0 3px!important;
+}
+.pass-event>span:nth-child(2){
+  padding-left:2px!important;
+}
+.pass-event i{
+  padding-right:2px!important;
+}
+.pass-bottom{
+  padding-left:3px!important;
+  padding-right:3px!important;
+}
+
+/* PLAN top/control labels also receive inset */
+.plan-swipe-top{
+  padding-left:var(--ds-inner)!important;
+  padding-right:var(--ds-inner)!important;
+}
+.plan-scroll-controls{
+  padding-left:var(--ds-inner)!important;
+  padding-right:var(--ds-inner)!important;
+}
+
+/* ------------------------------------------------
+   3. Never place a white/cream floating box on sage.
+   Sage -> warm gray / brown control language.
+------------------------------------------------- */
+#today .snap-rail,
+.plan-rail,
+.boarding-ticket{
+  background:var(--ds-green)!important;
+}
+
+/* neutral floating controls on sage = warm gray */
+#today .rail-pill:not(.dark),
+.plan-rail .pass-event,
+.boarding-ticket .bt-meta span,
+.boarding-ticket .bt-grid>div{
+  background:var(--ds-warmgray)!important;
+  color:var(--ds-brown)!important;
+  border-color:rgba(67,23,5,.16)!important;
+}
+
+/* darker action buttons on sage = brown + cream */
+#today .rail-pill.dark,
+.plan-scroll-btn,
+.boarding-ticket .bt-status{
+  background:var(--ds-brown)!important;
+  color:var(--ds-bg)!important;
+  border-color:var(--ds-brown)!important;
+}
+#today .rail-pill.dark *,
+.plan-scroll-btn *,
+.boarding-ticket .bt-status *{
+  color:inherit!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+
+/* active/status signal remains red, but only as a small accent */
+.boarding-ticket .bt-status.is-done,
+.plan-scroll-btn:not(:disabled):active{
+  background:var(--ds-red)!important;
+  color:var(--ds-bg)!important;
+  border-color:var(--ds-red)!important;
+}
+
+/* Today utility cells: warm gray instead of bright cream boxes */
+.utility-strip{
+  background:var(--ds-warmgray)!important;
+}
+.utility-strip button{
+  background:transparent!important;
+  color:var(--ds-brown)!important;
+  border-color:rgba(67,23,5,.18)!important;
+}
+
+/* secondary light panels can use warm gray rather than white cards */
+.booking-memo,
+.note-card,
+.input-card,
+.detail-memo,
+.light-memo{
+  background:rgba(216,210,200,.48)!important;
+}
+
+/* splash: avoid cream card floating directly over sage */
+.splash-front{
+  background:var(--ds-warmgray)!important;
+  color:var(--ds-brown)!important;
+}
+.splash-chip{
+  background:var(--ds-brown)!important;
+  color:var(--ds-bg)!important;
+  border-color:var(--ds-brown)!important;
+}
+
+/* ------------------------------------------------
+   4. Mobile grid corrections.
+------------------------------------------------- */
+@media(max-width:560px){
+  :root{--ds-inner:8px}
+  .booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,
+  .weather-card,.status-card,.notice-card,.emergency-card{
+    padding-left:calc(34px + var(--ds-inner))!important;
+  }
+  .plan-rail .pass-sheet{
+    padding:20px 18px 18px!important;
+  }
+  .pass-perf{
+    margin-left:-18px!important;
+    margin-right:-18px!important;
+  }
+  .pass-event{
+    grid-template-columns:54px minmax(0,1fr) 16px!important;
+    padding:11px 9px!important;
+  }
+}
+
+
+/* v29 — line-based user hyperlink manager */
+.user-links-section{
+  margin-top:14px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.user-links-head{
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 var(--ds-inner);
+  border-bottom:1px solid var(--line);
+}
+.user-links-head>span{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.12em;
+}
+.user-links-head>button{
+  min-height:36px;
+  padding:0;
+  color:var(--ds-red);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.08em;
+}
+.user-link-empty{
+  padding:14px var(--ds-inner);
+  font-size:11px;
+  color:var(--muted);
+}
+.user-link-list{display:grid}
+.user-link-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:stretch;
+  border-bottom:1px solid var(--line);
+}
+.user-link-row:last-child{border-bottom:0}
+.user-link-row:nth-child(odd){background:rgba(186,197,187,.15)}
+.user-link-open{
+  min-width:0;
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 20px;
+  gap:9px;
+  align-items:center;
+  text-align:left;
+  padding:12px var(--ds-inner);
+  color:var(--ds-brown);
+}
+.user-link-no{
+  color:var(--ds-red);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.10em;
+}
+.user-link-copy{min-width:0}
+.user-link-copy b{
+  display:block;
+  font-size:13px;
+  line-height:1.25;
+  font-weight:550;
+}
+.user-link-copy small{
+  display:block;
+  margin-top:4px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size:10px;
+  line-height:1.35;
+  color:var(--muted);
+}
+.user-link-go{
+  font-size:16px;
+  text-align:right;
+}
+.user-link-tools{
+  display:flex;
+  align-items:center;
+  border-left:1px solid var(--line);
+}
+.user-link-tools button{
+  min-width:34px;
+  min-height:100%;
+  padding:0 7px;
+  border-left:1px solid rgba(67,23,5,.10);
+  color:var(--ds-brown);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+.user-link-tools button:first-child{border-left:0}
+.user-link-tools button:disabled{opacity:.22}
+.user-link-tools .delete{
+  color:var(--ds-red);
+  font-size:16px;
+  font-weight:400;
+}
+.user-link-editor{
+  padding:14px var(--ds-inner) 12px;
+  border-top:1px solid var(--line);
+  background:rgba(216,210,200,.48);
+}
+.user-link-editor[hidden]{display:none!important}
+.user-link-editor label{
+  display:block;
+  margin-top:12px;
+}
+.user-link-editor label:first-child{margin-top:0}
+.user-link-editor label>span{
+  display:block;
+  margin-bottom:6px;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.12em;
+}
+.user-link-editor input{
+  width:100%;
+  min-height:42px;
+  padding:7px 0;
+  border:0;
+  border-bottom:1px solid rgba(67,23,5,.30);
+  border-radius:0;
+  outline:0;
+  background:transparent;
+  color:var(--ds-brown);
+  font-size:13px;
+}
+.user-link-editor input:focus{border-bottom-color:var(--ds-red)}
+.user-link-editor-actions{
+  display:flex;
+  gap:18px;
+  margin-top:14px;
+}
+.user-link-editor-actions button{
+  min-height:34px;
+  padding:0;
+  border-bottom:1px solid var(--ds-brown);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.08em;
+}
+.user-link-editor-actions .user-link-save{
+  color:var(--ds-red);
+  border-bottom-color:var(--ds-red);
+}
+.user-link-editor p{
+  margin:10px 0 0;
+  font-size:10px;
+  line-height:1.45;
+  color:var(--muted);
+}
+.user-links-stub{padding-bottom:0!important}
+.detail-links-head{
+  margin-top:4px;
+  padding-left:0;
+  padding-right:0;
+}
+.user-links-stub .user-link-open,
+.user-links-stub .user-link-editor,
+.user-links-stub .user-link-empty{
+  padding-left:0;
+  padding-right:0;
+}
+.booking-links-section{
+  margin-left:calc(-42px - var(--ds-inner));
+  margin-right:calc(-1 * var(--ds-inner));
+}
+@media(max-width:560px){
+  .user-link-row{grid-template-columns:1fr}
+  .user-link-tools{
+    border-left:0;
+    border-top:1px solid rgba(67,23,5,.12);
+    justify-content:flex-end;
+    min-height:34px;
+  }
+  .user-link-tools button{
+    min-height:34px;
+    border-left:1px solid rgba(67,23,5,.10);
+  }
+  .booking-links-section{
+    margin-left:calc(-34px - var(--ds-inner));
+  }
+}
+
+
+/* v30 — stripped, flat, no decoration */
+:root{
+  --clean-bg:#F0EEEB;
+  --clean-green:#31483A;
+  --clean-green-2:#45604E;
+  --clean-charcoal:#35332F;
+  --clean-cream:#F0EEEB;
+  --clean-sub:#D7D2C9;
+  --clean-line:rgba(53,51,47,.20);
+  --clean-red:#C75248;
+}
+
+/* absolute removal of decorative styling */
+*{font-style:normal!important}
+button,a,input,textarea,select{font-style:normal!important}
+.snap-card,.pass-sheet,.boarding-ticket,.stub-panel,.rail-pill,.plan-scroll-btn,
+.stub-actions button,.stub-actions a,.bt-status,.user-link-row,.user-link-editor,
+.utility-strip button{
+  box-shadow:none!important;
+  text-shadow:none!important;
+  background-image:none!important;
+  filter:none!important;
+}
+.snap-card::before,.snap-card::after,.pass-sheet::before,.pass-sheet::after,
+.boarding-ticket::before,.boarding-ticket::after,.stub-panel::before,.stub-panel::after{
+  display:none!important;
+}
+
+/* lean typography */
+body{font-weight:400!important}
+.minimal-title,.snap-big,.snap-title,.pass-date,.pass-route,.bt-title{
+  font-weight:550!important;
+  letter-spacing:-.04em!important;
+}
+.snap-card-top,.pass-eyebrow,.pass-day,.pass-time,.pass-meta,.bt-meta,.stub-head,
+.user-links-head,.user-link-no,.plan-scroll-controls{
+  font-weight:500!important;
+}
+.clean-head{padding-bottom:8px!important}
+.clean-head .minimal-title{margin-bottom:12px!important}
+.micro-label,.plan-swipe-word,.swipe-label{display:none!important}
+
+/* TODAY: no embossed buttons */
+.clean-today .snap-card{
+  border-radius:0!important;
+}
+.clean-today .snap-actions{
+  display:flex!important;
+  gap:18px!important;
+  margin-top:18px!important;
+}
+.rail-pill,.rail-pill.dark{
+  min-height:auto!important;
+  padding:0 0 5px!important;
+  border:0!important;
+  border-bottom:1px solid currentColor!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--clean-charcoal)!important;
+  font-size:10px!important;
+  font-weight:550!important;
+  letter-spacing:.08em!important;
+}
+.clean-utility{
+  background:transparent!important;
+  border-top:1px solid var(--clean-line)!important;
+  border-bottom:1px solid var(--clean-line)!important;
+}
+.clean-utility button{
+  min-height:48px!important;
+  border:0!important;
+  border-right:1px solid var(--clean-line)!important;
+  background:transparent!important;
+}
+.clean-utility button:last-child{border-right:0!important}
+.clean-utility span{font-size:11px!important;font-weight:500!important}
+
+/* PLAN: a single dark-green field; rows have zero fill */
+.clean-plan{
+  margin-top:4px!important;
+}
+.clean-plan-counter{
+  justify-content:flex-end!important;
+  padding:0 2px 8px!important;
+  color:var(--clean-green)!important;
+}
+.plan-rail{
+  background:var(--clean-green)!important;
+  border:0!important;
+  border-top:1px solid rgba(240,238,235,.26)!important;
+  border-bottom:1px solid rgba(240,238,235,.26)!important;
+  gap:0!important;
+}
+.plan-rail .clean-pass-sheet{
+  background:transparent!important;
+  color:var(--clean-cream)!important;
+  border:0!important;
+  border-right:1px solid rgba(240,238,235,.20)!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.plan-rail .clean-pass-sheet *{
+  color:inherit!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+.plan-rail .clean-pass-sheet:last-child{border-right:0!important}
+.pass-head{
+  padding-bottom:14px!important;
+  border-bottom:1px solid rgba(240,238,235,.22)!important;
+}
+.pass-date{
+  font-size:38px!important;
+  line-height:.95!important;
+}
+.pass-route{
+  margin-top:16px!important;
+  font-size:22px!important;
+  color:var(--clean-cream)!important;
+}
+.pass-meta{
+  margin-top:7px!important;
+  display:block!important;
+  font-size:10px!important;
+  line-height:1.5!important;
+  color:var(--clean-sub)!important;
+}
+.pass-meta span{
+  display:block!important;
+  color:inherit!important;
+}
+.pass-perf{display:none!important}
+.pass-events{
+  gap:0!important;
+  margin-top:16px!important;
+  border-top:1px solid rgba(240,238,235,.20)!important;
+}
+.pass-event,.pass-event.static{
+  background:transparent!important;
+  color:var(--clean-cream)!important;
+  border:0!important;
+  border-bottom:1px solid rgba(240,238,235,.18)!important;
+  border-radius:0!important;
+  padding:13px 4px!important;
+  opacity:1!important;
+}
+.pass-event b{
+  font-weight:500!important;
+  font-size:13px!important;
+  color:var(--clean-cream)!important;
+}
+.pass-event small{
+  margin-top:4px!important;
+  color:var(--clean-sub)!important;
+  font-size:10px!important;
+  font-weight:400!important;
+}
+.pass-time{
+  color:var(--clean-sub)!important;
+  font-weight:500!important;
+}
+.pass-event i{
+  color:var(--clean-sub)!important;
+  font-style:normal!important;
+}
+.pass-bottom{
+  margin-top:0!important;
+  padding:13px 4px 0!important;
+  border-top:0!important;
+  color:var(--clean-sub)!important;
+  font-weight:400!important;
+}
+.plan-scroll-track{
+  height:1px!important;
+  background:rgba(49,72,58,.16)!important;
+}
+.snap-progress-fill{
+  background:var(--clean-red)!important;
+  height:2px!important;
+}
+.plan-scroll-controls{
+  justify-content:flex-end!important;
+  gap:18px!important;
+  padding-top:10px!important;
+}
+.plan-scroll-btn{
+  width:auto!important;
+  height:auto!important;
+  min-width:28px!important;
+  padding:0 0 4px!important;
+  border:0!important;
+  border-bottom:1px solid var(--clean-green)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--clean-green)!important;
+  font-size:16px!important;
+}
+.plan-scroll-btn:disabled{opacity:.22!important}
+
+/* DETAIL hero: dark green, quiet, no ticket gimmicks */
+.clean-detail{
+  color:var(--clean-charcoal)!important;
+}
+.clean-detail .detail-back button{
+  background:transparent!important;
+  border:0!important;
+  padding:0 0 5px!important;
+  border-bottom:1px solid var(--clean-charcoal)!important;
+  border-radius:0!important;
+  color:var(--clean-charcoal)!important;
+  font-weight:500!important;
+}
+.clean-detail-hero{
+  margin-top:18px!important;
+  background:var(--clean-green)!important;
+  color:var(--clean-cream)!important;
+  border:0!important;
+  border-radius:0!important;
+  padding:22px!important;
+}
+.clean-detail-hero *{
+  -webkit-text-fill-color:currentColor!important;
+}
+.clean-detail-hero .bt-title{
+  color:var(--clean-cream)!important;
+  font-size:34px!important;
+  line-height:1!important;
+}
+.clean-detail-hero .bt-cn{
+  color:var(--clean-cream)!important;
+  font-weight:500!important;
+  margin-top:10px!important;
+}
+.clean-detail-hero .bt-en,
+.clean-detail-hero .bt-meta,
+.clean-detail-hero .bt-meta span{
+  color:var(--clean-sub)!important;
+  background:transparent!important;
+  border:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.clean-detail-meta{
+  gap:14px!important;
+  padding-bottom:14px!important;
+  border-bottom:1px solid rgba(240,238,235,.20)!important;
+}
+.clean-detail-hero .detail-image-frame{
+  margin-top:18px!important;
+  border-radius:16px!important;
+  background:#26392E!important;
+}
+.clean-detail-hero .bt-status{
+  margin-top:16px!important;
+  width:auto!important;
+  min-height:auto!important;
+  padding:0 0 5px!important;
+  background:transparent!important;
+  color:var(--clean-cream)!important;
+  border:0!important;
+  border-bottom:1px solid var(--clean-cream)!important;
+  border-radius:0!important;
+  font-size:10px!important;
+  font-weight:550!important;
+  letter-spacing:.08em!important;
+}
+
+/* remove unused detail ticket data even if legacy CSS tries to show it */
+.clean-detail .bt-top,.clean-detail .bt-grid,.clean-detail .bt-perf{display:none!important}
+
+/* detail sections: pure typography + rules, no panel fill */
+.clean-detail-section{
+  margin:0!important;
+  padding:18px 0!important;
+  background:transparent!important;
+  border:0!important;
+  border-top:1px solid var(--clean-line)!important;
+  border-radius:0!important;
+  color:var(--clean-charcoal)!important;
+}
+.clean-detail-section:last-child{
+  border-bottom:1px solid var(--clean-line)!important;
+}
+.clean-detail-section .stub-head{
+  padding:0 0 10px!important;
+  border:0!important;
+  color:var(--clean-green)!important;
+  font-size:10px!important;
+  font-weight:550!important;
+  letter-spacing:.10em!important;
+}
+.clean-detail-section p,
+.clean-detail-section li{
+  color:var(--clean-charcoal)!important;
+  font-weight:400!important;
+}
+.clean-detail-section ul{
+  gap:0!important;
+  margin-top:4px!important;
+  padding-left:0!important;
+  list-style:none!important;
+}
+.clean-detail-section li{
+  padding:10px 0!important;
+  border-bottom:1px solid rgba(53,51,47,.12)!important;
+}
+.clean-detail-section li:last-child{border-bottom:0!important}
+
+/* tools are text actions separated only by lines */
+.clean-actions{
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:0!important;
+  margin-top:0!important;
+  border-top:1px solid rgba(53,51,47,.14)!important;
+}
+.clean-actions button,.clean-actions a{
+  min-height:44px!important;
+  padding:0 8px!important;
+  background:transparent!important;
+  color:var(--clean-green)!important;
+  border:0!important;
+  border-right:1px solid rgba(53,51,47,.14)!important;
+  border-bottom:1px solid rgba(53,51,47,.14)!important;
+  border-radius:0!important;
+  font-weight:500!important;
+}
+.clean-actions>*:nth-child(even){border-right:0!important}
+
+/* memo: line only */
+.clean-detail .light-memo{
+  margin-top:0!important;
+  padding:12px 0!important;
+  min-height:120px!important;
+  background:transparent!important;
+  color:var(--clean-charcoal)!important;
+  border:0!important;
+  border-top:1px solid rgba(53,51,47,.14)!important;
+  border-bottom:1px solid rgba(53,51,47,.14)!important;
+  border-radius:0!important;
+}
+.clean-detail .light-memo::placeholder{
+  color:rgba(53,51,47,.38)!important;
+}
+
+/* saved links: no zebra, no filled editor */
+.clean-detail .user-link-row,
+.booking .user-link-row{
+  background:transparent!important;
+}
+.user-link-row:nth-child(odd){
+  background:transparent!important;
+}
+.user-link-editor{
+  background:transparent!important;
+  border-top:1px solid var(--clean-line)!important;
+}
+.user-links-head{
+  background:transparent!important;
+}
+.user-links-head>button,
+.user-link-editor-actions .user-link-save,
+.user-link-no,
+.user-link-tools .delete{
+  color:var(--clean-red)!important;
+}
+.user-link-open{
+  color:var(--clean-charcoal)!important;
+}
+.user-link-copy small{
+  color:rgba(53,51,47,.50)!important;
+}
+
+/* remove shadows / gradients on bookings too */
+.booking,.booking-memo,.user-links-section{
+  background:transparent!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+/* no italic in any legacy element */
+i,em{font-style:normal!important}
+
+/* on dark-green surfaces, use off-white only; on light surfaces use muted charcoal */
+@media(max-width:560px){
+  .clean-detail-hero{padding:18px!important}
+  .plan-rail .clean-pass-sheet{padding:20px 18px 18px!important}
+  .pass-date{font-size:36px!important}
+}
+
+
+/* v31 — zero-fill PLAN actions + slightly stronger red accents */
+:root{
+  --clean-red:#D95C51;
+}
+
+/* PLAN clickable rows: no fill in any interaction state */
+.plan-rail button.pass-event,
+.plan-rail button.pass-event:hover,
+.plan-rail button.pass-event:active,
+.plan-rail button.pass-event:focus,
+.plan-rail button.pass-event:focus-visible,
+.plan-rail .pass-event.static{
+  background:transparent!important;
+  background-color:transparent!important;
+  background-image:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+  outline:none!important;
+  -webkit-tap-highlight-color:transparent!important;
+}
+.plan-rail button.pass-event::before,
+.plan-rail button.pass-event::after{
+  display:none!important;
+}
+
+/* a little more red, still only as small graphic signals */
+.pass-eyebrow{
+  color:var(--clean-red)!important;
+}
+.pass-time{
+  color:#E7B2AA!important;
+}
+.pass-event i{
+  color:var(--clean-red)!important;
+}
+.snap-progress-fill{
+  background:var(--clean-red)!important;
+}
+.plan-scroll-btn{
+  color:var(--clean-red)!important;
+  border-bottom-color:var(--clean-red)!important;
+}
+.snap-dot.active{
+  background:var(--clean-red)!important;
+}
+.clean-detail-section .stub-head{
+  color:var(--clean-red)!important;
+}
+.clean-detail .bt-status{
+  border-bottom-color:var(--clean-red)!important;
+}
+.user-links-head>button,
+.user-link-editor-actions .user-link-save,
+.user-link-no,
+.user-link-tools .delete{
+  color:var(--clean-red)!important;
+}
+
+/* TODAY links remain pure typography, never pills */
+.clean-today .snap-actions{
+  gap:18px!important;
+}
+.clean-today .rail-pill,
+.clean-today .rail-pill.dark{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  border-bottom:1px solid currentColor!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  padding:0 0 4px!important;
+}
+
+/* Active bottom navigation gets a small red rule instead of more fill */
+.nav-btn.active::after{
+  background:var(--clean-red)!important;
+}
+
+
+/* v32 — unified gutter + buttonless TODAY */
+:root{
+  --page-gutter:18px;
+  --content-gutter:0px;
+}
+.app{
+  width:min(100%,760px)!important;
+  padding-left:var(--page-gutter)!important;
+  padding-right:var(--page-gutter)!important;
+}
+
+/* Every major page edge starts from the exact same x-position */
+.page-minimal-head,
+.section-top,
+.secondary-back,
+.detail-back,
+.snap-shell,
+.plan-snap,
+.filters,
+.editorial-filters,
+.line-index-list,
+.editorial-index-list,
+.tool-list,
+.system-tool-list,
+.booking-list,
+.talk-list,
+.check-list,
+.maybe-list,
+.weather-grid,
+.emergency-grid,
+.money-wrap,
+.split-wrap,
+.detail-page-light,
+.clean-detail,
+.clean-today{
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+  width:100%!important;
+}
+
+/* headings/rules use the app gutter only — no second hidden indent */
+.page-minimal-head .minimal-title,
+.page-minimal-head .micro-label,
+.section-top .section-title,
+.section-top .kicker,
+.secondary-back button,
+.detail-back button{
+  margin-left:0!important;
+  padding-left:0!important;
+}
+.head-rule{
+  margin-left:0!important;
+  margin-right:0!important;
+  width:100%!important;
+}
+
+/* Today: no secondary action buttons anywhere */
+#today .snap-actions,
+#today .utility-strip,
+#today .rail-pill{
+  display:none!important;
+}
+
+/* Clickable NEXT / CTRL are whole surfaces, not visual buttons */
+.today-surface-link{
+  appearance:none!important;
+  -webkit-appearance:none!important;
+  width:auto!important;
+  text-align:left!important;
+  cursor:pointer!important;
+  border:0!important;
+  border-right:1px solid rgba(53,51,47,.16)!important;
+  border-radius:0!important;
+  padding:20px 18px!important;
+  background:transparent!important;
+  color:inherit!important;
+}
+.today-surface-link:hover,
+.today-surface-link:focus,
+.today-surface-link:active{
+  background:transparent!important;
+  box-shadow:none!important;
+  outline:none!important;
+}
+.today-surface-link:focus-visible{
+  outline:1px solid var(--clean-red)!important;
+  outline-offset:-1px!important;
+}
+.today-link-arrow{
+  color:var(--clean-red)!important;
+  font-size:15px!important;
+  font-weight:500!important;
+}
+
+/* Today cards all share exactly the same internal left edge */
+#today .snap-card,
+#today .today-surface-link{
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+#today .snap-card-top,
+#today .snap-big,
+#today .snap-title,
+#today .snap-sub,
+#today .snap-foot{
+  margin-left:0!important;
+  padding-left:0!important;
+  text-align:left!important;
+}
+
+/* PLAN: all text starts on one internal guide */
+.plan-rail .clean-pass-sheet{
+  --plan-inset:18px;
+  padding-left:var(--plan-inset)!important;
+  padding-right:var(--plan-inset)!important;
+}
+.pass-head,
+.pass-route,
+.pass-meta,
+.pass-events,
+.pass-bottom{
+  margin-left:0!important;
+  margin-right:0!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.pass-event,
+.pass-event.static{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.pass-time{
+  padding-left:0!important;
+}
+.pass-event>span:nth-child(2){
+  padding-left:0!important;
+}
+.pass-bottom{
+  padding-left:0!important;
+}
+
+/* PLAN top controls also line up with the page edge */
+.plan-swipe-top,
+.plan-scroll-controls{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.plan-scroll-track{
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* SPOTS/EAT line items: outer rule and first content cell share one guide */
+.editorial-index-row,
+.line-index-row{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.editorial-index-no,
+.line-index-no,
+.editorial-index-main,
+.line-index-main{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+
+/* MORE rows */
+.system-tool-row,
+.tool-row{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.system-tool-no,
+.tool-num,
+.system-tool-main,
+.tool-main{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+
+/* Secondary screens — remove legacy 34/42px artificial indent */
+.booking,
+.talk-card,
+.task,
+.maybe-card,
+.expense-item,
+.info-chip,
+.weather-card,
+.status-card,
+.notice-card,
+.emergency-card{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.booking>.row,
+.booking>.meta,
+.booking>.booking-memo,
+.booking>.user-links-section,
+.talk-card>*,
+.task>*,
+.maybe-card>*,
+.expense-item>*{
+  margin-left:0!important;
+}
+
+/* link manager must not escape or invent a new left edge */
+.booking-links-section{
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.user-links-head,
+.user-link-open,
+.user-link-editor,
+.user-link-empty{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Detail: hero and every line-section begin at the same outer axis */
+.clean-detail-hero{
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+.clean-detail-section{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.clean-detail-section .stub-head,
+.clean-detail-section p,
+.clean-detail-section ul,
+.clean-detail-section .light-memo,
+.clean-actions,
+.user-links-stub .user-links-head,
+.user-links-stub .user-link-list,
+.user-links-stub .user-link-editor{
+  margin-left:0!important;
+  padding-left:0!important;
+}
+.clean-detail-section li{
+  padding-left:0!important;
+}
+
+/* Bottom nav aligns visually to viewport, content stays on app grid */
+.bottom-nav{
+  left:0!important;
+  right:0!important;
+  width:100%!important;
+}
+
+@media(max-width:560px){
+  :root{--page-gutter:16px}
+  #today .snap-card,
+  #today .today-surface-link{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+  .plan-rail .clean-pass-sheet{
+    --plan-inset:16px;
+  }
+  .clean-detail-hero{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+}
+
+
+/* v33 — restore bottom nav + disciplined alignment */
+:root{
+  --page-gutter:16px;
+  --content-inset:8px;
+}
+
+/* -------------------------------------------------
+   Bottom navigation:
+   restore original centered fixed positioning.
+-------------------------------------------------- */
+.bottom-nav{
+  position:fixed!important;
+  left:50%!important;
+  right:auto!important;
+  bottom:12px!important;
+  transform:translateX(-50%)!important;
+  width:min(calc(100% - 24px),760px)!important;
+  max-width:760px!important;
+  z-index:40!important;
+  box-sizing:border-box!important;
+}
+
+/* -------------------------------------------------
+   Page frame:
+   lines can touch the page content edge;
+   actual text uses one shared inset.
+-------------------------------------------------- */
+.app{
+  width:min(100%,760px)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  padding-left:var(--page-gutter)!important;
+  padding-right:var(--page-gutter)!important;
+}
+
+/* headings */
+.page-minimal-head .minimal-title,
+.page-minimal-head .micro-label,
+.section-top .section-title,
+.section-top .kicker{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+.secondary-back,
+.detail-back{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+.secondary-back button,
+.detail-back button{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* header rules stay full width */
+.head-rule{
+  width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* -------------------------------------------------
+   TODAY:
+   cards keep a clear internal gutter.
+-------------------------------------------------- */
+#today .snap-card,
+#today .today-surface-link{
+  padding-left:18px!important;
+  padding-right:18px!important;
+}
+#today .snap-card-top,
+#today .snap-big,
+#today .snap-title,
+#today .snap-sub,
+#today .snap-foot{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+
+/* Footer dots should not hug the left edge */
+#today .snap-footer{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+/* -------------------------------------------------
+   PLAN:
+   outer sheet edge remains clean;
+   all content shares one internal start line.
+-------------------------------------------------- */
+.plan-swipe-top,
+.plan-scroll-controls{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+.plan-rail .clean-pass-sheet{
+  padding-left:20px!important;
+  padding-right:20px!important;
+}
+.pass-head,
+.pass-route,
+.pass-meta,
+.pass-events,
+.pass-bottom{
+  padding-left:0!important;
+  padding-right:0!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.pass-event,
+.pass-event.static{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.pass-time,
+.pass-event>span:nth-child(2){
+  padding-left:0!important;
+}
+.pass-event i{
+  padding-right:0!important;
+}
+
+/* -------------------------------------------------
+   SPOTS / EAT:
+   rule spans full row, content begins at same inset.
+-------------------------------------------------- */
+.editorial-filters,
+.line-filters{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+.editorial-index-row,
+.line-index-row{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+.editorial-index-no,
+.line-index-no,
+.editorial-index-main,
+.line-index-main{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+
+/* -------------------------------------------------
+   MORE:
+   same content inset as index pages.
+-------------------------------------------------- */
+.system-tool-row,
+.tool-row{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+.system-tool-no,
+.tool-num,
+.system-tool-main,
+.tool-main{
+  padding-left:0!important;
+  margin-left:0!important;
+}
+
+/* -------------------------------------------------
+   Secondary lists:
+   don't let content sit directly on the page rule.
+-------------------------------------------------- */
+.booking,
+.talk-card,
+.task,
+.maybe-card,
+.expense-item,
+.info-chip,
+.weather-card,
+.status-card,
+.notice-card,
+.emergency-card{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+.booking>.row,
+.booking>.meta,
+.booking>.booking-memo{
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+/* BOOKING links stay inside booking content, no negative offsets */
+.booking-links-section{
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.booking .user-links-head,
+.booking .user-link-open,
+.booking .user-link-editor,
+.booking .user-link-empty{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+/* -------------------------------------------------
+   Detail:
+   hero has its own inset, line sections use shared page inset.
+-------------------------------------------------- */
+.clean-detail-hero{
+  padding-left:20px!important;
+  padding-right:20px!important;
+}
+
+.clean-detail-section{
+  padding-left:var(--content-inset)!important;
+  padding-right:var(--content-inset)!important;
+}
+
+.clean-detail-section .stub-head,
+.clean-detail-section p,
+.clean-detail-section ul,
+.clean-detail-section .light-memo,
+.clean-actions,
+.user-links-stub .user-links-head,
+.user-links-stub .user-link-list,
+.user-links-stub .user-link-editor{
+  margin-left:0!important;
+}
+
+.clean-detail-section .stub-head,
+.clean-detail-section p,
+.clean-detail-section ul{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+.user-links-stub .user-link-open,
+.user-links-stub .user-link-editor,
+.user-links-stub .user-link-empty{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* Inputs should not visually touch the outer rule */
+.user-link-editor input{
+  padding-left:0!important;
+  padding-right:0!important;
+}
+
+/* -------------------------------------------------
+   Prevent accidental viewport-edge sticking.
+-------------------------------------------------- */
+.view{
+  width:100%!important;
+  max-width:100%!important;
+}
+.snap-shell,
+.plan-snap,
+.line-index-list,
+.editorial-index-list,
+.system-tool-list,
+.tool-list,
+.booking-list,
+.talk-list,
+.check-list,
+.maybe-list,
+.weather-grid,
+.emergency-grid,
+.detail-page-light{
+  box-sizing:border-box!important;
+  max-width:100%!important;
+}
+
+/* horizontal rails may overflow only horizontally, never shift the page */
+.snap-rail,
+.plan-rail{
+  max-width:100%!important;
+  margin-left:0!important;
+  margin-right:0!important;
+}
+
+@media(max-width:560px){
+  :root{
+    --page-gutter:16px;
+    --content-inset:7px;
+  }
+
+  .bottom-nav{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  #today .snap-card,
+  #today .today-surface-link{
+    padding-left:16px!important;
+    padding-right:16px!important;
+  }
+
+  .plan-rail .clean-pass-sheet{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+
+  .clean-detail-hero{
+    padding-left:18px!important;
+    padding-right:18px!important;
+  }
+}
+
+
+/* v34 — full-screen TODAY / PLAN composition */
+#today,
+#plan{
+  min-height:calc(100svh - 92px)!important;
+  padding-top:calc(12px + env(safe-area-inset-top))!important;
+}
+
+/* no heading remnants */
+#today .page-minimal-head,
+#plan .page-minimal-head,
+#today .clean-head,
+#plan .clean-head{
+  display:none!important;
+}
+
+/* TODAY fills the viewport rather than floating in empty space */
+.today-full{
+  min-height:calc(100svh - 112px - env(safe-area-inset-top))!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+}
+.today-full .snap-rail{
+  flex:1 1 auto!important;
+  min-height:calc(100svh - 170px - env(safe-area-inset-top))!important;
+  align-items:stretch!important;
+}
+.today-full .snap-card,
+.today-full .today-surface-link{
+  min-height:calc(100svh - 174px - env(safe-area-inset-top))!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  padding-top:24px!important;
+  padding-bottom:24px!important;
+}
+.today-full .snap-card-top{
+  margin-bottom:clamp(28px,7vh,58px)!important;
+}
+.today-full .snap-big{
+  font-size:clamp(44px,12vw,72px)!important;
+  line-height:.9!important;
+}
+.today-full .snap-title{
+  margin-top:12px!important;
+  max-width:90%!important;
+}
+.today-full .snap-sub{
+  margin-top:14px!important;
+  max-width:92%!important;
+  line-height:1.55!important;
+}
+.today-full .snap-foot{
+  margin-top:auto!important;
+  padding-top:18px!important;
+  border-top:1px solid rgba(53,51,47,.16)!important;
+}
+.today-full .snap-footer{
+  flex:0 0 auto!important;
+  padding-top:10px!important;
+  padding-bottom:2px!important;
+}
+
+/* PLAN uses almost the whole screen */
+.plan-full{
+  min-height:calc(100svh - 112px - env(safe-area-inset-top))!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.plan-full .clean-plan-counter{
+  flex:0 0 auto!important;
+  min-height:28px!important;
+  padding-top:2px!important;
+  padding-bottom:8px!important;
+}
+.plan-full .plan-rail{
+  flex:1 1 auto!important;
+  min-height:calc(100svh - 182px - env(safe-area-inset-top))!important;
+  align-items:stretch!important;
+}
+.plan-full .clean-pass-sheet{
+  min-height:calc(100svh - 184px - env(safe-area-inset-top))!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding-top:22px!important;
+  padding-bottom:18px!important;
+}
+.plan-full .pass-events{
+  flex:1 1 auto!important;
+}
+.plan-full .pass-event,
+.plan-full .pass-event.static{
+  min-height:54px!important;
+  align-items:center!important;
+}
+.plan-full .pass-bottom{
+  margin-top:auto!important;
+  padding-top:14px!important;
+}
+
+/* controls stay compact at the bottom */
+.plan-full .plan-scroll-track{
+  flex:0 0 auto!important;
+  margin-top:8px!important;
+}
+.plan-full .plan-scroll-controls{
+  flex:0 0 auto!important;
+  padding-top:8px!important;
+  padding-bottom:0!important;
+}
+
+/* slightly wider cards so the screen feels composed, but keep next-card cue */
+.today-full .snap-card,
+.today-full .today-surface-link{
+  flex-basis:min(86vw,560px)!important;
+}
+.plan-full .clean-pass-sheet{
+  flex-basis:min(88vw,590px)!important;
+}
+
+/* tighten leftover whitespace */
+#today .snap-shell,
+#plan .snap-shell{
+  margin-top:0!important;
+}
+#today .snap-rail,
+#plan .snap-rail{
+  margin-top:0!important;
+}
+
+/* preserve nav clearance */
+#today,
+#plan{
+  padding-bottom:18px!important;
+}
+
+@media(max-width:560px){
+  #today,
+  #plan{
+    padding-top:calc(8px + env(safe-area-inset-top))!important;
+  }
+
+  .today-full{
+    min-height:calc(100svh - 106px - env(safe-area-inset-top))!important;
+  }
+  .today-full .snap-rail{
+    min-height:calc(100svh - 158px - env(safe-area-inset-top))!important;
+  }
+  .today-full .snap-card,
+  .today-full .today-surface-link{
+    min-height:calc(100svh - 162px - env(safe-area-inset-top))!important;
+    flex-basis:88vw!important;
+    padding-top:22px!important;
+    padding-bottom:22px!important;
+  }
+
+  .plan-full{
+    min-height:calc(100svh - 106px - env(safe-area-inset-top))!important;
+  }
+  .plan-full .plan-rail{
+    min-height:calc(100svh - 170px - env(safe-area-inset-top))!important;
+  }
+  .plan-full .clean-pass-sheet{
+    min-height:calc(100svh - 172px - env(safe-area-inset-top))!important;
+    flex-basis:90vw!important;
+  }
+
+  .today-full .snap-card-top{
+    margin-bottom:clamp(24px,6vh,44px)!important;
+  }
+}
+
+
+/* ==========================================================
+   v35 — COBALT ATLAS
+========================================================== */
+:root{
+  --atlas-bg:#F5F3ED;
+  --atlas-paper:#F8F7F2;
+  --atlas-blue:#1647FF;
+  --atlas-yellow:#F3F500;
+  --atlas-muted:rgba(22,71,255,.58);
+  --atlas-line:rgba(22,71,255,.48);
+  --atlas-line-soft:rgba(22,71,255,.18);
+  --atlas-font:"Pretendard","Helvetica Neue",Arial,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html,body{background:var(--atlas-bg)!important;color:var(--atlas-blue)!important}
+body{font-family:var(--atlas-font)!important;font-weight:400!important;letter-spacing:-.025em!important}
+*{box-shadow:none!important;text-shadow:none!important;font-style:normal!important}
+.app{width:min(100%,760px)!important;padding:0 16px 116px!important;margin:0 auto!important}
+button,a,input,textarea,select{font-family:var(--atlas-font)!important}
+.minimal-title,.section-title,.hero-title,.bt-title,.more-title{font-family:var(--atlas-font)!important;font-weight:500!important;letter-spacing:-.055em!important}
+.section-sub,.hero-sub{color:var(--atlas-muted)!important}
+.color-red,.color-yellow,.color-blue,.color-lav,.color-pink,.color-mint,.color-sand,.color-white,.color-black{background:transparent!important;color:var(--atlas-blue)!important}
+
+/* nav */
+.bottom-nav{
+  position:fixed!important;left:50%!important;right:auto!important;bottom:10px!important;transform:translateX(-50%)!important;
+  width:min(calc(100% - 20px),740px)!important;height:62px!important;display:grid!important;grid-template-columns:repeat(5,1fr)!important;
+  padding:0!important;background:rgba(245,243,237,.96)!important;border:1px solid var(--atlas-blue)!important;border-radius:0!important;
+  backdrop-filter:blur(14px)!important;z-index:50!important
+}
+.nav-btn{
+  position:relative!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
+  gap:2px!important;padding:0 9px!important;border:0!important;border-right:1px solid var(--atlas-line-soft)!important;border-radius:0!important;
+  background:transparent!important;color:var(--atlas-blue)!important
+}
+.nav-btn:last-child{border-right:0!important}.nav-btn i{display:none!important}
+.nav-index{font-size:8px!important;line-height:1!important;opacity:.55!important}
+.nav-label{font-size:11px!important;font-weight:500!important;letter-spacing:-.02em!important}
+.nav-btn.active{background:var(--atlas-blue)!important;color:var(--atlas-paper)!important}.nav-btn.active::after{display:none!important}
+
+/* sliders */
+#today,#plan{min-height:calc(100svh - 82px)!important;padding-top:calc(8px + env(safe-area-inset-top))!important}
+.editorial-slider{min-height:calc(100svh - 108px - env(safe-area-inset-top))!important;display:flex!important;flex-direction:column!important}
+.editorial-rail{
+  flex:1 1 auto!important;display:flex!important;gap:0!important;overflow-x:auto!important;overflow-y:hidden!important;
+  scroll-snap-type:x mandatory!important;scrollbar-width:none!important;overscroll-behavior-x:contain!important;
+  -webkit-overflow-scrolling:touch!important;border:1px solid var(--atlas-blue)!important
+}
+.editorial-rail::-webkit-scrollbar{display:none!important}
+.editorial-page{
+  flex:0 0 min(91vw,650px)!important;min-height:calc(100svh - 160px - env(safe-area-inset-top))!important;
+  scroll-snap-align:start!important;scroll-snap-stop:always!important;position:relative!important;display:flex!important;flex-direction:column!important;
+  padding:18px!important;border:0!important;border-right:1px solid currentColor!important;border-radius:0!important;text-align:left!important;overflow:hidden!important
+}
+.editorial-page:last-child{border-right:0!important}
+.tone-paper{background:var(--atlas-paper)!important;color:var(--atlas-blue)!important}
+.tone-blue{background:var(--atlas-blue)!important;color:var(--atlas-paper)!important}
+.tone-yellow{background:var(--atlas-yellow)!important;color:var(--atlas-blue)!important}
+.editorial-page *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.ed-top{display:flex!important;justify-content:space-between!important;align-items:flex-start!important;font-size:10px!important;line-height:1.1!important;font-weight:500!important}
+.ed-hero{margin-top:clamp(26px,7vh,68px)!important;max-width:100%!important;font-size:clamp(62px,18vw,132px)!important;line-height:.78!important;letter-spacing:-.085em!important;font-weight:500!important;overflow-wrap:anywhere!important}
+.ed-rule{height:1px!important;background:currentColor!important;margin-top:20px!important;opacity:.72!important}
+.ed-title{margin-top:8px!important;font-size:clamp(24px,7vw,42px)!important;line-height:.95!important;font-weight:500!important;letter-spacing:-.055em!important;max-width:94%!important}
+.ed-meta{margin-top:8px!important;max-width:74%!important;font-size:11px!important;line-height:1.35!important;opacity:.72!important}
+.ed-bottom{margin-top:auto!important;padding-top:10px!important;display:flex!important;justify-content:space-between!important;align-items:flex-end!important;gap:14px!important;border-top:1px solid currentColor!important;font-size:10px!important;line-height:1.35!important}
+.editorial-slider-footer{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;gap:14px!important;align-items:center!important;min-height:42px!important;padding:0 2px!important;color:var(--atlas-blue)!important}
+.editorial-slider-footer .snap-count{font-size:9px!important;font-weight:500!important}
+.editorial-progress{height:1px!important;background:var(--atlas-line-soft)!important}
+.editorial-progress .snap-progress-fill{display:block!important;height:2px!important;width:25%;background:var(--atlas-blue)!important;transition:width .18s ease!important}
+
+/* plan */
+.plan-editorial-page{padding:16px 16px 14px!important}
+.plan-hero-date{margin-top:18px!important;font-size:clamp(82px,25vw,170px)!important;line-height:.78!important;letter-spacing:-.095em!important;font-weight:500!important}
+.plan-route-title{margin-top:9px!important;font-size:clamp(25px,7vw,44px)!important;line-height:.94!important;font-weight:500!important;letter-spacing:-.06em!important}
+.plan-location{margin-top:5px!important;max-width:78%!important;font-size:10px!important;line-height:1.35!important;opacity:.68!important}
+.plan-events-table{margin-top:auto!important;border-top:1px solid currentColor!important}
+.plan-data-row{
+  width:100%!important;display:grid!important;grid-template-columns:54px minmax(0,1fr) 18px!important;gap:8px!important;align-items:start!important;
+  padding:8px 0!important;border:0!important;border-bottom:1px solid currentColor!important;background:transparent!important;color:inherit!important;text-align:left!important
+}
+.plan-data-row *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.plan-row-time{font-size:10px!important;opacity:.65!important;padding-top:2px!important}
+.plan-row-main b{display:block!important;font-size:15px!important;line-height:1.1!important;font-weight:500!important}
+.plan-row-main small{display:block!important;margin-top:3px!important;font-size:9px!important;line-height:1.25!important;opacity:.62!important}
+.plan-row-arrow{font-size:13px!important;text-align:right!important}
+.plan-sheet-bottom{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;padding-top:8px!important;font-size:9px!important;line-height:1.3!important;opacity:.7!important}
+.plan-sheet-bottom span:last-child{text-align:right!important}
+.plan-editorial-footer{grid-template-columns:auto minmax(0,1fr) auto!important}
+.editorial-arrows{display:flex!important;gap:12px!important}
+.editorial-arrows button{padding:0!important;border:0!important;background:transparent!important;color:var(--atlas-blue)!important;font-size:17px!important}
+.editorial-arrows button:disabled{opacity:.22!important}
+
+/* index */
+.index-page,.more-editorial-page{padding-top:calc(14px + env(safe-area-inset-top))!important}
+.index-hero{min-height:210px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;padding:14px 0 10px!important;color:var(--atlas-blue)!important;border-bottom:1px solid var(--atlas-blue)!important}
+.index-hero-top,.more-head-top{display:flex!important;justify-content:space-between!important;font-size:9px!important;font-weight:500!important}
+.index-hero-title,.more-head-title{font-size:clamp(72px,22vw,142px)!important;line-height:.76!important;letter-spacing:-.09em!important;font-weight:500!important}
+.yellow-index-hero{min-height:250px!important;margin-left:-16px!important;margin-right:-16px!important;padding:16px!important;background:var(--atlas-yellow)!important}
+.index-filter-row{display:flex!important;gap:18px!important;align-items:center!important;min-height:44px!important;border-bottom:1px solid var(--atlas-blue)!important}
+.index-filter-row button{padding:0!important;background:transparent!important;border:0!important;color:var(--atlas-blue)!important;font-size:9px!important;font-weight:500!important;opacity:.5!important}
+.index-filter-row button.active{opacity:1!important;text-decoration:underline!important;text-underline-offset:4px!important}
+.atlas-row{width:100%!important;display:grid!important;grid-template-columns:36px minmax(0,1fr) 48px 18px!important;gap:8px!important;align-items:end!important;padding:10px 0!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-bottom:1px solid var(--atlas-blue)!important;text-align:left!important}
+.atlas-row *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.atlas-no{font-size:9px!important;opacity:.56!important}
+.atlas-main b{display:block!important;font-size:clamp(24px,7vw,38px)!important;line-height:.9!important;font-weight:500!important;letter-spacing:-.055em!important}
+.atlas-main small{display:block!important;margin-top:4px!important;font-size:9px!important;line-height:1.2!important;opacity:.58!important}
+.atlas-meta{font-size:9px!important;text-align:right!important;opacity:.58!important}
+.atlas-arrow{text-align:right!important;font-size:14px!important}.atlas-row.is-done{opacity:.42!important}
+
+/* more */
+.more-editorial-page{margin:0 -16px!important;min-height:calc(100svh - 88px)!important;padding:calc(16px + env(safe-area-inset-top)) 16px 84px!important;background:var(--atlas-blue)!important;color:var(--atlas-paper)!important}
+.more-editorial-page *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.more-editorial-head{min-height:220px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+.more-index-list{border-top:1px solid currentColor!important}
+.more-index-row{width:100%!important;display:grid!important;grid-template-columns:36px minmax(0,1fr) 18px!important;gap:8px!important;align-items:end!important;padding:9px 0!important;border:0!important;border-bottom:1px solid currentColor!important;background:transparent!important;text-align:left!important}
+.more-index-no{font-size:9px!important;opacity:.55!important}
+.more-index-main b{display:block!important;font-size:clamp(25px,7vw,40px)!important;line-height:.88!important;font-weight:500!important;letter-spacing:-.055em!important}
+.more-index-main small{display:block!important;margin-top:3px!important;font-size:8px!important;line-height:1.2!important;opacity:.58!important}
+.more-index-arrow{text-align:right!important;font-size:14px!important}
+
+/* detail */
+.archive-detail{padding-top:calc(12px + env(safe-area-inset-top))!important;color:var(--atlas-blue)!important}
+.archive-back{display:flex!important;justify-content:space-between!important;align-items:center!important;min-height:36px!important;border-bottom:1px solid var(--atlas-blue)!important;font-size:9px!important}
+.archive-back button{padding:0!important;background:transparent!important;border:0!important;color:var(--atlas-blue)!important;font-size:9px!important;font-weight:500!important}
+.archive-hero{padding:18px 0 12px!important}
+.archive-title{max-width:98%!important;font-size:clamp(56px,17vw,112px)!important;line-height:.79!important;letter-spacing:-.09em!important;font-weight:500!important}
+.archive-title-meta{display:flex!important;justify-content:space-between!important;gap:16px!important;margin-top:10px!important;padding-top:6px!important;border-top:1px solid var(--atlas-blue)!important;font-size:9px!important}
+.archive-title-meta span:last-child{text-align:right!important}
+.archive-image{width:100%!important;aspect-ratio:16/9!important;overflow:hidden!important;background:#DFDFDA!important;border:0!important;border-radius:0!important}
+.archive-image img{width:100%!important;height:100%!important;object-fit:cover!important}
+.archive-image.fallback{display:grid!important;place-items:center!important;color:var(--atlas-blue)!important;font-size:20px!important}
+.archive-quick-grid{display:grid!important;grid-template-columns:repeat(2,1fr)!important;border-top:1px solid var(--atlas-blue)!important;border-left:1px solid var(--atlas-blue)!important;margin-top:10px!important}
+.archive-quick-grid>div,.archive-quick-grid>button{min-height:62px!important;padding:7px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-right:1px solid var(--atlas-blue)!important;border-bottom:1px solid var(--atlas-blue)!important;text-align:left!important}
+.archive-quick-grid span{font-size:8px!important;opacity:.55!important}.archive-quick-grid b{font-size:13px!important;line-height:1.1!important;font-weight:500!important}
+.archive-section{display:grid!important;grid-template-columns:86px minmax(0,1fr)!important;gap:12px!important;padding:12px 0!important;border-bottom:1px solid var(--atlas-blue)!important}
+.archive-section-label{font-size:9px!important;font-weight:500!important}
+.archive-section-body p{margin:0!important;font-size:13px!important;line-height:1.5!important;color:var(--atlas-blue)!important}
+.archive-table{border-top:1px solid var(--atlas-blue)!important}
+.archive-table-row{display:grid!important;grid-template-columns:28px minmax(0,1fr)!important;gap:8px!important;padding:7px 0!important;border-bottom:1px solid var(--atlas-line-soft)!important}
+.archive-table-row span{font-size:8px!important;opacity:.5!important}.archive-table-row b{font-size:12px!important;line-height:1.35!important;font-weight:400!important}
+.archive-tool-grid{display:grid!important;grid-template-columns:1fr 1fr!important;border-top:1px solid var(--atlas-blue)!important;border-left:1px solid var(--atlas-blue)!important}
+.archive-tool-grid button,.archive-tool-grid a{min-height:44px!important;padding:8px!important;display:flex!important;align-items:flex-end!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-right:1px solid var(--atlas-blue)!important;border-bottom:1px solid var(--atlas-blue)!important;font-size:9px!important;font-weight:500!important}
+.archive-memo{width:100%!important;min-height:120px!important;padding:9px 0!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-top:1px solid var(--atlas-blue)!important;border-bottom:1px solid var(--atlas-blue)!important;border-radius:0!important;outline:0!important;resize:vertical!important}
+.archive-memo::placeholder{color:var(--atlas-muted)!important}
+.archive-links .user-links-head{padding:0 0 8px!important;border:0!important}
+.archive-links .user-links-head button{color:var(--atlas-blue)!important}
+.archive-links .user-link-row{background:transparent!important;border-color:var(--atlas-line-soft)!important}
+.archive-links .user-link-open{color:var(--atlas-blue)!important}
+.archive-links .user-link-no,.archive-links .user-link-tools .delete{color:var(--atlas-blue)!important}
+.archive-links .user-link-editor{background:transparent!important}
+
+/* secondary */
+.secondary-back{padding-top:calc(12px + env(safe-area-inset-top))!important}
+.secondary-back button{padding:0!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;font-size:9px!important}
+.section-top.compact,.section-top{padding:14px 0 10px!important;border-bottom:1px solid var(--atlas-blue)!important}
+.section-title{margin:4px 0 0!important;font-size:clamp(54px,16vw,100px)!important;line-height:.8!important;color:var(--atlas-blue)!important}
+.section-top .kicker{font-size:9px!important;color:var(--atlas-blue)!important;opacity:.55!important}
+.booking-list,.talk-list,.check-list,.maybe-list,.expense-list,.info-list{gap:0!important}
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{padding:12px 0!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-bottom:1px solid var(--atlas-blue)!important;border-radius:0!important}
+.booking *,.talk-card *,.task *,.maybe-card *,.expense-item *,.info-chip *,.weather-card *,.status-card *,.notice-card *,.emergency-card *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.booking .title{font-size:clamp(22px,6vw,36px)!important;font-weight:500!important;letter-spacing:-.05em!important}
+.booking .type,.booking .code{font-size:9px!important;opacity:.55!important}
+.booking .meta{font-size:10px!important;line-height:1.45!important}
+.booking-memo,.note-card,.input-card{padding:12px 0!important;background:transparent!important;border:0!important;border-top:1px solid var(--atlas-line-soft)!important;border-radius:0!important}
+.booking-memo textarea,.note-card textarea,.input-card input,.input-card select,.detail-memo{width:100%!important;background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-bottom:1px solid var(--atlas-blue)!important;border-radius:0!important}
+.user-links-section{border-color:var(--atlas-blue)!important}.user-links-head{border-color:var(--atlas-line-soft)!important}.user-links-head>button{color:var(--atlas-blue)!important}
+.user-link-row{background:transparent!important;border-color:var(--atlas-line-soft)!important}.user-link-open{color:var(--atlas-blue)!important}.user-link-no,.user-link-tools .delete{color:var(--atlas-blue)!important}.user-link-editor{background:transparent!important}.user-link-editor input{color:var(--atlas-blue)!important;border-bottom-color:var(--atlas-blue)!important}
+.money-total{margin-top:10px!important;padding:16px!important;background:var(--atlas-blue)!important;color:var(--atlas-paper)!important;border:0!important;border-radius:0!important}
+.money-total *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.input-grid{gap:0!important;border-left:1px solid var(--atlas-blue)!important}.input-card{border-right:1px solid var(--atlas-blue)!important;border-bottom:1px solid var(--atlas-blue)!important}
+.action-btn,.action-btn.light,.inline-btn{background:transparent!important;color:var(--atlas-blue)!important;border:0!important;border-bottom:1px solid var(--atlas-blue)!important;border-radius:0!important}
+
+/* splash */
+.splash-screen{background:var(--atlas-bg)!important}.splash-pass{border-radius:0!important;border:0!important;box-shadow:none!important}.splash-back{display:none!important}
+.splash-mid{width:100%!important;height:70%!important;top:30px!important;background:var(--atlas-blue)!important;transform:none!important;border-radius:0!important}
+.splash-front{width:88%!important;height:74%!important;left:0!important;right:auto!important;top:0!important;background:var(--atlas-paper)!important;color:var(--atlas-blue)!important;border-radius:0!important;padding:20px!important}
+.splash-brand{font-size:58px!important;font-weight:500!important;letter-spacing:-.08em!important;color:var(--atlas-blue)!important}.splash-kicker,.splash-city{color:var(--atlas-blue)!important}
+.splash-chip{background:var(--atlas-yellow)!important;color:var(--atlas-blue)!important;border:0!important;border-radius:0!important}
+.splash-barcode{background:repeating-linear-gradient(90deg,var(--atlas-blue) 0 3px,transparent 3px 5px,var(--atlas-blue) 5px 7px,transparent 7px 9px)!important}
+
+/* conflict kills */
+#today .page-minimal-head,#plan .page-minimal-head{display:none!important}
+.snap-footer,.snap-dots,.snap-dot{display:none!important}
+.plan-scroll-track,.plan-scroll-controls{display:none!important}
+button *,a *{-webkit-text-fill-color:currentColor!important}
+
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+@media(max-width:560px){
+  .app{padding-left:12px!important;padding-right:12px!important}
+  .editorial-page{flex-basis:92vw!important;padding:14px!important}
+  .ed-hero{font-size:clamp(60px,20vw,104px)!important}
+  .plan-hero-date{font-size:clamp(78px,27vw,132px)!important}
+  .plan-data-row{grid-template-columns:48px minmax(0,1fr) 16px!important}
+  .yellow-index-hero{margin-left:-12px!important;margin-right:-12px!important;padding:12px!important}
+  .more-editorial-page{margin-left:-12px!important;margin-right:-12px!important;padding-left:12px!important;padding-right:12px!important}
+  .archive-section{grid-template-columns:72px minmax(0,1fr)!important;gap:10px!important}
+  .archive-title{font-size:clamp(52px,18vw,88px)!important}
+}
+
+
+/* ==========================================================
+   v36 — COBALT LONGFORM
+   off-white + cobalt only / vertical document UI
+========================================================== */
+:root{
+  --v36-bg:#F4F2EC;
+  --v36-paper:#F8F7F2;
+  --v36-blue:#1845F5;
+  --v36-blue-soft:rgba(24,69,245,.52);
+  --v36-blue-faint:rgba(24,69,245,.07);
+  --v36-ink:#1845F5;
+  --v36-muted:#7D86A8;
+  --v36-font:"Pretendard","Helvetica Neue",Arial,-apple-system,BlinkMacSystemFont,sans-serif;
+  --atlas-bg:var(--v36-bg);
+  --atlas-paper:var(--v36-paper);
+  --atlas-blue:var(--v36-blue);
+  --atlas-yellow:var(--v36-paper);
+}
+html,body{
+  background:var(--v36-bg)!important;
+  color:var(--v36-blue)!important;
+  overflow-x:hidden!important;
+}
+body{
+  font-family:var(--v36-font)!important;
+  font-weight:400!important;
+}
+.app{
+  width:min(100%,760px)!important;
+  padding:0 16px 110px!important;
+  margin:0 auto!important;
+}
+.view{overflow:visible!important}
+button,a,input,textarea,select{font-family:var(--v36-font)!important}
+
+/* remove previous horizontal UI completely */
+.editorial-slider,.editorial-rail,.editorial-slider-footer,
+.plan-editorial-slider,.plan-editorial-footer,.snap-rail,
+.index-hero,.yellow-index-hero,.atlas-list,.more-editorial-page,
+.archive-detail,.archive-back,.archive-hero,.archive-image,.archive-quick-grid,.archive-section{
+  max-width:100%!important;
+}
+#today .editorial-slider,#plan .editorial-slider{display:none!important}
+
+/* all old green/yellow/red surfaces are neutralized */
+.tone-yellow,.yellow-index-hero,.splash-chip,.color-red,.color-yellow,.color-lav,.color-pink,.color-mint,.color-sand,.color-black,.color-blue{
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+}
+.more-editorial-page{background:transparent!important;color:var(--v36-blue)!important}
+
+/* text-only bottom nav, lighter and calmer */
+.bottom-nav{
+  background:rgba(244,242,236,.96)!important;
+  border:0!important;
+  border-top:1px solid rgba(24,69,245,.18)!important;
+  border-radius:0!important;
+  height:58px!important;
+  bottom:0!important;
+  width:100%!important;
+  max-width:760px!important;
+}
+.nav-btn{
+  border:0!important;
+  background:transparent!important;
+  color:rgba(24,69,245,.45)!important;
+  align-items:center!important;
+  padding:0 4px!important;
+}
+.nav-btn.active{
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+}
+.nav-index{display:none!important}
+.nav-label{
+  font-size:10px!important;
+  font-weight:500!important;
+  letter-spacing:.02em!important;
+}
+
+/* shared long-form page */
+.v36-page{
+  width:100%;
+  padding-top:calc(18px + env(safe-area-inset-top));
+  color:var(--v36-blue);
+}
+.v36-overline{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.03em;
+  color:var(--v36-blue-soft);
+}
+.v36-section-label,
+.v36-detail-label{
+  font-size:9px;
+  font-weight:500;
+  letter-spacing:.08em;
+  color:var(--v36-blue-soft);
+}
+
+/* TODAY */
+.v36-today{
+  min-height:calc(100svh - 70px);
+  display:flex;
+  flex-direction:column;
+}
+.v36-today-hero{
+  padding-top:8px;
+  min-height:48svh;
+  display:flex;
+  flex-direction:column;
+}
+.v36-hero-word{
+  margin-top:clamp(34px,8vh,72px);
+  font-size:clamp(68px,20vw,132px);
+  line-height:.78;
+  letter-spacing:-.09em;
+  font-weight:500;
+}
+.v36-hero-title{
+  margin-top:16px;
+  max-width:92%;
+  font-size:clamp(28px,7vw,44px);
+  line-height:.98;
+  letter-spacing:-.055em;
+  font-weight:500;
+}
+.v36-hero-meta{
+  margin-top:auto;
+  padding-bottom:20px;
+  font-size:10px;
+  line-height:1.45;
+  color:var(--v36-blue-soft);
+}
+.v36-next{
+  width:calc(100% + 32px);
+  margin-left:-16px;
+  display:grid;
+  grid-template-columns:48px 74px minmax(0,1fr) 20px;
+  gap:10px;
+  align-items:end;
+  padding:18px 16px 20px;
+  border:0!important;
+  background:var(--v36-blue)!important;
+  color:var(--v36-paper)!important;
+  text-align:left;
+}
+.v36-next *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.v36-next-label{font-size:9px;opacity:.65;align-self:start}
+.v36-next-time{font-size:clamp(36px,10vw,56px);line-height:.86;font-weight:500;letter-spacing:-.055em}
+.v36-next-main b{display:block;font-size:20px;line-height:1;font-weight:500}
+.v36-next-main span{display:block;margin-top:5px;font-size:9px;line-height:1.3;opacity:.68}
+.v36-next-arrow{text-align:right;font-size:18px}
+.v36-route{padding:28px 0 22px}
+.v36-route-list{margin-top:12px;display:grid;gap:13px}
+.v36-route-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:54px minmax(0,1fr) 16px;
+  gap:9px;
+  align-items:start;
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-route-row>span:first-child{font-size:10px;color:var(--v36-blue-soft)}
+.v36-route-row b{display:block;font-size:15px;line-height:1.1;font-weight:500}
+.v36-route-row small{display:block;margin-top:4px;font-size:9px;line-height:1.25;color:var(--v36-blue-soft)}
+.v36-route-row i{font-style:normal;font-size:12px}
+.v36-today-foot{
+  margin-top:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  padding:16px 0 8px;
+}
+.v36-today-foot>div,.v36-today-foot>button{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-today-foot span{font-size:9px;color:var(--v36-blue-soft)}
+.v36-today-foot b{margin-top:5px;font-size:13px;font-weight:500}
+
+/* PLAN */
+.v36-plan-intro{
+  min-height:38svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding-bottom:24px;
+}
+.v36-plan-intro-title{
+  margin-top:auto;
+  font-size:clamp(54px,16vw,110px);
+  line-height:.78;
+  letter-spacing:-.085em;
+  font-weight:500;
+}
+.v36-days{display:grid;gap:48px;padding-bottom:30px}
+.v36-day{
+  padding-top:10px;
+}
+.v36-day-head{
+  display:flex;
+  justify-content:space-between;
+  font-size:9px;
+  font-weight:500;
+  color:var(--v36-blue-soft);
+}
+.v36-day-date{
+  margin-top:18px;
+  font-size:clamp(72px,22vw,144px);
+  line-height:.78;
+  letter-spacing:-.095em;
+  font-weight:500;
+}
+.v36-day-title{
+  margin-top:12px;
+  font-size:clamp(25px,7vw,40px);
+  line-height:.95;
+  font-weight:500;
+  letter-spacing:-.05em;
+}
+.v36-day-meta{
+  margin-top:8px;
+  max-width:80%;
+  font-size:10px;
+  line-height:1.4;
+  color:var(--v36-blue-soft);
+}
+.v36-day-events{
+  display:grid;
+  gap:14px;
+  margin-top:26px;
+}
+.v36-event{
+  width:100%;
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) 16px;
+  gap:9px;
+  align-items:start;
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-event-time{font-size:10px;color:var(--v36-blue-soft)}
+.v36-event-main b{display:block;font-size:16px;line-height:1.1;font-weight:500}
+.v36-event-main small{display:block;margin-top:4px;font-size:9px;line-height:1.25;color:var(--v36-blue-soft)}
+.v36-event-arrow{text-align:right;font-size:12px}
+.v36-day-foot{
+  margin-top:26px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  font-size:9px;
+  line-height:1.35;
+  color:var(--v36-blue-soft);
+}
+.v36-day + .v36-day{
+  padding-top:30px;
+  border-top:0!important;
+}
+
+/* SPOTS / EAT */
+.v36-index-head{padding-bottom:26px}
+.v36-index-title{
+  margin-top:34px;
+  font-size:clamp(70px,22vw,140px);
+  line-height:.75;
+  letter-spacing:-.09em;
+  font-weight:500;
+}
+.v36-filter{display:flex;gap:18px;margin-top:30px}
+.v36-filter button{
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue-soft)!important;
+  font-size:9px;
+  font-weight:500;
+}
+.v36-filter button.active{color:var(--v36-blue)!important}
+.v36-index-list{
+  display:grid;
+  gap:8px;
+  padding-bottom:26px;
+}
+.v36-index-item{
+  width:100%;
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 18px;
+  gap:10px;
+  align-items:start;
+  padding:15px 0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-index-item:nth-child(4n+2){
+  margin-left:-8px;
+  margin-right:-8px;
+  width:calc(100% + 16px);
+  padding-left:8px;
+  padding-right:8px;
+  background:var(--v36-blue-faint)!important;
+}
+.v36-index-no{font-size:9px;color:var(--v36-blue-soft);padding-top:3px}
+.v36-index-copy b{
+  display:block;
+  font-size:clamp(24px,7vw,38px);
+  line-height:.92;
+  font-weight:500;
+  letter-spacing:-.05em;
+}
+.v36-index-copy small{display:block;margin-top:6px;font-size:10px;line-height:1.25;color:var(--v36-blue-soft)}
+.v36-index-copy em{display:block;margin-top:4px;font-style:normal;font-size:8px;color:var(--v36-blue-soft)}
+.v36-index-arrow{text-align:right;font-size:13px;padding-top:3px}
+.v36-index-item.is-done{opacity:.4}
+
+/* MORE */
+.v36-more-list{display:grid;gap:8px;padding-bottom:26px}
+.v36-more-item{
+  width:100%;
+  display:grid;
+  grid-template-columns:34px minmax(0,1fr) 18px;
+  gap:10px;
+  align-items:end;
+  padding:16px 0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-more-item:nth-child(3n+2){
+  margin-left:-8px;
+  margin-right:-8px;
+  width:calc(100% + 16px);
+  padding-left:8px;
+  padding-right:8px;
+  background:var(--v36-blue-faint)!important;
+}
+.v36-more-item>span:first-child{font-size:9px;color:var(--v36-blue-soft)}
+.v36-more-item b{display:block;font-size:clamp(26px,7vw,40px);line-height:.9;font-weight:500;letter-spacing:-.05em}
+.v36-more-item small{display:block;margin-top:5px;font-size:9px;line-height:1.2;color:var(--v36-blue-soft)}
+.v36-more-item>span:last-child{text-align:right;font-size:13px}
+
+/* DETAIL */
+.v36-detail-nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  min-height:36px;
+  font-size:9px;
+  color:var(--v36-blue-soft);
+}
+.v36-detail-nav button{
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  font-size:9px;
+}
+.v36-detail-head{padding:22px 0 18px}
+.v36-detail-title{
+  font-size:clamp(54px,17vw,108px);
+  line-height:.8;
+  letter-spacing:-.09em;
+  font-weight:500;
+}
+.v36-detail-name{
+  margin-top:14px;
+  font-size:10px;
+  line-height:1.4;
+  color:var(--v36-blue-soft);
+}
+.v36-detail-image{
+  width:100%;
+  aspect-ratio:16/9;
+  overflow:hidden;
+  background:var(--v36-blue-faint);
+}
+.v36-detail-image img{width:100%;height:100%;object-fit:cover}
+.v36-detail-image.fallback{display:grid;place-items:center;font-size:18px;color:var(--v36-blue)}
+.v36-detail-facts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  padding:18px 0 8px;
+}
+.v36-detail-facts>div,.v36-detail-facts>button{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:0;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  text-align:left;
+}
+.v36-detail-facts span{font-size:8px;color:var(--v36-blue-soft)}
+.v36-detail-facts b{margin-top:6px;font-size:12px;line-height:1.2;font-weight:500}
+.v36-detail-section{
+  padding:26px 0 0;
+}
+.v36-detail-section p{
+  margin:10px 0 0;
+  font-size:14px;
+  line-height:1.6;
+  color:var(--v36-blue);
+}
+.v36-detail-list{display:grid;gap:12px;margin-top:12px}
+.v36-detail-list>div{
+  display:grid;
+  grid-template-columns:28px minmax(0,1fr);
+  gap:8px;
+}
+.v36-detail-list span{font-size:8px;color:var(--v36-blue-soft)}
+.v36-detail-list b{font-size:13px;line-height:1.4;font-weight:400}
+.v36-tool-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px 18px;
+  margin-top:12px;
+}
+.v36-tool-list button,.v36-tool-list a{
+  min-height:34px;
+  padding:0;
+  display:flex;
+  align-items:center;
+  border:0;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  font-size:10px;
+  font-weight:500;
+}
+.v36-memo{
+  width:100%;
+  min-height:130px;
+  margin-top:12px;
+  padding:14px;
+  border:0!important;
+  border-radius:0!important;
+  outline:0;
+  background:var(--v36-blue-faint)!important;
+  color:var(--v36-blue)!important;
+  resize:vertical;
+}
+.v36-memo::placeholder{color:var(--v36-blue-soft)}
+.v36-links{margin-top:10px}
+.v36-links .user-links-head{
+  min-height:34px!important;
+  padding:0!important;
+  border:0!important;
+}
+.v36-links .user-links-head button{color:var(--v36-blue)!important}
+.v36-links .user-link-row{background:transparent!important;border:0!important;margin-top:10px}
+.v36-links .user-link-open{padding:0!important;color:var(--v36-blue)!important}
+.v36-links .user-link-tools{border:0!important}
+.v36-links .user-link-tools button{border:0!important;color:var(--v36-blue)!important}
+.v36-links .user-link-editor{background:var(--v36-blue-faint)!important;border:0!important;margin-top:12px}
+.v36-links .user-link-editor input{color:var(--v36-blue)!important;border-color:rgba(24,69,245,.25)!important}
+
+/* secondary pages simplified to the same palette */
+.secondary-back button,.section-title,.section-top .kicker,
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card,
+.user-link-open,.user-link-editor,.user-link-editor input,.action-btn,.action-btn.light,.inline-btn{
+  color:var(--v36-blue)!important;
+}
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+}
+.booking-list,.talk-list,.check-list,.maybe-list,.expense-list,.info-list{gap:14px!important}
+.booking-memo,.note-card,.input-card{
+  background:var(--v36-blue-faint)!important;
+  border:0!important;
+}
+.booking-memo textarea,.note-card textarea,.input-card input,.input-card select,.detail-memo{
+  border:0!important;
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+}
+.money-total{
+  background:var(--v36-blue)!important;
+  color:var(--v36-paper)!important;
+}
+.money-total *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+
+/* splash — no yellow */
+.splash-screen{background:var(--v36-bg)!important}
+.splash-mid{background:var(--v36-blue)!important}
+.splash-front{background:var(--v36-paper)!important;color:var(--v36-blue)!important}
+.splash-chip{
+  background:transparent!important;
+  color:var(--v36-blue)!important;
+  border:1px solid rgba(24,69,245,.25)!important;
+}
+.splash-brand,.splash-kicker,.splash-city{color:var(--v36-blue)!important}
+.splash-barcode{
+  background:repeating-linear-gradient(90deg,var(--v36-blue) 0 3px,transparent 3px 5px,var(--v36-blue) 5px 7px,transparent 7px 9px)!important
+}
+
+/* kill legacy lines where possible */
+.head-rule,.ed-rule,.editorial-progress,.plan-scroll-track{display:none!important}
+.archive-table,.archive-tool-grid,.archive-quick-grid,.index-filter-row,.atlas-row,.more-index-row{
+  border:0!important;
+}
+.user-links-section,.user-links-head,.user-link-row,.booking-memo,.note-card,.input-card{
+  border-color:transparent!important;
+}
+
+/* natural page scrolling only */
+#today,#plan,#spots,#eat,#more,#detail{
+  min-height:auto!important;
+  overflow:visible!important;
+}
+body{overscroll-behavior-y:auto!important}
+
+/* iOS */
+button *,a *{-webkit-text-fill-color:currentColor!important}
+
+@media(prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+@media(max-width:560px){
+  .app{padding-left:14px!important;padding-right:14px!important}
+  .v36-next{
+    width:calc(100% + 28px);
+    margin-left:-14px;
+    padding-left:14px;
+    padding-right:14px;
+    grid-template-columns:42px 66px minmax(0,1fr) 18px;
+  }
+  .v36-plan-intro{min-height:34svh}
+  .v36-days{gap:42px}
+  .v36-detail-facts{grid-template-columns:1fr 1fr;gap:14px}
+  .v36-detail-facts>button{grid-column:1/-1}
+}
+
+
+/* ==========================================================
+   v37 — spacing + collision fix
+========================================================== */
+html{
+  -webkit-text-size-adjust:100%!important;
+  text-size-adjust:100%!important;
+}
+body{
+  line-height:1.45!important;
+}
+
+/* TODAY: remove rigid viewport packing that caused collisions */
+.v37-today{
+  min-height:auto!important;
+  display:block!important;
+  padding-bottom:30px!important;
+}
+.v37-today-hero{
+  display:block!important;
+  min-height:0!important;
+  padding:12px 0 42px!important;
+}
+.v37-today-hero .v36-overline{
+  line-height:1.4!important;
+}
+.v37-today-hero .v36-hero-word{
+  margin-top:54px!important;
+  font-size:clamp(58px,17vw,112px)!important;
+  line-height:.92!important;
+  letter-spacing:-.075em!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+  overflow-wrap:normal!important;
+}
+.v37-today-hero .v36-hero-title{
+  margin-top:24px!important;
+  max-width:88%!important;
+  font-size:clamp(26px,6.5vw,40px)!important;
+  line-height:1.15!important;
+  letter-spacing:-.045em!important;
+  word-break:keep-all!important;
+}
+.v37-today-hero .v36-hero-meta{
+  margin-top:28px!important;
+  padding-bottom:0!important;
+  font-size:10px!important;
+  line-height:1.6!important;
+}
+
+/* NEXT: simpler, roomier, fewer columns */
+.v37-next{
+  grid-template-columns:72px minmax(0,1fr) 20px!important;
+  gap:16px!important;
+  align-items:center!important;
+  padding-top:24px!important;
+  padding-bottom:26px!important;
+}
+.v37-next .v36-next-label{display:none!important}
+.v37-next .v36-next-time{
+  font-size:clamp(34px,9vw,50px)!important;
+  line-height:1!important;
+}
+.v37-next .v36-next-main b{
+  font-size:19px!important;
+  line-height:1.2!important;
+  word-break:keep-all!important;
+}
+.v37-next .v36-next-main span{
+  margin-top:7px!important;
+  font-size:10px!important;
+  line-height:1.5!important;
+}
+
+/* TODAY route: more air, no explanatory subcopy */
+.v37-route{
+  padding-top:40px!important;
+  padding-bottom:36px!important;
+}
+.v37-route .v36-route-list{
+  margin-top:20px!important;
+  gap:20px!important;
+}
+.v37-route-row{
+  grid-template-columns:58px minmax(0,1fr) 18px!important;
+  gap:12px!important;
+  line-height:1.45!important;
+}
+.v37-route-row>span:first-child{
+  font-size:10px!important;
+  line-height:1.5!important;
+}
+.v37-route-row b{
+  font-size:15px!important;
+  line-height:1.35!important;
+  word-break:keep-all!important;
+}
+.v37-today-foot{
+  padding-top:24px!important;
+  gap:40px!important;
+}
+.v37-today-foot b{
+  margin-top:8px!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+
+/* PLAN: loosen every typographic block */
+.v37-plan .v36-plan-intro{
+  min-height:0!important;
+  padding:24px 0 72px!important;
+}
+.v37-plan .v36-plan-intro-title{
+  margin-top:72px!important;
+  font-size:clamp(48px,14vw,94px)!important;
+  line-height:.92!important;
+  letter-spacing:-.07em!important;
+}
+.v37-plan .v36-days{
+  gap:80px!important;
+}
+.v37-plan .v36-day{
+  padding-top:0!important;
+}
+.v37-plan .v36-day-date{
+  margin-top:26px!important;
+  font-size:clamp(64px,19vw,124px)!important;
+  line-height:.9!important;
+}
+.v37-plan .v36-day-title{
+  margin-top:20px!important;
+  line-height:1.12!important;
+}
+.v37-plan .v36-day-meta{
+  margin-top:12px!important;
+  line-height:1.6!important;
+}
+.v37-plan .v36-day-events{
+  margin-top:34px!important;
+  gap:22px!important;
+}
+.v37-plan .v36-event{
+  grid-template-columns:58px minmax(0,1fr) 18px!important;
+  gap:12px!important;
+}
+.v37-plan .v36-event-time{
+  line-height:1.5!important;
+}
+.v37-plan .v36-event-main b{
+  font-size:16px!important;
+  line-height:1.35!important;
+}
+.v37-plan .v36-event-main small{
+  margin-top:6px!important;
+  font-size:10px!important;
+  line-height:1.5!important;
+}
+.v37-plan .v36-day-foot{
+  margin-top:32px!important;
+  line-height:1.5!important;
+}
+
+/* SPOTS / EAT: more separation between items */
+.v36-index-head{
+  padding-top:12px!important;
+  padding-bottom:48px!important;
+}
+.v36-index-title{
+  margin-top:52px!important;
+  line-height:.88!important;
+}
+.v36-filter{
+  margin-top:36px!important;
+}
+.v36-index-list{
+  gap:18px!important;
+  padding-bottom:48px!important;
+}
+.v36-index-item{
+  padding-top:18px!important;
+  padding-bottom:18px!important;
+}
+.v36-index-copy b{
+  line-height:1.08!important;
+  word-break:keep-all!important;
+}
+.v36-index-copy small{
+  margin-top:8px!important;
+  line-height:1.45!important;
+}
+.v36-index-copy em{
+  margin-top:6px!important;
+  line-height:1.4!important;
+}
+
+/* MORE */
+.v36-more-list{
+  gap:18px!important;
+}
+.v36-more-item{
+  padding-top:18px!important;
+  padding-bottom:18px!important;
+}
+.v36-more-item b{
+  line-height:1.05!important;
+}
+.v36-more-item small{
+  margin-top:8px!important;
+  line-height:1.45!important;
+}
+
+/* DETAIL: larger vertical rhythm */
+.v37-detail .v36-detail-head{
+  padding-top:34px!important;
+  padding-bottom:28px!important;
+}
+.v37-detail .v36-detail-title{
+  font-size:clamp(48px,15vw,94px)!important;
+  line-height:.92!important;
+  letter-spacing:-.07em!important;
+  word-break:keep-all!important;
+}
+.v37-detail .v36-detail-name{
+  margin-top:20px!important;
+  font-size:10px!important;
+  line-height:1.65!important;
+}
+.v37-detail-facts{
+  padding-top:28px!important;
+  padding-bottom:12px!important;
+  gap:26px!important;
+}
+.v37-detail-facts b{
+  margin-top:8px!important;
+  line-height:1.4!important;
+}
+.v37-detail .v36-detail-section{
+  padding-top:42px!important;
+}
+.v37-detail .v36-detail-section p{
+  margin-top:16px!important;
+  font-size:14px!important;
+  line-height:1.75!important;
+}
+.v37-detail .v36-detail-list{
+  margin-top:18px!important;
+  gap:18px!important;
+}
+.v37-detail .v36-detail-list b{
+  font-size:13px!important;
+  line-height:1.6!important;
+}
+.v37-detail .v36-tool-list{
+  margin-top:18px!important;
+  gap:16px 24px!important;
+}
+.v37-detail .v36-tool-list button,
+.v37-detail .v36-tool-list a{
+  min-height:38px!important;
+  line-height:1.4!important;
+}
+.v37-detail .v36-memo{
+  margin-top:18px!important;
+  min-height:150px!important;
+  padding:18px!important;
+  line-height:1.6!important;
+}
+.v37-detail .v36-links{
+  margin-top:16px!important;
+}
+
+/* saved links / forms */
+.user-link-copy b{
+  line-height:1.4!important;
+}
+.user-link-copy small{
+  line-height:1.5!important;
+}
+.user-link-editor p{
+  line-height:1.55!important;
+}
+
+/* all normal explanatory copy gets a calmer rhythm */
+.booking .meta,
+.talk-card .ko,
+.talk-card .zh,
+.maybe-card .sub,
+.notice-card span,
+.status-card span,
+.weather-desc,
+.map-note{
+  line-height:1.6!important;
+}
+
+/* Avoid excessive compression on small iPhones */
+@media(max-width:560px){
+  .v37-today-hero{
+    padding-top:10px!important;
+    padding-bottom:36px!important;
+  }
+  .v37-today-hero .v36-hero-word{
+    margin-top:46px!important;
+    font-size:clamp(54px,16vw,82px)!important;
+    line-height:.96!important;
+  }
+  .v37-today-hero .v36-hero-title{
+    margin-top:22px!important;
+    line-height:1.18!important;
+  }
+  .v37-next{
+    grid-template-columns:66px minmax(0,1fr) 18px!important;
+    gap:13px!important;
+  }
+  .v37-route{
+    padding-top:36px!important;
+  }
+  .v37-plan .v36-days{
+    gap:68px!important;
+  }
+  .v37-plan .v36-plan-intro-title{
+    margin-top:60px!important;
+  }
+  .v37-detail .v36-detail-section{
+    padding-top:36px!important;
+  }
+}
+
+
+/* ==========================================================
+   v38 — TODAY blue NEXT collision hard fix
+========================================================== */
+
+/* kill every legacy NEXT layout rule inside the new component */
+.v38-next{
+  position:relative!important;
+  display:block!important;
+  width:calc(100% + 32px)!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  margin:0 0 0 -16px!important;
+  padding:22px 16px 26px!important;
+  border:0!important;
+  border-radius:0!important;
+  overflow:visible!important;
+  background:var(--v36-blue)!important;
+  color:var(--v36-paper)!important;
+  text-align:left!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+  box-sizing:border-box!important;
+}
+.v38-next,
+.v38-next *{
+  color:var(--v36-paper)!important;
+  -webkit-text-fill-color:currentColor!important;
+  box-sizing:border-box!important;
+}
+.v38-next-head{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+  width:100%!important;
+  margin:0!important;
+  padding:0!important;
+  font-size:9px!important;
+  line-height:1.4!important;
+  font-weight:500!important;
+  opacity:.68!important;
+}
+.v38-next-time{
+  display:block!important;
+  width:100%!important;
+  margin:34px 0 0!important;
+  padding:0!important;
+  font-size:clamp(44px,13vw,68px)!important;
+  line-height:1!important;
+  letter-spacing:-.055em!important;
+  font-weight:500!important;
+  white-space:normal!important;
+}
+.v38-next-title{
+  display:block!important;
+  width:100%!important;
+  max-width:92%!important;
+  margin:20px 0 0!important;
+  padding:0!important;
+  font-size:clamp(24px,7vw,36px)!important;
+  line-height:1.18!important;
+  letter-spacing:-.045em!important;
+  font-weight:500!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+  overflow-wrap:break-word!important;
+}
+.v38-next-sub{
+  display:block!important;
+  width:100%!important;
+  max-width:88%!important;
+  margin:12px 0 0!important;
+  padding:0!important;
+  font-size:10px!important;
+  line-height:1.6!important;
+  font-weight:400!important;
+  opacity:.68!important;
+  white-space:normal!important;
+  word-break:keep-all!important;
+  overflow-wrap:break-word!important;
+}
+
+/* ensure old v36/v37 child styles cannot influence the new NEXT */
+.v38-next .v36-next-time,
+.v38-next .v36-next-main,
+.v38-next .v36-next-arrow,
+.v38-next .v36-next-label{
+  display:none!important;
+}
+
+/* give TODAY a little more calm space around the blue surface */
+.v38-today .v37-today-hero{
+  padding-bottom:48px!important;
+}
+.v38-today .v37-route{
+  padding-top:46px!important;
+}
+
+@media(max-width:560px){
+  .v38-next{
+    width:calc(100% + 28px)!important;
+    margin-left:-14px!important;
+    padding:20px 14px 24px!important;
+  }
+  .v38-next-time{
+    margin-top:30px!important;
+    font-size:clamp(42px,12vw,58px)!important;
+  }
+  .v38-next-title{
+    margin-top:18px!important;
+    font-size:clamp(23px,6.8vw,32px)!important;
+    line-height:1.22!important;
+  }
+  .v38-next-sub{
+    margin-top:10px!important;
+    line-height:1.65!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1436,9 +4267,9 @@ const PHRASES=[
 ];
 const CHECKS=['여권 유효기간 확인','Alipay 해외카드 등록·본인인증','WeChat 결제수단 준비','12306 로그인 및 실명인증','충칭동 ↔ 우롱남 왕복 고속철 예약','우롱 숙소 위치 확정','Fandiao Apartment 외국인 숙박등록 확인','우롱 입장권 확인','두 숙소 중국어 주소 저장','고덕지도 즐겨찾기 저장','보조배터리·우산·우비·운동화 준비','현금 비상용 준비','칭다오·지난 환승 동선 확인'];
 const STORE='cqTripV16';
-let state={base:1800,shop:250,expenseNote:'',splitItems:[],freeNote:'',visitedSpots:{},visitedFoods:{},bookingMemos:{},detailMemos:{spot:{},food:{}}};
+let state={base:1800,shop:250,expenseNote:'',splitItems:[],freeNote:'',visitedSpots:{},visitedFoods:{},bookingMemos:{},detailMemos:{spot:{},food:{}},bookingLinks:{},detailLinks:{spot:{},food:{}}};
 try{state={...state,...JSON.parse(localStorage.getItem(STORE)||localStorage.getItem('cqTripV11')||localStorage.getItem('cqTripV8')||localStorage.getItem('cqTripV7')||localStorage.getItem('cqTripV6')||'{}')}}catch(e){}
-state.bookingMemos=state.bookingMemos||{};state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos.spot=state.detailMemos.spot||{};state.detailMemos.food=state.detailMemos.food||{};
+state.bookingMemos=state.bookingMemos||{};state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos.spot=state.detailMemos.spot||{};state.detailMemos.food=state.detailMemos.food||{};state.bookingLinks=state.bookingLinks||{};state.detailLinks=state.detailLinks||{spot:{},food:{}};state.detailLinks.spot=state.detailLinks.spot||{};state.detailLinks.food=state.detailLinks.food||{};
 const save=()=>localStorage.setItem(STORE,JSON.stringify(state));
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
 const color=i=>COLORS[(i%COLORS.length+COLORS.length)%COLORS.length];
@@ -1447,8 +4278,12 @@ function toast(msg='COPIED'){const t=document.getElementById('toast');t.textCont
 async function copyText(v){try{await navigator.clipboard.writeText(v);toast()}catch(e){toast('LONG PRESS TO COPY')}}
 function nav(current){
   const group=['book','money','talk','check','maybe','weather','emergency'].includes(current)?'more':current;
-  const items=[['today','◎','TODAY'],['plan','◷','PLAN'],['spots','⌖','SPOTS'],['eat','✦','EAT'],['more','•••','MORE']];
-  document.getElementById('bottomNav').innerHTML=items.map(([id,icon,label])=>`<button class="nav-btn ${group===id?'active':''}" aria-label="${label}" onclick="go('${id}')"><i>${icon}</i><span class="nav-label">${label}</span></button>`).join('');
+  const items=[['today','TODAY'],['plan','PLAN'],['spots','SPOTS'],['eat','EAT'],['more','MORE']];
+  document.getElementById('bottomNav').innerHTML=items.map(([id,label],i)=>`
+    <button class="nav-btn ${group===id?'active':''}" aria-label="${label}" onclick="go('${id}')">
+      <span class="nav-index">${String(i+1).padStart(2,'0')}</span>
+      <span class="nav-label">${label}</span>
+    </button>`).join('');
 }
 
 function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
@@ -1469,105 +4304,333 @@ function renderToday(){
   const day=t.day;
   const next=t.mode==='during'?nextEventForDay(day):day.events[0];
   const nextFood=day.events.find(e=>e[3]==='food');
-  const cards=[
-    {tone:'lemon',code:'01',label:'STATUS',big:t.label,title:t.title,sub:`${day.date} · ${day.dow}`,foot:day.sleep,actions:`<button class="rail-pill dark" onclick="go('plan')">PLAN</button><button class="rail-pill" onclick="go('book')">PASS</button>`},
-    {tone:'paper',code:'02',label:'NEXT',big:next[0],title:next[1],sub:next[2]||'',foot:`FOOD · ${nextFood?nextFood[1]:day.food}`,actions:`<button class="rail-pill dark" onclick="go('spots')">SPOTS</button><button class="rail-pill" onclick="go('eat')">EAT</button>`},
-    {tone:'warm',code:'03',label:'ROUTE',big:`DAY ${String(day.id).padStart(2,'0')}`,title:day.name,sub:day.events.slice(0,4).map(e=>`${e[0]} ${e[1]}`).join(' · '),foot:day.place,actions:''},
-    {tone:'paper',code:'04',label:'TOOLS',big:'CTRL',title:'BOOK · MONEY · TALK',sub:'여행 중 자주 쓰는 기능',foot:'CHECK · MAYBE · WEATHER',actions:`<button class="rail-pill dark" onclick="go('more')">OPEN</button>`}
-  ];
-  document.getElementById('today').innerHTML=`<div class="page-minimal-head"><div class="micro-label">CQ / 2026</div><h1 class="minimal-title">TODAY</h1><div class="head-rule"></div></div><div class="snap-shell" id="todayRail"><div class="snap-rail">${cards.map((c,i)=>`<article class="snap-card tone-${c.tone}"><div class="snap-card-top"><span>${c.label}</span><span>${c.code}/04</span></div><div class="snap-big">${c.big}</div><div class="snap-title">${c.title}</div><div class="snap-sub">${c.sub}</div><div class="snap-actions">${c.actions}</div><div class="snap-foot"><span>${c.foot}</span><span>→</span></div></article>`).join('')}</div><div class="snap-footer"><div class="snap-dots">${cards.map((_,i)=>`<button class="snap-dot ${i===0?'active':''}" data-go="${i}" aria-label="card ${i+1}"></button>`).join('')}</div><span class="swipe-label">SWIPE</span></div></div><div class="utility-strip"><button onclick="go('book')"><b>01</b><span>PASS</span></button><button onclick="go('talk')"><b>02</b><span>TALK</span></button><button onclick="go('money')"><b>03</b><span>SPLIT</span></button><button onclick="go('more')"><b>04</b><span>MORE</span></button></div>`;
-  setTimeout(()=>initSnapRail('todayRail'),0);
-}
 
+  document.getElementById('today').innerHTML=`
+    <main class="v36-page v36-today v37-today v38-today">
+      <header class="v36-today-hero v37-today-hero">
+        <div class="v36-overline"><span>${day.date} ${day.dow}</span><span>CHONGQING</span></div>
+        <div class="v36-hero-word">${t.label}</div>
+        <div class="v36-hero-title">${t.title}</div>
+        <div class="v36-hero-meta">${day.sleep}</div>
+      </header>
+
+      <button class="v38-next" onclick="go('plan')" aria-label="다음 일정 보기">
+        <div class="v38-next-head">
+          <span>NEXT</span>
+          <span>→</span>
+        </div>
+        <div class="v38-next-time">${next[0]}</div>
+        <div class="v38-next-title">${next[1]}</div>
+        ${next[2]?`<div class="v38-next-sub">${next[2]}</div>`:''}
+      </button>
+
+      <section class="v36-route v37-route">
+        <div class="v36-section-label">TODAY</div>
+        <div class="v36-route-list">
+          ${day.events.slice(0,6).map(e=>{
+            const [time,title,sub,type,id]=e;
+            return type
+              ? `<button class="v36-route-row v37-route-row" onclick="openDetail('${type}','${id}','today')">
+                  <span>${time}</span><span><b>${title}</b></span><i>↗</i>
+                </button>`
+              : `<div class="v36-route-row v37-route-row static">
+                  <span>${time}</span><span><b>${title}</b></span><i></i>
+                </div>`;
+          }).join('')}
+        </div>
+      </section>
+
+      <footer class="v36-today-foot v37-today-foot">
+        <div><span>FOOD</span><b>${nextFood?nextFood[1]:day.food}</b></div>
+        <button onclick="go('more')"><span>MORE</span><b>→</b></button>
+      </footer>
+    </main>`;
+}
 function renderPlan(){
   document.getElementById('plan').innerHTML=`
-    <div class="page-minimal-head plan-head">
-      <div class="micro-label">BOARDING / 05</div>
-      <h1 class="minimal-title">PASS</h1>
-      <div class="head-rule"></div>
-    </div>
-    <div class="snap-shell plan-snap" id="planRail">
-      <div class="plan-swipe-top">
-        <span class="plan-swipe-word">SWIPE</span>
-        <span class="snap-count">01 / ${String(DAYS.length).padStart(2,'0')}</span>
-      </div>
-      <div class="snap-rail plan-rail" aria-label="5일 여행 일정 가로 스크롤">
-        ${DAYS.map((d,i)=>`<article class="pass-sheet tone-${i%3===0?'lemon':i%3===1?'paper':'warm'}" data-card-index="${i}">
-          <div class="pass-head">
-            <div><span class="pass-eyebrow">DAY ${String(i+1).padStart(2,'0')}</span><div class="pass-date">${d.date}</div></div>
-            <div class="pass-day">${d.dow}</div>
-          </div>
-          <div class="pass-route">${d.name}</div>
-          <div class="pass-meta"><span>${d.place}</span><span>${d.sleep}</span></div>
-          <div class="pass-perf"></div>
-          <div class="pass-events">${d.events.map(e=>{const [time,title,sub,type,id]=e;return type?`<button class="pass-event" onclick="openDetail('${type}','${id}','plan')"><span class="pass-time">${time}</span><span><b>${title}</b><small>${sub||''}</small></span><i>↗</i></button>`:`<div class="pass-event static"><span class="pass-time">${time}</span><span><b>${title}</b><small>${sub||''}</small></span><i>·</i></div>`}).join('')}</div>
-          <div class="pass-bottom"><span>FOOD · ${d.food}</span><span>${i+1}/5</span></div>
-        </article>`).join('')}
-      </div>
-      <div class="plan-scroll-track" aria-hidden="true"><span class="snap-progress-fill"></span></div>
-      <div class="plan-scroll-controls">
-        <button class="plan-scroll-btn" data-snap-prev aria-label="이전 일정">←</button>
-        <span>DRAG / SWIPE</span>
-        <button class="plan-scroll-btn" data-snap-next aria-label="다음 일정">→</button>
-      </div>
-    </div>`;
-  setTimeout(()=>initSnapRail('planRail'),0);
-}
+    <main class="v36-page v36-plan v37-plan">
+      <header class="v36-plan-intro">
+        <div class="v36-overline"><span>08.25 — 08.29</span><span>05 DAYS</span></div>
+        <div class="v36-plan-intro-title">CHONGQING<br>WULONG</div>
+      </header>
 
+      <div class="v36-days">
+        ${DAYS.map((d,i)=>`
+          <section class="v36-day" id="v36-day-${i+1}">
+            <div class="v36-day-head">
+              <span>DAY ${String(i+1).padStart(2,'0')}</span>
+              <span>${d.dow}</span>
+            </div>
+            <div class="v36-day-date">${d.date.replace('.','/')}</div>
+            <div class="v36-day-title">${d.name}</div>
+            <div class="v36-day-meta">${d.place}</div>
+
+            <div class="v36-day-events">
+              ${d.events.map(e=>{
+                const [time,title,sub,type,id]=e;
+                return type
+                  ? `<button class="v36-event" onclick="openDetail('${type}','${id}','plan')">
+                      <span class="v36-event-time">${time}</span>
+                      <span class="v36-event-main"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span>
+                      <span class="v36-event-arrow">→</span>
+                    </button>`
+                  : `<div class="v36-event static">
+                      <span class="v36-event-time">${time}</span>
+                      <span class="v36-event-main"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span>
+                      <span></span>
+                    </div>`;
+              }).join('')}
+            </div>
+
+            <div class="v36-day-foot"><span>${d.food}</span></div>
+          </section>`).join('')}
+      </div>
+    </main>`;
+}
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
   document.getElementById('spots').innerHTML=`
-    <div class="system-head">
-      <span class="system-head-no">02</span>
-      <div class="system-head-main"><div class="micro-label">LOCATION INDEX</div><h1 class="minimal-title">SPOTS</h1></div>
-      <span class="system-head-meta">${String(entries.length).padStart(2,'0')} ITEMS</span>
-    </div>
-    <div class="filters line-filters editorial-filters">
-      ${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}
-    </div>
-    <div class="editorial-index-list">
-      ${entries.map(([id,v],i)=>`
-        <button class="editorial-index-row ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
-          <span class="editorial-index-no">${String(i+1).padStart(2,'0')}</span>
-          <span class="editorial-index-marker" aria-hidden="true"></span>
-          <span class="editorial-index-main">
-            <small>${v.kind} · ${v.area}</small>
-            <b>${SPOT_KO[id]||v.name}</b>
-            <em>${v.cn} · ${v.name}</em>
-          </span>
-          <span class="editorial-index-date">${v.date}</span>
-          <span class="editorial-index-arrow">↗</span>
-        </button>`).join('')}
-    </div>`;
+    <main class="v36-page v36-index">
+      <header class="v36-index-head">
+        <div class="v36-overline"><span>LOCATION</span><span>${String(entries.length).padStart(2,'0')}</span></div>
+        <div class="v36-index-title">SPOTS</div>
+        <div class="v36-filter">
+          ${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}
+        </div>
+      </header>
+
+      <div class="v36-index-list">
+        ${entries.map(([id,v],i)=>`
+          <button class="v36-index-item ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
+            <span class="v36-index-no">${String(i+1).padStart(2,'0')}</span>
+            <span class="v36-index-copy">
+              <b>${SPOT_KO[id]||v.name}</b>
+              <small>${v.cn}</small>
+              <em>${v.area} · ${v.date}</em>
+            </span>
+            <span class="v36-index-arrow">${isVisited('spot',id)?'✓':'→'}</span>
+          </button>`).join('')}
+      </div>
+    </main>`;
 }
 function renderEat(){
   const entries=Object.entries(FOODS);
   document.getElementById('eat').innerHTML=`
-    <div class="system-head">
-      <span class="system-head-no">03</span>
-      <div class="system-head-main"><div class="micro-label">FOOD INDEX</div><h1 class="minimal-title">EAT</h1></div>
-      <span class="system-head-meta">${String(entries.length).padStart(2,'0')} ITEMS</span>
-    </div>
-    <div class="editorial-index-list food-editorial-list">
-      ${entries.map(([id,v],i)=>`
-        <button class="editorial-index-row ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
-          <span class="editorial-index-no">F${String(i+1).padStart(2,'0')}</span>
-          <span class="editorial-index-marker" aria-hidden="true"></span>
-          <span class="editorial-index-main">
-            <small>${v.kind} · ${v.date}</small>
-            <b>${FOOD_KO[id]||v.name}</b>
-            <em>${v.cn} · ${v.name}</em>
-          </span>
-          <span class="editorial-index-date">${isVisited('food',id)?'DONE':'OPEN'}</span>
-          <span class="editorial-index-arrow">↗</span>
-        </button>`).join('')}
-    </div>`;
+    <main class="v36-page v36-index">
+      <header class="v36-index-head">
+        <div class="v36-overline"><span>FOOD</span><span>${String(entries.length).padStart(2,'0')}</span></div>
+        <div class="v36-index-title">EAT</div>
+      </header>
+
+      <div class="v36-index-list">
+        ${entries.map(([id,v],i)=>`
+          <button class="v36-index-item ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
+            <span class="v36-index-no">${String(i+1).padStart(2,'0')}</span>
+            <span class="v36-index-copy">
+              <b>${FOOD_KO[id]||v.name}</b>
+              <small>${v.cn}</small>
+              <em>${v.kind} · ${v.date}</em>
+            </span>
+            <span class="v36-index-arrow">${isVisited('food',id)?'✓':'→'}</span>
+          </button>`).join('')}
+      </div>
+    </main>`;
 }
 function bookingPlaceholder(type){if(type==='Flight')return '편명, 터미널, 체크인 시간, 좌석, 환승 메모 등';if(type==='Train')return '열차번호, 출발·도착시간, 좌석, 역 출입구 등';if(type==='Hotel')return '중국어 주소, 전화번호, 체크인 시간, 예약번호 등';if(type==='Ticket')return '예약번호, 입장시간, QR/수령 방법 등';return '주소, 시간, 예약번호 등 필요한 정보를 적어두세요.'}
+
+function safeLinkEditorId(scope,a,b=''){
+  return `link-editor-${scope}-${String(a)}-${String(b)}`.replace(/[^a-zA-Z0-9_-]/g,'_');
+}
+function getStoredLinks(scope,a,b=''){
+  if(scope==='booking'){
+    state.bookingLinks=state.bookingLinks||{};
+    return state.bookingLinks[a]||[];
+  }
+  state.detailLinks=state.detailLinks||{spot:{},food:{}};
+  state.detailLinks[a]=state.detailLinks[a]||{};
+  return state.detailLinks[a][b]||[];
+}
+function setStoredLinks(scope,a,b,list){
+  if(scope==='booking'){
+    state.bookingLinks=state.bookingLinks||{};
+    state.bookingLinks[a]=list;
+  }else{
+    state.detailLinks=state.detailLinks||{spot:{},food:{}};
+    state.detailLinks[a]=state.detailLinks[a]||{};
+    state.detailLinks[a][b]=list;
+  }
+  save();
+}
+function normalizeUserUrl(raw){
+  let url=String(raw||'').trim();
+  if(!url) return '';
+  if(/^\/\//.test(url)) return 'https:'+url;
+  if(/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
+  return 'https://'+url;
+}
+function isUnsafeUserUrl(url){
+  return /^(javascript|data|vbscript|file):/i.test(String(url||'').trim());
+}
+function defaultLinkName(url){
+  try{
+    const u=new URL(url);
+    return u.hostname.replace(/^www\./,'')||'LINK';
+  }catch(e){
+    const scheme=(String(url).match(/^([a-z][a-z0-9+.-]*):/i)||[])[1];
+    return scheme?scheme.toUpperCase():'LINK';
+  }
+}
+function openStoredLink(scope,a,b,index){
+  const item=getStoredLinks(scope,a,b)[index];
+  if(!item) return;
+  const url=normalizeUserUrl(item.url);
+  if(!url||isUnsafeUserUrl(url)) return toast('INVALID LINK');
+  if(/^https?:/i.test(url)){
+    const w=window.open(url,'_blank','noopener,noreferrer');
+    if(!w) window.location.href=url;
+  }else{
+    window.location.href=url;
+  }
+}
+function toggleLinkEditor(scope,a,b=''){
+  const el=document.getElementById(safeLinkEditorId(scope,a,b));
+  if(!el) return;
+  el.hidden=!el.hidden;
+  if(!el.hidden){
+    const name=el.querySelector('.user-link-name');
+    if(name) setTimeout(()=>name.focus(),40);
+  }
+}
+function clearLinkEditor(scope,a,b=''){
+  const el=document.getElementById(safeLinkEditorId(scope,a,b));
+  if(!el) return;
+  el.dataset.editIndex='';
+  const name=el.querySelector('.user-link-name');
+  const url=el.querySelector('.user-link-url');
+  const saveBtn=el.querySelector('.user-link-save');
+  if(name) name.value='';
+  if(url) url.value='';
+  if(saveBtn) saveBtn.textContent='SAVE LINK';
+}
+function cancelLinkEditor(scope,a,b=''){
+  clearLinkEditor(scope,a,b);
+  const el=document.getElementById(safeLinkEditorId(scope,a,b));
+  if(el) el.hidden=true;
+}
+function editStoredLink(scope,a,b,index){
+  const item=getStoredLinks(scope,a,b)[index];
+  const el=document.getElementById(safeLinkEditorId(scope,a,b));
+  if(!item||!el) return;
+  el.hidden=false;
+  el.dataset.editIndex=String(index);
+  el.querySelector('.user-link-name').value=item.name||'';
+  el.querySelector('.user-link-url').value=item.url||'';
+  el.querySelector('.user-link-save').textContent='UPDATE LINK';
+  setTimeout(()=>el.querySelector('.user-link-name').focus(),40);
+}
+function saveStoredLink(scope,a,b=''){
+  const el=document.getElementById(safeLinkEditorId(scope,a,b));
+  if(!el) return;
+  const url=normalizeUserUrl(el.querySelector('.user-link-url').value);
+  if(!url) return toast('URL REQUIRED');
+  if(isUnsafeUserUrl(url)) return toast('INVALID LINK');
+  let name=el.querySelector('.user-link-name').value.trim();
+  if(!name) name=defaultLinkName(url);
+  const list=[...getStoredLinks(scope,a,b)];
+  const editIndex=el.dataset.editIndex;
+  const item={name,url};
+  if(editIndex!=='' && Number.isInteger(Number(editIndex)) && list[Number(editIndex)]){
+    list[Number(editIndex)]=item;
+  }else{
+    list.push(item);
+  }
+  setStoredLinks(scope,a,b,list);
+  toast('LINK SAVED');
+  if(scope==='booking') renderBook();
+  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
+}
+function removeStoredLink(scope,a,b,index){
+  if(!confirm('이 링크를 삭제할까요?')) return;
+  const list=[...getStoredLinks(scope,a,b)];
+  list.splice(index,1);
+  setStoredLinks(scope,a,b,list);
+  if(scope==='booking') renderBook();
+  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
+}
+function moveStoredLink(scope,a,b,index,dir){
+  const list=[...getStoredLinks(scope,a,b)];
+  const target=index+dir;
+  if(index<0||index>=list.length||target<0||target>=list.length) return;
+  [list[index],list[target]]=[list[target],list[index]];
+  setStoredLinks(scope,a,b,list);
+  if(scope==='booking') renderBook();
+  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
+}
+function renderSavedLinks(scope,a,b=''){
+  const list=getStoredLinks(scope,a,b);
+  if(!list.length) return `<div class="user-link-empty">저장된 링크 없음</div>`;
+  return `<div class="user-link-list">${list.map((item,i)=>`
+    <div class="user-link-row">
+      <button class="user-link-open" onclick="openStoredLink('${scope}','${a}','${b}',${i})">
+        <span class="user-link-no">${String(i+1).padStart(2,'0')}</span>
+        <span class="user-link-copy">
+          <b>${esc(item.name||'LINK')}</b>
+          <small>${esc(item.url||'')}</small>
+        </span>
+        <span class="user-link-go">↗</span>
+      </button>
+      <div class="user-link-tools">
+        <button onclick="moveStoredLink('${scope}','${a}','${b}',${i},-1)" ${i===0?'disabled':''} aria-label="위로 이동">↑</button>
+        <button onclick="moveStoredLink('${scope}','${a}','${b}',${i},1)" ${i===list.length-1?'disabled':''} aria-label="아래로 이동">↓</button>
+        <button onclick="editStoredLink('${scope}','${a}','${b}',${i})">EDIT</button>
+        <button class="delete" onclick="removeStoredLink('${scope}','${a}','${b}',${i})">×</button>
+      </div>
+    </div>`).join('')}</div>`;
+}
+function renderLinkEditor(scope,a,b=''){
+  const id=safeLinkEditorId(scope,a,b);
+  return `<div class="user-link-editor" id="${id}" data-edit-index="" hidden>
+    <label><span>NAME</span><input class="user-link-name" type="text" placeholder="예약 페이지 / 샤오홍슈 후기"></label>
+    <label><span>URL / DEEP LINK</span><input class="user-link-url" type="url" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="https://… 또는 app-scheme://…"></label>
+    <div class="user-link-editor-actions">
+      <button class="user-link-save" onclick="saveStoredLink('${scope}','${a}','${b}')">SAVE LINK</button>
+      <button onclick="cancelLinkEditor('${scope}','${a}','${b}')">CANCEL</button>
+    </div>
+    <p>웹 주소 또는 앱이 지원하는 딥링크를 저장할 수 있습니다.</p>
+  </div>`;
+}
+
 function saveBookingMemo(i,v){state.bookingMemos=state.bookingMemos||{};state.bookingMemos[i]=v;save()}
 function saveDetailMemo(type,id,v){state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos[type]=state.detailMemos[type]||{};state.detailMemos[type][id]=v;save()}
 function detailMemo(type,id){return (((state.detailMemos||{})[type]||{})[id])||''}
-function renderBook(){document.getElementById('book').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Flights · Trains · Hotels</div><h1 class="section-title">BOOKINGS</h1><p class="section-sub">예약 정보와 직접 적는 메모를 한곳에 모았습니다.</p></div><div class="booking-list">${BOOKINGS.map((b,i)=>`<article class="booking ${b.color||color(i)}"><div class="row"><div><div class="type en-title">${b.type}</div><div class="title en-title">${b.title}</div></div><div class="code en-title">${b.code}</div></div><div class="meta">${b.meta.map(x=>`• ${x}`).join('<br>')}</div><div class="meta" style="margin-top:8px;font-weight:700">${b.note}</div><div class="booking-memo"><label>MY MEMO</label><textarea placeholder="${bookingPlaceholder(b.type)}" oninput="saveBookingMemo(${i},this.value)">${esc((state.bookingMemos||{})[i]||'')}</textarea></div></article>`).join('')}</div>`}
+function renderBook(){
+  document.getElementById('book').innerHTML=`
+    <div class="secondary-back"><button onclick="go('more')">← 더보기</button></div>
+    <div class="section-top compact"><div class="kicker">Flights · Trains · Hotels</div><h1 class="section-title">BOOKINGS</h1><p class="section-sub">예약 정보와 직접 적는 메모를 한곳에 모았습니다.</p></div>
+    <div class="booking-list">
+      ${BOOKINGS.map((b,i)=>`
+        <article class="booking ${b.color||color(i)}">
+          <div class="row">
+            <div><div class="type en-title">${b.type}</div><div class="title en-title">${b.title}</div></div>
+            <div class="code en-title">${b.code}</div>
+          </div>
+          <div class="meta">${b.meta.map(x=>`• ${x}`).join('<br>')}</div>
+          <div class="meta" style="margin-top:8px;font-weight:700">${b.note}</div>
+          <div class="booking-memo">
+            <label>MY MEMO</label>
+            <textarea placeholder="${bookingPlaceholder(b.type)}" oninput="saveBookingMemo(${i},this.value)">${esc((state.bookingMemos||{})[i]||'')}</textarea>
+          </div>
+          <section class="user-links-section booking-links-section">
+            <div class="user-links-head">
+              <span>LINKS</span>
+              <button onclick="toggleLinkEditor('booking','${i}','')">＋ ADD LINK</button>
+            </div>
+            ${renderSavedLinks('booking',String(i),'')}
+            ${renderLinkEditor('booking',String(i),'')}
+          </section>
+        </article>`).join('')}
+    </div>`;
+}
 function calcSplit(){const total=(Number(state.base||0)+Number(state.shop||0))*2;const items=state.splitItems||[];const jy=items.filter(x=>x.payer==='지윤').reduce((a,b)=>a+Number(b.amount||0),0);const bf=items.filter(x=>x.payer==='남자친구').reduce((a,b)=>a+Number(b.amount||0),0);const paidTotal=jy+bf;const half=paidTotal/2;let settlement='아직 정산 없음';if(paidTotal>0){if(jy>half) settlement=`남자친구 → 지윤 ${Math.round((jy-half)*100)/100}元`; else if(bf>half) settlement=`지윤 → 남자친구 ${Math.round((bf-half)*100)/100}元`; else settlement='딱 반반'}return {total,jy,bf,paidTotal,settlement}}
 function addSplit(){const item=document.getElementById('splitItem').value.trim();const amount=Number(document.getElementById('splitAmount').value||0);const payer=document.getElementById('splitPayer').value;if(!item||!amount)return toast('ITEM & AMOUNT');state.splitItems=state.splitItems||[];state.splitItems.unshift({id:Date.now(),item,amount,payer});save();renderMoney();toast('ADDED')}
 function removeSplit(id){state.splitItems=(state.splitItems||[]).filter(x=>x.id!==id);save();renderMoney()}
@@ -1580,15 +4643,73 @@ function renderCheck(){document.getElementById('check').innerHTML=`<div class="s
 function renderMaybe(){document.getElementById('maybe').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Extra options</div><h1 class="section-title">MAYBE</h1><p class="section-sub">시간이 남을 때 넣을 후보들.</p></div><div class="maybe-list">${MAYBE.map((m,i)=>`<article class="maybe-card ${color(i+3)}"><div class="type en-title">${m.type}</div><div class="title">${m.title}</div><div class="sub">${m.cn}<br>${m.why}<br><b>${m.when}</b></div></article>`).join('')}</div>`}
 function renderDetail(type,id,from){
   const data=type==='food'?FOODS[id]:SPOTS[id]; if(!data){go('plan');return}
-  const idx=Object.keys(type==='food'?FOODS:SPOTS).indexOf(id);
   const links=mapLinks(data.map||data.search||data.cn);
-  const isFood=type==='food'; const bullets=isFood?data.order:data.highlights;
-  const visited=isVisited(type,id); const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
+  const isFood=type==='food';
+  const bullets=isFood?data.order:data.highlights;
+  const visited=isVisited(type,id);
+  const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
   const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
-  const code=`${isFood?'FD':'SP'}-${String(idx+1).padStart(2,'0')}`;
-  document.getElementById('detail').innerHTML=`<div class="detail-page-light"><div class="detail-back"><button onclick="go('${from||'plan'}')">← BACK</button></div><article class="boarding-ticket"><div class="bt-top"><span>${isFood?'FOOD PASS':'CITY PASS'}</span><b>${code}</b></div><div class="bt-title">${koName}</div><div class="bt-cn">${data.cn}</div><div class="bt-en">${data.name}</div><div class="bt-meta"><span>${data.kind}</span><span>${data.date}</span>${data.area?`<span>${data.area}</span>`:''}${data.duration?`<span>${data.duration}</span>`:''}</div><div class="detail-image-frame" id="photoFrame"><img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';"></div><div class="bt-perf"></div><div class="bt-grid"><div><span>STATUS</span><b>${visited?'DONE':'OPEN'}</b></div><div><span>TYPE</span><b>${isFood?'FOOD':'SPOT'}</b></div><div><span>SEARCH</span><b>${data.search||data.cn}</b></div><div><span>AREA</span><b>${data.area||'CHONGQING'}</b></div></div><button class="bt-status" onclick="toggleVisited('${type}','${id}')">${visited?'표시 해제':'방문 완료'}</button></article><section class="stub-panel"><div class="stub-head"><b>01</b><span>ABOUT</span></div><p>${data.summary}</p></section><section class="stub-panel"><div class="stub-head"><b>02</b><span>${isFood?'ORDER':'HIGHLIGHTS'}</span></div><ul>${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section><section class="stub-panel"><div class="stub-head"><b>03</b><span>TOOLS</span></div><div class="stub-actions"><button onclick="copyText('${esc(data.cn)}')">중국어명 복사</button><button onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button><a href="${links.amap}" target="_blank" rel="noopener">高德地图</a><a href="${links.google}" target="_blank" rel="noopener">Google Maps</a></div></section><section class="stub-panel"><div class="stub-head"><b>04</b><span>MY MEMO</span></div><textarea class="light-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea></section><section class="stub-panel"><div class="stub-head"><b>05</b><span>NOTE</span></div><ul>${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section></div>`
-}
+  const itemNo=String(Object.keys(isFood?FOODS:SPOTS).indexOf(id)+1).padStart(2,'0');
 
+  document.getElementById('detail').innerHTML=`
+    <main class="v36-page v36-detail v37-detail">
+      <div class="v36-detail-nav"><button onclick="go('${from||'plan'}')">← BACK</button><span>${String(itemNo)}</span></div>
+
+      <header class="v36-detail-head">
+        <div class="v36-detail-title">${koName}</div>
+        <div class="v36-detail-name">${data.cn}<br>${data.name}</div>
+      </header>
+
+      <div class="v36-detail-image" id="photoFrame">
+        <img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';">
+      </div>
+
+      <div class="v36-detail-facts v37-detail-facts">
+        <div><span>DATE</span><b>${data.date}</b></div>
+        <div><span>${isFood?'TYPE':'AREA'}</span><b>${isFood?data.kind:(data.area||'CHONGQING')}</b></div>
+        <button onclick="toggleVisited('${type}','${id}')"><span>STATUS</span><b>${visited?'DONE ↺':'MARK →'}</b></button>
+      </div>
+
+      <section class="v36-detail-section">
+        <div class="v36-detail-label">ABOUT</div>
+        <p>${data.summary}</p>
+      </section>
+
+      <section class="v36-detail-section">
+        <div class="v36-detail-label">${isFood?'ORDER':'HIGHLIGHTS'}</div>
+        <div class="v36-detail-list">${(bullets||[]).map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div>
+      </section>
+
+      <section class="v36-detail-section">
+        <div class="v36-detail-label">TOOLS</div>
+        <div class="v36-tool-list">
+          <button onclick="copyText('${esc(data.cn)}')">COPY 中文 →</button>
+          <button onclick="copyText('${esc(data.search||data.cn)}')">COPY SEARCH →</button>
+          <a href="${links.amap}" target="_blank" rel="noopener">高德地图 →</a>
+          <a href="${links.google}" target="_blank" rel="noopener">GOOGLE →</a>
+        </div>
+      </section>
+
+      <section class="v36-detail-section">
+        <div class="v36-detail-label">MEMO</div>
+        <textarea class="v36-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea>
+      </section>
+
+      <section class="v36-detail-section">
+        <div class="v36-detail-label">LINKS</div>
+        <div class="v36-links">
+          <div class="user-links-head"><span></span><button onclick="toggleLinkEditor('detail','${type}','${id}')">＋ ADD</button></div>
+          ${renderSavedLinks('detail',type,id)}
+          ${renderLinkEditor('detail',type,id)}
+        </div>
+      </section>
+
+      ${(data.tips||[]).length?`<section class="v36-detail-section">
+        <div class="v36-detail-label">NOTE</div>
+        <div class="v36-detail-list">${data.tips.map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div>
+      </section>`:''}
+    </main>`;
+}
 function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
 async function loadWeather(force=false){const root=document.getElementById('weatherCards');if(!root)return;const cached=state.weatherCache;const fresh=cached&&Date.now()-cached.time<30*60*1000;if(cached&&!force){renderWeatherCards(cached);if(fresh)return}root.innerHTML='<div class="status-card">날씨 불러오는 중…</div>';try{const urls=[['충칭',29.563,106.5516],['우롱',29.325,107.76]];const rows=[];for(const [name,lat,lon] of urls){const u=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=Asia%2FShanghai`;const r=await fetch(u);if(!r.ok)throw new Error('weather');const j=await r.json();rows.push({name,...j.current})}state.weatherCache={time:Date.now(),rows};save();renderWeatherCards(state.weatherCache)}catch(e){root.innerHTML='<div class="status-card"><b>날씨를 불러오지 못했습니다.</b><br><span>인터넷 연결 후 다시 시도하세요. 캐시된 값이 있으면 마지막 값이 표시됩니다.</span></div>';if(cached)renderWeatherCards(cached)}}
 function renderWeatherCards(cache){const root=document.getElementById('weatherCards');if(!root)return;root.innerHTML=cache.rows.map((w,i)=>`<article class="weather-card ${color(i+1)}"><div class="weather-name">${w.name}</div><div class="weather-temp">${Math.round(w.temperature_2m)}°</div><div class="weather-desc">${weatherText(w.weather_code)} · 체감 ${Math.round(w.apparent_temperature)}° · 강수 ${w.precipitation||0} mm</div></article>`).join('')+`<div class="weather-updated">마지막 확인: ${new Date(cache.time).toLocaleString('ko-KR')}</div>`}
@@ -1596,14 +4717,21 @@ function renderWeather(){document.getElementById('weather').innerHTML=`<div clas
 function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
 function renderMore(){
   document.getElementById('more').innerHTML=`
-    <div class="system-head">
-      <span class="system-head-no">05</span>
-      <div class="system-head-main"><div class="micro-label">TRIP SYSTEM</div><h1 class="minimal-title">MORE</h1></div>
-      <span class="system-head-meta">07 TOOLS</span>
-    </div>
-    <div class="system-tool-list">
-      ${MORE_ITEMS.map((m,i)=>`<button class="system-tool-row" onclick="go('${m.id}')"><span class="system-tool-no">${String(i+1).padStart(2,'0')}</span><span class="system-tool-main"><b>${m.title}</b><small>${m.sub}</small></span><span class="system-tool-state">OPEN</span><span class="system-tool-arrow">↗</span></button>`).join('')}
-    </div>`;
+    <main class="v36-page v36-more">
+      <header class="v36-index-head">
+        <div class="v36-overline"><span>SYSTEM</span><span>${String(MORE_ITEMS.length).padStart(2,'0')}</span></div>
+        <div class="v36-index-title">MORE</div>
+      </header>
+
+      <div class="v36-more-list">
+        ${MORE_ITEMS.map((m,i)=>`
+          <button class="v36-more-item" onclick="go('${m.id}')">
+            <span>${String(i+1).padStart(2,'0')}</span>
+            <span><b>${m.title}</b><small>${m.sub}</small></span>
+            <span>→</span>
+          </button>`).join('')}
+      </div>
+    </main>`;
 }
 function initSnapRail(id){
   const root=document.getElementById(id); if(!root) return;

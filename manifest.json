@@ -1,11 +1,11 @@
 {
-  "name": "Chongqing City — Editorial Grid",
-  "short_name": "CQ Grid",
+  "name": "Chongqing Atlas — Airy 38",
+  "short_name": "CQ Atlas",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#F0EEEB",
-  "theme_color": "#BAC5BB",
+  "background_color": "#F4F2EC",
+  "theme_color": "#1845F5",
   "description": "Chongqing & Wulong trip planner — Korean-first mobile UX",
   "icons": [
     {
