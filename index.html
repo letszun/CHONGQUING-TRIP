@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#F0EEEB">
+<meta name="theme-color" content="#BAC5BB">
 <title>Chongqing City</title>
 <link rel="manifest" href="manifest.json">
 <style>
@@ -862,6 +862,308 @@ body{background:var(--ref-cream)!important;color:var(--ref-brown)!important;font
   .minimal-title{font-size:56px!important}
 }
 
+
+/* v26 — flat green editorial system */
+:root{
+  --v26-cream:#F0EEEB;
+  --v26-sage:#BAC5BB;
+  --v26-warm:#D9D5CE;
+  --v26-ink:#403A35;
+  --v26-soft:#746D66;
+  --v26-red:#C95A4D;
+  --bg:var(--v26-cream);
+  --paper:var(--v26-cream);
+  --warm:var(--v26-sage);
+  --ink:var(--v26-ink);
+  --charcoal:var(--v26-ink);
+  --grey:var(--v26-cream);
+  --blue:var(--v26-sage);
+  --blue-2:var(--v26-ink);
+  --lemon:var(--v26-sage);
+  --muted:rgba(64,58,53,.58);
+  --line:rgba(64,58,53,.20);
+  --display-serif:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+  --body-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+  --shadow:none;
+}
+html,body{background:var(--v26-cream)!important;color:var(--v26-ink)!important}
+body{font-family:var(--body-sans)!important;font-weight:400!important}
+.app{color:var(--v26-ink)!important}
+
+/* typography: all sans, moderate weight */
+.minimal-title,.hero-title,.section-title,.snap-big,.snap-title,.pass-date,.pass-route,.index-name,.bt-title,
+.booking .title,.maybe-card .title,.money-total .num,.weather-temp,.more-title,.tool-main b{
+  font-family:var(--body-sans)!important;
+  font-weight:600!important;
+  letter-spacing:-.045em!important;
+}
+.minimal-title{font-size:clamp(44px,11vw,66px)!important;line-height:.92!important}
+.section-title,.hero-title{font-weight:600!important}
+.micro-label,.pass-eyebrow,.pass-day,.pass-time,.index-top,.index-en,.index-bottom,.tool-num,.tool-main small,
+.snap-foot,.booking .type,.booking .code,.stub-head,.bt-top,.bt-meta,.bt-grid,.nav-label,.filter,.rail-pill,
+.plan-swipe-top,.plan-scroll-controls{
+  font-family:var(--body-sans)!important;
+  font-weight:500!important;
+}
+p,li,.sub,.meta,.info,.caption,.ko,.zh,.txt,.ticket-copy,.ticket-list li{font-weight:400!important}
+
+/* remove depth everywhere */
+*,*::before,*::after{box-shadow:none!important}
+.card,.snap-card,.pass-sheet,.index-card,.booking,.input-card,.info-chip,.note-card,.expense-item,.talk-card,.task,
+.maybe-card,.weather-card,.status-card,.notice-card,.emergency-card,.detail-section,.stub-panel,.boarding-ticket,
+.more-card,.tool-row,.ticket-shortcut,.quick-btn,.today-card{
+  box-shadow:none!important;
+}
+.card,.booking,.input-card,.info-chip,.note-card,.expense-item,.talk-card,.task,.maybe-card,.weather-card,
+.status-card,.notice-card,.emergency-card,.detail-section,.stub-panel,.more-card,.ticket-shortcut,.quick-btn,.today-card{
+  border-radius:0!important;
+}
+
+/* dominant green surfaces, almost no red */
+.tone-warm,.tone-lemon,.tone-paper{color:var(--v26-ink)!important}
+.tone-warm,.tone-lemon{background:var(--v26-sage)!important}
+.tone-paper{background:transparent!important}
+.tone-lemon *,.tone-warm *,.tone-paper *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+
+.color-red,.color-lav,.color-blue,.color-pink,.color-black,.color-mint{
+  background:var(--v26-sage)!important;color:var(--v26-ink)!important
+}
+.color-yellow,.color-white,.color-sand{
+  background:transparent!important;color:var(--v26-ink)!important
+}
+.color-red *,.color-lav *,.color-blue *,.color-pink *,.color-black *,.color-mint *,
+.color-yellow *,.color-white *,.color-sand *{
+  color:inherit!important;-webkit-text-fill-color:currentColor!important
+}
+
+/* headers / rules */
+.page-minimal-head{padding-bottom:4px!important}
+.head-rule{height:1px!important;background:var(--v26-ink)!important;opacity:.26!important}
+.micro-label,.kicker{color:var(--v26-soft)!important}
+
+/* nav: flat sage strip */
+.bottom-nav{
+  background:rgba(186,197,187,.96)!important;
+  border:0!important;
+  border-top:1px solid rgba(64,58,53,.16)!important;
+  border-radius:0!important;
+  backdrop-filter:blur(14px);
+}
+.nav-btn{color:rgba(64,58,53,.52)!important;border-radius:0!important}
+.nav-btn.active{background:transparent!important;color:var(--v26-ink)!important}
+.nav-btn.active::after{
+  content:'';position:absolute;left:20%;right:20%;bottom:4px;height:2px;background:var(--v26-ink)
+}
+.nav-btn{position:relative}
+
+/* TODAY horizontal strip: one green field separated by lines */
+#today .snap-rail{
+  gap:0!important;
+  background:var(--v26-sage)!important;
+  border-top:1px solid var(--line)!important;
+  border-bottom:1px solid var(--line)!important;
+  padding:0!important;
+}
+#today .snap-card{
+  background:transparent!important;
+  border:0!important;
+  border-right:1px solid rgba(64,58,53,.18)!important;
+  border-radius:0!important;
+  min-height:330px!important;
+  padding:20px 18px!important;
+}
+#today .snap-card:last-child{border-right:0!important}
+.snap-actions .rail-pill,.rail-pill,.action-btn,.inline-btn{
+  background:transparent!important;
+  color:var(--v26-ink)!important;
+  border:0!important;
+  border-bottom:1px solid var(--v26-ink)!important;
+  border-radius:0!important;
+  padding-left:0!important;padding-right:0!important;
+  min-height:34px!important;
+}
+.rail-pill.dark{background:transparent!important;color:var(--v26-ink)!important}
+.utility-strip{
+  display:grid!important;grid-template-columns:repeat(4,1fr)!important;
+  border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;
+  margin-top:18px!important
+}
+.utility-strip button{
+  background:transparent!important;border:0!important;border-right:1px solid var(--line)!important;border-radius:0!important
+}
+.utility-strip button:last-child{border-right:0!important}
+
+/* PLAN: continuous green spread, line-separated pages */
+.plan-rail{
+  gap:0!important;
+  padding:0 42px 0 0!important;
+  background:var(--v26-sage)!important;
+  border-top:1px solid var(--line)!important;
+  border-bottom:1px solid var(--line)!important;
+}
+.plan-rail .pass-sheet{
+  background:transparent!important;
+  border:0!important;
+  border-right:1px solid rgba(64,58,53,.18)!important;
+  border-radius:0!important;
+  padding:20px 18px!important;
+}
+.plan-rail .pass-sheet:last-child{border-right:0!important}
+.pass-perf{border-top:1px solid rgba(64,58,53,.22)!important}
+.pass-event{
+  background:transparent!important;
+  border:0!important;
+  border-top:1px solid rgba(64,58,53,.16)!important;
+  border-radius:0!important;
+  padding:10px 0!important;
+}
+.pass-events .pass-event:last-child{border-bottom:1px solid rgba(64,58,53,.16)!important}
+.pass-bottom{border-top:0!important}
+.plan-scroll-track{background:rgba(64,58,53,.12)!important;border-radius:0!important;height:2px!important}
+.snap-progress-fill{background:var(--v26-ink)!important;border-radius:0!important}
+.plan-scroll-btn{
+  background:transparent!important;color:var(--v26-ink)!important;border:1px solid rgba(64,58,53,.26)!important;
+  border-radius:0!important
+}
+.plan-swipe-word::after{color:var(--v26-ink)!important}
+
+/* SPOTS / EAT: line index instead of cards */
+.index-grid{display:none!important}
+.line-index-list{
+  margin-top:10px;
+  border-top:1px solid var(--line);
+}
+.line-index-row{
+  width:100%;
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) auto 22px;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  padding:15px 0;
+  border-bottom:1px solid var(--line);
+  background:transparent!important;
+  color:var(--v26-ink)!important;
+}
+.line-index-row:nth-child(3n+1){background:rgba(186,197,187,.28)!important}
+.line-index-row.is-done{opacity:.52}
+.line-index-no{
+  font-size:10px;font-weight:500;letter-spacing:.10em;color:var(--v26-soft)
+}
+.line-index-main{min-width:0}
+.line-index-main b{
+  display:block;font-size:18px;line-height:1.15;font-weight:550;letter-spacing:-.025em
+}
+.line-index-main small{
+  display:block;margin-top:5px;font-size:11px;line-height:1.35;color:var(--v26-soft);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+.line-index-meta{
+  font-size:10px;line-height:1.45;text-align:right;color:var(--v26-soft);white-space:nowrap
+}
+.line-index-arrow{font-size:17px;font-weight:400}
+.line-filters{border-bottom:1px solid var(--line);padding-bottom:8px!important}
+.filter{
+  background:transparent!important;color:var(--v26-soft)!important;border:0!important;border-radius:0!important;padding:8px 2px!important
+}
+.filter.active{background:transparent!important;color:var(--v26-ink)!important;border-bottom:1px solid var(--v26-ink)!important}
+
+/* MORE already row-based: remove highlighted blocks */
+.tool-list{border-top:1px solid var(--line)!important}
+.tool-row,.tool-row.lemon{
+  background:transparent!important;color:var(--v26-ink)!important;border:0!important;border-bottom:1px solid var(--line)!important;
+  border-radius:0!important
+}
+.tool-row:nth-child(odd){background:rgba(186,197,187,.22)!important}
+.tool-arrow{font-weight:400!important}
+
+/* secondary pages: lines, not boxes */
+.booking-list,.talk-list,.check-list,.maybe-list,.expense-list,.info-list{gap:0!important}
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{
+  background:transparent!important;color:var(--v26-ink)!important;
+  border:0!important;border-top:1px solid var(--line)!important;border-radius:0!important;
+}
+.booking-list>*:last-child,.talk-list>*:last-child,.check-list>*:last-child,.maybe-list>*:last-child,
+.expense-list>*:last-child,.info-list>*:last-child{border-bottom:1px solid var(--line)!important}
+.booking:nth-child(odd),.talk-card:nth-child(odd),.task:nth-child(odd),.maybe-card:nth-child(odd),
+.expense-item:nth-child(odd),.info-chip:nth-child(odd){background:rgba(186,197,187,.18)!important}
+.booking-memo,.note-card,.input-card,.detail-section{
+  background:transparent!important;border:0!important;border-top:1px solid var(--line)!important;border-radius:0!important
+}
+.booking-memo textarea,.detail-memo,.light-memo,.note-card textarea,.input-card input,.input-card select{
+  background:transparent!important;border:0!important;border-bottom:1px solid rgba(64,58,53,.28)!important;border-radius:0!important;
+  color:var(--v26-ink)!important
+}
+.money-total{
+  background:var(--v26-sage)!important;color:var(--v26-ink)!important;border-radius:0!important;
+  border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important
+}
+.money-total *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+
+/* detailed page: flattened pass + rule-separated sections */
+.detail-page-light{color:var(--v26-ink)!important}
+.boarding-ticket{
+  background:var(--v26-sage)!important;color:var(--v26-ink)!important;
+  border:0!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;
+  border-radius:0!important
+}
+.boarding-ticket *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.boarding-ticket .detail-image-frame{
+  background:var(--v26-warm)!important;border:0!important;border-radius:16px!important
+}
+.boarding-ticket .bt-meta span,.boarding-ticket .bt-grid>div{
+  background:transparent!important;border:0!important;border-top:1px solid rgba(64,58,53,.16)!important;border-radius:0!important
+}
+.boarding-ticket .bt-status{
+  background:transparent!important;color:var(--v26-ink)!important;border:0!important;border-bottom:1px solid var(--v26-ink)!important;
+  border-radius:0!important
+}
+.stub-panel,.stub-panel:nth-of-type(even){
+  background:transparent!important;color:var(--v26-ink)!important;border:0!important;border-top:1px solid var(--line)!important;
+  border-radius:0!important
+}
+.stub-panel:last-child{border-bottom:1px solid var(--line)!important}
+.stub-panel::before{display:none!important}
+.stub-actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:0!important;border-top:1px solid var(--line)!important}
+.stub-actions button,.stub-actions a{
+  background:transparent!important;color:var(--v26-ink)!important;border:0!important;border-bottom:1px solid var(--line)!important;
+  border-right:1px solid var(--line)!important;border-radius:0!important
+}
+.stub-actions>*:nth-child(even){border-right:0!important}
+
+/* red only as small emergency accent */
+.emergency-card.color-red{color:var(--v26-red)!important}
+.emergency-card.color-red strong,.emergency-card.color-red span{color:inherit!important}
+.bt-status,.task input:checked{accent-color:var(--v26-sage)!important}
+
+/* splash: flat, green-led */
+.splash-screen{background:var(--v26-cream)!important}
+.splash-stack{height:330px!important}
+.splash-pass{box-shadow:none!important;border-radius:0!important;border:0!important}
+.splash-back{display:none!important}
+.splash-mid{
+  top:34px!important;width:100%!important;height:68%!important;background:var(--v26-sage)!important;
+  transform:none!important
+}
+.splash-front{
+  top:0!important;width:88%!important;height:74%!important;left:0!important;right:auto!important;
+  background:transparent!important;color:var(--v26-ink)!important;border:0!important;transform:none!important
+}
+.splash-kicker,.splash-brand,.splash-city,.splash-chip{color:var(--v26-ink)!important}
+.splash-brand{font-family:var(--body-sans)!important;font-weight:600!important}
+.splash-chip{background:transparent!important;border:1px solid rgba(64,58,53,.24)!important;border-radius:0!important}
+.splash-barcode{background:repeating-linear-gradient(90deg,var(--v26-ink) 0 3px,transparent 3px 5px,var(--v26-ink) 5px 7px,transparent 7px 9px)!important}
+
+/* remove unnecessary rounded corners globally on main chrome */
+.bottom-nav,.plan-scroll-track,.snap-progress-fill,.plan-scroll-btn,.filter,.utility-strip,.utility-strip button{border-radius:0!important}
+
+@media(max-width:560px){
+  .line-index-row{grid-template-columns:34px minmax(0,1fr) auto 18px;gap:9px;padding:14px 0}
+  .line-index-main b{font-size:17px}
+  .line-index-meta{font-size:9px}
+  .plan-rail .pass-sheet{flex-basis:84vw!important}
+}
+
 </style>
 </head>
 <body>
@@ -1093,13 +1395,48 @@ function renderPlan(){
 
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
-  document.getElementById('spots').innerHTML=`<div class="page-minimal-head"><div class="micro-label">LOCATION INDEX</div><h1 class="minimal-title">SPOTS</h1><div class="head-rule"></div></div><div class="filters light-filters">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div><div class="index-grid">${entries.map(([id,v],i)=>`<button class="index-card tone-${i%3===0?'lemon':i%3===1?'paper':'warm'}" onclick="openDetail('spot','${id}','spots')"><div class="index-top"><span>${String(i+1).padStart(2,'0')}</span><span>${v.kind}</span></div><div class="index-name">${SPOT_KO[id]||v.name}</div><div class="index-en">${v.cn} · ${v.name}</div><div class="index-bottom"><span>${v.area}</span><span>${v.date}</span></div></button>`).join('')}</div>`
+  document.getElementById('spots').innerHTML=`
+    <div class="page-minimal-head">
+      <div class="micro-label">LOCATION INDEX</div>
+      <h1 class="minimal-title">SPOTS</h1>
+      <div class="head-rule"></div>
+    </div>
+    <div class="filters line-filters">
+      ${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}
+    </div>
+    <div class="line-index-list">
+      ${entries.map(([id,v],i)=>`
+        <button class="line-index-row ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
+          <span class="line-index-no">${String(i+1).padStart(2,'0')}</span>
+          <span class="line-index-main">
+            <b>${SPOT_KO[id]||v.name}</b>
+            <small>${v.cn} · ${v.name}</small>
+          </span>
+          <span class="line-index-meta">${v.area}<br>${v.date}</span>
+          <span class="line-index-arrow">→</span>
+        </button>`).join('')}
+    </div>`;
 }
-
 function renderEat(){
-  document.getElementById('eat').innerHTML=`<div class="page-minimal-head"><div class="micro-label">FOOD INDEX</div><h1 class="minimal-title">EAT</h1><div class="head-rule"></div></div><div class="index-grid">${Object.entries(FOODS).map(([id,v],i)=>`<button class="index-card tone-${i%3===0?'warm':i%3===1?'lemon':'paper'}" onclick="openDetail('food','${id}','eat')"><div class="index-top"><span>F${String(i+1).padStart(2,'0')}</span><span>${v.kind}</span></div><div class="index-name">${FOOD_KO[id]||v.name}</div><div class="index-en">${v.cn} · ${v.name}</div><div class="index-bottom"><span>${v.date}</span><span>${isVisited('food',id)?'DONE':'OPEN'}</span></div></button>`).join('')}</div>`
+  document.getElementById('eat').innerHTML=`
+    <div class="page-minimal-head">
+      <div class="micro-label">FOOD INDEX</div>
+      <h1 class="minimal-title">EAT</h1>
+      <div class="head-rule"></div>
+    </div>
+    <div class="line-index-list food-line-list">
+      ${Object.entries(FOODS).map(([id,v],i)=>`
+        <button class="line-index-row ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
+          <span class="line-index-no">F${String(i+1).padStart(2,'0')}</span>
+          <span class="line-index-main">
+            <b>${FOOD_KO[id]||v.name}</b>
+            <small>${v.cn} · ${v.name}</small>
+          </span>
+          <span class="line-index-meta">${v.kind}<br>${v.date}</span>
+          <span class="line-index-arrow">→</span>
+        </button>`).join('')}
+    </div>`;
 }
-
 function bookingPlaceholder(type){if(type==='Flight')return '편명, 터미널, 체크인 시간, 좌석, 환승 메모 등';if(type==='Train')return '열차번호, 출발·도착시간, 좌석, 역 출입구 등';if(type==='Hotel')return '중국어 주소, 전화번호, 체크인 시간, 예약번호 등';if(type==='Ticket')return '예약번호, 입장시간, QR/수령 방법 등';return '주소, 시간, 예약번호 등 필요한 정보를 적어두세요.'}
 function saveBookingMemo(i,v){state.bookingMemos=state.bookingMemos||{};state.bookingMemos[i]=v;save()}
 function saveDetailMemo(type,id,v){state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos[type]=state.detailMemos[type]||{};state.detailMemos[type][id]=v;save()}

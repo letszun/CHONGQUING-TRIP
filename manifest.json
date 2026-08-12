@@ -1,11 +1,11 @@
 {
-  "name": "Chongqing City — Editorial Pass",
-  "short_name": "CQ Pass",
+  "name": "Chongqing City — Green Lines",
+  "short_name": "CQ Lines",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F0EEEB",
-  "theme_color": "#F0EEEB",
+  "theme_color": "#BAC5BB",
   "description": "Chongqing & Wulong trip planner — Korean-first mobile UX",
   "icons": [
     {
