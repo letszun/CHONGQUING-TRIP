@@ -1,6 +1,6 @@
 {
-  "name": "Chongqing City — Green Lines",
-  "short_name": "CQ Lines",
+  "name": "Chongqing City — Editorial Grid",
+  "short_name": "CQ Grid",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

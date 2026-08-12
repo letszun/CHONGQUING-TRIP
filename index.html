@@ -1164,6 +1164,127 @@ p,li,.sub,.meta,.info,.caption,.ko,.zh,.txt,.ticket-copy,.ticket-list li{font-we
   .plan-rail .pass-sheet{flex-basis:84vw!important}
 }
 
+
+/* v27 — unified editorial grid / green dominant + red signal */
+:root{
+  --ds-bg:#F0EEEB;
+  --ds-green:#BAC5BB;
+  --ds-green-soft:rgba(186,197,187,.34);
+  --ds-green-faint:rgba(186,197,187,.18);
+  --ds-brown:#431705;
+  --ds-red:#F73D37;
+  --ds-line:rgba(67,23,5,.22);
+  --ds-muted:rgba(67,23,5,.58);
+  --ds-x:18px;
+  --ds-gap:12px;
+  --ds-unit:8px;
+  --bg:var(--ds-bg);--paper:var(--ds-bg);--ink:var(--ds-brown);--charcoal:var(--ds-brown);
+  --warm:var(--ds-green);--blue:var(--ds-green);--blue-2:var(--ds-red);--muted:var(--ds-muted);--line:var(--ds-line);
+}
+html,body{background:var(--ds-bg)!important;color:var(--ds-brown)!important}
+body{font-weight:400!important}
+.app{width:min(100%,760px)!important;padding-left:var(--ds-x)!important;padding-right:var(--ds-x)!important}
+
+/* one grid language everywhere */
+.system-head{
+  display:grid;grid-template-columns:42px minmax(0,1fr) 72px;gap:var(--ds-gap);align-items:end;
+  padding:calc(22px + env(safe-area-inset-top)) 0 12px;border-bottom:1px solid var(--ds-line)
+}
+.system-head-no{font-size:10px;font-weight:600;letter-spacing:.12em;color:var(--ds-red);padding-bottom:7px}
+.system-head-main{min-width:0}.system-head-main .minimal-title{margin-top:4px!important}
+.system-head-meta{font-size:9px;line-height:1.35;text-align:right;letter-spacing:.10em;color:var(--ds-muted);padding-bottom:7px}
+.page-minimal-head{display:grid;grid-template-columns:42px minmax(0,1fr) 72px;gap:var(--ds-gap);align-items:end}
+.page-minimal-head>.micro-label,.page-minimal-head>.minimal-title,.page-minimal-head>.head-rule{grid-column:2/-1}
+.minimal-title{color:var(--ds-brown)!important;font-weight:600!important;letter-spacing:-.05em!important}
+.micro-label,.kicker{color:var(--ds-muted)!important;letter-spacing:.12em!important}
+.head-rule{background:var(--ds-brown)!important;opacity:.26!important}
+
+/* green is the field, red is the signal */
+#today .snap-rail,.plan-rail{background:var(--ds-green)!important}
+#today .snap-card,.plan-rail .pass-sheet{border-color:rgba(67,23,5,.17)!important}
+.snap-progress-fill{background:var(--ds-red)!important}
+.plan-swipe-word::after{color:var(--ds-red)!important}
+.plan-scroll-btn{border-color:rgba(67,23,5,.32)!important}
+.plan-scroll-btn:not(:disabled):active{background:var(--ds-red)!important;color:var(--ds-bg)!important}
+.snap-dot.active{background:var(--ds-red)!important}
+
+/* bottom nav uses green, active is red micro-signal */
+.bottom-nav{background:rgba(186,197,187,.97)!important;border-top:1px solid rgba(67,23,5,.16)!important}
+.nav-btn{color:rgba(67,23,5,.48)!important}.nav-btn.active{color:var(--ds-brown)!important}
+.nav-btn.active::after{background:var(--ds-red)!important;height:3px!important;left:28%!important;right:28%!important}
+
+/* filters use alignment, not pills */
+.editorial-filters{display:grid!important;grid-template-columns:42px repeat(3,max-content) 1fr;gap:var(--ds-gap)!important;align-items:end;margin:0!important;padding:10px 0 8px!important;border-bottom:1px solid var(--ds-line)!important}
+.editorial-filters .filter:first-child{grid-column:2}
+.filter{font-weight:500!important;letter-spacing:.08em!important;padding:4px 0!important;color:var(--ds-muted)!important}
+.filter.active{color:var(--ds-brown)!important;border-bottom:2px solid var(--ds-red)!important}
+
+/* SPOTS/EAT — items without cards */
+.line-index-list{display:none!important}
+.editorial-index-list{position:relative;border-bottom:1px solid var(--ds-line)}
+.editorial-index-list::before{content:'';position:absolute;left:54px;top:0;bottom:0;width:1px;background:rgba(67,23,5,.18);pointer-events:none}
+.editorial-index-row{
+  position:relative;width:100%;display:grid;grid-template-columns:42px 1px minmax(0,1fr) 58px 20px;gap:var(--ds-gap);
+  align-items:center;text-align:left;padding:16px 0;border:0;border-top:1px solid var(--ds-line);background:transparent!important;color:var(--ds-brown)!important
+}
+.editorial-index-row:first-child{border-top:0}
+.editorial-index-row:nth-child(odd){background:var(--ds-green-faint)!important}
+.editorial-index-row:active{background:var(--ds-green-soft)!important}
+.editorial-index-no{font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--ds-red);align-self:start;padding-top:2px}
+.editorial-index-marker{width:7px;height:7px;border-radius:50%;background:var(--ds-green);box-shadow:0 0 0 3px var(--ds-bg);z-index:2;justify-self:center}
+.editorial-index-row.is-done .editorial-index-marker{background:var(--ds-red)}
+.editorial-index-main{min-width:0;display:block}
+.editorial-index-main small{display:block;font-size:9px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--ds-muted);margin-bottom:6px}
+.editorial-index-main b{display:block;font-size:19px;line-height:1.1;font-weight:550;letter-spacing:-.028em;word-break:keep-all}
+.editorial-index-main em{display:block;margin-top:5px;font-style:normal;font-size:11px;line-height:1.3;color:var(--ds-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.editorial-index-date{font-size:9px;line-height:1.45;text-align:right;letter-spacing:.06em;color:var(--ds-muted)}
+.editorial-index-arrow{font-size:17px;font-weight:400;color:var(--ds-red);text-align:right}
+.editorial-index-row.is-done{opacity:.62}
+.food-editorial-list .editorial-index-marker{background:var(--ds-green)}
+
+/* MORE follows same columns */
+.tool-list{display:none!important}.system-tool-list{border-bottom:1px solid var(--ds-line)}
+.system-tool-row{width:100%;display:grid;grid-template-columns:42px minmax(0,1fr) 58px 20px;gap:var(--ds-gap);align-items:center;text-align:left;padding:15px 0;border:0;border-top:1px solid var(--ds-line);background:transparent!important;color:var(--ds-brown)!important}
+.system-tool-row:nth-child(odd){background:var(--ds-green-faint)!important}
+.system-tool-no{font-size:10px;font-weight:600;color:var(--ds-red);letter-spacing:.10em}
+.system-tool-main b{display:block;font-size:18px;font-weight:550;letter-spacing:-.025em}.system-tool-main small{display:block;margin-top:5px;font-size:11px;color:var(--ds-muted)}
+.system-tool-state{font-size:9px;text-align:right;letter-spacing:.08em;color:var(--ds-muted)}.system-tool-arrow{color:var(--ds-red);font-size:17px;text-align:right}
+
+/* secondary list screens align to the same invisible columns */
+.booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{padding-left:42px!important;padding-right:0!important}
+.booking .row,.expense-item,.info-chip{gap:var(--ds-gap)!important}
+.secondary-back,.section-top.compact{padding-left:0!important;padding-right:0!important}
+.secondary-back button{color:var(--ds-red)!important;border-bottom-color:var(--ds-red)!important}
+
+/* detail page: keep large green pass but use red as status only */
+.boarding-ticket{background:var(--ds-green)!important;color:var(--ds-brown)!important}
+.bt-status{color:var(--ds-red)!important;border-bottom-color:var(--ds-red)!important}
+.bt-status.is-done{background:var(--ds-red)!important;color:var(--ds-bg)!important;border-bottom:0!important;padding:6px 9px!important}
+.stub-panel{border-top-color:var(--ds-line)!important}.stub-panel:nth-child(even){background:var(--ds-green-faint)!important}
+.stub-head span:first-child{color:var(--ds-red)!important}
+.stub-actions button,.stub-actions a{color:var(--ds-brown)!important}
+
+/* red is deliberately scarce */
+.emergency-card.color-red{color:var(--ds-red)!important}
+.task input:checked{background:var(--ds-red)!important;border-color:var(--ds-red)!important}
+.splash-mid{background:var(--ds-green)!important}.splash-city{color:var(--ds-red)!important}
+
+/* strict rhythm */
+.snap-shell,.plan-snap,.editorial-index-list,.system-tool-list,.booking-list,.talk-list,.check-list,.maybe-list,.expense-list{margin-top:12px!important}
+.section-top{padding-bottom:10px!important}
+
+@media(max-width:560px){
+  :root{--ds-x:16px;--ds-gap:9px}
+  .system-head{grid-template-columns:34px minmax(0,1fr) 62px}
+  .system-head-no{font-size:9px}.system-head-meta{font-size:8px}
+  .editorial-filters{grid-template-columns:34px repeat(3,max-content) 1fr}
+  .editorial-index-list::before{left:43px}
+  .editorial-index-row{grid-template-columns:34px 1px minmax(0,1fr) 50px 18px}
+  .editorial-index-main b{font-size:18px}.editorial-index-main em{font-size:10px}.editorial-index-date{font-size:8px}
+  .system-tool-row{grid-template-columns:34px minmax(0,1fr) 48px 18px}
+  .booking,.talk-card,.task,.maybe-card,.expense-item,.info-chip,.weather-card,.status-card,.notice-card,.emergency-card{padding-left:34px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1396,44 +1517,49 @@ function renderPlan(){
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
   document.getElementById('spots').innerHTML=`
-    <div class="page-minimal-head">
-      <div class="micro-label">LOCATION INDEX</div>
-      <h1 class="minimal-title">SPOTS</h1>
-      <div class="head-rule"></div>
+    <div class="system-head">
+      <span class="system-head-no">02</span>
+      <div class="system-head-main"><div class="micro-label">LOCATION INDEX</div><h1 class="minimal-title">SPOTS</h1></div>
+      <span class="system-head-meta">${String(entries.length).padStart(2,'0')} ITEMS</span>
     </div>
-    <div class="filters line-filters">
+    <div class="filters line-filters editorial-filters">
       ${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}
     </div>
-    <div class="line-index-list">
+    <div class="editorial-index-list">
       ${entries.map(([id,v],i)=>`
-        <button class="line-index-row ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
-          <span class="line-index-no">${String(i+1).padStart(2,'0')}</span>
-          <span class="line-index-main">
+        <button class="editorial-index-row ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
+          <span class="editorial-index-no">${String(i+1).padStart(2,'0')}</span>
+          <span class="editorial-index-marker" aria-hidden="true"></span>
+          <span class="editorial-index-main">
+            <small>${v.kind} · ${v.area}</small>
             <b>${SPOT_KO[id]||v.name}</b>
-            <small>${v.cn} · ${v.name}</small>
+            <em>${v.cn} · ${v.name}</em>
           </span>
-          <span class="line-index-meta">${v.area}<br>${v.date}</span>
-          <span class="line-index-arrow">→</span>
+          <span class="editorial-index-date">${v.date}</span>
+          <span class="editorial-index-arrow">↗</span>
         </button>`).join('')}
     </div>`;
 }
 function renderEat(){
+  const entries=Object.entries(FOODS);
   document.getElementById('eat').innerHTML=`
-    <div class="page-minimal-head">
-      <div class="micro-label">FOOD INDEX</div>
-      <h1 class="minimal-title">EAT</h1>
-      <div class="head-rule"></div>
+    <div class="system-head">
+      <span class="system-head-no">03</span>
+      <div class="system-head-main"><div class="micro-label">FOOD INDEX</div><h1 class="minimal-title">EAT</h1></div>
+      <span class="system-head-meta">${String(entries.length).padStart(2,'0')} ITEMS</span>
     </div>
-    <div class="line-index-list food-line-list">
-      ${Object.entries(FOODS).map(([id,v],i)=>`
-        <button class="line-index-row ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
-          <span class="line-index-no">F${String(i+1).padStart(2,'0')}</span>
-          <span class="line-index-main">
+    <div class="editorial-index-list food-editorial-list">
+      ${entries.map(([id,v],i)=>`
+        <button class="editorial-index-row ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
+          <span class="editorial-index-no">F${String(i+1).padStart(2,'0')}</span>
+          <span class="editorial-index-marker" aria-hidden="true"></span>
+          <span class="editorial-index-main">
+            <small>${v.kind} · ${v.date}</small>
             <b>${FOOD_KO[id]||v.name}</b>
-            <small>${v.cn} · ${v.name}</small>
+            <em>${v.cn} · ${v.name}</em>
           </span>
-          <span class="line-index-meta">${v.kind}<br>${v.date}</span>
-          <span class="line-index-arrow">→</span>
+          <span class="editorial-index-date">${isVisited('food',id)?'DONE':'OPEN'}</span>
+          <span class="editorial-index-arrow">↗</span>
         </button>`).join('')}
     </div>`;
 }
@@ -1469,9 +1595,16 @@ function renderWeatherCards(cache){const root=document.getElementById('weatherCa
 function renderWeather(){document.getElementById('weather').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">WEATHER · WULONG STATUS</div><h1 class="section-title">WEATHER</h1><p class="section-sub">온라인일 때 최신 날씨를 불러옵니다. 우롱 관광지 운영 여부는 공식 페이지에서 마지막으로 확인하세요.</p></div><div id="weatherCards" class="weather-grid"></div><div class="action-row"><button class="action-btn" onclick="loadWeather(true)">날씨 새로고침</button><a class="action-btn light" href="https://www.wlkst.com/" target="_blank" rel="noopener">우롱 공식 관광</a></div><div class="notice-card"><b>우롱 체크</b><span>천생삼교 · 용수협지봉 · 선녀산은 폭우 시 운영이 바뀔 수 있습니다. 출발 직전 공지를 우선 확인하세요.</span></div>`;loadWeather(false)}
 function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
 function renderMore(){
-  document.getElementById('more').innerHTML=`<div class="page-minimal-head"><div class="micro-label">TRIP SYSTEM</div><h1 class="minimal-title">MORE</h1><div class="head-rule"></div></div><div class="tool-list">${MORE_ITEMS.map((m,i)=>`<button class="tool-row ${i===0||i===3?'lemon':''}" onclick="go('${m.id}')"><span class="tool-num">0${i+1}</span><span class="tool-main"><b>${m.title}</b><small>${m.sub}</small></span><span class="tool-arrow">→</span></button>`).join('')}</div>`
+  document.getElementById('more').innerHTML=`
+    <div class="system-head">
+      <span class="system-head-no">05</span>
+      <div class="system-head-main"><div class="micro-label">TRIP SYSTEM</div><h1 class="minimal-title">MORE</h1></div>
+      <span class="system-head-meta">07 TOOLS</span>
+    </div>
+    <div class="system-tool-list">
+      ${MORE_ITEMS.map((m,i)=>`<button class="system-tool-row" onclick="go('${m.id}')"><span class="system-tool-no">${String(i+1).padStart(2,'0')}</span><span class="system-tool-main"><b>${m.title}</b><small>${m.sub}</small></span><span class="system-tool-state">OPEN</span><span class="system-tool-arrow">↗</span></button>`).join('')}
+    </div>`;
 }
-
 function initSnapRail(id){
   const root=document.getElementById(id); if(!root) return;
   const rail=root.querySelector('.snap-rail');
