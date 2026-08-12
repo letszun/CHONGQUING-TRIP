@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#121212">
+<title>Chongqing City</title>
+<link rel="manifest" href="manifest.json">
+<style>
+@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+:root{
+  /* Reference palette: CHARCOAL / WARM GREEN / SAGE / GREY / LIME */
+  --charcoal:#2E2D2D;
+  --warm-green:#ACB77A;
+  --sage:#D1E2BE;
+  --grey:#F8F7F2;
+  --lime:#E8F985;
+  --bg:var(--grey);
+  --paper:var(--grey);
+  --ink:var(--charcoal);
+  --muted:rgba(46,45,45,.62);
+  --line:rgba(46,45,45,.10);
+  /* Legacy color tokens remapped so the existing layout/logic stays untouched. */
+  --red:var(--charcoal);
+  --yellow:var(--lime);
+  --blue:var(--warm-green);
+  --lav:var(--sage);
+  --pink:var(--lime);
+  --mint:var(--sage);
+  --sand:var(--grey);
+  --black:var(--charcoal);
+  --white:var(--grey);
+  --shadow:0 14px 34px rgba(46,45,45,.10);
+  --r-xl:34px;
+  --r-lg:28px;
+  --r-md:22px;
+  --english:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;background:var(--grey);color:var(--ink);font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;letter-spacing:-.02em}
+button,input,textarea,select{font:inherit}
+button{border:0;background:none;cursor:pointer;color:inherit;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent}
+a{text-decoration:none;color:inherit;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;display:block}
+.app{width:min(100%,780px);margin:0 auto;min-height:100vh;padding:0 18px 120px}
+.view{display:none}.view.active{display:block}
+.page-top{padding:calc(22px + env(safe-area-inset-top)) 0 16px}
+.kicker{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.en-title,.big-en,.nav-label,.chip,.mini-title{font-family:var(--english)}
+.hero-title{margin:8px 0 0;font-family:var(--english);font-size:clamp(42px,11vw,74px);line-height:.88;letter-spacing:-.07em;font-weight:900}
+.hero-sub{margin:10px 0 0;font-size:13px;line-height:1.55;color:var(--muted)}
+.pills{display:flex;gap:8px;overflow:auto;padding:14px 0 2px;scrollbar-width:none}.pills::-webkit-scrollbar{display:none}
+.pill{flex:none;background:var(--white);padding:9px 12px;border-radius:999px;box-shadow:var(--shadow);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.banner{margin-top:16px;background:var(--black);color:var(--white);padding:22px;border-radius:34px;box-shadow:var(--shadow)}
+.banner small{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(248,247,242,.70)}
+.banner strong{display:block;font-family:var(--english);font-size:30px;line-height:.95;letter-spacing:-.05em;margin-top:10px}
+.banner p{margin:10px 0 0;font-size:12px;line-height:1.55;color:rgba(255,255,255,.72)}
+.grid{display:grid;gap:14px}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.section-top{padding:calc(22px + env(safe-area-inset-top)) 0 12px}
+.section-title{margin:0;font-family:var(--english);font-size:clamp(38px,10vw,62px);line-height:.92;letter-spacing:-.06em;font-weight:900}
+.section-sub{margin:10px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
+.filters{display:flex;gap:8px;overflow:auto;padding:12px 0 6px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}
+.filter{flex:none;background:var(--white);border-radius:999px;padding:10px 13px;box-shadow:var(--shadow);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.filter.active{background:var(--black);color:var(--white)}
+.card{position:relative;border-radius:var(--r-xl);padding:18px;box-shadow:var(--shadow);overflow:hidden}
+.color-red{background:var(--red);color:var(--grey)}.color-yellow{background:var(--yellow)}.color-blue{background:var(--blue)}.color-lav{background:var(--lav)}.color-pink{background:var(--pink)}.color-mint{background:var(--mint)}.color-sand{background:var(--sand)}.color-black{background:var(--black);color:var(--grey)}.color-white{background:var(--white)}
+.day-card .head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.day-card .day-no{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.day-card .day-title{font-family:var(--english);font-size:clamp(28px,8vw,42px);line-height:.92;letter-spacing:-.05em;font-weight:900;margin-top:6px}
+.day-card .day-place{font-size:11px;font-weight:700;opacity:.74;margin-top:8px}
+.day-card .date-box{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.day-card .date-box b{font-size:18px;letter-spacing:-.04em}.day-card .date-box span{display:inline-flex;padding:6px 9px;border-radius:999px;background:rgba(248,247,242,.68);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.color-red .date-box span,.color-black .date-box span{background:rgba(248,247,242,.18);color:var(--grey)}
+.events{display:grid;gap:9px;margin-top:16px}
+.event{display:grid;grid-template-columns:58px 1fr;gap:12px;text-align:left;width:100%;padding:11px 12px;border-radius:20px;background:rgba(248,247,242,.64)}
+.color-red .event,.color-black .event{background:rgba(248,247,242,.12);color:var(--grey)}
+.event .time{font-size:10px;font-weight:900;padding-top:2px}.event .title{font-size:14px;font-weight:800;line-height:1.24}.event .sub{font-size:10px;line-height:1.42;margin-top:4px;opacity:.72}.event.clickable .title:after{content:' ↗';font-size:10px;font-weight:900}
+.tile{min-height:184px;text-align:left;border-radius:30px;padding:16px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.tile .chip{display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(248,247,242,.72);font-size:9px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.tile .name{margin-top:18px;font-family:var(--english);font-size:25px;line-height:.95;letter-spacing:-.05em;font-weight:900}
+.tile .caption{margin-top:8px;font-size:12px;line-height:1.45;color:rgba(46,45,45,.82)}
+.tile .meta{position:absolute;left:16px;bottom:16px;font-size:10px;font-weight:800;color:rgba(46,45,45,.78)}
+.tile .go{position:absolute;right:14px;bottom:14px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(46,45,45,.96);color:var(--grey);font-size:18px;font-weight:900}
+.today-hero{display:grid;gap:14px}
+.today-card{border-radius:34px;padding:22px;box-shadow:var(--shadow)}
+.today-card .tiny{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.today-card .big-num{font-family:var(--english);font-size:clamp(54px,16vw,92px);line-height:.88;letter-spacing:-.09em;font-weight:900;margin-top:10px}
+.today-card .big-title{font-family:var(--english);font-size:clamp(30px,9vw,48px);line-height:.92;letter-spacing:-.06em;font-weight:900;margin-top:8px}
+.today-card .info{margin-top:12px;font-size:13px;line-height:1.55}
+.quick-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.quick-btn{padding:16px;border-radius:24px;text-align:left;box-shadow:var(--shadow);min-height:116px}
+.quick-btn .mini-title{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.quick-btn strong{display:block;font-family:var(--english);font-size:23px;line-height:.95;letter-spacing:-.05em;margin-top:10px}
+.quick-btn p{margin:8px 0 0;font-size:12px;line-height:1.48;color:var(--muted)}
+.booking-list,.talk-list,.check-list,.maybe-list,.expense-list{display:grid;gap:12px;margin-top:14px}
+.booking{padding:16px;border-radius:26px;box-shadow:var(--shadow)}
+.booking .row{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.booking .type{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.72}
+.booking .title{font-family:var(--english);font-size:24px;line-height:.95;letter-spacing:-.05em;font-weight:900;margin-top:10px}
+.booking .meta{font-size:12px;line-height:1.55;margin-top:10px}
+.booking .code{margin-top:12px;display:inline-flex;padding:8px 10px;border-radius:999px;background:rgba(248,247,242,.72);font-size:10px;font-weight:800;letter-spacing:.06em}
+.booking-memo{margin-top:12px;padding:12px 13px;border-radius:18px;background:rgba(248,247,242,.70)}
+.booking-memo label{display:block;font-size:9px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:rgba(46,45,45,.74);margin-bottom:7px}
+.booking-memo textarea{width:100%;min-height:76px;border:0;outline:0;resize:vertical;background:transparent;font-size:13px;line-height:1.55;color:var(--ink)}
+.detail-memo{width:100%;min-height:100px;border:0;outline:0;resize:vertical;background:var(--grey);border-radius:18px;padding:13px 14px;font-size:13px;line-height:1.6;color:var(--ink)}
+.map-note{margin-top:8px;font-size:11px;color:var(--muted);line-height:1.45}
+.money-total{margin-top:16px;background:var(--black);color:var(--grey);padding:22px;border-radius:34px;box-shadow:var(--shadow)}
+.money-total .tiny{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(248,247,242,.72)}
+.money-total .num{font-family:var(--english);font-size:clamp(48px,14vw,86px);line-height:.9;font-weight:900;letter-spacing:-.09em;margin-top:12px}.money-total .num small{font-size:13px;letter-spacing:.04em}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.input-card{padding:16px;border-radius:26px;box-shadow:var(--shadow)}
+.input-card label{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(46,45,45,.78)}
+.input-card input,.input-card select{width:100%;border:0;outline:0;background:transparent;font-family:var(--english);font-size:30px;font-weight:900;letter-spacing:-.05em;padding-top:8px;color:var(--ink)}
+.input-card.select select{font-size:19px;font-family:inherit;font-weight:700;padding-top:14px}
+.info-list{display:grid;gap:10px;margin-top:14px}.info-chip{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:15px 16px;border-radius:22px;box-shadow:var(--shadow);font-size:12px;font-weight:800}.info-chip b{font-size:13px}
+.note-card{margin-top:14px;background:var(--white);padding:16px;border-radius:26px;box-shadow:var(--shadow)}
+.note-card label{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.note-card textarea{width:100%;min-height:108px;border:0;outline:0;resize:vertical;background:transparent;line-height:1.6}
+.expense-item{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-radius:22px;box-shadow:var(--shadow)}
+.expense-item .left b{display:block;font-size:15px;line-height:1.2}.expense-item .left span{display:block;font-size:11px;color:var(--muted);margin-top:4px}.expense-item .right{text-align:right}.expense-item .right strong{display:block;font-family:var(--english);font-size:18px}.expense-item .right button{margin-top:6px;font-size:10px;font-weight:800;color:var(--charcoal)}
+.inline-btn{margin-top:12px;display:inline-flex;padding:10px 14px;border-radius:999px;background:var(--black);color:var(--grey);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.inline-btn.alt{background:var(--grey);color:var(--charcoal);box-shadow:var(--shadow)}
+.talk-card{padding:16px;border-radius:28px;box-shadow:var(--shadow)}
+.talk-card .ko{font-size:11px;line-height:1.48;font-weight:700;opacity:.78}.talk-card .zh{font-size:22px;line-height:1.06;font-weight:900;margin:10px 0 14px}
+.task{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:flex-start;padding:16px;border-radius:24px;box-shadow:var(--shadow);background:var(--white)}
+.task input{appearance:none;width:21px;height:21px;border-radius:50%;border:2px solid var(--charcoal);margin:1px 0 0;background:var(--grey)}
+.task input:checked{background:var(--red);border-color:var(--red);position:relative}.task input:checked:after{content:'✓';position:absolute;left:4px;top:-2px;color:var(--grey);font-size:14px;font-weight:900}
+.task.done .txt{text-decoration:line-through;opacity:.42}.task .txt{font-size:13px;font-weight:800;line-height:1.45}
+.maybe-card{padding:16px;border-radius:28px;box-shadow:var(--shadow)}
+.maybe-card .type{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.72}.maybe-card .title{font-family:var(--english);font-size:24px;line-height:.95;letter-spacing:-.05em;font-weight:900;margin-top:10px}.maybe-card .sub{font-size:12px;line-height:1.55;margin-top:8px}
+.detail-top{padding:calc(20px + env(safe-area-inset-top)) 0 16px}.back{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:999px;background:var(--grey);box-shadow:var(--shadow);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.detail-card{margin-top:14px;padding:20px;border-radius:34px;box-shadow:var(--shadow)}
+.detail-card .type{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.detail-card .name{font-family:var(--english);font-size:clamp(38px,10vw,66px);line-height:.9;letter-spacing:-.06em;font-weight:900;margin-top:10px}
+.detail-card .cn{font-size:17px;font-weight:700;opacity:.75;margin-top:7px}
+.detail-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.detail-tags span{display:inline-flex;padding:8px 10px;border-radius:999px;background:rgba(248,247,242,.72);font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.photo-shell{margin-top:16px;display:grid;gap:10px}
+.photo-frame{width:min(100%,460px);aspect-ratio:1.16/1;margin:0 auto;background:rgba(255,255,255,.42);box-shadow:0 16px 28px rgba(0,0,0,.08);overflow:hidden}
+.photo-frame img{width:100%;height:100%;object-fit:cover}
+.photo-frame.fallback{display:grid;place-items:center;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(17,17,17,.1));color:rgba(17,17,17,.42);font-family:var(--english);font-size:14px;font-weight:900;letter-spacing:.16em}
+.mask-a{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 2L60 12L74 8L80 22L94 28L90 42L98 50L90 58L94 72L80 78L74 92L60 88L50 98L40 88L26 92L20 78L6 72L10 58L2 50L10 42L6 28L20 22L26 8L40 12Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 2L60 12L74 8L80 22L94 28L90 42L98 50L90 58L94 72L80 78L74 92L60 88L50 98L40 88L26 92L20 78L6 72L10 58L2 50L10 42L6 28L20 22L26 8L40 12Z'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.mask-b{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M24 8C39 8 40 18 50 18C60 18 61 8 76 8C89 8 94 14 94 27C94 39 84 41 84 50C84 59 94 61 94 73C94 86 89 92 76 92C61 92 60 82 50 82C40 82 39 92 24 92C11 92 6 86 6 73C6 61 16 59 16 50C16 41 6 39 6 27C6 14 11 8 24 8Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M24 8C39 8 40 18 50 18C60 18 61 8 76 8C89 8 94 14 94 27C94 39 84 41 84 50C84 59 94 61 94 73C94 86 89 92 76 92C61 92 60 82 50 82C40 82 39 92 24 92C11 92 6 86 6 73C6 61 16 59 16 50C16 41 6 39 6 27C6 14 11 8 24 8Z'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.mask-c{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 8C60 4 74 10 82 20C92 28 96 42 92 54C92 67 84 80 72 86C61 94 47 96 35 91C22 90 12 82 8 69C2 58 2 43 8 31C12 18 22 10 35 9C40 7 45 8 50 8Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 8C60 4 74 10 82 20C92 28 96 42 92 54C92 67 84 80 72 86C61 94 47 96 35 91C22 90 12 82 8 69C2 58 2 43 8 31C12 18 22 10 35 9C40 7 45 8 50 8Z'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.detail-caption{text-align:center;font-size:10px;font-weight:800;opacity:.64}
+.detail-section{margin-top:12px;background:var(--white);border-radius:26px;padding:18px;box-shadow:var(--shadow)}
+.detail-section h3{margin:0 0 10px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.detail-section p,.detail-section li{font-size:14px;line-height:1.65}.detail-section ul{margin:0;padding-left:18px}
+.action-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.action-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:999px;background:var(--black);color:var(--white);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.action-btn.light{background:var(--grey);color:var(--charcoal);box-shadow:var(--shadow)}
+.bottom-nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(calc(100% - 24px),780px);background:rgba(46,45,45,.97);backdrop-filter:blur(18px);border-radius:26px;padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;gap:4px;overflow:auto;box-shadow:0 16px 34px rgba(0,0,0,.22);scrollbar-width:none;z-index:40}.bottom-nav::-webkit-scrollbar{display:none}
+.nav-btn{flex:none;min-width:66px;padding:8px 8px 7px;border-radius:18px;color:rgba(248,247,242,.70);display:flex;flex-direction:column;align-items:center;gap:4px}
+.nav-btn.active{background:var(--grey);color:var(--charcoal)}.nav-btn i{font-style:normal;font-size:16px;line-height:1}.nav-btn .nav-label{font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.toast{position:fixed;left:50%;bottom:98px;transform:translate(-50%,16px);padding:10px 14px;border-radius:999px;background:var(--charcoal);color:var(--grey);font-size:10px;font-weight:800;letter-spacing:.06em;opacity:0;pointer-events:none;transition:.2s;z-index:50}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:720px){.today-hero{grid-template-columns:1.1fr .9fr}.grid-2-lg{grid-template-columns:repeat(2,minmax(0,1fr))}.day-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid-2{grid-template-columns:1fr 1fr}.input-grid{grid-template-columns:1fr}.today-card .big-num{font-size:54px}}
+
+/* v9 UX overrides */
+body{font-size:16px}
+.section-title{font-family:var(--english);font-size:clamp(36px,10vw,56px);font-weight:900;letter-spacing:-.06em;line-height:.94}
+.section-top.compact{padding-top:8px}
+.secondary-back{padding:calc(18px + env(safe-area-inset-top)) 0 0}.secondary-back button{min-height:44px;padding:0 14px;border-radius:999px;background:var(--grey);box-shadow:var(--shadow);font-size:13px;font-weight:800}
+.bottom-nav{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.nav-btn{min-width:0;width:100%;min-height:52px;padding:7px 2px}.nav-btn i{font-size:17px}.nav-btn .nav-label{font-family:var(--english);font-size:9px;letter-spacing:.05em;text-transform:uppercase;font-weight:800}
+.readable-list{display:grid;gap:10px;margin-top:14px}
+.readable-row{width:100%;display:grid;grid-template-columns:52px minmax(0,1fr) 24px;gap:14px;align-items:center;text-align:left;min-height:82px;padding:12px 12px;border-radius:24px;background:var(--grey);box-shadow:var(--shadow);color:var(--ink)}
+.readable-icon{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;font-size:20px;font-weight:900}
+.readable-body{min-width:0}.readable-title{font-size:19px;font-weight:850;line-height:1.2;letter-spacing:-.035em}.readable-sub{margin-top:5px;font-size:12px;color:rgba(46,45,45,.72);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.readable-meta{margin-top:5px;font-size:11px;color:var(--muted);font-weight:700}.readable-arrow{font-size:28px;line-height:1;color:rgba(46,45,45,.58);text-align:center}
+.filters{padding-top:8px}.filter{min-height:42px;font-family:"Pretendard",sans-serif;font-size:12px;letter-spacing:-.01em;text-transform:none}
+.more-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.more-card{position:relative;min-height:116px;text-align:left;padding:14px 15px 13px;border-radius:26px;box-shadow:var(--shadow);color:var(--ink);display:flex;flex-direction:column;justify-content:flex-start}.more-title{margin:0;font-family:var(--english);font-size:19px;font-weight:900;line-height:1.02;letter-spacing:-.03em}.more-sub{margin-top:6px;padding-right:34px;font-size:11.5px;line-height:1.4;color:rgba(46,45,45,.72)}.more-arrow{position:absolute;right:14px;bottom:12px;width:27px;height:27px;border-radius:50%;background:rgba(248,247,242,.62);display:grid;place-items:center;font-size:15px;font-weight:900}
+.quick-btn{min-height:108px}.quick-btn strong{font-family:var(--english);font-size:21px;letter-spacing:-.04em}.quick-btn .mini-title{font-family:var(--english)}
+.detail-card .name{font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;letter-spacing:-.045em;line-height:1;font-size:clamp(34px,10vw,58px)}
+.detail-card .cn{line-height:1.5}
+.event,.tile,.readable-row,.more-card,.quick-btn,.action-btn,.inline-btn,.filter,.back,.secondary-back button{touch-action:manipulation}
+.action-btn,.inline-btn{min-height:44px}.action-row{gap:8px}.action-row .action-btn{flex:1 1 auto}
+.booking-list,.talk-list,.check-list,.maybe-list,.expense-list{gap:10px}
+.booking .title{font-family:"Pretendard",sans-serif;font-size:21px;letter-spacing:-.035em}.booking .type,.booking .code{font-family:var(--english)}
+.maybe-card .title{font-family:"Pretendard",sans-serif;font-size:21px;letter-spacing:-.035em}.maybe-card .type{font-family:var(--english)}
+.today-card .big-title{font-family:"Pretendard",sans-serif;letter-spacing:-.04em;line-height:1.03}.today-card .big-num{font-family:var(--english)}
+.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.weather-card{padding:18px;border-radius:28px;box-shadow:var(--shadow)}.weather-name{font-size:14px;font-weight:850}.weather-temp{font-family:var(--english);font-size:56px;font-weight:900;letter-spacing:-.07em;line-height:.95;margin-top:10px}.weather-desc{font-size:12px;line-height:1.5;margin-top:9px}.weather-updated{grid-column:1/-1;text-align:right;color:var(--muted);font-size:11px}
+.status-card,.notice-card{margin-top:14px;background:var(--grey);border-radius:24px;padding:16px;box-shadow:var(--shadow);font-size:13px;line-height:1.55}.notice-card b,.notice-card span{display:block}.notice-card span{margin-top:6px;color:var(--muted)}
+.emergency-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.emergency-card{min-height:110px;border-radius:26px;padding:15px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}.emergency-card span{font-size:13px;font-weight:800}.emergency-card strong{font-family:var(--english);font-size:34px;letter-spacing:-.06em}
+
+.catalog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.catalog-card{position:relative;aspect-ratio:1/1;width:100%;min-width:0;text-align:left;padding:15px;border-radius:28px;box-shadow:var(--shadow);overflow:hidden;color:var(--ink);display:flex;flex-direction:column;align-items:flex-start}
+.catalog-card .catalog-chip{display:inline-flex;align-items:center;min-height:28px;padding:6px 9px;border-radius:999px;background:rgba(248,247,242,.72);font-family:var(--english);font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.catalog-card .catalog-name{margin-top:16px;font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;font-size:clamp(18px,5.2vw,24px);font-weight:850;line-height:1.12;letter-spacing:-.04em;word-break:keep-all}
+.catalog-card .catalog-cn{margin-top:7px;font-size:11px;font-weight:700;line-height:1.35;color:rgba(46,45,45,.82);word-break:break-all}
+.catalog-card .catalog-en{margin-top:3px;font-family:var(--english);font-size:10px;line-height:1.3;color:rgba(17,17,17,.58);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
+.catalog-card .catalog-meta{margin-top:auto;padding-top:10px;font-size:10px;font-weight:750;color:rgba(46,45,45,.78)}
+.catalog-card .catalog-arrow{position:absolute;right:13px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(46,45,45,.96);color:var(--grey);font-size:17px;font-weight:900}
+.catalog-card.visited .catalog-chip:before{content:'✓ ';}
+
+@media(max-width:560px){.more-grid{grid-template-columns:1fr 1fr}.weather-grid{grid-template-columns:1fr 1fr}.emergency-grid{grid-template-columns:repeat(3,1fr)}.section-sub{max-width:36ch}.app{padding-left:16px;padding-right:16px}.readable-row{padding:11px}.readable-title{font-size:18px}.readable-sub{font-size:11.5px}}
+
+
+/* v17 — CHARCOAL foreground contrast rules
+   Any component using the charcoal token (legacy .color-red / .color-black)
+   must use light text throughout. */
+.catalog-card.color-red,
+.catalog-card.color-black{
+  color:var(--grey);
+}
+.catalog-card.color-red .catalog-name,
+.catalog-card.color-black .catalog-name,
+.catalog-card.color-red .catalog-cn,
+.catalog-card.color-black .catalog-cn,
+.catalog-card.color-red .catalog-en,
+.catalog-card.color-black .catalog-en,
+.catalog-card.color-red .catalog-meta,
+.catalog-card.color-black .catalog-meta{
+  color:var(--grey);
+}
+.catalog-card.color-red .catalog-chip,
+.catalog-card.color-black .catalog-chip{
+  background:rgba(248,247,242,.16);
+  color:var(--grey);
+}
+.catalog-card.color-red .catalog-arrow,
+.catalog-card.color-black .catalog-arrow{
+  background:var(--grey);
+  color:var(--charcoal);
+}
+
+.more-card.color-red,
+.more-card.color-black{
+  color:var(--grey);
+}
+.more-card.color-red .more-title,
+.more-card.color-black .more-title,
+.more-card.color-red .more-sub,
+.more-card.color-black .more-sub{
+  color:var(--grey);
+}
+.more-card.color-red .more-sub,
+.more-card.color-black .more-sub{
+  opacity:.78;
+}
+.more-card.color-red .more-arrow,
+.more-card.color-black .more-arrow{
+  background:var(--grey);
+  color:var(--charcoal);
+}
+
+/* Keep the same contrast behavior if charcoal cards are reused in other lists. */
+.booking.color-red,
+.booking.color-black,
+.maybe-card.color-red,
+.maybe-card.color-black,
+.quick-btn.color-red,
+.quick-btn.color-black{
+  color:var(--grey);
+}
+.booking.color-red .type,
+.booking.color-red .title,
+.booking.color-red .meta,
+.booking.color-black .type,
+.booking.color-black .title,
+.booking.color-black .meta,
+.maybe-card.color-red .type,
+.maybe-card.color-red .title,
+.maybe-card.color-red .sub,
+.maybe-card.color-black .type,
+.maybe-card.color-black .title,
+.maybe-card.color-black .sub{
+  color:var(--grey);
+}
+
+
+/* v20 — iOS Safari / standalone PWA text color hardening for TODAY + PLAN.
+   WebKit can apply its control text fill color inside clickable buttons even when
+   the parent button inherits the intended CSS color. Force text-fill to follow
+   each element's resolved currentColor without changing the visual hierarchy. */
+#today button,
+#today button *,
+#plan button,
+#plan button *{
+  -webkit-text-fill-color:currentColor !important;
+}
+
+/* Explicit base colors for the clickable components used on these two screens. */
+#today .quick-btn{
+  color:var(--charcoal) !important;
+}
+#today .quick-btn .mini-title,
+#today .quick-btn p{
+  color:var(--muted) !important;
+}
+#today .action-btn.light{
+  color:var(--charcoal) !important;
+}
+#today .action-btn{
+  -webkit-text-fill-color:currentColor !important;
+}
+
+#plan .day-card:not(.color-red):not(.color-black) .event.clickable{
+  color:var(--charcoal) !important;
+}
+#plan .day-card.color-red .event.clickable,
+#plan .day-card.color-black .event.clickable{
+  color:var(--grey) !important;
+}
+#plan .event.clickable .time,
+#plan .event.clickable .title,
+#plan .event.clickable .sub{
+  color:inherit !important;
+  -webkit-text-fill-color:currentColor !important;
+}
+
+
+/* v21 — Travel note redesign: vivid ticket palette + swipe decks */
+:root{
+  --charcoal:#111111;
+  --grey:#F7F4ED;
+  --paper:#FBF8F1;
+  --ink:#111111;
+  --muted:rgba(17,17,17,.62);
+  --line:rgba(17,17,17,.10);
+  --red:#FF5A36;
+  --yellow:#F0FF62;
+  --blue:#5D7CFF;
+  --lav:#B68DFF;
+  --pink:#FF6EA9;
+  --mint:#65E36C;
+  --sand:#FFD687;
+  --warm-green:#65E36C;
+  --sage:#D9F2C8;
+  --lime:#F0FF62;
+  --shadow:0 14px 28px rgba(17,17,17,.12), 0 2px 0 rgba(17,17,17,.05);
+  --english:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+html{background:var(--paper)}
+body{background:
+radial-gradient(circle at top left, rgba(255,255,255,.75), transparent 36%),
+linear-gradient(180deg,#f6f2ea 0%,#f8f5ef 100%);
+color:var(--ink)}
+.app{padding:0 16px 132px}
+.page-top,.section-top{padding-top:calc(20px + env(safe-area-inset-top))}
+.kicker{font-size:10px;letter-spacing:.16em}
+.section-title,.hero-title{letter-spacing:-.075em}
+.section-sub,.hero-sub{max-width:34ch}
+.pill,.filter{background:rgba(255,255,255,.78);border:1px solid rgba(17,17,17,.07);box-shadow:none}
+.filter.active,.pill.active{background:var(--charcoal);color:var(--grey)}
+.banner,.money-total{border-radius:30px;position:relative;overflow:hidden}
+.banner::after,.money-total::after{content:'';position:absolute;right:-10px;top:-10px;width:72px;height:72px;background:var(--yellow);opacity:.75}
+.banner::after,.money-total::after{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 2L60 12L74 8L80 22L94 28L90 42L98 50L90 58L94 72L80 78L74 92L60 88L50 98L40 88L26 92L20 78L6 72L10 58L2 50L10 42L6 28L20 22L26 8L40 12Z'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='black' d='M50 2L60 12L74 8L80 22L94 28L90 42L98 50L90 58L94 72L80 78L74 92L60 88L50 98L40 88L26 92L20 78L6 72L10 58L2 50L10 42L6 28L20 22L26 8L40 12Z'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.bottom-nav{background:rgba(17,17,17,.96);border-radius:30px;padding:10px 10px calc(10px + env(safe-area-inset-bottom));box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.nav-btn{border-radius:20px;gap:3px;color:rgba(247,244,237,.72)}
+.nav-btn.active{background:var(--grey);color:var(--charcoal)}
+.nav-btn i{font-size:15px}
+.nav-btn .nav-label{font-size:8px;letter-spacing:.11em}
+
+.travel-shell{display:grid;gap:14px}
+.travel-head{position:relative;padding-top:6px}
+.travel-head .stamp-burst{position:absolute;right:0;top:4px;width:44px;height:44px;background:var(--yellow);transform:rotate(10deg);opacity:.92}
+.travel-head .stamp-burst.mask-a,.travel-head .stamp-burst.mask-b,.travel-head .stamp-burst.mask-c{-webkit-mask-size:100% 100%;mask-size:100% 100%}
+.travel-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.travel-chip{display:inline-flex;align-items:center;padding:8px 11px;border-radius:999px;background:#fff;border:1px solid rgba(17,17,17,.08);font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.deck-shell{display:grid;gap:12px;margin-top:12px}
+.deck-stage{position:relative;height:420px;overflow:visible;touch-action:pan-y;user-select:none}
+.deck-card{position:absolute;inset:0;border-radius:32px;padding:18px 18px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:flex-start;transform-origin:50% 100%;transition:transform .32s cubic-bezier(.2,.7,.1,1), opacity .28s ease, filter .25s ease;will-change:transform}
+.deck-card[data-tone="dark"]{color:var(--grey)}
+.deck-card.is-top{z-index:4}
+.deck-card.is-next{z-index:3}
+.deck-card.is-third{z-index:2}
+.deck-card.is-hidden{z-index:1;pointer-events:none}
+.deck-card.dragging{transition:none}
+.deck-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.deck-big{margin-top:10px;font-family:var(--english);font-size:clamp(34px,9vw,58px);line-height:.88;letter-spacing:-.075em;font-weight:900}
+.deck-title-ko{margin-top:8px;font-size:27px;font-weight:850;line-height:.98;letter-spacing:-.055em;word-break:keep-all}
+.deck-body{margin-top:10px;font-size:13px;line-height:1.52;max-width:28ch}
+.deck-list{display:grid;gap:9px;margin-top:14px}
+.deck-row{display:grid;grid-template-columns:58px 1fr;gap:10px;padding:10px 11px;border-radius:18px;background:rgba(255,255,255,.48);text-align:left}
+.deck-card[data-tone="dark"] .deck-row{background:rgba(255,255,255,.12)}
+.deck-row .time{font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.04em;padding-top:2px}
+.deck-row .title{font-size:14px;font-weight:800;line-height:1.22}
+.deck-row .sub{margin-top:4px;font-size:10px;line-height:1.4;opacity:.76}
+.deck-stamp{position:absolute;right:14px;top:14px;width:54px;height:54px;background:rgba(255,255,255,.55);opacity:.92}
+.deck-card[data-tone="dark"] .deck-stamp{background:rgba(255,255,255,.18)}
+.deck-note{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding-top:12px}
+.deck-mini{font-size:10px;line-height:1.35;opacity:.78;max-width:16ch}
+.deck-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ticket-mini,.action-btn,.action-btn.light{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.76);color:var(--charcoal);font-size:11px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;box-shadow:none;border:1px solid rgba(17,17,17,.08)}
+.deck-card[data-tone="dark"] .ticket-mini,.color-red .action-btn,.color-black .action-btn,.color-red .action-btn.light,.color-black .action-btn.light{background:rgba(255,255,255,.16);color:var(--grey);border-color:rgba(255,255,255,.10)}
+.deck-controls{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.deck-dots{display:flex;gap:6px;align-items:center}
+.deck-dot{width:8px;height:8px;border-radius:999px;background:rgba(17,17,17,.18);padding:0}
+.deck-dot.active{width:24px;background:var(--charcoal)}
+.deck-arrows{display:flex;gap:8px}
+.deck-nav-btn{width:42px;height:42px;border-radius:999px;background:var(--charcoal);color:var(--grey);display:grid;place-items:center;font-size:18px;font-weight:900}
+.deck-hint{font-size:11px;color:var(--muted)}
+.ticket-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ticket-shortcut{min-height:132px;padding:14px;border-radius:28px;box-shadow:var(--shadow);text-align:left;position:relative;overflow:hidden}
+.ticket-shortcut .small{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.72}
+.ticket-shortcut strong{display:block;margin-top:10px;font-family:var(--english);font-size:26px;line-height:.92;letter-spacing:-.06em}
+.ticket-shortcut p{margin:8px 0 0;font-size:12px;line-height:1.42;max-width:16ch}
+.ticket-shortcut .corner-stamp{position:absolute;right:10px;bottom:10px;width:38px;height:38px;background:rgba(17,17,17,.94)}
+.ticket-shortcut.color-red .corner-stamp,.ticket-shortcut.color-black .corner-stamp{background:rgba(255,255,255,.82)}
+
+.plan-deck .deck-stage{height:610px}
+.plan-ticket .deck-big{font-size:42px}
+.plan-ticket .day-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.plan-ticket .day-stay{font-size:11px;font-weight:700;opacity:.75;margin-top:8px}
+.plan-ticket .day-date{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.plan-ticket .day-date b{font-family:var(--english);font-size:18px;letter-spacing:-.05em}
+.plan-ticket .day-date span{display:inline-flex;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.65);font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.plan-ticket[data-tone="dark"] .day-date span{background:rgba(255,255,255,.16)}
+
+.journal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:16px}
+.journal-card{position:relative;aspect-ratio:1/1;text-align:left;padding:16px;border-radius:30px;box-shadow:var(--shadow);overflow:hidden;transform:rotate(var(--tilt,0deg));transition:transform .18s ease, box-shadow .18s ease}
+.journal-card:active{transform:rotate(var(--tilt,0deg)) translateY(2px) scale(.98)}
+.journal-card .catalog-chip{background:rgba(255,255,255,.66);border:1px solid rgba(17,17,17,.08)}
+.journal-card .catalog-name{font-size:clamp(19px,5.6vw,26px);line-height:1.05;margin-top:18px}
+.journal-card .catalog-meta{padding-right:34px}
+.journal-card .catalog-arrow{width:36px;height:36px;border-radius:14px;background:rgba(17,17,17,.95);bottom:12px;right:12px}
+.journal-card .journal-stamp{position:absolute;right:14px;top:14px;width:42px;height:42px;background:rgba(255,255,255,.58);opacity:.95}
+.journal-card .journal-perf{position:absolute;left:16px;right:16px;bottom:52px;height:1px;border-top:2px dotted rgba(17,17,17,.16)}
+.journal-card::before{content:'';position:absolute;inset:8px;border-radius:24px;border:1px solid rgba(17,17,17,.05);pointer-events:none}
+.catalog-card.color-red .journal-stamp,.catalog-card.color-black .journal-stamp{background:rgba(255,255,255,.18)}
+.catalog-card.color-red .catalog-chip,.catalog-card.color-black .catalog-chip{border-color:rgba(255,255,255,.14)}
+.catalog-card.color-red .catalog-arrow,.catalog-card.color-black .catalog-arrow{background:rgba(255,255,255,.88)}
+
+.more-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
+.more-card{position:relative;min-height:118px;text-align:left;padding:16px 16px 14px 18px;border-radius:32px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden}
+.more-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:14px;background:rgba(255,255,255,.26)}
+.more-card::after{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;border-left:2px dotted rgba(17,17,17,.13)}
+.more-title{margin:0 0 0 10px;font-family:var(--english);font-size:22px;font-weight:900;line-height:.98;letter-spacing:-.05em}
+.more-sub{margin:8px 0 0 10px;padding-right:50px;font-size:12px;line-height:1.45;color:rgba(17,17,17,.72)}
+.more-arrow{position:absolute;right:16px;bottom:14px;width:36px;height:36px;border-radius:14px;background:rgba(17,17,17,.95);display:grid;place-items:center;color:var(--grey);font-size:18px;font-weight:900}
+.more-stamp{position:absolute;right:18px;top:14px;width:30px;height:30px;background:rgba(255,255,255,.55)}
+.more-card.color-red .more-arrow,.more-card.color-black .more-arrow{background:rgba(255,255,255,.88);color:var(--charcoal)}
+.more-card.color-red .more-stamp,.more-card.color-black .more-stamp{background:rgba(255,255,255,.16)}
+
+.detail-top{padding:calc(18px + env(safe-area-inset-top)) 0 90px}.detail-card{border-radius:34px;padding:20px 18px 18px;box-shadow:var(--shadow)}
+.detail-card .name{font-size:34px;line-height:.95}.detail-card .type{letter-spacing:.12em}
+.photo-shell{margin-top:14px;padding:14px;border-radius:26px;background:rgba(255,255,255,.38)}
+.detail-section,.booking,.input-card,.talk-card,.check-row,.maybe-card,.weather-card,.emergency-card,.status-card,.notice-card{border-radius:28px;box-shadow:var(--shadow);border:1px solid rgba(17,17,17,.05)}
+.inline-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:999px;background:rgba(17,17,17,.92);color:var(--grey);font-size:11px;font-weight:800;letter-spacing:.05em}
+.readable-row,.talk-card,.check-row,.booking,.input-card,.maybe-card,.weather-card,.emergency-card{background:rgba(255,255,255,.76)}
+.action-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.secondary-back{padding-top:calc(16px + env(safe-area-inset-top))}
+.secondary-back button{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border-radius:999px;background:#fff;border:1px solid rgba(17,17,17,.08);font-size:12px;font-weight:800;letter-spacing:.05em;box-shadow:none}
+
+@media (max-width:560px){
+  .deck-stage{height:390px}
+  .plan-deck .deck-stage{height:610px}
+  .section-title{font-size:46px}
+  .ticket-shortcut strong{font-size:24px}
+}
+
+
+/* v22 — dark boarding pass / card-app redesign */
+:root{
+  --charcoal:#121212;
+  --ink:#F4F0E8;
+  --muted:rgba(244,240,232,.60);
+  --grey:#F4F0E8;
+  --paper:#161616;
+  --bg:#101010;
+  --line:rgba(244,240,232,.10);
+  --blue:#5C7CFF;
+  --blue-2:#7F96FF;
+  --blue-3:#324DFF;
+  --shadow:0 18px 40px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.03);
+}
+html{background:var(--bg)}
+body{background:radial-gradient(circle at 20% -10%, rgba(92,124,255,.18), transparent 30%), linear-gradient(180deg,#0e0e0f 0%,#151516 100%); color:var(--grey)}
+.app{width:min(100%,760px);padding:0 16px 126px}
+.kicker{color:var(--blue-2)}
+.hero-title,.section-title,.cryptic-title{font-family:var(--english);font-weight:900;letter-spacing:-.08em;color:var(--grey)}
+.cryptic-title{margin:8px 0 0;font-size:clamp(46px,12vw,76px);line-height:.88}
+.section-sub,.hero-sub{display:none}
+.minimal-head{padding-bottom:8px}
+.travel-head{position:relative}
+.travel-meta{margin-top:14px}
+.travel-chip,.pill,.filter{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--grey);backdrop-filter:blur(6px)}
+.filter.active,.pill.active{background:var(--blue);color:#fff;border-color:transparent}
+.bottom-nav{background:rgba(8,8,8,.92);border:1px solid rgba(255,255,255,.06);backdrop-filter:blur(18px)}
+.nav-btn{color:rgba(244,240,232,.45)}
+.nav-btn.active{background:var(--blue);color:#fff}
+.nav-btn .nav-label{font-size:7px;letter-spacing:.16em}
+.nav-btn i{font-size:14px}
+
+.stamp-burst{background:var(--blue)!important;opacity:1;box-shadow:0 10px 28px rgba(92,124,255,.32)}
+.wallet-stage,.pass-stage{height:430px}
+.plan-deck .pass-stage{height:610px}
+.deck-shell{margin-top:10px}
+.deck-card{background:linear-gradient(180deg,#1c1c1f 0%,#141416 100%);color:var(--grey);border:1px solid rgba(255,255,255,.06);border-radius:28px;padding:18px 18px 16px;overflow:hidden;box-shadow:var(--shadow)}
+.deck-card::before,.ticket-shortcut::before,.journal-card::before,.more-card::before,.detail-card::before{content:'';position:absolute;left:14px;right:14px;top:14px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.14),transparent)}
+.deck-card::after{content:'';position:absolute;left:0;right:0;bottom:78px;border-top:1px dashed rgba(255,255,255,.12)}
+.deck-card .deck-kicker{color:inherit;opacity:.72}
+.deck-card .deck-big{font-size:clamp(36px,10vw,58px);line-height:.84}
+.deck-card .deck-title-ko{font-family:var(--english);font-size:28px;line-height:.92;letter-spacing:-.06em;word-break:keep-all}
+.deck-card .deck-body{font-size:13px;line-height:1.5;color:inherit;opacity:.9}
+.deck-row{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.05);border-radius:18px}
+.deck-card[data-tone="light"] .deck-row{background:rgba(17,17,17,.06);border-color:rgba(17,17,17,.05)}
+.deck-mini{opacity:.72}
+.deck-note{padding-top:14px}
+.deck-stamp{width:48px;height:48px;right:14px;top:14px;background:rgba(255,255,255,.08)}
+.deck-controls{margin-top:6px}
+.deck-dot{background:rgba(255,255,255,.18)}
+.deck-dot.active{background:var(--blue)}
+.deck-nav-btn{background:var(--blue);color:#fff;box-shadow:0 10px 18px rgba(92,124,255,.24)}
+.ticket-mini,.action-btn,.action-btn.light,.inline-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:var(--grey)}
+.deck-card[data-tone="light"] .ticket-mini,.deck-card[data-tone="light"] .action-btn,.deck-card[data-tone="light"] .action-btn.light,.deck-card[data-tone="light"] .inline-btn{background:rgba(17,17,17,.06);color:var(--charcoal);border-color:rgba(17,17,17,.08)}
+
+/* palette remap */
+.color-black,.color-red{background:linear-gradient(180deg,#1d1d1f 0%,#111214 100%)!important;color:var(--grey)!important}
+.color-blue,.color-lav{background:linear-gradient(145deg,#6b86ff 0%, #4866ff 60%, #2f49ff 100%)!important;color:#fff!important}
+.color-yellow,.color-sand{background:linear-gradient(180deg,#f4f0e8 0%, #ece7df 100%)!important;color:#111!important}
+.color-pink{background:linear-gradient(180deg,#16181e 0%,#151821 100%)!important;color:var(--grey)!important}
+.color-mint{background:linear-gradient(180deg,#202534 0%,#161a25 100%)!important;color:var(--grey)!important}
+.color-pink::after,.color-mint::after,.color-black::after,.color-red::after{border-top-color:rgba(255,255,255,.14)}
+.color-yellow::after,.color-sand::after{border-top-color:rgba(17,17,17,.12)}
+.color-pink .deck-stamp,.color-mint .deck-stamp,.color-black .deck-stamp,.color-red .deck-stamp{background:rgba(255,255,255,.08)}
+.color-yellow .deck-stamp,.color-sand .deck-stamp{background:rgba(17,17,17,.08)}
+.ticket-shortcut,.journal-card,.more-card,.detail-card,.booking,.input-card,.talk-card,.check-row,.maybe-card,.weather-card,.emergency-card,.status-card,.notice-card{position:relative;background:linear-gradient(180deg,#1b1b1d 0%,#151517 100%);color:var(--grey);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow)}
+.ticket-shortcut.color-yellow,.journal-card.color-yellow,.journal-card.color-sand,.more-card.color-yellow,.more-card.color-sand{background:linear-gradient(180deg,#f4f0e8 0%, #ece7df 100%);color:#111}
+.ticket-shortcut.color-blue,.journal-card.color-blue,.journal-card.color-lav,.more-card.color-blue,.more-card.color-lav{background:linear-gradient(145deg,#6b86ff 0%, #4866ff 60%, #2f49ff 100%);color:#fff}
+.ticket-shortcut.color-black,.journal-card.color-black,.journal-card.color-red,.more-card.color-black,.more-card.color-red{background:linear-gradient(180deg,#1d1d1f 0%,#111214 100%);color:var(--grey)}
+.ticket-shortcut.color-lav,.journal-card.color-mint,.more-card.color-mint,.ticket-shortcut.color-lav{background:linear-gradient(180deg,#202534 0%,#161a25 100%);color:var(--grey)}
+.quick-wallet-grid{margin-top:4px}
+.ticket-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ticket-shortcut{min-height:124px;border-radius:24px;padding:15px 14px 14px;overflow:hidden}
+.ticket-shortcut::after{content:'';position:absolute;left:0;right:0;bottom:46px;border-top:1px dashed currentColor;opacity:.16}
+.ticket-shortcut strong{font-family:var(--english);font-size:28px;line-height:.9;letter-spacing:-.06em;margin-top:14px}
+.ticket-shortcut p{font-size:11px;line-height:1.35;opacity:.82}
+.ticket-shortcut .small{font-size:10px;letter-spacing:.16em;opacity:.7}
+.ticket-shortcut .corner-stamp{background:rgba(255,255,255,.10)}
+.ticket-shortcut.color-yellow .corner-stamp,.ticket-shortcut.color-sand .corner-stamp{background:rgba(17,17,17,.10)}
+
+.wallet-grid{gap:12px}
+.journal-card{aspect-ratio:0.93/1;border-radius:24px;padding:14px 14px 16px;transform:none!important}
+.journal-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:14px;background:var(--blue)}
+.journal-card.color-yellow::after,.journal-card.color-sand::after{background:#111}
+.journal-card.color-blue::after,.journal-card.color-lav::after,.journal-card.color-mint::after{background:rgba(255,255,255,.22)}
+.journal-card .catalog-chip{background:transparent;border:0;padding:0;font-size:9px;letter-spacing:.14em;text-transform:uppercase;opacity:.64;color:inherit}
+.wallet-code{position:absolute;right:14px;top:14px;font-family:var(--english);font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.72}
+.journal-card .catalog-name{margin-top:34px;font-family:var(--english);font-size:26px;line-height:.92;letter-spacing:-.06em}
+.journal-card .catalog-en{margin-top:8px;font-size:12px;opacity:.72}
+.journal-card .catalog-meta{position:absolute;left:14px;right:14px;bottom:18px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.78;padding-right:36px}
+.journal-card .catalog-arrow{width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.12);color:inherit;right:12px;bottom:16px}
+.journal-card.color-yellow .catalog-arrow,.journal-card.color-sand .catalog-arrow{background:rgba(17,17,17,.08)}
+.journal-card .journal-stamp,.journal-perf,.catalog-cn{display:none}
+.visited::after{box-shadow:inset 0 0 0 2px rgba(92,124,255,.0)}
+
+.ctrl-grid{gap:10px}
+.more-card{min-height:92px;border-radius:22px;padding:14px 50px 14px 16px;overflow:hidden}
+.more-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--blue)}
+.more-card::after{display:none}
+.more-index{font-family:var(--english);font-size:10px;letter-spacing:.18em;opacity:.58}
+.more-title{margin:6px 0 0;font-size:30px;line-height:.9;letter-spacing:-.06em}
+.more-sub{margin-top:6px;padding-right:0;font-size:11px;opacity:.72;color:inherit}
+.more-arrow{right:12px;top:50%;bottom:auto;transform:translateY(-50%);width:34px;height:34px;border-radius:12px;background:rgba(255,255,255,.12);color:inherit}
+.more-card.color-yellow .more-arrow,.more-card.color-sand .more-arrow{background:rgba(17,17,17,.08)}
+.more-stamp{display:none}
+
+.plan-ticket .day-stay{font-family:var(--english);font-size:22px;line-height:.95;opacity:1;margin-top:10px}
+.plan-ticket .day-date b{font-size:14px;letter-spacing:.12em}
+.plan-ticket .day-date span{background:rgba(255,255,255,.10);border-radius:14px;padding:8px 10px;max-width:96px;text-align:right;line-height:1.25}
+.plan-ticket[data-tone="light"] .day-date span{background:rgba(17,17,17,.07)}
+
+.secondary-back button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);color:var(--grey)}
+.detail-top{padding-bottom:86px}
+.detail-card .name{font-family:var(--english);font-size:38px;letter-spacing:-.07em;color:inherit}
+.photo-shell{background:rgba(255,255,255,.04)}
+input,textarea,select{background:rgba(255,255,255,.06);color:var(--grey);border-color:rgba(255,255,255,.08)}
+.booking label,.detail-label{color:var(--blue-2)}
+textarea::placeholder,input::placeholder{color:rgba(244,240,232,.45)}
+#today button *,#plan button *,#spots button *,#eat button *,#more button *{-webkit-text-fill-color:currentColor !important}
+@media (max-width:560px){.pass-stage{height:596px}.wallet-stage{height:420px}.more-title{font-size:28px}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <section id="today" class="view"></section>
+  <section id="plan" class="view"></section>
+  <section id="spots" class="view"></section>
+  <section id="eat" class="view"></section>
+  <section id="book" class="view"></section>
+  <section id="money" class="view"></section>
+  <section id="talk" class="view"></section>
+  <section id="check" class="view"></section>
+  <section id="maybe" class="view"></section>
+  <section id="more" class="view"></section>
+  <section id="weather" class="view"></section>
+  <section id="emergency" class="view"></section>
+  <section id="detail" class="view"></section>
+</div>
+<nav class="bottom-nav" id="bottomNav"></nav>
+<div class="toast" id="toast">COPIED</div>
+<script>
+const COLORS=['color-red','color-yellow','color-blue','color-lav','color-pink','color-mint','color-sand'];
+const MASKS=['mask-a','mask-b','mask-c'];
+const SPOT_KO={jiefangbei:'해방비',hongyadong:'홍야동',bayi:'바이이 하오츠제',tmpgov:'대한민국 임시정부 청사',tiansheng:'천생삼교',fairymountain:'선녀산',longshuixia:'용수협지봉',guanyinqiao:'관음교',jiujie:'구가',luohansi:'나한사',ciqikou:'자기구고진',liziba:'리즈바역',ering:'어링얼창',shibati:'십팔제',xiahao:'샤하오리'};
+const FOOD_KO={milktea:'밀크티',yangrou:'우롱 양고기',kaoyu:'카오위',xiaomian:'충칭 샤오몐',xiaolongxia:'마라롱샤',dimsum:'딤섬'};
+const MORE_ITEMS=[
+  {id:'book',title:'BOOKINGS',sub:'항공·기차·숙소·입장권'},
+  {id:'money',title:'MONEY',sub:'예산과 커플 공동지출'},
+  {id:'talk',title:'TALK',sub:'중국어 문장 복사'},
+  {id:'check',title:'CHECK',sub:'예약·결제·준비물'},
+  {id:'maybe',title:'MAYBE',sub:'시간 남으면 갈 곳'},
+  {id:'weather',title:'WEATHER',sub:'충칭·우롱 날씨와 운영 확인'},
+  {id:'emergency',title:'EMERGENCY',sub:'긴급전화와 도움 요청 문장'}
+];
+const DAYS=[
+  {id:1,date:'08.25',dow:'TUE',name:'도착일',place:'충칭 · Fandiao Meiju',sleep:'Fandiao Meiju',food:'밀크티 · 야시장',events:[
+    ['18:05','충칭 도착','입국 후 지하철 또는 택시 이동'],
+    ['19:30','숙소 체크인','지에팡베이 인근'],
+    ['20:10','해방비','야경 · 산책','spot','jiefangbei'],
+    ['20:40','밀크티 한 잔','첫날 가볍게','food','milktea'],
+    ['21:10','홍야동','야경 보기','spot','hongyadong'],
+    ['22:10','바이이 하오츠제','야시장 간식','spot','bayi']
+  ]},
+  {id:2,date:'08.26',dow:'WED',name:'우롱 1일차',place:'충칭 → 우롱',sleep:'우롱 숙소',food:'우롱 양고기',events:[
+    ['09:00','임정청사','오전 한 곳만 보기','spot','tmpgov'],
+    ['11:46','충칭동 → 우롱남','고속철 이동'],
+    ['14:00','천생삼교','오후 메인 코스','spot','tiansheng'],
+    ['18:30','우롱 양고기','저녁 식사','food','yangrou']
+  ]},
+  {id:3,date:'08.27',dow:'THU',name:'우롱 → 충칭',place:'우롱 → 충칭',sleep:'Fandiao Apartment',food:'카오위',events:[
+    ['08:00','선녀산','아침 산책','spot','fairymountain'],
+    ['11:00','용수협지봉','협곡 코스','spot','longshuixia'],
+    ['17:03','우롱남 → 충칭동','고속철 복귀'],
+    ['19:30','관음교','저녁 상권','spot','guanyinqiao'],
+    ['20:30','카오위','충칭 복귀 첫 저녁','food','kaoyu'],
+    ['22:00','구가(九街)','밤거리 옵션','spot','jiujie']
+  ]},
+  {id:4,date:'08.28',dow:'FRI',name:'충칭 시내',place:'충칭 시내 풀데이',sleep:'Fandiao Apartment',food:'딤섬 · 샤오몐 · 마라롱샤',events:[
+    ['08:40','나한사','아침 방문','spot','luohansi'],
+    ['10:00','자기구고진','간식·기념품','spot','ciqikou'],
+    ['12:00','리즈바역','경전철 사진','spot','liziba'],
+    ['12:40','어링얼창','카페 쉬기','spot','ering'],
+    ['13:20','샤오몐','가볍게 점심','food','xiaomian'],
+    ['17:00','십팔제','구도심 산책','spot','shibati'],
+    ['18:30','샤하오리','해질 무렵 산책','spot','xiahao'],
+    ['20:30','마라롱샤','야식 타임','food','xiaolongxia']
+  ]},
+  {id:5,date:'08.29',dow:'SAT',name:'귀국일',place:'충칭 → 지난 → 인천',sleep:'귀가',food:'산둥 한 끼',events:[
+    ['08:30','샤오몐 또는 간단 조식','출국 전 마지막 식사','food','xiaomian'],
+    ['10:10','공항 이동','충칭 강북공항'],
+    ['13:30','충칭 → 지난','환승'],
+    ['16:20','산둥 음식 · 카페','지난 공항 활용'],
+    ['20:10','지난 → 인천','22:40 도착']
+  ]}
+];
+const SPOTS={
+  jiefangbei:{kind:'City',name:'Jiefangbei',cn:'解放碑',area:'충칭 시내',date:'08.25',duration:'40–60 min',search:'解放碑步行街',map:'解放碑步行街 重庆',summary:'충칭 중심 상권. 첫날 밤 분위기를 보기 가장 좋고, 야시장·밀크티·쇼핑을 붙이기 쉽습니다.',highlights:['보행자 거리 산책','네온사인과 야경','밀크티·간식 동선 연결'],tips:['홍야동과 같은 날 묶기 좋음','밤 8시 이후 분위기가 더 좋음'],photo:'https://loremflickr.com/960/720/chongqing,city?lock=101'},
+  hongyadong:{kind:'Night View',name:'Hongyadong',cn:'洪崖洞',area:'충칭 시내',date:'08.25',duration:'45–60 min',search:'洪崖洞',map:'洪崖洞 重庆',summary:'충칭 대표 야경 스팟. 층층이 쌓인 건물과 강가 조명이 포인트입니다.',highlights:['강변 야경','건물 조명','포토 스폿'],tips:['해방비에서 같이 보기 좋음','사람 많아도 외곽에서 보는 뷰가 예쁨'],photo:'https://loremflickr.com/960/720/hongyadong,chongqing?lock=102'},
+  bayi:{kind:'Market',name:'Bayi Street',cn:'八一好吃街',area:'충칭 시내',date:'08.25',duration:'30–50 min',search:'八一好吃街',map:'八一好吃街 重庆',summary:'충칭 대표 먹거리 거리. 여러 간식을 나눠먹기 좋습니다.',highlights:['산라펀·꼬치·빙펀','짧게 둘러보기 좋음'],tips:['메인 저녁 후 2차 간식 장소로 적합'],photo:'https://loremflickr.com/960/720/streetfood,china?lock=103'},
+  tmpgov:{kind:'Museum',name:'KPG Building',cn:'大韩民国临时政府旧址陈列馆',area:'충칭 시내',date:'08.26',duration:'40–60 min',search:'大韩民国临时政府旧址陈列馆',map:'大韩民国临时政府旧址陈列馆 重庆',summary:'대한민국 임시정부 청사 유적 전시관. 오전 한 곳으로 보기 좋습니다.',highlights:['한국 관련 역사 전시','비교적 짧게 관람 가능'],tips:['8/26 오전에 방문 후 역 이동 추천'],photo:'https://loremflickr.com/960/720/museum,history?lock=104'},
+  tiansheng:{kind:'Nature',name:'Three Bridges',cn:'天生三桥',area:'우롱',date:'08.26',duration:'2–3 hr',search:'天生三桥 武隆',map:'天生三桥 武隆',summary:'우롱 대표 명소. 거대한 천연 석교와 영화 같은 풍경이 특징입니다.',highlights:['거대한 석교 지형','우롱 대표 포인트','걷는 구간이 많음'],tips:['오후 메인 일정으로 배정','운동화 필수'],photo:'https://loremflickr.com/960/720/canyon,bridge,nature?lock=105'},
+  fairymountain:{kind:'Nature',name:'Fairy Mountain',cn:'仙女山',area:'우롱',date:'08.27',duration:'1.5–2 hr',search:'仙女山 国家森林公园',map:'仙女山 国家森林公园',summary:'넓은 초원과 삼림이 있는 우롱의 고원 지대. 아침 산책 코스로 적당합니다.',highlights:['시원한 고원 분위기','초원·삼림 풍경'],tips:['아침 일찍 가면 비교적 쾌적함'],photo:'https://loremflickr.com/960/720/mountain,meadow?lock=106'},
+  longshuixia:{kind:'Nature',name:'Longshuixia Rift',cn:'龙水峡地缝',area:'우롱',date:'08.27',duration:'1.5–2 hr',search:'龙水峡地缝 武隆',map:'龙水峡地缝 武隆',summary:'깊은 협곡 사이를 걷는 코스. 계단과 젖은 바닥이 있어 미끄럼 주의가 필요합니다.',highlights:['깊은 협곡 풍경','우롱 대표 협곡 코스'],tips:['선녀산 후 방문 추천','우비나 미끄럼 주의'],photo:'https://loremflickr.com/960/720/canyon,waterfall?lock=107'},
+  guanyinqiao:{kind:'District',name:'Guanyinqiao',cn:'观音桥',area:'충칭 시내',date:'08.27',duration:'2–3 hr',search:'观音桥步行街',map:'观音桥步行街 重庆',summary:'젊은 상권과 쇼핑, 식당이 모인 번화가. 카오위 저녁과 잘 어울립니다.',highlights:['쇼핑몰·상권','야간 분위기'],tips:['북창문창거리와 함께 보기 좋음'],photo:'https://loremflickr.com/960/720/shopping,city,night?lock=108'},
+  jiujie:{kind:'Night Area',name:'Jiujie',cn:'九街',area:'충칭 시내',date:'08.27',duration:'1–2 hr',search:'九街 重庆',map:'九街 重庆',summary:'관음교 권역의 밤거리. 늦게까지 활기가 남는 편입니다.',highlights:['심야 상권','술집·야식'],tips:['체력 남으면 옵션으로 방문'],photo:'https://loremflickr.com/960/720/nightlife,street?lock=109'},
+  luohansi:{kind:'Temple',name:'Luohansi',cn:'罗汉寺',area:'충칭 시내',date:'08.28',duration:'30–45 min',search:'罗汉寺 重庆',map:'罗汉寺 重庆',summary:'도심 속 사찰. 아침에 비교적 조용하게 보기 좋습니다.',highlights:['짧게 보기 좋은 사찰','도심 속 분위기 전환'],tips:['이른 아침 방문 추천'],photo:'https://loremflickr.com/960/720/temple,china?lock=110'},
+  ciqikou:{kind:'Old Town',name:'Ciqikou',cn:'磁器口古镇',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'磁器口古镇',map:'磁器口古镇 重庆',summary:'오래된 골목과 간식, 기념품 가게가 모여 있는 고진. 천마화 쇼핑에 좋습니다.',highlights:['기념품·간식 쇼핑','골목 산책'],tips:['너무 오래 있지 말고 핵심만 보기'],photo:'https://loremflickr.com/960/720/oldtown,china?lock=111'},
+  liziba:{kind:'Photo Spot',name:'Liziba',cn:'李子坝',area:'충칭 시내',date:'08.28',duration:'30–40 min',search:'李子坝观景平台',map:'李子坝观景平台 重庆',summary:'건물을 통과하는 경전철로 유명한 포토 스폿.',highlights:['모노레일 사진','짧게 보기 좋음'],tips:['맞은편 플랫폼에서 사진 찍기'],photo:'https://loremflickr.com/960/720/train,city?lock=112'},
+  ering:{kind:'Creative Park',name:'Eling No.2',cn:'鹅岭二厂',area:'충칭 시내',date:'08.28',duration:'1 hr',search:'鹅岭二厂',map:'鹅岭二厂 重庆',summary:'옛 공장을 개조한 문창공간. 카페 쉬기 좋고 사진 찍기 좋습니다.',highlights:['카페·소품샵','문창 감성'],tips:['리즈바와 함께 묶기 좋음'],photo:'https://loremflickr.com/960/720/cafe,creative,industrial?lock=113'},
+  shibati:{kind:'Old Street',name:'Shibati',cn:'十八梯',area:'충칭 시내',date:'08.28',duration:'45–60 min',search:'十八梯传统风貌区',map:'十八梯传统风貌区 重庆',summary:'충칭의 계단형 구도심 풍경을 보기 좋은 곳.',highlights:['계단 골목','야간 산책'],tips:['늦은 오후 방문 추천'],photo:'https://loremflickr.com/960/720/oldstreet,stairs?lock=114'},
+  xiahao:{kind:'Old Street',name:'Xiahaoli',cn:'下浩里',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'下浩里老街',map:'下浩里老街 重庆',summary:'남안구의 오래된 산비탈 거리. 해질 무렵 분위기가 좋습니다.',highlights:['골목·계단 풍경','야경 전 산책'],tips:['룽먼하오와 이어보기 좋음'],photo:'https://loremflickr.com/960/720/oldstreet,night?lock=115'}
+};
+const FOODS={
+  milktea:{kind:'Drink',name:'Milk Tea',cn:'奶茶',date:'08.25',duration:'10 min',search:'奶茶 少糖 少冰',map:'奶茶 重庆',summary:'첫날 해방비에서 한 잔. 주문할 때는 당도와 얼음을 같이 말하면 편합니다.',order:['三分糖 = 30% 당도','少冰 = 얼음 적게','珍珠 = 펄 추가'],tips:['더우면 첫 잔으로 좋음'],photo:'https://loremflickr.com/960/720/milk-tea?lock=201'},
+  yangrou:{kind:'Dinner',name:'Wulong Lamb',cn:'碗碗羊肉 / 羊肉汤',date:'08.26',duration:'1 hr',search:'羊肉汤 武隆',map:'羊肉汤 武隆',summary:'우롱에서 먹는 지역식 저녁. 뜨끈하고 든든한 편입니다.',order:['양고기탕 또는 양고기 볶음','밥이나 면 추가 가능'],tips:['천생삼교 후 저녁으로 무난함'],photo:'https://loremflickr.com/960/720/lamb,soup?lock=202'},
+  kaoyu:{kind:'Dinner',name:'Kao Yu',cn:'烤鱼',date:'08.27',duration:'1–1.5 hr',search:'烤匠麻辣烤鱼 观音桥',map:'烤匠麻辣烤鱼 观音桥',summary:'생선을 구운 뒤 육수와 함께 내는 충칭식 카오위. 둘이 먹기 좋습니다.',order:['麻辣烤鱼 또는 豆花烤鱼','채소 추가 가능','맵기 微辣 가능'],tips:['관음교 저녁 메인 메뉴로 추천'],photo:'https://loremflickr.com/960/720/grilled-fish,food?lock=203'},
+  xiaomian:{kind:'Noodle',name:'Xiao Mian',cn:'重庆小面',date:'08.28 / 08.29',duration:'20–30 min',search:'重庆小面',map:'重庆小面 重庆',summary:'충칭식 매운 면. 점심이나 출국 전 간단한 식사로 좋습니다.',order:['기본 샤오몐','맵기 조절 가능'],tips:['땅콩·파 향이 강할 수 있음'],photo:'https://loremflickr.com/960/720/noodles,china?lock=204'},
+  xiaolongxia:{kind:'Late Night',name:'Mala Crayfish',cn:'麻辣小龙虾',date:'08.28',duration:'1–1.5 hr',search:'麻辣小龙虾 解放碑',map:'麻辣小龙虾 重庆',summary:'마라 양념 가재. 밤에 맥주와 함께 먹기 좋습니다.',order:['麻辣味 + 蒜蓉味 반반','장갑·물티슈 준비'],tips:['맵기 부담되면 蒜蓉味 섞기'],photo:'https://loremflickr.com/960/720/crayfish,food?lock=205'},
+  dimsum:{kind:'Brunch',name:'Dim Sum',cn:'点心 / 虾饺 / 烧卖',date:'옵션',duration:'45–60 min',search:'港式点心 解放碑',map:'港式点心 重庆',summary:'하가우, 샤오마이, 창펀을 가볍게 먹는 홍콩식 브런치 옵션.',order:['虾饺皇','烧卖','肠粉','流沙包'],tips:['오전 식사 옵션으로 좋음'],photo:'https://loremflickr.com/960/720/dim-sum?lock=206'}
+};
+const BOOKINGS=[
+  {type:'Flight',title:'ICN → TAO → CKG',color:'color-red',meta:['08.25 12:15–12:50 인천→칭다오','15:10–18:05 칭다오→충칭'],note:'칭다오 경유 · 위탁수하물 없음',code:'DAY 01'},
+  {type:'Train',title:'CKG East → Wulong South',color:'color-yellow',meta:['08.26 고속철 이동','11:46 출발 기준으로 계획'],note:'역명은 武隆南 확인',code:'DAY 02'},
+  {type:'Hotel',title:'Fandiao Meiju',color:'color-blue',meta:['08.25–08.26 1박','충칭 첫 숙소'],note:'지에팡베이 인근',code:'HOTEL 1'},
+  {type:'Hotel',title:'Wulong Stay',color:'color-lav',meta:['08.26–08.27 1박','우롱 숙소'],note:'천생삼교·선녀산 이동 고려',code:'HOTEL 2'},
+  {type:'Hotel',title:'Fandiao Apartment',color:'color-pink',meta:['08.27–08.29 2박','충칭 복귀 숙소'],note:'외국인 숙박등록 가능 여부 확인',code:'HOTEL 3'},
+  {type:'Ticket',title:'Wulong Scenic Tickets',color:'color-mint',meta:['천생삼교','용수협지봉','선녀산'],note:'공연 제외 버전',code:'TICKET'},
+  {type:'Flight',title:'CKG → TNA → ICN',color:'color-sand',meta:['08.29 13:30–15:45 충칭→지난','20:10–22:40 지난→인천'],note:'지난 공항 환승 4시간 25분',code:'DAY 05'}
+];
+const MAYBE=[
+  {type:'Spot',title:'북창문창거리',cn:'北仓文创街区',why:'관음교와 붙여 보기 좋은 카페·문창 구역',when:'8/27 밤'},
+  {type:'Spot',title:'쿠이싱러우',cn:'魁星楼',why:'해방비·홍야동 사이 짧게 끼우기 좋은 포인트',when:'8/25 밤'},
+  {type:'Spot',title:'룽먼하오 라오제',cn:'龙门浩老街',why:'샤하오리와 이어서 야경 보기 좋은 거리',when:'8/28 저녁'},
+  {type:'Food',title:'방공호 훠궈',cn:'防空洞火锅',why:'방공호 훠궈. 일정이 너무 빡빡하지 않으면 후보',when:'충칭 시내 여유 생길 때'},
+  {type:'Food',title:'천마화',cn:'陈麻花',why:'자기구고진 기념품 과자',when:'8/28 오전'}
+];
+const PHRASES=[
+ ['한국 여권으로 숙박 가능한가요?','韩国护照可以入住吗？'],
+ ['외국인 숙박등록 가능한가요?','可以办理外国人住宿登记吗？'],
+ ['체크인하고 싶어요.','我想办理入住。'],
+ ['체크아웃하고 싶어요.','我想办理退房。'],
+ ['짐을 잠시 맡아주실 수 있나요?','可以帮我寄存一下行李吗？'],
+ ['이 주소로 가주세요.','请带我去这个地址。'],
+ ['여기서 내려주세요.','请在这里停车。'],
+ ['우롱남역 맞나요?','是武隆南站吗？'],
+ ['이 장소가 어디예요?','这个地方在哪里？'],
+ ['여기까지 어떻게 가나요?','去这里怎么走？'],
+ ['고덕지도에서 이 이름을 검색해주세요.','请在高德地图搜索这个名字。'],
+ ['두 명이에요.','两位。'],
+ ['예약했어요.','我有预约。'],
+ ['추천 메뉴가 뭐예요?','有什么推荐菜？'],
+ ['덜 맵게 해주세요.','请少辣一点。'],
+ ['맵지 않게 해주세요.','请不要辣。'],
+ ['마라맛과 마늘맛 반반 가능한가요?','麻辣和蒜蓉可以各来一半吗？'],
+ ['포장해 주세요.','请帮我打包。'],
+ ['물 한 병 주세요.','请给我一瓶水。'],
+ ['이거 얼마예요?','这个多少钱？'],
+ ['조금 깎아주실 수 있나요?','可以便宜一点吗？'],
+ ['계산할게요.','买单，谢谢。'],
+ ['영수증 주세요.','请给我小票。'],
+ ['알리페이로 결제할 수 있나요?','可以用支付宝吗？'],
+ ['카드도 되나요?','可以刷卡吗？'],
+ ['화장실이 어디예요?','洗手间在哪里？'],
+ ['사진 찍어주실 수 있나요?','可以帮我们拍张照片吗？'],
+ ['좀 더 천천히 말씀해 주세요.','请说慢一点。'],
+ ['인터넷 비밀번호가 뭐예요?','Wi-Fi密码是什么？'],
+ ['도와주세요.','请帮帮我。']
+];
+const CHECKS=['여권 유효기간 확인','Alipay 해외카드 등록·본인인증','WeChat 결제수단 준비','12306 로그인 및 실명인증','충칭동 ↔ 우롱남 왕복 고속철 예약','우롱 숙소 위치 확정','Fandiao Apartment 외국인 숙박등록 확인','우롱 입장권 확인','두 숙소 중국어 주소 저장','고덕지도 즐겨찾기 저장','보조배터리·우산·우비·운동화 준비','현금 비상용 준비','칭다오·지난 환승 동선 확인'];
+const STORE='cqTripV16';
+let state={base:1800,shop:250,expenseNote:'',splitItems:[],freeNote:'',visitedSpots:{},visitedFoods:{},bookingMemos:{},detailMemos:{spot:{},food:{}}};
+try{state={...state,...JSON.parse(localStorage.getItem(STORE)||localStorage.getItem('cqTripV11')||localStorage.getItem('cqTripV8')||localStorage.getItem('cqTripV7')||localStorage.getItem('cqTripV6')||'{}')}}catch(e){}
+state.bookingMemos=state.bookingMemos||{};state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos.spot=state.detailMemos.spot||{};state.detailMemos.food=state.detailMemos.food||{};
+const save=()=>localStorage.setItem(STORE,JSON.stringify(state));
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const color=i=>COLORS[(i%COLORS.length+COLORS.length)%COLORS.length];
+const mask=i=>MASKS[(i%MASKS.length+MASKS.length)%MASKS.length];
+function toast(msg='COPIED'){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__tt);window.__tt=setTimeout(()=>t.classList.remove('show'),950)}
+async function copyText(v){try{await navigator.clipboard.writeText(v);toast()}catch(e){toast('LONG PRESS TO COPY')}}
+function nav(current){
+  const group=['book','money','talk','check','maybe','weather','emergency'].includes(current)?'more':current;
+  const items=[['today','◎','TODAY'],['plan','◷','PLAN'],['spots','⌖','SPOTS'],['eat','✦','EAT'],['more','•••','MORE']];
+  document.getElementById('bottomNav').innerHTML=items.map(([id,icon,label])=>`<button class="nav-btn ${group===id?'active':''}" aria-label="${label}" onclick="go('${id}')"><i>${icon}</i><span class="nav-label">${label}</span></button>`).join('');
+}
+
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
+function go(id){location.hash=id}
+function openDetail(type,id,from){location.hash=`detail/${type}/${id}/${from||'plan'}`}
+function toggleVisited(type,id){const key=type==='spot'?'visitedSpots':'visitedFoods';state[key]=state[key]||{};state[key][id]=!state[key][id];save();route()}
+function isVisited(type,id){const key=type==='spot'?'visitedSpots':'visitedFoods';return !!(state[key]&&state[key][id])}
+function mapLinks(query){const q=encodeURIComponent(query);return {amap:`https://uri.amap.com/search?keyword=${q}&view=map&src=chongqing-trip&callnative=1`,google:`https://www.google.com/maps/search/?api=1&query=${q}`}}
+function getTodayData(){const now=new Date();const start=new Date('2026-08-25T00:00:00');const end=new Date('2026-08-29T23:59:59');
+  if(now < start){const diff=Math.ceil((start-now)/(1000*60*60*24));return {mode:'countdown',label:`D-${diff}`,title:'여행 준비',day:DAYS[0],subtitle:'여행 전 준비 단계'};}
+  if(now > end){return {mode:'done',label:'DONE',title:'여행 종료',day:DAYS[DAYS.length-1],subtitle:'여행 종료'};}
+  const idx=Math.min(DAYS.length-1,Math.max(0,Math.floor((new Date(now.getFullYear(),now.getMonth(),now.getDate())-new Date(2026,7,25))/(1000*60*60*24))));
+  return {mode:'during',label:`DAY ${idx+1}`,title:DAYS[idx].name,day:DAYS[idx],subtitle:DAYS[idx].place};
+}
+function nextEventForDay(day){const now=new Date();const hh=String(now.getHours()).padStart(2,'0');const mm=String(now.getMinutes()).padStart(2,'0');const current=`${hh}:${mm}`;const timed=day.events.filter(e=>/^\d{2}:\d{2}$/.test(e[0]));return timed.find(e=>e[0]>=current)||timed[timed.length-1]||day.events[0]}
+function renderToday(){
+  const t=getTodayData();
+  const day=t.day;
+  const next=t.mode==='during'?nextEventForDay(day):day.events[0];
+  const nextFood=day.events.find(e=>e[3]==='food');
+  const todayCards=[
+    {
+      color:'color-black', tone:'dark', stamp:0,
+      kicker:'LIVE', big:t.mode==='during'?'NOW':'D-1', title:t.label,
+      body:`${t.title}<br>${day.date} · ${day.dow}`,
+      note:`${day.sleep}`,
+      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('plan')">PLAN</button><button class="ticket-mini" onclick="go('book')">PASS</button></div>`
+    },
+    {
+      color:'color-blue', tone:'dark', stamp:1,
+      kicker:'NEXT', big:'→', title:next[1],
+      body:`${next[0]}<br>${next[2]||''}`,
+      note:`FOOD · ${nextFood?nextFood[1]:day.food}`,
+      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('eat')">EAT</button><button class="ticket-mini" onclick="go('spots')">SPOTS</button></div>`
+    },
+    {
+      color:'color-yellow', tone:'light', stamp:2,
+      kicker:'ROUTE', big:day.id<10?`0${day.id}`:String(day.id), title:day.name,
+      body:`${day.events.slice(0,4).map(e=>`<div class="deck-row"><div class="time">${e[0]}</div><div><div class="title">${e[1]}</div><div class="sub">${e[2]||''}</div></div></div>`).join('')}`,
+      note:`SWIPE`,
+      extra:''
+    },
+    {
+      color:'color-lav', tone:'dark', stamp:0,
+      kicker:'CTRL', big:'+7', title:'TOOLS',
+      body:'BOOK · MONEY · TALK · CHECK',
+      note:`기능은 그대로, 표정만 바꿨습니다.`,
+      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('money')">SPLIT</button><button class="ticket-mini" onclick="go('more')">MORE</button></div>`
+    }
+  ];
+  document.getElementById('today').innerHTML=`
+    <div class="travel-shell dark-mode-shell">
+      <div class="travel-head page-top minimal-head">
+        <div class="kicker">CHONGQING / LIVE</div>
+        <h1 class="section-title cryptic-title">CITY</h1>
+        <div class="stamp-burst ${mask(1)}"></div>
+        <div class="travel-meta"><span class="travel-chip">08.25–08.29</span><span class="travel-chip">2P</span><span class="travel-chip">CKG ↔ WULONG</span></div>
+      </div>
+      <div class="deck-shell" id="todayDeck">
+        <div class="deck-stage wallet-stage">${todayCards.map((c,i)=>`<article class="deck-card wallet-card ${c.color}" data-index="${i}" data-tone="${c.tone}"><div class="deck-stamp ${mask(c.stamp)}"></div><div class="deck-kicker">${c.kicker}</div><div class="deck-big">${c.big}</div><div class="deck-title-ko">${c.title}</div><div class="deck-body">${c.body}</div>${c.extra}<div class="deck-note"><div class="deck-mini">${c.note}</div><div class="deck-mini">${i+1}/${todayCards.length}</div></div></article>`).join('')}</div>
+        <div class="deck-controls wallet-controls"><div class="deck-dots">${todayCards.map((_,i)=>`<button class="deck-dot ${i===0?'active':''}" data-go="${i}" aria-label="card ${i+1}"></button>`).join('')}</div><div class="deck-arrows"><button class="deck-nav-btn" data-dir="prev" aria-label="previous">←</button><button class="deck-nav-btn" data-dir="next" aria-label="next">→</button></div></div>
+      </div>
+      <div class="ticket-grid quick-wallet-grid">
+        <button class="ticket-shortcut color-black" onclick="go('book')"><div class="small">01</div><strong>PASS</strong><p>Flights · Trains · Hotels</p><div class="corner-stamp ${mask(0)}"></div></button>
+        <button class="ticket-shortcut color-blue" onclick="go('talk')"><div class="small">02</div><strong>TALK</strong><p>Travel phrases</p><div class="corner-stamp ${mask(1)}"></div></button>
+        <button class="ticket-shortcut color-yellow" onclick="go('money')"><div class="small">03</div><strong>SPLIT</strong><p>Budget · Couple</p><div class="corner-stamp ${mask(2)}"></div></button>
+        <button class="ticket-shortcut color-lav" onclick="go('more')"><div class="small">04</div><strong>CTRL</strong><p>More tools</p><div class="corner-stamp ${mask(0)}"></div></button>
+      </div>
+    </div>`;
+  setTimeout(()=>initCardDeck('todayDeck',0),0);
+}
+
+function renderPlan(){
+  document.getElementById('plan').innerHTML=`
+    <div class="travel-shell plan-deck dark-mode-shell">
+      <div class="travel-head page-top minimal-head">
+        <div class="kicker">BOARDING PASSES</div>
+        <h1 class="hero-title en-title cryptic-title">PASS</h1>
+        <div class="stamp-burst ${mask(2)}"></div>
+        <div class="travel-meta"><span class="travel-chip">5 CARDS</span><span class="travel-chip">SWIPE</span></div>
+      </div>
+      <div class="deck-shell" id="planDeck">
+        <div class="deck-stage pass-stage">${DAYS.map((d,i)=>`<article class="deck-card plan-ticket pass-card ${color(i)}" data-index="${i}" data-tone="${['color-yellow','color-sand'].includes(color(i))?'light':'dark'}"><div class="deck-stamp ${mask(i)}"></div><div class="day-top"><div><div class="deck-kicker">DAY ${String(i+1).padStart(2,'0')}</div><div class="deck-big">${d.date}</div><div class="day-stay">${d.name}</div></div><div class="day-date"><b>${d.dow}</b><span>${d.place}</span></div></div><div class="deck-list">${d.events.map(e=>{const [time,title,sub,type,id]=e;return type?`<button class="deck-row" onclick="openDetail('${type}','${id}','plan')"><div class="time">${time}</div><div><div class="title">${title}</div><div class="sub">${sub||''}</div></div></button>`:`<div class="deck-row"><div class="time">${time}</div><div><div class="title">${title}</div><div class="sub">${sub||''}</div></div></div>`}).join('')}</div><div class="deck-note"><div class="deck-mini">${d.sleep}</div><div class="deck-mini">${i+1}/${DAYS.length}</div></div></article>`).join('')}</div>
+        <div class="deck-controls wallet-controls"><div class="deck-dots">${DAYS.map((_,i)=>`<button class="deck-dot ${i===0?'active':''}" data-go="${i}" aria-label="day ${i+1}"></button>`).join('')}</div><div class="deck-arrows"><button class="deck-nav-btn" data-dir="prev" aria-label="previous">←</button><button class="deck-nav-btn" data-dir="next" aria-label="next">→</button></div></div>
+      </div>
+    </div>`;
+  setTimeout(()=>initCardDeck('planDeck',0),0);
+}
+
+function renderSpots(filter='ALL'){
+  const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
+  document.getElementById('spots').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">LOCATION INDEX</div><h1 class="section-title cryptic-title">INDEX</h1><div class="stamp-burst ${mask(0)}"></div></div><div class="filters filters-min">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div><div class="journal-grid wallet-grid">${entries.map(([id,v],i)=>`<button class="catalog-card journal-card wallet-item ${color(i+1)} ${isVisited('spot',id)?'visited':''}" onclick="openDetail('spot','${id}','spots')"><span class="catalog-chip">${v.kind}</span><div class="wallet-code">0${i+1}</div><div class="catalog-name">${SPOT_KO[id]||v.name}</div><div class="catalog-en">${v.name}</div><div class="catalog-meta">${v.area} · ${v.date}</div><div class="catalog-arrow">→</div></button>`).join('')}</div>`
+}
+
+function renderEat(){
+  document.getElementById('eat').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">FOOD INDEX</div><h1 class="section-title cryptic-title">TASTE</h1><div class="stamp-burst ${mask(1)}"></div></div><div class="journal-grid wallet-grid">${Object.entries(FOODS).map(([id,v],i)=>`<button class="catalog-card journal-card wallet-item ${color(i+2)} ${isVisited('food',id)?'visited':''}" onclick="openDetail('food','${id}','eat')"><span class="catalog-chip">${v.kind}</span><div class="wallet-code">F${i+1}</div><div class="catalog-name">${FOOD_KO[id]||v.name}</div><div class="catalog-en">${v.name}</div><div class="catalog-meta">${v.date}</div><div class="catalog-arrow">→</div></button>`).join('')}</div>`
+}
+
+function bookingPlaceholder(type){if(type==='Flight')return '편명, 터미널, 체크인 시간, 좌석, 환승 메모 등';if(type==='Train')return '열차번호, 출발·도착시간, 좌석, 역 출입구 등';if(type==='Hotel')return '중국어 주소, 전화번호, 체크인 시간, 예약번호 등';if(type==='Ticket')return '예약번호, 입장시간, QR/수령 방법 등';return '주소, 시간, 예약번호 등 필요한 정보를 적어두세요.'}
+function saveBookingMemo(i,v){state.bookingMemos=state.bookingMemos||{};state.bookingMemos[i]=v;save()}
+function saveDetailMemo(type,id,v){state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos[type]=state.detailMemos[type]||{};state.detailMemos[type][id]=v;save()}
+function detailMemo(type,id){return (((state.detailMemos||{})[type]||{})[id])||''}
+function renderBook(){document.getElementById('book').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Flights · Trains · Hotels</div><h1 class="section-title">BOOKINGS</h1><p class="section-sub">예약 정보와 직접 적는 메모를 한곳에 모았습니다.</p></div><div class="booking-list">${BOOKINGS.map((b,i)=>`<article class="booking ${b.color||color(i)}"><div class="row"><div><div class="type en-title">${b.type}</div><div class="title en-title">${b.title}</div></div><div class="code en-title">${b.code}</div></div><div class="meta">${b.meta.map(x=>`• ${x}`).join('<br>')}</div><div class="meta" style="margin-top:8px;font-weight:700">${b.note}</div><div class="booking-memo"><label>MY MEMO</label><textarea placeholder="${bookingPlaceholder(b.type)}" oninput="saveBookingMemo(${i},this.value)">${esc((state.bookingMemos||{})[i]||'')}</textarea></div></article>`).join('')}</div>`}
+function calcSplit(){const total=(Number(state.base||0)+Number(state.shop||0))*2;const items=state.splitItems||[];const jy=items.filter(x=>x.payer==='지윤').reduce((a,b)=>a+Number(b.amount||0),0);const bf=items.filter(x=>x.payer==='남자친구').reduce((a,b)=>a+Number(b.amount||0),0);const paidTotal=jy+bf;const half=paidTotal/2;let settlement='아직 정산 없음';if(paidTotal>0){if(jy>half) settlement=`남자친구 → 지윤 ${Math.round((jy-half)*100)/100}元`; else if(bf>half) settlement=`지윤 → 남자친구 ${Math.round((bf-half)*100)/100}元`; else settlement='딱 반반'}return {total,jy,bf,paidTotal,settlement}}
+function addSplit(){const item=document.getElementById('splitItem').value.trim();const amount=Number(document.getElementById('splitAmount').value||0);const payer=document.getElementById('splitPayer').value;if(!item||!amount)return toast('ITEM & AMOUNT');state.splitItems=state.splitItems||[];state.splitItems.unshift({id:Date.now(),item,amount,payer});save();renderMoney();toast('ADDED')}
+function removeSplit(id){state.splitItems=(state.splitItems||[]).filter(x=>x.id!==id);save();renderMoney()}
+function renderMoney(){const split=calcSplit();document.getElementById('money').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Budget · Couple split</div><h1 class="section-title">MONEY</h1></div><div class="money-total"><div class="tiny">Local budget target</div><div class="num en-title">${split.total.toLocaleString()} <small>CNY</small></div><div style="font-size:12px;color:rgba(248,247,242,.72)">항공·숙소 제외</div></div><div class="input-grid"><div class="input-card color-yellow"><label>Base / person</label><input id="base" inputmode="numeric" value="${state.base||1800}"></div><div class="input-card color-blue"><label>Shopping / person</label><input id="shop" inputmode="numeric" value="${state.shop||250}"></div></div><div class="info-list"><div class="info-chip color-lav"><span>우롱 관광지 · 공연 제외</span><b>≈ 310 / 인</b></div><div class="info-chip color-mint"><span>충칭↔우롱 고속철</span><b>≈ 150 / 인</b></div><div class="info-chip color-pink"><span>현재 공동지출 합계</span><b>${split.paidTotal.toLocaleString()}元</b></div><div class="info-chip color-sand"><span>현재 정산</span><b>${split.settlement}</b></div></div><div class="note-card"><label>Expense notes</label><textarea id="expenseNote" placeholder="8/27 카오위 186위안 / 둘이 반반">${esc(state.expenseNote||'')}</textarea></div><div class="section-top" style="padding-top:18px"><div class="kicker">COUPLE SPLIT</div><h1 class="section-title" style="font-size:30px">SPLIT</h1></div><div class="input-grid"><div class="input-card color-white"><label>Item</label><input id="splitItem" placeholder="카오위" style="font-size:22px;font-family:inherit;font-weight:700"></div><div class="input-card color-white"><label>Amount</label><input id="splitAmount" inputmode="numeric" placeholder="186"></div><div class="input-card select color-white"><label>Payer</label><select id="splitPayer"><option>지윤</option><option>남자친구</option></select></div><div class="input-card color-red" style="display:flex;align-items:flex-end;justify-content:center"><button class="inline-btn" onclick="addSplit()">지출 추가</button></div></div><div class="booking-list" style="margin-top:14px"><div class="info-chip color-yellow"><span>지윤 결제</span><b>${split.jy.toLocaleString()}元</b></div><div class="info-chip color-blue"><span>남자친구 결제</span><b>${split.bf.toLocaleString()}元</b></div></div><div class="expense-list">${(state.splitItems||[]).map((x,i)=>`<div class="expense-item ${color(i+1)}"><div class="left"><b>${esc(x.item)}</b><span>${x.payer}</span></div><div class="right"><strong>${Number(x.amount).toLocaleString()}元</strong><button onclick="removeSplit(${x.id})">삭제</button></div></div>`).join('')||'<div class="note-card">아직 입력한 공동지출이 없습니다.</div>'}</div>`;
+ const updateTarget=()=>{const el=document.querySelector('#money .money-total .num');if(el)el.innerHTML=`${((Number(state.base||0)+Number(state.shop||0))*2).toLocaleString()} <small>CNY</small>`};document.getElementById('base').oninput=e=>{state.base=Number(e.target.value||0);save();updateTarget()};document.getElementById('shop').oninput=e=>{state.shop=Number(e.target.value||0);save();updateTarget()};document.getElementById('expenseNote').oninput=e=>{state.expenseNote=e.target.value;save()};}
+function phraseCategory(i){if(i<=4)return 'HOTEL';if(i<=10)return 'MOVE';if(i<=19)return 'FOOD';if(i<=25)return 'PAY';return 'ETC'}
+function renderTalk(filter='ALL'){const labels=[['ALL','전체'],['HOTEL','숙소'],['MOVE','이동'],['FOOD','식당'],['PAY','결제'],['ETC','기타']];const rows=PHRASES.map((p,i)=>({p,i,cat:phraseCategory(i)})).filter(x=>filter==='ALL'||x.cat===filter);document.getElementById('talk').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">USEFUL CHINESE</div><h1 class="section-title">TALK</h1><p class="section-sub">상황별로 골라서 복사하면 됩니다.</p></div><div class="filters">${labels.map(([v,l])=>`<button class="filter ${filter===v?'active':''}" onclick="renderTalk('${v}')">${l}</button>`).join('')}</div><div class="talk-list">${rows.map(({p:[ko,zh],i})=>`<div class="talk-card ${color(i+2)}"><div class="ko">${ko}</div><div class="zh">${zh}</div><button class="inline-btn" onclick="copyText('${esc(zh)}')">복사</button></div>`).join('')}</div>`}
+
+function renderCheck(){document.getElementById('check').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Before departure</div><h1 class="section-title">CHECK</h1></div><div class="check-list">${CHECKS.map((t,i)=>`<label class="task ${state['check'+i]?'done':''}"><input type="checkbox" ${state['check'+i]?'checked':''} onchange="state['check${i}']=this.checked;save();renderCheck()"><span class="txt">${t}</span></label>`).join('')}</div><div class="note-card"><label>Notes</label><textarea id="freeNote" placeholder="예약번호, 숙소 주소, 살 것">${esc(state.freeNote||'')}</textarea></div>`;document.getElementById('freeNote').oninput=e=>{state.freeNote=e.target.value;save()}}
+function renderMaybe(){document.getElementById('maybe').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Extra options</div><h1 class="section-title">MAYBE</h1><p class="section-sub">시간이 남을 때 넣을 후보들.</p></div><div class="maybe-list">${MAYBE.map((m,i)=>`<article class="maybe-card ${color(i+3)}"><div class="type en-title">${m.type}</div><div class="title">${m.title}</div><div class="sub">${m.cn}<br>${m.why}<br><b>${m.when}</b></div></article>`).join('')}</div>`}
+function renderDetail(type,id,from){const data=type==='food'?FOODS[id]:SPOTS[id];if(!data){go('plan');return}const idx=Object.keys(type==='food'?FOODS:SPOTS).indexOf(id);const links=mapLinks(data.map||data.search||data.cn);const isFood=type==='food';const bullets=isFood?data.order:data.highlights;const visited=isVisited(type,id);const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
+ document.getElementById('detail').innerHTML=`<div class="detail-top"><button class="back" onclick="go('${from||'plan'}')">← Back</button><div class="detail-card ${color(idx+1)}"><div class="type en-title">${data.kind}</div><div class="name">${koName}</div><div class="cn">${data.cn} · <span class="en-title">${data.name}</span></div><div class="detail-tags"><span>${data.date}</span>${data.area?`<span>${data.area}</span>`:''}${data.duration?`<span>${data.duration}</span>`:''}</div><div class="photo-shell"><div class="photo-frame ${mask(idx)}" id="photoFrame"><img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';"></div><div class="detail-caption">Representative image</div></div></div><div class="action-row"><button class="action-btn light" onclick="toggleVisited('${type}','${id}')">${visited?'표시 해제':'방문 완료'}</button><button class="action-btn" onclick="copyText('${esc(data.cn)}')">중국어명 복사</button><button class="action-btn" onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button></div><div class="action-row"><a class="action-btn light" href="${links.amap}" target="_blank" rel="noopener">高德地图</a><a class="action-btn light" href="${links.google}" target="_blank" rel="noopener">Google Maps</a></div><div class="map-note">중국 현지에서는 高德地图를 우선 사용하고, Google Maps는 보조 링크로 두었습니다.</div><section class="detail-section"><h3>About</h3><p>${data.summary}</p></section><section class="detail-section"><h3>${isFood?'Order':'Highlights'}</h3><ul>${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section><section class="detail-section"><h3>MY MEMO</h3><textarea class="detail-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea></section><section class="detail-section"><h3>Note</h3><ul>${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section></div>`}
+function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
+async function loadWeather(force=false){const root=document.getElementById('weatherCards');if(!root)return;const cached=state.weatherCache;const fresh=cached&&Date.now()-cached.time<30*60*1000;if(cached&&!force){renderWeatherCards(cached);if(fresh)return}root.innerHTML='<div class="status-card">날씨 불러오는 중…</div>';try{const urls=[['충칭',29.563,106.5516],['우롱',29.325,107.76]];const rows=[];for(const [name,lat,lon] of urls){const u=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=Asia%2FShanghai`;const r=await fetch(u);if(!r.ok)throw new Error('weather');const j=await r.json();rows.push({name,...j.current})}state.weatherCache={time:Date.now(),rows};save();renderWeatherCards(state.weatherCache)}catch(e){root.innerHTML='<div class="status-card"><b>날씨를 불러오지 못했습니다.</b><br><span>인터넷 연결 후 다시 시도하세요. 캐시된 값이 있으면 마지막 값이 표시됩니다.</span></div>';if(cached)renderWeatherCards(cached)}}
+function renderWeatherCards(cache){const root=document.getElementById('weatherCards');if(!root)return;root.innerHTML=cache.rows.map((w,i)=>`<article class="weather-card ${color(i+1)}"><div class="weather-name">${w.name}</div><div class="weather-temp">${Math.round(w.temperature_2m)}°</div><div class="weather-desc">${weatherText(w.weather_code)} · 체감 ${Math.round(w.apparent_temperature)}° · 강수 ${w.precipitation||0} mm</div></article>`).join('')+`<div class="weather-updated">마지막 확인: ${new Date(cache.time).toLocaleString('ko-KR')}</div>`}
+function renderWeather(){document.getElementById('weather').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">WEATHER · WULONG STATUS</div><h1 class="section-title">WEATHER</h1><p class="section-sub">온라인일 때 최신 날씨를 불러옵니다. 우롱 관광지 운영 여부는 공식 페이지에서 마지막으로 확인하세요.</p></div><div id="weatherCards" class="weather-grid"></div><div class="action-row"><button class="action-btn" onclick="loadWeather(true)">날씨 새로고침</button><a class="action-btn light" href="https://www.wlkst.com/" target="_blank" rel="noopener">우롱 공식 관광</a></div><div class="notice-card"><b>우롱 체크</b><span>천생삼교 · 용수협지봉 · 선녀산은 폭우 시 운영이 바뀔 수 있습니다. 출발 직전 공지를 우선 확인하세요.</span></div>`;loadWeather(false)}
+function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
+function renderMore(){
+  document.getElementById('more').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">SYSTEM</div><h1 class="section-title cryptic-title">CTRL</h1><div class="stamp-burst ${mask(2)}"></div></div><div class="more-grid ctrl-grid">${MORE_ITEMS.map((m,i)=>`<button class="more-card ctrl-card ${color(i+1)}" onclick="go('${m.id}')"><div class="more-index">0${i+1}</div><div class="more-title">${m.title}</div><div class="more-sub">${m.sub}</div><div class="more-arrow">→</div></button>`).join('')}</div>`
+}
+function initCardDeck(id,start=0){
+  const root=document.getElementById(id); if(!root) return;
+  const stage=root.querySelector('.deck-stage'); if(!stage) return;
+  const cards=[...stage.querySelectorAll('.deck-card')]; if(!cards.length) return;
+  let current=Math.max(0,Math.min(start,cards.length-1));
+  let dragging=false,startX=0,dx=0,pointerId=null;
+  const interactiveSel='button,a,textarea,input,select,label';
+  const paint=()=>{
+    cards.forEach((card,i)=>{
+      const diff=(i-current+cards.length)%cards.length;
+      card.classList.remove('is-top','is-next','is-third','is-hidden');
+      card.style.opacity='1';
+      card.style.pointerEvents='auto';
+      if(diff===0){card.classList.add('is-top'); card.style.transform=`translate3d(${dx}px,0,0) rotate(${dx/20}deg) scale(1)`;}
+      else if(diff===1){card.classList.add('is-next'); card.style.transform='translate3d(0,18px,0) scale(.97)';}
+      else if(diff===2){card.classList.add('is-third'); card.style.transform='translate3d(0,34px,0) scale(.94)';}
+      else{card.classList.add('is-hidden'); card.style.transform='translate3d(0,52px,0) scale(.91)'; card.style.opacity='.05'; card.style.pointerEvents='none';}
+    });
+    root.querySelectorAll('.deck-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+  };
+  const commit=(dir)=>{dx=0;dragging=false;if(dir==='next') current=(current+1)%cards.length; else if(dir==='prev') current=(current-1+cards.length)%cards.length;cards.forEach(c=>c.classList.remove('dragging'));paint();};
+  const reset=()=>{dx=0;dragging=false;cards.forEach(c=>c.classList.remove('dragging'));paint();};
+  stage.onpointerdown=(e)=>{if(e.target.closest(interactiveSel)) return;dragging=true;pointerId=e.pointerId;startX=e.clientX;dx=0;const top=cards[current]; if(top){top.classList.add('dragging'); try{top.setPointerCapture(pointerId)}catch(_){}}};
+  stage.onpointermove=(e)=>{if(!dragging||e.pointerId!==pointerId) return;dx=e.clientX-startX;paint();};
+  stage.onpointerup=(e)=>{if(!dragging||e.pointerId!==pointerId) return;if(dx<-70) commit('next'); else if(dx>70) commit('prev'); else reset();};
+  stage.onpointercancel=reset;
+  root.querySelectorAll('[data-dir]').forEach(btn=>btn.onclick=()=>commit(btn.dataset.dir));
+  root.querySelectorAll('.deck-dot').forEach(btn=>btn.onclick=()=>{current=Number(btn.dataset.go)||0; reset();});
+  paint();
+}
+
+function route(){const hash=(location.hash||'#today').slice(1);const p=hash.split('/');if(p[0]==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav(p[3]||'plan');return}
+  const view=['today','plan','spots','eat','book','money','talk','check','maybe','more','weather','emergency'].includes(p[0])?p[0]:'today';
+  if(view==='today') renderToday();
+  if(view==='plan') renderPlan();
+  if(view==='spots') renderSpots();
+  if(view==='eat') renderEat();
+  if(view==='book') renderBook();
+  if(view==='money') renderMoney();
+  if(view==='talk') renderTalk();
+  if(view==='check') renderCheck();
+  if(view==='maybe') renderMaybe();
+  if(view==='more') renderMore();
+  if(view==='weather') renderWeather();
+  if(view==='emergency') renderEmergency();
+  show(view); nav(view);
+}
+window.addEventListener('hashchange',route); route();
+if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(r=>r.update()).catch(()=>{}));
+</script>
+</body>
+</html>
