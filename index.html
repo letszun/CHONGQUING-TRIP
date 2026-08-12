@@ -7,7 +7,6 @@
 <title>Chongqing City</title>
 <link rel="manifest" href="manifest.json">
 <style>
-@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
 :root{
   /* Reference palette: CHARCOAL / WARM GREEN / SAGE / GREY / LIME */
   --charcoal:#2E2D2D;
@@ -5048,6 +5047,621 @@ button,a,input,textarea,select{font-family:var(--v39-font)!important}
   }
 }
 
+
+/* =========================================================
+   v41 — LOCAL VISUALS + READABILITY PASS
+========================================================= */
+:root{
+  --v41-bg:#F4F2EC;
+  --v41-blue:#1746F5;
+  --v41-blue-80:rgba(23,70,245,.80);
+  --v41-blue-62:rgba(23,70,245,.62);
+  --v41-blue-10:rgba(23,70,245,.08);
+  --v41-paper:#F8F7F2;
+}
+
+/* Use reliable system fonts only. No remote font wait. */
+body,
+button,input,textarea,select{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Noto Sans KR",Arial,sans-serif!important;
+}
+body{
+  font-size:15px!important;
+  line-height:1.6!important;
+  letter-spacing:-.018em!important;
+}
+
+/* Micro text: keep editorial character but never microscopic. */
+.v39-eyebrow,
+.v36-overline,
+.v36-section-label,
+.v36-detail-label,
+.v40-field-card>label,
+.v40-links-card .user-links-head>span,
+.booking .type,
+.booking .code,
+.v39-plan-card-head,
+.v39-item-top,
+.v39-item-bottom,
+.v39-filter button,
+.nav-label{
+  font-size:10px!important;
+  line-height:1.45!important;
+}
+
+/* Headings: slightly smaller and more breathing room. */
+.v39-page-title{
+  font-size:clamp(54px,15vw,102px)!important;
+  line-height:.9!important;
+  letter-spacing:-.072em!important;
+}
+.section-title{
+  font-size:clamp(44px,13vw,82px)!important;
+  line-height:.92!important;
+}
+.v36-detail-title{
+  font-size:clamp(44px,13vw,86px)!important;
+  line-height:.95!important;
+  letter-spacing:-.065em!important;
+}
+
+/* TODAY */
+.v38-today .v36-hero-word{
+  font-size:clamp(52px,15vw,94px)!important;
+  line-height:.98!important;
+}
+.v38-today .v36-hero-title{
+  max-width:96%!important;
+  font-size:clamp(25px,6.5vw,38px)!important;
+  line-height:1.25!important;
+}
+.v38-next{
+  min-height:0!important;
+  padding:20px!important;
+}
+.v38-next-time{
+  font-size:clamp(44px,12vw,64px)!important;
+  line-height:1.05!important;
+}
+.v38-next-title{
+  max-width:100%!important;
+  font-size:clamp(24px,6.5vw,35px)!important;
+  line-height:1.25!important;
+}
+.v38-next-sub{
+  max-width:100%!important;
+  font-size:11px!important;
+  line-height:1.6!important;
+}
+.v37-route-row b{
+  font-size:16px!important;
+  line-height:1.45!important;
+}
+
+/* PLAN */
+.v39-plan-list{gap:16px!important}
+.v39-plan-card{
+  min-height:0!important;
+  padding:18px!important;
+}
+.v39-plan-date{
+  font-size:clamp(62px,18vw,116px)!important;
+  line-height:.9!important;
+}
+.v39-plan-name{
+  font-size:clamp(26px,6.5vw,38px)!important;
+  line-height:1.12!important;
+}
+.v39-plan-place{
+  grid-column:1/-1!important;
+  max-width:90%!important;
+  font-size:11px!important;
+  line-height:1.55!important;
+}
+.v39-plan-event{
+  grid-template-columns:56px minmax(0,1fr) 18px!important;
+  gap:12px!important;
+  padding:13px 0!important;
+}
+.v39-plan-time{
+  font-size:11px!important;
+  line-height:1.5!important;
+}
+.v39-plan-copy b{
+  font-size:16px!important;
+  line-height:1.4!important;
+}
+.v39-plan-copy small{
+  margin-top:6px!important;
+  font-size:11px!important;
+  line-height:1.5!important;
+}
+
+/* SPOTS / EAT: roomier cards. */
+.v39-item-card{
+  aspect-ratio:auto!important;
+  min-height:230px!important;
+  padding:16px!important;
+}
+.v39-item-name{
+  margin-top:34px!important;
+  font-size:clamp(25px,6.8vw,36px)!important;
+  line-height:1.08!important;
+}
+.v39-item-cn{
+  margin-top:10px!important;
+  font-size:12px!important;
+  line-height:1.5!important;
+}
+.v39-item-bottom{
+  font-size:10px!important;
+  line-height:1.45!important;
+}
+
+/* Details: photo/cover is guaranteed local and gets more visual presence. */
+.v36-detail-image{
+  aspect-ratio:4/3!important;
+  background:var(--v41-blue-10)!important;
+}
+.v36-detail-image img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+}
+.v36-detail-name{
+  font-size:12px!important;
+  line-height:1.65!important;
+}
+.v36-detail-facts{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:10px!important;
+}
+.v36-detail-facts>div,
+.v36-detail-facts>button{
+  min-width:0!important;
+  padding:14px!important;
+}
+.v36-detail-facts span{
+  font-size:9px!important;
+  line-height:1.4!important;
+}
+.v36-detail-facts b{
+  font-size:13px!important;
+  line-height:1.35!important;
+  word-break:keep-all!important;
+}
+.v36-detail-section{
+  padding-top:38px!important;
+}
+.v36-detail-section p{
+  font-size:15px!important;
+  line-height:1.75!important;
+}
+.v36-detail-list b{
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+.v36-tool-list button,
+.v36-tool-list a{
+  min-height:48px!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+}
+.v36-memo{
+  font-size:14px!important;
+  line-height:1.65!important;
+}
+
+/* BOOKINGS / MONEY / SPLIT */
+.v40-booking .meta{
+  font-size:12px!important;
+  line-height:1.7!important;
+}
+.v40-field-card textarea{
+  font-size:14px!important;
+  line-height:1.7!important;
+}
+#money .info-chip span{
+  font-size:10px!important;
+  line-height:1.55!important;
+}
+#money .info-chip b{
+  font-size:15px!important;
+  line-height:1.4!important;
+}
+#money .expense-item .left b{
+  font-size:16px!important;
+  line-height:1.4!important;
+}
+
+/* Secondary pages */
+.section-sub,
+.notice-card span,
+.status-card span,
+.weather-desc,
+.maybe-card small,
+.talk-card .ko,
+.talk-card .zh,
+.task span{
+  font-size:13px!important;
+  line-height:1.65!important;
+}
+.talk-card .zh{
+  font-size:17px!important;
+  line-height:1.5!important;
+}
+.inline-btn,
+.action-btn,
+.action-btn.light{
+  min-height:44px!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+}
+
+/* Bottom nav */
+.bottom-nav{
+  min-height:60px!important;
+}
+.nav-label{
+  font-weight:600!important;
+}
+
+/* Tap target safety. */
+.v39-filter button,
+.v39-plan-event,
+.v39-item-card,
+.v39-more-row,
+.v36-tool-list button,
+.v36-tool-list a,
+.user-links-head button,
+.inline-btn{
+  -webkit-tap-highlight-color:transparent!important;
+}
+
+/* Mobile readability: one-column SPOTS/EAT instead of squeezed 2-column cards. */
+@media(max-width:560px){
+  .app{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+  .v39-item-grid{
+    grid-template-columns:1fr!important;
+    gap:10px!important;
+  }
+  .v39-item-card{
+    min-height:205px!important;
+  }
+  .v39-item-name{
+    max-width:92%!important;
+    font-size:clamp(27px,8vw,38px)!important;
+  }
+  .v39-plan-card{
+    padding:16px!important;
+  }
+  .v39-plan-event{
+    grid-template-columns:52px minmax(0,1fr) 16px!important;
+  }
+  .v36-detail-facts{
+    grid-template-columns:1fr 1fr!important;
+  }
+  .v36-detail-facts>button{
+    grid-column:1/-1!important;
+  }
+  .v36-tool-list{
+    grid-template-columns:1fr!important;
+  }
+  .v36-tool-list button,
+  .v36-tool-list a{
+    background:var(--v41-blue-10)!important;
+    padding:12px!important;
+  }
+}
+
+/* Avoid unreadable super-light text. */
+.v39-blue-soft,
+.v36-detail-name,
+.v39-plan-place,
+.v39-plan-copy small,
+.v39-item-cn,
+.v40-booking .meta{
+  opacity:1!important;
+}
+
+/* Disable all legacy external-photo presentation artifacts. */
+.v36-detail-image.fallback{
+  display:block!important;
+}
+
+
+/* v43 — Miss Xie stay / long hotel-name readability */
+.v39-plan-foot{
+  align-items:flex-start!important;
+  gap:18px!important;
+}
+.v39-plan-foot span:last-child{
+  max-width:62%!important;
+  text-align:right!important;
+  line-height:1.6!important;
+  overflow-wrap:anywhere!important;
+  word-break:keep-all!important;
+}
+.v36-hero-meta{
+  max-width:94%!important;
+  line-height:1.7!important;
+  overflow-wrap:anywhere!important;
+  word-break:keep-all!important;
+}
+.v40-booking .title{
+  max-width:96%!important;
+  font-size:clamp(22px,6vw,35px)!important;
+  line-height:1.2!important;
+  overflow-wrap:anywhere!important;
+  word-break:keep-all!important;
+}
+.v40-booking .meta{
+  line-height:1.75!important;
+  overflow-wrap:anywhere!important;
+  word-break:break-word!important;
+}
+
+
+/* v44 — Day 1 ISBELLO hotel name readability */
+.v36-hero-meta,
+.v39-plan-foot span,
+.v40-booking .title,
+.v40-booking .meta{
+  overflow-wrap:anywhere!important;
+}
+.v36-hero-meta{
+  word-break:normal!important;
+  line-height:1.7!important;
+}
+.v39-plan-foot span:last-child{
+  word-break:normal!important;
+  line-height:1.6!important;
+}
+.v40-booking .title{
+  word-break:normal!important;
+  font-size:clamp(21px,5.8vw,34px)!important;
+  line-height:1.22!important;
+}
+.v40-booking .meta{
+  line-height:1.75!important;
+}
+
+
+/* v45 redesign — pastel box editorial system */
+:root{
+  --v45-bg:#161718;
+  --v45-bg-2:#1e2022;
+  --v45-surface:#f8f6f1;
+  --v45-surface-2:#efede8;
+  --v45-ink:#121314;
+  --v45-muted:rgba(18,19,20,.64);
+  --v45-line:rgba(18,19,20,.12);
+  --v45-line-strong:rgba(18,19,20,.2);
+  --v45-pink:#f1cfe1;
+  --v45-mint:#d8f0ea;
+  --v45-lime:#dff0a8;
+  --v45-lav:#ddd1f5;
+  --v45-cream:#f5f3ee;
+  --v45-shadow:0 18px 44px rgba(0,0,0,.24);
+  --v45-radius:28px;
+  --v45-radius-sm:20px;
+  --v45-gap:14px;
+  --v45-pad:20px;
+  --v45-font:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Helvetica,Arial,"Pretendard","Noto Sans KR",sans-serif;
+}
+html,body{background:var(--v45-bg)!important;color:var(--v45-ink)!important;font-family:var(--v45-font)!important;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{margin:0}
+.app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--v45-bg)}
+.view{padding:14px 16px 104px;box-sizing:border-box}
+.view.active{display:block}
+button,input,textarea,select{font-family:inherit}
+a{text-decoration:none}
+img{display:block;max-width:100%}
+
+.bottom-nav{
+  position:fixed!important; left:50%!important; bottom:14px!important; transform:translateX(-50%);
+  width:min(404px,calc(100vw - 20px)); z-index:70;
+  display:grid; grid-template-columns:repeat(5,1fr); gap:8px;
+  background:rgba(14,15,16,.92)!important; backdrop-filter:blur(18px);
+  padding:8px; border-radius:999px; box-shadow:0 18px 40px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.08);
+}
+.nav-btn{min-width:0; border:0; background:transparent!important; color:rgba(255,255,255,.56)!important; border-radius:999px; padding:10px 6px 11px; display:flex; flex-direction:column; align-items:center; gap:2px}
+.nav-btn .nav-index{font-size:10px; letter-spacing:.14em; opacity:.58}
+.nav-btn .nav-label{font-size:11px; font-weight:700; letter-spacing:.08em}
+.nav-btn.active{background:var(--v45-surface)!important; color:var(--v45-ink)!important}
+.nav-btn.active .nav-index{opacity:.62}
+.toast{background:var(--v45-surface)!important;color:var(--v45-ink)!important;border-radius:999px;padding:10px 14px;box-shadow:var(--v45-shadow)}
+
+.v45-screen{display:flex;flex-direction:column;gap:14px}
+.v45-hero,.v45-card,.v45-panel,.v45-map-panel,.v45-block,.v45-info-card{background:var(--v45-surface);border-radius:var(--v45-radius);padding:var(--v45-pad);box-shadow:var(--v45-shadow);border:1px solid rgba(255,255,255,.08)}
+.v45-tone-pink{background:var(--v45-pink)!important}
+.v45-tone-mint{background:var(--v45-mint)!important}
+.v45-tone-lime{background:var(--v45-lime)!important}
+.v45-tone-lav{background:var(--v45-lav)!important}
+.v45-tone-white{background:var(--v45-surface)!important}
+.v45-overline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-display{font-size:clamp(44px,14vw,72px);line-height:.92;font-weight:800;letter-spacing:-.06em;margin-top:12px}
+.v45-title{font-size:clamp(26px,7vw,38px);line-height:.94;font-weight:800;letter-spacing:-.05em;margin:8px 0 0}
+.v45-sub{margin:12px 0 0;color:var(--v45-muted);font-size:15px;line-height:1.58}
+.v45-grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+.v45-mini-action{border:0;border-radius:24px;padding:18px 18px 20px;text-align:left;display:flex;flex-direction:column;gap:8px;box-shadow:var(--v45-shadow);color:var(--v45-ink)}
+.v45-mini-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-mini-main{font-size:26px;line-height:.94;font-weight:800;letter-spacing:-.05em}
+.v45-mini-sub{font-size:13px;line-height:1.5;color:var(--v45-muted)}
+.v45-section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:2px 2px 0}
+.v45-section-head b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+.v45-section-head span{font-size:12px;color:rgba(255,255,255,.44)}
+.v45-list-card{background:var(--v45-surface);border-radius:30px;padding:10px;box-shadow:var(--v45-shadow)}
+.v45-row-list{display:flex;flex-direction:column;gap:10px}
+.v45-row,.v45-row-static{display:grid;grid-template-columns:70px 1fr 18px;gap:12px;align-items:flex-start;border:0;border-radius:22px;padding:14px 14px 15px;background:var(--v45-surface-2);text-align:left;color:var(--v45-ink)}
+.v45-row:nth-child(4n+1),.v45-row-static:nth-child(4n+1){background:var(--v45-mint)}
+.v45-row:nth-child(4n+2),.v45-row-static:nth-child(4n+2){background:var(--v45-pink)}
+.v45-row:nth-child(4n+3),.v45-row-static:nth-child(4n+3){background:var(--v45-lav)}
+.v45-row:nth-child(4n){background:var(--v45-lime)}
+.v45-row time,.v45-row-static time{font-size:13px;font-weight:700;letter-spacing:.02em;padding-top:2px}
+.v45-row b,.v45-row-static b{display:block;font-size:17px;line-height:1.18;font-weight:800;letter-spacing:-.03em}
+.v45-row small,.v45-row-static small{display:block;margin-top:4px;font-size:13px;line-height:1.45;color:var(--v45-muted)}
+.v45-row em,.v45-row-static em{font-style:normal;font-size:15px;opacity:.72;padding-top:4px}
+.v45-chip-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.v45-chip{border-radius:24px;padding:16px 18px;background:var(--v45-surface);box-shadow:var(--v45-shadow)}
+.v45-chip span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted);font-weight:700}
+.v45-chip b{display:block;margin-top:7px;font-size:17px;line-height:1.28;letter-spacing:-.03em}
+
+.v45-plan-stack{display:flex;flex-direction:column;gap:14px}
+.v45-plan-card{border-radius:34px;padding:18px;background:var(--v45-surface);box-shadow:var(--v45-shadow);display:flex;flex-direction:column;gap:12px}
+.v45-plan-card:nth-child(5n+1){background:var(--v45-pink)}
+.v45-plan-card:nth-child(5n+2){background:var(--v45-lime)}
+.v45-plan-card:nth-child(5n+3){background:var(--v45-mint)}
+.v45-plan-card:nth-child(5n+4){background:var(--v45-lav)}
+.v45-plan-top{display:flex;justify-content:space-between;gap:10px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-plan-date{font-size:44px;line-height:.9;font-weight:800;letter-spacing:-.07em}
+.v45-plan-name{font-size:28px;line-height:.95;font-weight:800;letter-spacing:-.05em}
+.v45-plan-place{color:var(--v45-muted);font-size:14px;line-height:1.55;margin-top:2px}
+.v45-plan-events{display:flex;flex-direction:column;gap:8px}
+.v45-plan-event{display:grid;grid-template-columns:60px 1fr 18px;gap:12px;border:0;border-radius:22px;padding:12px 14px;background:rgba(255,255,255,.72);text-align:left;color:var(--v45-ink)}
+.v45-plan-event.static{background:rgba(255,255,255,.58)}
+.v45-plan-event time{font-size:12px;font-weight:800;letter-spacing:.04em;padding-top:3px}
+.v45-plan-copy b{display:block;font-size:16px;line-height:1.16;font-weight:800;letter-spacing:-.03em}
+.v45-plan-copy small{display:block;margin-top:4px;font-size:13px;line-height:1.45;color:var(--v45-muted)}
+.v45-plan-arrow{align-self:start;padding-top:2px;font-size:16px;opacity:.72}
+.v45-plan-foot{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v45-plan-foot div{border-radius:20px;padding:14px;background:rgba(255,255,255,.72)}
+.v45-plan-foot span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted);font-weight:700}
+.v45-plan-foot b{display:block;margin-top:6px;font-size:14px;line-height:1.48;letter-spacing:-.02em}
+
+.v45-filter-row{display:flex;gap:8px;flex-wrap:wrap}
+.v45-filter-row button{border:0;border-radius:999px;padding:10px 14px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.v45-filter-row button.active{background:var(--v45-surface);color:var(--v45-ink)}
+.v45-map-panel{padding:16px;background:var(--v45-surface)}
+.v45-map-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;margin-bottom:12px}
+.v45-map-head b{font-size:20px;line-height:1;font-weight:800;letter-spacing:-.04em}
+.v45-map-head span{font-size:12px;color:var(--v45-muted);line-height:1.5}
+.v45-map-board{position:relative;height:300px;border-radius:26px;overflow:hidden;background:#e9e7e2;border:1px solid var(--v45-line)}
+.v45-map-board::before{content:"";position:absolute;inset:0;background:
+ linear-gradient(90deg, transparent 0 9%, rgba(255,255,255,.35) 9% 10%, transparent 10% 19%, rgba(255,255,255,.35) 19% 20%, transparent 20% 29%, rgba(255,255,255,.35) 29% 30%, transparent 30% 39%, rgba(255,255,255,.35) 39% 40%, transparent 40% 49%, rgba(255,255,255,.35) 49% 50%, transparent 50% 59%, rgba(255,255,255,.35) 59% 60%, transparent 60% 69%, rgba(255,255,255,.35) 69% 70%, transparent 70% 79%, rgba(255,255,255,.35) 79% 80%, transparent 80% 89%, rgba(255,255,255,.35) 89% 90%, transparent 90%),
+ linear-gradient(transparent 0 9%, rgba(255,255,255,.35) 9% 10%, transparent 10% 19%, rgba(255,255,255,.35) 19% 20%, transparent 20% 29%, rgba(255,255,255,.35) 29% 30%, transparent 30% 39%, rgba(255,255,255,.35) 39% 40%, transparent 40% 49%, rgba(255,255,255,.35) 49% 50%, transparent 50% 59%, rgba(255,255,255,.35) 59% 60%, transparent 60% 69%, rgba(255,255,255,.35) 69% 70%, transparent 70% 79%, rgba(255,255,255,.35) 79% 80%, transparent 80% 89%, rgba(255,255,255,.35) 89% 90%, transparent 90%);
+ opacity:.45}
+.v45-map-board::after{content:"";position:absolute;inset:auto -16% -8% 38%;height:160%;width:32%;background:#d9d6d1;border-radius:120px;transform:rotate(26deg);opacity:.6}
+.v45-map-cluster{position:absolute;display:flex;flex-direction:column;gap:8px;z-index:2}
+.v45-map-cluster.city{left:12%;top:16%;width:42%}
+.v45-map-cluster.wulong{right:8%;bottom:12%;width:36%}
+.v45-map-cluster-label{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(18,19,20,.48);margin-bottom:2px}
+.v45-map-dot{position:relative;border:0;border-radius:18px;padding:10px 12px;background:rgba(255,255,255,.92);text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 8px 20px rgba(0,0,0,.08);font-size:13px;color:var(--v45-ink)}
+.v45-map-dot:nth-child(2n){background:var(--v45-pink)}
+.v45-map-dot:nth-child(3n){background:var(--v45-mint)}
+.v45-map-dot:nth-child(4n){background:var(--v45-lav)}
+.v45-map-dot:nth-child(5n){background:var(--v45-lime)}
+.v45-map-dot b{font-size:13px;font-weight:800;letter-spacing:-.02em}
+.v45-map-dot span{font-size:11px;color:var(--v45-muted)}
+.v45-map-side{position:absolute;right:0;top:0;bottom:0;width:98px;background:var(--v45-pink);border-left:1px solid var(--v45-line);padding:14px 12px;display:flex;flex-direction:column;gap:8px;z-index:1}
+.v45-map-side:nth-of-type(2){background:var(--v45-mint)}
+.v45-map-side b{font-size:12px;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+.v45-map-side span{font-size:11px;line-height:1.35;color:var(--v45-muted)}
+.v45-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.v45-item-card{border:0;border-radius:28px;padding:16px;box-shadow:var(--v45-shadow);text-align:left;color:var(--v45-ink);display:flex;flex-direction:column;min-height:182px;gap:10px}
+.v45-item-card:nth-child(4n+1){background:var(--v45-surface)}
+.v45-item-card:nth-child(4n+2){background:var(--v45-pink)}
+.v45-item-card:nth-child(4n+3){background:var(--v45-mint)}
+.v45-item-card:nth-child(4n){background:var(--v45-lav)}
+.v45-item-card.is-done{outline:2px solid rgba(18,19,20,.28)}
+.v45-item-top,.v45-item-bottom{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.v45-item-top i,.v45-item-bottom i{font-style:normal;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-item-name{font-size:24px;line-height:.96;font-weight:800;letter-spacing:-.05em}
+.v45-item-cn{font-size:14px;line-height:1.4;color:var(--v45-muted);min-height:36px}
+.v45-item-bottom{margin-top:auto;padding-top:10px;border-top:1px solid rgba(18,19,20,.12)}
+
+.v45-detail-shell{display:flex;flex-direction:column;gap:14px}
+.v45-detail-nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.v45-detail-nav button{border:0;background:rgba(255,255,255,.1);color:rgba(255,255,255,.84);border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.v45-detail-count{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.48)}
+.v45-detail-head{border-radius:32px;padding:18px;background:var(--v45-pink);box-shadow:var(--v45-shadow)}
+.v45-detail-kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-detail-title{font-size:34px;line-height:.92;font-weight:800;letter-spacing:-.05em;margin-top:8px}
+.v45-detail-name{margin-top:10px;font-size:14px;line-height:1.55;color:var(--v45-muted)}
+.v45-photo{border-radius:30px;overflow:hidden;background:var(--v45-surface);box-shadow:var(--v45-shadow);min-height:210px}
+.v45-photo img{width:100%;height:228px;object-fit:cover}
+.v45-fact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.v45-fact{background:var(--v45-surface);border-radius:24px;padding:14px 14px 16px;box-shadow:var(--v45-shadow)}
+.v45-fact span{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--v45-muted)}
+.v45-fact b{display:block;margin-top:8px;font-size:15px;line-height:1.35;letter-spacing:-.02em}
+.v45-fact button{border:0;background:none;padding:0;margin:0;text-align:left;color:inherit}
+.v45-detail-section{background:var(--v45-surface);border-radius:28px;padding:18px;box-shadow:var(--v45-shadow)}
+.v45-detail-section:nth-of-type(2n){background:var(--v45-mint)}
+.v45-detail-section:nth-of-type(3n){background:var(--v45-lav)}
+.v45-detail-section:nth-of-type(4n){background:var(--v45-lime)}
+.v45-detail-label{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--v45-muted);margin-bottom:12px}
+.v45-detail-text{font-size:14px;line-height:1.72;color:var(--v45-ink)}
+.v45-detail-list{display:flex;flex-direction:column;gap:9px}
+.v45-detail-list div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:flex-start;padding:11px 0;border-top:1px solid rgba(18,19,20,.1)}
+.v45-detail-list div:first-child{border-top:0;padding-top:0}
+.v45-detail-list span{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--v45-muted)}
+.v45-detail-list b{font-size:14px;line-height:1.56;font-weight:700}
+.v45-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.v45-tool-grid a,.v45-tool-grid button{border:0;border-radius:18px;padding:14px 14px;background:rgba(255,255,255,.72);font-size:13px;font-weight:800;letter-spacing:.02em;text-align:left;color:var(--v45-ink)}
+.v45-tool-grid button{cursor:pointer}
+.v45-memo{width:100%;min-height:110px;border:0;border-radius:20px;padding:14px 16px;background:rgba(255,255,255,.72);font-size:14px;line-height:1.6;color:var(--v45-ink);box-sizing:border-box;resize:vertical}
+
+.v45-more-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.v45-more-row{border:0;border-radius:26px;padding:16px 18px;background:var(--v45-surface);box-shadow:var(--v45-shadow);display:grid;grid-template-columns:46px 1fr 18px;gap:12px;text-align:left;color:var(--v45-ink)}
+.v45-more-row:nth-child(4n+2){background:var(--v45-pink)}
+.v45-more-row:nth-child(4n+3){background:var(--v45-mint)}
+.v45-more-row:nth-child(4n){background:var(--v45-lav)}
+.v45-more-row span:first-child{font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--v45-muted);padding-top:3px}
+.v45-more-row b{display:block;font-size:22px;line-height:1;letter-spacing:-.04em}
+.v45-more-row small{display:block;margin-top:6px;color:var(--v45-muted);font-size:13px;line-height:1.48}
+.v45-more-row span:last-child{padding-top:4px;font-size:16px;opacity:.7}
+
+.secondary-back{margin-bottom:10px}
+.secondary-back button{border:0;background:rgba(255,255,255,.1)!important;color:rgba(255,255,255,.84)!important;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.section-top.compact,.section-top{padding:4px 2px 0;margin-bottom:14px}
+.kicker{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:rgba(255,255,255,.46)!important}
+.section-title{margin:.18em 0 0;font-size:34px;line-height:.95;font-weight:800;letter-spacing:-.05em;color:#fff!important}
+.section-sub{margin:10px 0 0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.58)!important}
+.booking-list,.talk-list,.check-list,.maybe-list,.weather-grid,.emergency-grid,.expense-list,.filters,.action-row,.info-list,.input-grid,.v40-split-summary{display:grid;gap:12px}
+.booking,.talk-card,.note-card,.maybe-card,.weather-card,.task,.expense-item,.input-card,.info-chip,.user-links-section,.status-card,.notice-card,.emergency-card{background:var(--v45-surface)!important;color:var(--v45-ink)!important;border-radius:26px!important;border:0!important;box-shadow:var(--v45-shadow)!important;padding:16px!important}
+.booking .type,.booking .code,.booking label,.input-card label,.note-card label,.user-links-head span,.weather-updated,.task .txt,.talk-card .ko,.talk-card .zh,.maybe-card .type,.notice-card span{color:var(--v45-muted)!important}
+.booking .title,.booking .code,.weather-name,.weather-temp,.emergency-card strong,.expense-item b,.info-chip b{color:var(--v45-ink)!important}
+.booking .row,.expense-item,.user-link-item{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.booking .meta,.talk-card .zh,.weather-desc,.notice-card b,.expense-item span,.maybe-card .sub{font-size:13px;line-height:1.6}
+.booking textarea,.note-card textarea,.input-card input,.input-card select,.link-editor input,.link-editor textarea,.user-link-url,.user-link-name{width:100%;border:0;background:var(--v45-surface-2)!important;border-radius:18px;padding:13px 14px;font-size:14px;line-height:1.6;color:var(--v45-ink)!important;box-sizing:border-box}
+.inline-btn,.action-btn,.user-links-head button,.user-link-actions button,.link-editor .user-link-save,.link-editor .user-link-cancel{border:0!important;border-radius:16px!important;padding:12px 14px!important;background:var(--v45-ink)!important;color:#fff!important;font-size:12px!important;font-weight:800!important;letter-spacing:.06em}
+.filter{border:0!important;border-radius:999px!important;padding:10px 14px!important;background:rgba(255,255,255,.12)!important;color:rgba(255,255,255,.68)!important;font-size:12px;font-weight:800;letter-spacing:.08em}
+.filter.active{background:var(--v45-surface)!important;color:var(--v45-ink)!important}
+.action-btn.light{background:var(--v45-surface)!important;color:var(--v45-ink)!important}
+.color-red{background:var(--v45-pink)!important;color:var(--v45-ink)!important}
+.color-yellow{background:var(--v45-lime)!important;color:var(--v45-ink)!important}
+.color-blue{background:var(--v45-mint)!important;color:var(--v45-ink)!important}
+.color-lav{background:var(--v45-lav)!important;color:var(--v45-ink)!important}
+.color-pink{background:var(--v45-pink)!important;color:var(--v45-ink)!important}
+.color-mint{background:var(--v45-mint)!important;color:var(--v45-ink)!important}
+.color-sand,.color-white{background:var(--v45-surface)!important;color:var(--v45-ink)!important}
+.talk-list,.maybe-list,.weather-grid,.booking-list,.check-list,.expense-list{grid-template-columns:1fr}
+.emergency-grid{grid-template-columns:repeat(3,1fr)}
+.info-list,.v40-split-summary{grid-template-columns:1fr 1fr}
+.input-grid{grid-template-columns:1fr 1fr}
+.v40-split-grid{grid-template-columns:1fr 1fr}
+.input-card.select,.v40-add-card{grid-column:span 1}
+.user-links-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.user-link-item,.expense-item{background:var(--v45-surface-2)!important;border-radius:18px;padding:12px 14px}
+.user-link-actions{display:flex;gap:6px;flex-wrap:wrap}
+.user-link-actions button{padding:10px 12px!important;border-radius:12px!important}
+.link-editor{display:grid;gap:10px;margin-top:10px}
+.splash-screen{background:var(--v45-bg)!important}
+.splash-front{background:var(--v45-pink)!important;color:var(--v45-ink)!important}
+.splash-pass.splash-mid{background:var(--v45-mint)!important}
+.splash-pass.splash-back{background:var(--v45-lav)!important}
+
+@media (max-width:390px){
+  .v45-grid-2,.v45-card-grid,.v45-fact-grid,.v45-tool-grid,.v45-plan-foot,.v45-chip-row,.info-list,.input-grid,.v40-split-grid,.emergency-grid,.v40-split-summary{grid-template-columns:1fr!important}
+  .v45-item-card{min-height:160px}
+  .v45-display{font-size:42px}
+  .v45-title{font-size:24px}
+}
+
 </style>
 </head>
 <body>
@@ -5072,7 +5686,7 @@ button,a,input,textarea,select{font-family:var(--v39-font)!important}
 <script>
 const COLORS=['color-red','color-yellow','color-blue','color-lav','color-pink','color-mint','color-sand'];
 const MASKS=['mask-a','mask-b','mask-c'];
-const SPOT_KO={jiefangbei:'해방비',hongyadong:'홍야동',bayi:'바이이 하오츠제',tmpgov:'대한민국 임시정부 청사',tiansheng:'천생삼교',fairymountain:'선녀산',longshuixia:'용수협지봉',guanyinqiao:'관음교',jiujie:'구가',luohansi:'나한사',ciqikou:'자기구고진',liziba:'리즈바역',ering:'어링얼창',shibati:'십팔제',xiahao:'샤하오리'};
+const SPOT_KO={jiefangbei:'해방비',hongyadong:'홍야동',bayi:'바이이 하오츠제',tmpgov:'대한민국 임시정부 청사',tiansheng:'천생삼교',fairymountain:'선녀산',furong:'부용동',guanyinqiao:'관음교',jiujie:'구가',luohansi:'나한사',ciqikou:'자기구고진',liziba:'리즈바역',ering:'어링얼창',shibati:'십팔제',xiahao:'샤하오리'};
 const FOOD_KO={milktea:'밀크티',yangrou:'우롱 양고기',kaoyu:'카오위',xiaomian:'충칭 샤오몐',xiaolongxia:'마라롱샤',dimsum:'딤섬'};
 const MORE_ITEMS=[
   {id:'book',title:'BOOKINGS',sub:'항공·기차·숙소·입장권'},
@@ -5084,7 +5698,7 @@ const MORE_ITEMS=[
   {id:'emergency',title:'EMERGENCY',sub:'긴급전화와 도움 요청 문장'}
 ];
 const DAYS=[
-  {id:1,date:'08.25',dow:'TUE',name:'도착일',place:'충칭 · Fandiao Meiju',sleep:'Fandiao Meiju',food:'밀크티 · 야시장',events:[
+  {id:1,date:'08.25',dow:'TUE',name:'도착일',place:'충칭 · ISBELLO Lixin Landmark High Altitude Hotel (Jiefangbei Branch)',sleep:'ISBELLO Lixin Landmark High Altitude Hotel (Jiefangbei Branch)',food:'밀크티 · 야시장',events:[
     ['18:05','충칭 도착','입국 후 지하철 또는 택시 이동'],
     ['19:30','숙소 체크인','지에팡베이 인근'],
     ['20:10','해방비','야경 · 산책','spot','jiefangbei'],
@@ -5092,21 +5706,24 @@ const DAYS=[
     ['21:10','홍야동','야경 보기','spot','hongyadong'],
     ['22:10','바이이 하오츠제','야시장 간식','spot','bayi']
   ]},
-  {id:2,date:'08.26',dow:'WED',name:'우롱 1일차',place:'충칭 → 우롱',sleep:'우롱 숙소',food:'우롱 양고기',events:[
+  {id:2,date:'08.26',dow:'WED',name:'우롱 1일차',place:'충칭 → 우롱 · 선녀산진',sleep:'Guilai Boutique Hotel',food:'우롱 양고기',events:[
     ['09:00','임정청사','오전 한 곳만 보기','spot','tmpgov'],
     ['11:46','충칭동 → 우롱남','고속철 이동'],
     ['14:00','천생삼교','오후 메인 코스','spot','tiansheng'],
-    ['18:30','우롱 양고기','저녁 식사','food','yangrou']
+    ['18:30','우롱 양고기','저녁 식사','food','yangrou'],
+    ['20:00','Guilai Boutique Hotel','归来精品酒店 · 체크인']
   ]},
-  {id:3,date:'08.27',dow:'THU',name:'우롱 → 충칭',place:'우롱 → 충칭',sleep:'Fandiao Apartment',food:'카오위',events:[
-    ['08:00','선녀산','아침 산책','spot','fairymountain'],
-    ['11:00','용수협지봉','협곡 코스','spot','longshuixia'],
+  {id:3,date:'08.27',dow:'THU',name:'우롱 → 충칭',place:'선녀산 · 부용동 → 충칭',sleep:'谢小姐的家江景民宿(解放碑步行街洪崖洞店)',food:'카오위',events:[
+    ['07:30','선녀산','아침 산책','spot','fairymountain'],
+    ['10:00','부용동 이동','江口镇 방향 · 이동시간 여유'],
+    ['11:30','부용동','동굴 · 거막비폭','spot','furong'],
+    ['14:30','우롱남역 이동','17:03 열차 여유 있게'],
     ['17:03','우롱남 → 충칭동','고속철 복귀'],
     ['19:30','관음교','저녁 상권','spot','guanyinqiao'],
     ['20:30','카오위','충칭 복귀 첫 저녁','food','kaoyu'],
     ['22:00','구가(九街)','밤거리 옵션','spot','jiujie']
   ]},
-  {id:4,date:'08.28',dow:'FRI',name:'충칭 시내',place:'충칭 시내 풀데이',sleep:'Fandiao Apartment',food:'딤섬 · 샤오몐 · 마라롱샤',events:[
+  {id:4,date:'08.28',dow:'FRI',name:'충칭 시내',place:'충칭 시내 풀데이',sleep:'谢小姐的家江景民宿(解放碑步行街洪崖洞店)',food:'딤섬 · 샤오몐 · 마라롱샤',events:[
     ['08:40','나한사','아침 방문','spot','luohansi'],
     ['10:00','자기구고진','간식·기념품','spot','ciqikou'],
     ['12:00','리즈바역','경전철 사진','spot','liziba'],
@@ -5125,40 +5742,41 @@ const DAYS=[
   ]}
 ];
 const SPOTS={
-  jiefangbei:{kind:'City',name:'Jiefangbei',cn:'解放碑',area:'충칭 시내',date:'08.25',duration:'40–60 min',search:'解放碑步行街',map:'解放碑步行街 重庆',summary:'충칭 중심 상권. 첫날 밤 분위기를 보기 가장 좋고, 야시장·밀크티·쇼핑을 붙이기 쉽습니다.',highlights:['보행자 거리 산책','네온사인과 야경','밀크티·간식 동선 연결'],tips:['홍야동과 같은 날 묶기 좋음','밤 8시 이후 분위기가 더 좋음'],photo:'https://loremflickr.com/960/720/chongqing,city?lock=101'},
-  hongyadong:{kind:'Night View',name:'Hongyadong',cn:'洪崖洞',area:'충칭 시내',date:'08.25',duration:'45–60 min',search:'洪崖洞',map:'洪崖洞 重庆',summary:'충칭 대표 야경 스팟. 층층이 쌓인 건물과 강가 조명이 포인트입니다.',highlights:['강변 야경','건물 조명','포토 스폿'],tips:['해방비에서 같이 보기 좋음','사람 많아도 외곽에서 보는 뷰가 예쁨'],photo:'https://loremflickr.com/960/720/hongyadong,chongqing?lock=102'},
-  bayi:{kind:'Market',name:'Bayi Street',cn:'八一好吃街',area:'충칭 시내',date:'08.25',duration:'30–50 min',search:'八一好吃街',map:'八一好吃街 重庆',summary:'충칭 대표 먹거리 거리. 여러 간식을 나눠먹기 좋습니다.',highlights:['산라펀·꼬치·빙펀','짧게 둘러보기 좋음'],tips:['메인 저녁 후 2차 간식 장소로 적합'],photo:'https://loremflickr.com/960/720/streetfood,china?lock=103'},
-  tmpgov:{kind:'Museum',name:'KPG Building',cn:'大韩民国临时政府旧址陈列馆',area:'충칭 시내',date:'08.26',duration:'40–60 min',search:'大韩民国临时政府旧址陈列馆',map:'大韩民国临时政府旧址陈列馆 重庆',summary:'대한민국 임시정부 청사 유적 전시관. 오전 한 곳으로 보기 좋습니다.',highlights:['한국 관련 역사 전시','비교적 짧게 관람 가능'],tips:['8/26 오전에 방문 후 역 이동 추천'],photo:'https://loremflickr.com/960/720/museum,history?lock=104'},
-  tiansheng:{kind:'Nature',name:'Three Bridges',cn:'天生三桥',area:'우롱',date:'08.26',duration:'2–3 hr',search:'天生三桥 武隆',map:'天生三桥 武隆',summary:'우롱 대표 명소. 거대한 천연 석교와 영화 같은 풍경이 특징입니다.',highlights:['거대한 석교 지형','우롱 대표 포인트','걷는 구간이 많음'],tips:['오후 메인 일정으로 배정','운동화 필수'],photo:'https://loremflickr.com/960/720/canyon,bridge,nature?lock=105'},
-  fairymountain:{kind:'Nature',name:'Fairy Mountain',cn:'仙女山',area:'우롱',date:'08.27',duration:'1.5–2 hr',search:'仙女山 国家森林公园',map:'仙女山 国家森林公园',summary:'넓은 초원과 삼림이 있는 우롱의 고원 지대. 아침 산책 코스로 적당합니다.',highlights:['시원한 고원 분위기','초원·삼림 풍경'],tips:['아침 일찍 가면 비교적 쾌적함'],photo:'https://loremflickr.com/960/720/mountain,meadow?lock=106'},
-  longshuixia:{kind:'Nature',name:'Longshuixia Rift',cn:'龙水峡地缝',area:'우롱',date:'08.27',duration:'1.5–2 hr',search:'龙水峡地缝 武隆',map:'龙水峡地缝 武隆',summary:'깊은 협곡 사이를 걷는 코스. 계단과 젖은 바닥이 있어 미끄럼 주의가 필요합니다.',highlights:['깊은 협곡 풍경','우롱 대표 협곡 코스'],tips:['선녀산 후 방문 추천','우비나 미끄럼 주의'],photo:'https://loremflickr.com/960/720/canyon,waterfall?lock=107'},
-  guanyinqiao:{kind:'District',name:'Guanyinqiao',cn:'观音桥',area:'충칭 시내',date:'08.27',duration:'2–3 hr',search:'观音桥步行街',map:'观音桥步行街 重庆',summary:'젊은 상권과 쇼핑, 식당이 모인 번화가. 카오위 저녁과 잘 어울립니다.',highlights:['쇼핑몰·상권','야간 분위기'],tips:['북창문창거리와 함께 보기 좋음'],photo:'https://loremflickr.com/960/720/shopping,city,night?lock=108'},
-  jiujie:{kind:'Night Area',name:'Jiujie',cn:'九街',area:'충칭 시내',date:'08.27',duration:'1–2 hr',search:'九街 重庆',map:'九街 重庆',summary:'관음교 권역의 밤거리. 늦게까지 활기가 남는 편입니다.',highlights:['심야 상권','술집·야식'],tips:['체력 남으면 옵션으로 방문'],photo:'https://loremflickr.com/960/720/nightlife,street?lock=109'},
-  luohansi:{kind:'Temple',name:'Luohansi',cn:'罗汉寺',area:'충칭 시내',date:'08.28',duration:'30–45 min',search:'罗汉寺 重庆',map:'罗汉寺 重庆',summary:'도심 속 사찰. 아침에 비교적 조용하게 보기 좋습니다.',highlights:['짧게 보기 좋은 사찰','도심 속 분위기 전환'],tips:['이른 아침 방문 추천'],photo:'https://loremflickr.com/960/720/temple,china?lock=110'},
-  ciqikou:{kind:'Old Town',name:'Ciqikou',cn:'磁器口古镇',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'磁器口古镇',map:'磁器口古镇 重庆',summary:'오래된 골목과 간식, 기념품 가게가 모여 있는 고진. 천마화 쇼핑에 좋습니다.',highlights:['기념품·간식 쇼핑','골목 산책'],tips:['너무 오래 있지 말고 핵심만 보기'],photo:'https://loremflickr.com/960/720/oldtown,china?lock=111'},
-  liziba:{kind:'Photo Spot',name:'Liziba',cn:'李子坝',area:'충칭 시내',date:'08.28',duration:'30–40 min',search:'李子坝观景平台',map:'李子坝观景平台 重庆',summary:'건물을 통과하는 경전철로 유명한 포토 스폿.',highlights:['모노레일 사진','짧게 보기 좋음'],tips:['맞은편 플랫폼에서 사진 찍기'],photo:'https://loremflickr.com/960/720/train,city?lock=112'},
-  ering:{kind:'Creative Park',name:'Eling No.2',cn:'鹅岭二厂',area:'충칭 시내',date:'08.28',duration:'1 hr',search:'鹅岭二厂',map:'鹅岭二厂 重庆',summary:'옛 공장을 개조한 문창공간. 카페 쉬기 좋고 사진 찍기 좋습니다.',highlights:['카페·소품샵','문창 감성'],tips:['리즈바와 함께 묶기 좋음'],photo:'https://loremflickr.com/960/720/cafe,creative,industrial?lock=113'},
-  shibati:{kind:'Old Street',name:'Shibati',cn:'十八梯',area:'충칭 시내',date:'08.28',duration:'45–60 min',search:'十八梯传统风貌区',map:'十八梯传统风貌区 重庆',summary:'충칭의 계단형 구도심 풍경을 보기 좋은 곳.',highlights:['계단 골목','야간 산책'],tips:['늦은 오후 방문 추천'],photo:'https://loremflickr.com/960/720/oldstreet,stairs?lock=114'},
-  xiahao:{kind:'Old Street',name:'Xiahaoli',cn:'下浩里',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'下浩里老街',map:'下浩里老街 重庆',summary:'남안구의 오래된 산비탈 거리. 해질 무렵 분위기가 좋습니다.',highlights:['골목·계단 풍경','야경 전 산책'],tips:['룽먼하오와 이어보기 좋음'],photo:'https://loremflickr.com/960/720/oldstreet,night?lock=115'}
+  jiefangbei:{kind:'City',name:'Jiefangbei',cn:'解放碑',area:'충칭 시내',date:'08.25',duration:'40–60 min',search:'解放碑步行街',map:'解放碑步行街 重庆',summary:'충칭 중심 상권. 첫날 밤 분위기를 보기 가장 좋고, 야시장·밀크티·쇼핑을 붙이기 쉽습니다.',highlights:['보행자 거리 산책','네온사인과 야경','밀크티·간식 동선 연결'],tips:['홍야동과 같은 날 묶기 좋음','밤 8시 이후 분위기가 더 좋음'],photo:'./images/jiefangbei.svg',remotePhoto:'https://loremflickr.com/960/720/chongqing,city?lock=101'},
+  hongyadong:{kind:'Night View',name:'Hongyadong',cn:'洪崖洞',area:'충칭 시내',date:'08.25',duration:'45–60 min',search:'洪崖洞',map:'洪崖洞 重庆',summary:'충칭 대표 야경 스팟. 층층이 쌓인 건물과 강가 조명이 포인트입니다.',highlights:['강변 야경','건물 조명','포토 스폿'],tips:['해방비에서 같이 보기 좋음','사람 많아도 외곽에서 보는 뷰가 예쁨'],photo:'./images/hongyadong.svg',remotePhoto:'https://loremflickr.com/960/720/hongyadong,chongqing?lock=102'},
+  bayi:{kind:'Market',name:'Bayi Street',cn:'八一好吃街',area:'충칭 시내',date:'08.25',duration:'30–50 min',search:'八一好吃街',map:'八一好吃街 重庆',summary:'충칭 대표 먹거리 거리. 여러 간식을 나눠먹기 좋습니다.',highlights:['산라펀·꼬치·빙펀','짧게 둘러보기 좋음'],tips:['메인 저녁 후 2차 간식 장소로 적합'],photo:'./images/bayi.svg',remotePhoto:'https://loremflickr.com/960/720/streetfood,china?lock=103'},
+  tmpgov:{kind:'Museum',name:'KPG Building',cn:'大韩民国临时政府旧址陈列馆',area:'충칭 시내',date:'08.26',duration:'40–60 min',search:'大韩民国临时政府旧址陈列馆',map:'大韩民国临时政府旧址陈列馆 重庆',summary:'대한민국 임시정부 청사 유적 전시관. 오전 한 곳으로 보기 좋습니다.',highlights:['한국 관련 역사 전시','비교적 짧게 관람 가능'],tips:['8/26 오전에 방문 후 역 이동 추천'],photo:'./images/tmpgov.svg',remotePhoto:'https://loremflickr.com/960/720/museum,history?lock=104'},
+  tiansheng:{kind:'Nature',name:'Three Bridges',cn:'天生三桥',area:'우롱',date:'08.26',duration:'2–3 hr',search:'天生三桥 武隆',map:'天生三桥 武隆',summary:'우롱 대표 명소. 거대한 천연 석교와 영화 같은 풍경이 특징입니다.',highlights:['거대한 석교 지형','우롱 대표 포인트','걷는 구간이 많음'],tips:['오후 메인 일정으로 배정','운동화 필수'],photo:'./images/tiansheng.svg',remotePhoto:'https://loremflickr.com/960/720/canyon,bridge,nature?lock=105'},
+  fairymountain:{kind:'Nature',name:'Fairy Mountain',cn:'仙女山',area:'우롱',date:'08.27',duration:'1.5–2 hr',search:'仙女山 国家森林公园',map:'仙女山 国家森林公园',summary:'넓은 초원과 삼림이 있는 우롱의 고원 지대. 아침 산책 코스로 적당합니다.',highlights:['시원한 고원 분위기','초원·삼림 풍경'],tips:['아침 일찍 가면 비교적 쾌적함'],photo:'./images/fairymountain.svg',remotePhoto:'https://loremflickr.com/960/720/mountain,meadow?lock=106'},
+  furong:{kind:'Cave',name:'Furong Cave',cn:'芙蓉洞',area:'우롱 · 江口镇',date:'08.27',duration:'2–2.5 hr',search:'芙蓉洞 武隆',map:'芙蓉洞 重庆武隆',summary:'우롱의 대형 석회암 동굴. 거대한 동굴 공간과 종유석·석순 경관이 이어지는 대표 카르스트 명소입니다.',highlights:['거막비폭(巨幕飞瀑) 석폭 경관','산호요지(珊瑚瑶池)','대형 석회암 동굴'],tips:['동굴 내부는 서늘하므로 얇은 겉옷 추천','17:03 열차 때문에 관람 후 역 이동 시간을 넉넉히 확보'],photo:'./images/furong.svg'},
+  guanyinqiao:{kind:'District',name:'Guanyinqiao',cn:'观音桥',area:'충칭 시내',date:'08.27',duration:'2–3 hr',search:'观音桥步行街',map:'观音桥步行街 重庆',summary:'젊은 상권과 쇼핑, 식당이 모인 번화가. 카오위 저녁과 잘 어울립니다.',highlights:['쇼핑몰·상권','야간 분위기'],tips:['북창문창거리와 함께 보기 좋음'],photo:'./images/guanyinqiao.svg',remotePhoto:'https://loremflickr.com/960/720/shopping,city,night?lock=108'},
+  jiujie:{kind:'Night Area',name:'Jiujie',cn:'九街',area:'충칭 시내',date:'08.27',duration:'1–2 hr',search:'九街 重庆',map:'九街 重庆',summary:'관음교 권역의 밤거리. 늦게까지 활기가 남는 편입니다.',highlights:['심야 상권','술집·야식'],tips:['체력 남으면 옵션으로 방문'],photo:'./images/jiujie.svg',remotePhoto:'https://loremflickr.com/960/720/nightlife,street?lock=109'},
+  luohansi:{kind:'Temple',name:'Luohansi',cn:'罗汉寺',area:'충칭 시내',date:'08.28',duration:'30–45 min',search:'罗汉寺 重庆',map:'罗汉寺 重庆',summary:'도심 속 사찰. 아침에 비교적 조용하게 보기 좋습니다.',highlights:['짧게 보기 좋은 사찰','도심 속 분위기 전환'],tips:['이른 아침 방문 추천'],photo:'./images/luohansi.svg',remotePhoto:'https://loremflickr.com/960/720/temple,china?lock=110'},
+  ciqikou:{kind:'Old Town',name:'Ciqikou',cn:'磁器口古镇',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'磁器口古镇',map:'磁器口古镇 重庆',summary:'오래된 골목과 간식, 기념품 가게가 모여 있는 고진. 천마화 쇼핑에 좋습니다.',highlights:['기념품·간식 쇼핑','골목 산책'],tips:['너무 오래 있지 말고 핵심만 보기'],photo:'./images/ciqikou.svg',remotePhoto:'https://loremflickr.com/960/720/oldtown,china?lock=111'},
+  liziba:{kind:'Photo Spot',name:'Liziba',cn:'李子坝',area:'충칭 시내',date:'08.28',duration:'30–40 min',search:'李子坝观景平台',map:'李子坝观景平台 重庆',summary:'건물을 통과하는 경전철로 유명한 포토 스폿.',highlights:['모노레일 사진','짧게 보기 좋음'],tips:['맞은편 플랫폼에서 사진 찍기'],photo:'./images/liziba.svg',remotePhoto:'https://loremflickr.com/960/720/train,city?lock=112'},
+  ering:{kind:'Creative Park',name:'Eling No.2',cn:'鹅岭二厂',area:'충칭 시내',date:'08.28',duration:'1 hr',search:'鹅岭二厂',map:'鹅岭二厂 重庆',summary:'옛 공장을 개조한 문창공간. 카페 쉬기 좋고 사진 찍기 좋습니다.',highlights:['카페·소품샵','문창 감성'],tips:['리즈바와 함께 묶기 좋음'],photo:'./images/ering.svg',remotePhoto:'https://loremflickr.com/960/720/cafe,creative,industrial?lock=113'},
+  shibati:{kind:'Old Street',name:'Shibati',cn:'十八梯',area:'충칭 시내',date:'08.28',duration:'45–60 min',search:'十八梯传统风貌区',map:'十八梯传统风貌区 重庆',summary:'충칭의 계단형 구도심 풍경을 보기 좋은 곳.',highlights:['계단 골목','야간 산책'],tips:['늦은 오후 방문 추천'],photo:'./images/shibati.svg',remotePhoto:'https://loremflickr.com/960/720/oldstreet,stairs?lock=114'},
+  xiahao:{kind:'Old Street',name:'Xiahaoli',cn:'下浩里',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'下浩里老街',map:'下浩里老街 重庆',summary:'남안구의 오래된 산비탈 거리. 해질 무렵 분위기가 좋습니다.',highlights:['골목·계단 풍경','야경 전 산책'],tips:['룽먼하오와 이어보기 좋음'],photo:'./images/xiahao.svg',remotePhoto:'https://loremflickr.com/960/720/oldstreet,night?lock=115'}
 };
 const FOODS={
-  milktea:{kind:'Drink',name:'Milk Tea',cn:'奶茶',date:'08.25',duration:'10 min',search:'奶茶 少糖 少冰',map:'奶茶 重庆',summary:'첫날 해방비에서 한 잔. 주문할 때는 당도와 얼음을 같이 말하면 편합니다.',order:['三分糖，谢谢。 = 당도 30%로 해주세요','七分糖，谢谢。 = 당도 70%로 해주세요','全糖，谢谢。 = 당도 100%로 해주세요','少冰 = 얼음 적게','珍珠 = 펄 추가'],tips:['더우면 첫 잔으로 좋음'],photo:'https://loremflickr.com/960/720/milk-tea?lock=201'},
-  yangrou:{kind:'Dinner',name:'Wulong Lamb',cn:'碗碗羊肉 / 羊肉汤',date:'08.26',duration:'1 hr',search:'羊肉汤 武隆',map:'羊肉汤 武隆',summary:'우롱에서 먹는 지역식 저녁. 뜨끈하고 든든한 편입니다.',order:['양고기탕 또는 양고기 볶음','밥이나 면 추가 가능'],tips:['천생삼교 후 저녁으로 무난함'],photo:'https://loremflickr.com/960/720/lamb,soup?lock=202'},
-  kaoyu:{kind:'Dinner',name:'Kao Yu',cn:'烤鱼',date:'08.27',duration:'1–1.5 hr',search:'烤匠麻辣烤鱼 观音桥',map:'烤匠麻辣烤鱼 观音桥',summary:'생선을 구운 뒤 육수와 함께 내는 충칭식 카오위. 둘이 먹기 좋습니다.',order:['麻辣烤鱼 또는 豆花烤鱼','채소 추가 가능','맵기 微辣 가능'],tips:['관음교 저녁 메인 메뉴로 추천'],photo:'https://loremflickr.com/960/720/grilled-fish,food?lock=203'},
-  xiaomian:{kind:'Noodle',name:'Xiao Mian',cn:'重庆小面',date:'08.28 / 08.29',duration:'20–30 min',search:'重庆小面',map:'重庆小面 重庆',summary:'충칭식 매운 면. 점심이나 출국 전 간단한 식사로 좋습니다.',order:['기본 샤오몐','맵기 조절 가능'],tips:['땅콩·파 향이 강할 수 있음'],photo:'https://loremflickr.com/960/720/noodles,china?lock=204'},
-  xiaolongxia:{kind:'Late Night',name:'Mala Crayfish',cn:'麻辣小龙虾',date:'08.28',duration:'1–1.5 hr',search:'麻辣小龙虾 解放碑',map:'麻辣小龙虾 重庆',summary:'마라 양념 가재. 밤에 맥주와 함께 먹기 좋습니다.',order:['麻辣味 + 蒜蓉味 반반','장갑·물티슈 준비'],tips:['맵기 부담되면 蒜蓉味 섞기'],photo:'https://loremflickr.com/960/720/crayfish,food?lock=205'},
-  dimsum:{kind:'Brunch',name:'Dim Sum',cn:'点心 / 虾饺 / 烧卖',date:'옵션',duration:'45–60 min',search:'港式点心 解放碑',map:'港式点心 重庆',summary:'하가우, 샤오마이, 창펀을 가볍게 먹는 홍콩식 브런치 옵션.',order:['虾饺皇','烧卖','肠粉','流沙包'],tips:['오전 식사 옵션으로 좋음'],photo:'https://loremflickr.com/960/720/dim-sum?lock=206'}
+  milktea:{kind:'Drink',name:'Milk Tea',cn:'奶茶',date:'08.25',duration:'10 min',search:'奶茶 少糖 少冰',map:'奶茶 重庆',summary:'첫날 해방비에서 한 잔. 주문할 때는 당도와 얼음을 같이 말하면 편합니다.',order:['三分糖，谢谢。 = 당도 30%로 해주세요','七分糖，谢谢。 = 당도 70%로 해주세요','全糖，谢谢。 = 당도 100%로 해주세요','少冰 = 얼음 적게','珍珠 = 펄 추가'],tips:['더우면 첫 잔으로 좋음'],photo:'./images/milktea.svg',remotePhoto:'https://loremflickr.com/960/720/milk-tea?lock=201'},
+  yangrou:{kind:'Dinner',name:'Wulong Lamb',cn:'碗碗羊肉 / 羊肉汤',date:'08.26',duration:'1 hr',search:'羊肉汤 武隆',map:'羊肉汤 武隆',summary:'우롱에서 먹는 지역식 저녁. 뜨끈하고 든든한 편입니다.',order:['양고기탕 또는 양고기 볶음','밥이나 면 추가 가능'],tips:['천생삼교 후 저녁으로 무난함'],photo:'./images/yangrou.svg',remotePhoto:'https://loremflickr.com/960/720/lamb,soup?lock=202'},
+  kaoyu:{kind:'Dinner',name:'Kao Yu',cn:'烤鱼',date:'08.27',duration:'1–1.5 hr',search:'烤匠麻辣烤鱼 观音桥',map:'烤匠麻辣烤鱼 观音桥',summary:'생선을 구운 뒤 육수와 함께 내는 충칭식 카오위. 둘이 먹기 좋습니다.',order:['麻辣烤鱼 또는 豆花烤鱼','채소 추가 가능','맵기 微辣 가능'],tips:['관음교 저녁 메인 메뉴로 추천'],photo:'./images/kaoyu.svg',remotePhoto:'https://loremflickr.com/960/720/grilled-fish,food?lock=203'},
+  xiaomian:{kind:'Noodle',name:'Xiao Mian',cn:'重庆小面',date:'08.28 / 08.29',duration:'20–30 min',search:'重庆小面',map:'重庆小面 重庆',summary:'충칭식 매운 면. 점심이나 출국 전 간단한 식사로 좋습니다.',order:['기본 샤오몐','맵기 조절 가능'],tips:['땅콩·파 향이 강할 수 있음'],photo:'./images/xiaomian.svg',remotePhoto:'https://loremflickr.com/960/720/noodles,china?lock=204'},
+  xiaolongxia:{kind:'Late Night',name:'Mala Crayfish',cn:'麻辣小龙虾',date:'08.28',duration:'1–1.5 hr',search:'麻辣小龙虾 解放碑',map:'麻辣小龙虾 重庆',summary:'마라 양념 가재. 밤에 맥주와 함께 먹기 좋습니다.',order:['麻辣味 + 蒜蓉味 반반','장갑·물티슈 준비'],tips:['맵기 부담되면 蒜蓉味 섞기'],photo:'./images/xiaolongxia.svg',remotePhoto:'https://loremflickr.com/960/720/crayfish,food?lock=205'},
+  dimsum:{kind:'Brunch',name:'Dim Sum',cn:'点心 / 虾饺 / 烧卖',date:'옵션',duration:'45–60 min',search:'港式点心 解放碑',map:'港式点心 重庆',summary:'하가우, 샤오마이, 창펀을 가볍게 먹는 홍콩식 브런치 옵션.',order:['虾饺皇','烧卖','肠粉','流沙包'],tips:['오전 식사 옵션으로 좋음'],photo:'./images/dimsum.svg',remotePhoto:'https://loremflickr.com/960/720/dim-sum?lock=206'}
 };
 const BOOKINGS=[
   {type:'Flight',title:'ICN → TAO → CKG',color:'color-red',meta:['08.25 12:15–12:50 인천→칭다오','15:10–18:05 칭다오→충칭'],note:'칭다오 경유 · 위탁수하물 없음',code:'DAY 01'},
   {type:'Train',title:'CKG East → Wulong South',color:'color-yellow',meta:['08.26 고속철 이동','11:46 출발 기준으로 계획'],note:'역명은 武隆南 확인',code:'DAY 02'},
-  {type:'Hotel',title:'Fandiao Meiju',color:'color-blue',meta:['08.25–08.26 1박','충칭 첫 숙소'],note:'지에팡베이 인근',code:'HOTEL 1'},
-  {type:'Hotel',title:'Wulong Stay',color:'color-lav',meta:['08.26–08.27 1박','우롱 숙소'],note:'천생삼교·선녀산 이동 고려',code:'HOTEL 2'},
-  {type:'Hotel',title:'Fandiao Apartment',color:'color-pink',meta:['08.27–08.29 2박','충칭 복귀 숙소'],note:'외국인 숙박등록 가능 여부 확인',code:'HOTEL 3'},
-  {type:'Ticket',title:'Wulong Scenic Tickets',color:'color-mint',meta:['천생삼교','용수협지봉','선녀산'],note:'공연 제외 버전',code:'TICKET'},
+  {type:'Hotel',title:'ISBELLO Lixin Landmark High Altitude Hotel (Jiefangbei Branch)',color:'color-blue',meta:['08.25–08.26 1박','解放碑 지점','이스벨로 리신 랜드마크 고층 호텔 (제팡베이 지점)'],note:'1일차 충칭 숙소 · 도착 후 체크인',code:'HOTEL 1'},
+  {type:'Hotel',title:'Guilai Boutique Hotel',color:'color-lav',meta:['08.26–08.27 1박','归来精品酒店（仙女山游客中心店）','仙女山镇翠云路1号'],note:'선녀산진 · 관광객센터 인근',code:'HOTEL 2'},
+  {type:'Hotel',title:'谢小姐的家江景民宿(解放碑步行街洪崖洞店)',color:'color-pink',meta:['08.27–08.29 2박','解放碑 · 洪崖洞 인근','Chongqing Miss Xie\'S House With Riverview(Near Jiefangbei and Hongyadong)'],note:'3–5일차 충칭 숙소 · 체크인 시 숙박등록 확인',code:'HOTEL 3'},
+  {type:'Ticket',title:'Wulong Scenic Tickets',color:'color-mint',meta:['천생삼교 · 天生三桥','선녀산 · 仙女山','부용동 · 芙蓉洞'],note:'B안 · 용수협지봉 제외 · 공연 제외',code:'TICKET'},
   {type:'Flight',title:'CKG → TNA → ICN',color:'color-sand',meta:['08.29 13:30–15:45 충칭→지난','20:10–22:40 지난→인천'],note:'지난 공항 환승 4시간 25분',code:'DAY 05'}
 ];
 const MAYBE=[
+  {type:'Spot',title:'용수협지봉',cn:'龙水峡地缝',why:'B안 선택으로 본 일정에서는 제외. 현지에서 부용동 대신 협곡을 보고 싶을 때 교체 후보',when:'8/27 우롱'},
   {type:'Spot',title:'북창문창거리',cn:'北仓文创街区',why:'관음교와 붙여 보기 좋은 카페·문창 구역',when:'8/27 밤'},
   {type:'Spot',title:'쿠이싱러우',cn:'魁星楼',why:'해방비·홍야동 사이 짧게 끼우기 좋은 포인트',when:'8/25 밤'},
   {type:'Spot',title:'룽먼하오 라오제',cn:'龙门浩老街',why:'샤하오리와 이어서 야경 보기 좋은 거리',when:'8/28 저녁'},
@@ -5197,7 +5815,7 @@ const PHRASES=[
  ['인터넷 비밀번호가 뭐예요?','Wi-Fi密码是什么？'],
  ['도와주세요.','请帮帮我。']
 ];
-const CHECKS=['여권 유효기간 확인','Alipay 해외카드 등록·본인인증','WeChat 결제수단 준비','12306 로그인 및 실명인증','충칭동 ↔ 우롱남 왕복 고속철 예약','우롱 숙소 위치 확정','Fandiao Apartment 외국인 숙박등록 확인','우롱 입장권 확인','두 숙소 중국어 주소 저장','고덕지도 즐겨찾기 저장','보조배터리·우산·우비·운동화 준비','현금 비상용 준비','칭다오·지난 환승 동선 확인'];
+const CHECKS=['여권 유효기간 확인','Alipay 해외카드 등록·본인인증','WeChat 결제수단 준비','12306 로그인 및 실명인증','충칭동 ↔ 우롱남 왕복 고속철 예약','우롱 숙소 위치 확정','谢小姐的家江景民宿(解放碑步行街洪崖洞店) 외국인 숙박등록 확인','우롱 입장권 확인','두 숙소 중국어 주소 저장','고덕지도 즐겨찾기 저장','보조배터리·우산·우비·운동화 준비','현금 비상용 준비','칭다오·지난 환승 동선 확인'];
 const STORE='cqTripV16';
 let state={base:1800,shop:250,expenseNote:'',splitItems:[],freeNote:'',visitedSpots:{},visitedFoods:{},bookingMemos:{},detailMemos:{spot:{},food:{}},bookingLinks:{},detailLinks:{spot:{},food:{}}};
 try{state={...state,...JSON.parse(localStorage.getItem(STORE)||localStorage.getItem('cqTripV11')||localStorage.getItem('cqTripV8')||localStorage.getItem('cqTripV7')||localStorage.getItem('cqTripV6')||'{}')}}catch(e){}
@@ -5231,90 +5849,101 @@ function getTodayData(){const now=new Date();const start=new Date('2026-08-25T00
   return {mode:'during',label:`DAY ${idx+1}`,title:DAYS[idx].name,day:DAYS[idx],subtitle:DAYS[idx].place};
 }
 function nextEventForDay(day){const now=new Date();const hh=String(now.getHours()).padStart(2,'0');const mm=String(now.getMinutes()).padStart(2,'0');const current=`${hh}:${mm}`;const timed=day.events.filter(e=>/^\d{2}:\d{2}$/.test(e[0]));return timed.find(e=>e[0]>=current)||timed[timed.length-1]||day.events[0]}
+
+const V45_TONES=['v45-tone-white','v45-tone-pink','v45-tone-mint','v45-tone-lime','v45-tone-lav'];
+const tone=i=>V45_TONES[(i%V45_TONES.length+V45_TONES.length)%V45_TONES.length];
+const SPOT_MAP_LAYOUT={
+  city:['jiefangbei','hongyadong','bayi','tmpgov','guanyinqiao','jiujie','luohansi','ciqikou','liziba','ering','shibati','xiahao'],
+  wulong:['tiansheng','fairymountain','furong']
+};
+function svgPlaceholder(title,sub,bg='#f8f6f1',fg='#121314'){
+  const safe=(v='')=>String(v).replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720"><rect width="1200" height="720" rx="48" fill="${bg}"/><path d="M84 598H1116" stroke="${fg}" stroke-opacity=".14" stroke-width="3"/><text x="72" y="146" fill="${fg}" font-size="88" font-family="-apple-system, Helvetica, Arial, sans-serif" font-weight="800">${safe(title)}</text><text x="72" y="226" fill="${fg}" fill-opacity=".58" font-size="38" font-family="-apple-system, Helvetica, Arial, sans-serif">${safe(sub)}</text><text x="72" y="640" fill="${fg}" fill-opacity=".58" font-size="30" font-family="-apple-system, Helvetica, Arial, sans-serif">CHONGQING ATLAS</text></svg>`;
+  return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
+}
+function renderSpotMap(filter='ALL'){
+  const cityIds=SPOT_MAP_LAYOUT.city.filter(id=>filter==='ALL'||filter==='CHONGQING');
+  const wulongIds=SPOT_MAP_LAYOUT.wulong.filter(id=>filter==='ALL'||filter==='WULONG');
+  const cityHtml=cityIds.map(id=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
+  const wulongHtml=wulongIds.map(id=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
+  const side=(filter==='WULONG')?`<div class="v45-map-side"><b>WULONG</b><span>천생삼교 · 선녀산 · 부용동</span></div>`:`<div class="v45-map-side"><b>CITY</b><span>해방비 · 홍야동 · 자기구고진 · 리즈바</span></div>`;
+  return `<section class="v45-map-panel"><div class="v45-map-head"><div><b>SPOT MAP</b><span>마지막 포스터 레퍼런스처럼 장소를 한 보드에 모았습니다.</span></div><span>${filter==='ALL'?'CITY + WULONG':filter}</span></div><div class="v45-map-board">${side}${cityIds.length?`<div class="v45-map-cluster city"><div class="v45-map-cluster-label">Chongqing core</div>${cityHtml}</div>`:''}${wulongIds.length?`<div class="v45-map-cluster wulong"><div class="v45-map-cluster-label">Wulong</div>${wulongHtml}</div>`:''}</div></section>`;
+}
+
 function renderToday(){
   const t=getTodayData();
   const day=t.day;
   const next=t.mode==='during'?nextEventForDay(day):day.events[0];
   const nextFood=day.events.find(e=>e[3]==='food');
-
   document.getElementById('today').innerHTML=`
-    <main class="v36-page v36-today v37-today v38-today">
-      <header class="v36-today-hero v37-today-hero">
-        <div class="v36-overline"><span>${day.date} ${day.dow}</span><span>CHONGQING</span></div>
-        <div class="v36-hero-word">${t.label}</div>
-        <div class="v36-hero-title">${t.title}</div>
-        <div class="v36-hero-meta">${day.sleep}</div>
-      </header>
+    <main class="v45-screen">
+      <section class="v45-hero v45-tone-mint">
+        <div class="v45-overline"><span>${day.date} ${day.dow}</span><span>CHONGQING ATLAS</span></div>
+        <div class="v45-display">${t.label}</div>
+        <h1 class="v45-title">${t.title}</h1>
+        <p class="v45-sub">${day.place}</p>
+      </section>
 
-      <button class="v38-next" onclick="go('plan')" aria-label="다음 일정 보기">
-        <div class="v38-next-head">
-          <span>NEXT</span>
-          <span>→</span>
-        </div>
-        <div class="v38-next-time">${next[0]}</div>
-        <div class="v38-next-title">${next[1]}</div>
-        ${next[2]?`<div class="v38-next-sub">${next[2]}</div>`:''}
-      </button>
+      <div class="v45-grid-2">
+        <button class="v45-mini-action v45-tone-pink" onclick="go('plan')">
+          <span class="v45-mini-label">Next</span>
+          <span class="v45-mini-main">${next[0]}</span>
+          <span class="v45-mini-sub"><b>${next[1]}</b>${next[2]?` · ${next[2]}`:''}</span>
+        </button>
+        <button class="v45-mini-action v45-tone-white" onclick="go('more')">
+          <span class="v45-mini-label">Control</span>
+          <span class="v45-mini-main">MORE</span>
+          <span class="v45-mini-sub">예약 · 예산 · 말하기 · 체크</span>
+        </button>
+      </div>
 
-      <section class="v36-route v37-route">
-        <div class="v36-section-label">TODAY</div>
-        <div class="v36-route-list">
-          ${day.events.slice(0,6).map(e=>{
+      <div class="v45-section-head"><b>Today flow</b><span>${String(day.events.length).padStart(2,'0')}</span></div>
+      <section class="v45-list-card">
+        <div class="v45-row-list">
+          ${day.events.map((e,i)=>{
             const [time,title,sub,type,id]=e;
+            const klass=type?'v45-row':'v45-row-static';
+            const content=`<time>${time}</time><span><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span><em>${type?'↗':''}</em>`;
             return type
-              ? `<button class="v36-route-row v37-route-row" onclick="openDetail('${type}','${id}','today')">
-                  <span>${time}</span><span><b>${title}</b></span><i>↗</i>
-                </button>`
-              : `<div class="v36-route-row v37-route-row static">
-                  <span>${time}</span><span><b>${title}</b></span><i></i>
-                </div>`;
+              ? `<button class="${klass}" onclick="openDetail('${type}','${id}','today')">${content}</button>`
+              : `<div class="${klass}">${content}</div>`;
           }).join('')}
         </div>
       </section>
 
-      <footer class="v36-today-foot v37-today-foot">
-        <div><span>FOOD</span><b>${nextFood?nextFood[1]:day.food}</b></div>
-        <button onclick="go('more')"><span>MORE</span><b>→</b></button>
-      </footer>
+      <div class="v45-chip-row">
+        <div class="v45-chip v45-tone-lime"><span>Food</span><b>${nextFood?nextFood[1]:day.food}</b></div>
+        <div class="v45-chip v45-tone-lav"><span>Sleep</span><b>${day.sleep}</b></div>
+      </div>
     </main>`;
 }
 function renderPlan(){
   document.getElementById('plan').innerHTML=`
-    <main class="v39-page v39-plan">
-      <header class="v39-page-head">
-        <div class="v39-eyebrow"><span>08.25 — 08.29</span><span>05 DAYS</span></div>
-        <div class="v39-page-title">CHONGQING<br>WULONG</div>
-      </header>
+    <main class="v45-screen">
+      <section class="v45-hero v45-tone-white">
+        <div class="v45-overline"><span>08.25 — 08.29</span><span>05 DAYS</span></div>
+        <div class="v45-display">PLAN</div>
+        <h1 class="v45-title">CHONGQING · WULONG</h1>
+        <p class="v45-sub">박스와 파스텔 컬러를 다시 살리고, 스크롤은 세로로 길게 정리했습니다.</p>
+      </section>
 
-      <div class="v39-plan-list">
+      <div class="v45-plan-stack">
         ${DAYS.map((d,i)=>`
-          <section class="v39-plan-card">
-            <div class="v39-plan-card-head">
-              <span>DAY ${String(i+1).padStart(2,'0')}</span>
-              <span>${d.dow}</span>
-            </div>
-            <div class="v39-plan-date">${d.date.replace('.','/')}</div>
-            <div class="v39-plan-name">${d.name}</div>
-            <div class="v39-plan-place">${d.place}</div>
-
-            <div class="v39-plan-events">
+          <section class="v45-plan-card ${tone(i+1)}">
+            <div class="v45-plan-top"><span>DAY ${String(i+1).padStart(2,'0')}</span><span>${d.dow}</span></div>
+            <div class="v45-plan-date">${d.date.replace('.',' / ')}</div>
+            <div class="v45-plan-name">${d.name}</div>
+            <div class="v45-plan-place">${d.place}</div>
+            <div class="v45-plan-events">
               ${d.events.map(e=>{
                 const [time,title,sub,type,id]=e;
+                const row=`<time>${time}</time><span class="v45-plan-copy"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span><span class="v45-plan-arrow">${type?'→':''}</span>`;
                 return type
-                  ? `<button class="v39-plan-event" onclick="openDetail('${type}','${id}','plan')">
-                      <span class="v39-plan-time">${time}</span>
-                      <span class="v39-plan-copy"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span>
-                      <span class="v39-plan-arrow">→</span>
-                    </button>`
-                  : `<div class="v39-plan-event static">
-                      <span class="v39-plan-time">${time}</span>
-                      <span class="v39-plan-copy"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span>
-                      <span></span>
-                    </div>`;
+                  ? `<button class="v45-plan-event" onclick="openDetail('${type}','${id}','plan')">${row}</button>`
+                  : `<div class="v45-plan-event static">${row}</div>`;
               }).join('')}
             </div>
-
-            <div class="v39-plan-foot"><span>${d.food}</span><span>${d.sleep}</span></div>
+            <div class="v45-plan-foot"><div><span>Food</span><b>${d.food}</b></div><div><span>Sleep</span><b>${d.sleep}</b></div></div>
           </section>`).join('')}
       </div>
     </main>`;
@@ -5322,22 +5951,21 @@ function renderPlan(){
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
   document.getElementById('spots').innerHTML=`
-    <main class="v39-page v39-index-page">
-      <header class="v39-page-head v39-index-head">
-        <div class="v39-eyebrow"><span>LOCATION INDEX</span><span>${String(entries.length).padStart(2,'0')}</span></div>
-        <div class="v39-page-title">SPOTS</div>
-        <div class="v39-filter">
-          ${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}
-        </div>
-      </header>
-
-      <div class="v39-item-grid">
+    <main class="v45-screen">
+      <section class="v45-hero v45-tone-lav">
+        <div class="v45-overline"><span>Location index</span><span>${String(entries.length).padStart(2,'0')}</span></div>
+        <div class="v45-display">SPOTS</div>
+        <h1 class="v45-title">Places to go</h1>
+        <div class="v45-filter-row">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div>
+      </section>
+      ${renderSpotMap(filter)}
+      <div class="v45-card-grid">
         ${entries.map(([id,v],i)=>`
-          <button class="v39-item-card ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
-            <span class="v39-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${isVisited('spot',id)?'DONE':'SPOT'}</i></span>
-            <span class="v39-item-name">${SPOT_KO[id]||v.name}</span>
-            <span class="v39-item-cn">${v.cn}</span>
-            <span class="v39-item-bottom"><i>${v.area} · ${v.date}</i><i>→</i></span>
+          <button class="v45-item-card ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
+            <span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.area==='우롱'?'WULONG':'CITY'}</i></span>
+            <span class="v45-item-name">${SPOT_KO[id]||v.name}</span>
+            <span class="v45-item-cn">${v.cn}<br>${v.kind}</span>
+            <span class="v45-item-bottom"><i>${v.date}</i><i>${isVisited('spot',id)?'DONE':'VIEW →'}</i></span>
           </button>`).join('')}
       </div>
     </main>`;
@@ -5345,19 +5973,20 @@ function renderSpots(filter='ALL'){
 function renderEat(){
   const entries=Object.entries(FOODS);
   document.getElementById('eat').innerHTML=`
-    <main class="v39-page v39-index-page">
-      <header class="v39-page-head v39-index-head">
-        <div class="v39-eyebrow"><span>FOOD INDEX</span><span>${String(entries.length).padStart(2,'0')}</span></div>
-        <div class="v39-page-title">EAT</div>
-      </header>
-
-      <div class="v39-item-grid">
+    <main class="v45-screen">
+      <section class="v45-hero v45-tone-pink">
+        <div class="v45-overline"><span>Food index</span><span>${String(entries.length).padStart(2,'0')}</span></div>
+        <div class="v45-display">EAT</div>
+        <h1 class="v45-title">Food checklist</h1>
+        <p class="v45-sub">주문 메모와 당도 표현까지 상세에 그대로 살아 있습니다.</p>
+      </section>
+      <div class="v45-card-grid">
         ${entries.map(([id,v],i)=>`
-          <button class="v39-item-card ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
-            <span class="v39-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${isVisited('food',id)?'DONE':'FOOD'}</i></span>
-            <span class="v39-item-name">${FOOD_KO[id]||v.name}</span>
-            <span class="v39-item-cn">${v.cn}</span>
-            <span class="v39-item-bottom"><i>${v.kind} · ${v.date}</i><i>→</i></span>
+          <button class="v45-item-card ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
+            <span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.kind}</i></span>
+            <span class="v45-item-name">${FOOD_KO[id]||v.name}</span>
+            <span class="v45-item-cn">${v.cn}<br>${v.date}</span>
+            <span class="v45-item-bottom"><i>${isVisited('food',id)?'DONE':'FOOD'}</i><i>VIEW →</i></span>
           </button>`).join('')}
       </div>
     </main>`;
@@ -5665,64 +6294,28 @@ function renderDetail(type,id,from){
   const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
   const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
   const itemNo=String(Object.keys(isFood?FOODS:SPOTS).indexOf(id)+1).padStart(2,'0');
-
+  const fallback=svgPlaceholder(koName,data.cn,isFood?'#f1cfe1':'#d8f0ea','#121314');
+  const photo=data.remotePhoto||fallback;
   document.getElementById('detail').innerHTML=`
-    <main class="v36-page v36-detail v37-detail">
-      <div class="v36-detail-nav"><button onclick="go('${from||'plan'}')">← BACK</button><span>${String(itemNo)}</span></div>
-
-      <header class="v36-detail-head">
-        <div class="v36-detail-title">${koName}</div>
-        <div class="v36-detail-name">${data.cn}<br>${data.name}</div>
+    <main class="v45-screen v45-detail-shell">
+      <div class="v45-detail-nav"><button onclick="go('${from||'plan'}')">Back</button><span class="v45-detail-count">${isFood?'FOOD':'SPOT'} ${itemNo}</span></div>
+      <header class="v45-detail-head ${tone(Number(itemNo))}">
+        <div class="v45-detail-kicker">${isFood?data.kind:(data.area||'CHONGQING')}</div>
+        <div class="v45-detail-title">${koName}</div>
+        <div class="v45-detail-name">${data.cn}<br>${data.name}</div>
       </header>
-
-      <div class="v36-detail-image" id="photoFrame">
-        <img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';">
+      <div class="v45-photo"><img src="${photo}" alt="${data.name}" loading="eager" decoding="async" onerror="this.onerror=null;this.src='${fallback}'"></div>
+      <div class="v45-fact-grid">
+        <div class="v45-fact"><span>Date</span><b>${data.date}</b></div>
+        <div class="v45-fact"><span>${isFood?'Type':'Area'}</span><b>${isFood?data.kind:(data.area||'CHONGQING')}</b></div>
+        <div class="v45-fact"><button onclick="toggleVisited('${type}','${id}')"><span>Status</span><b>${visited?'DONE ↺':'MARK →'}</b></button></div>
       </div>
-
-      <div class="v36-detail-facts v37-detail-facts">
-        <div><span>DATE</span><b>${data.date}</b></div>
-        <div><span>${isFood?'TYPE':'AREA'}</span><b>${isFood?data.kind:(data.area||'CHONGQING')}</b></div>
-        <button onclick="toggleVisited('${type}','${id}')"><span>STATUS</span><b>${visited?'DONE ↺':'MARK →'}</b></button>
-      </div>
-
-      <section class="v36-detail-section">
-        <div class="v36-detail-label">ABOUT</div>
-        <p>${data.summary}</p>
-      </section>
-
-      <section class="v36-detail-section">
-        <div class="v36-detail-label">${isFood?'ORDER':'HIGHLIGHTS'}</div>
-        <div class="v36-detail-list">${(bullets||[]).map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div>
-      </section>
-
-      <section class="v36-detail-section">
-        <div class="v36-detail-label">TOOLS</div>
-        <div class="v36-tool-list">
-          <button onclick="copyText('${esc(data.cn)}')">COPY 中文 →</button>
-          <button onclick="copyText('${esc(data.search||data.cn)}')">COPY SEARCH →</button>
-          <a href="${links.amap}" target="_blank" rel="noopener">高德地图 →</a>
-          <a href="${links.google}" target="_blank" rel="noopener">GOOGLE →</a>
-        </div>
-      </section>
-
-      <section class="v36-detail-section">
-        <div class="v36-detail-label">MEMO</div>
-        <textarea class="v36-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea>
-      </section>
-
-      <section class="v36-detail-section">
-        <div class="v36-detail-label">LINKS</div>
-        <div class="v36-links">
-          <div class="user-links-head"><span></span><button onclick="toggleLinkEditor('detail','${type}','${id}')">＋ ADD</button></div>
-          ${renderSavedLinks('detail',type,id)}
-          ${renderLinkEditor('detail',type,id)}
-        </div>
-      </section>
-
-      ${(data.tips||[]).length?`<section class="v36-detail-section">
-        <div class="v36-detail-label">NOTE</div>
-        <div class="v36-detail-list">${data.tips.map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div>
-      </section>`:''}
+      <section class="v45-detail-section"><div class="v45-detail-label">About</div><div class="v45-detail-text">${data.summary}</div></section>
+      <section class="v45-detail-section"><div class="v45-detail-label">${isFood?'Order':'Highlights'}</div><div class="v45-detail-list">${(bullets||[]).map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div></section>
+      <section class="v45-detail-section"><div class="v45-detail-label">Tools</div><div class="v45-tool-grid"><button onclick="copyText('${esc(data.cn)}')">COPY 中文</button><button onclick="copyText('${esc(data.search||data.cn)}')">COPY SEARCH</button><a href="${links.amap}" target="_blank" rel="noopener">高德地图 ↗</a><a href="${links.google}" target="_blank" rel="noopener">GOOGLE ↗</a></div></section>
+      <section class="v45-detail-section"><div class="v45-detail-label">Memo</div><textarea class="v45-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea></section>
+      <section class="v45-detail-section"><div class="v45-detail-label">Links</div><div class="v36-links"><div class="user-links-head"><span></span><button onclick="toggleLinkEditor('detail','${type}','${id}')">＋ ADD</button></div>${renderSavedLinks('detail',type,id)}${renderLinkEditor('detail',type,id)}</div></section>
+      ${(data.tips||[]).length?`<section class="v45-detail-section"><div class="v45-detail-label">Note</div><div class="v45-detail-list">${data.tips.map((x,i)=>`<div><span>${String(i+1).padStart(2,'0')}</span><b>${x}</b></div>`).join('')}</div></section>`:''}
     </main>`;
 }
 function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
@@ -5732,19 +6325,15 @@ function renderWeather(){document.getElementById('weather').innerHTML=`<div clas
 function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
 function renderMore(){
   document.getElementById('more').innerHTML=`
-    <main class="v39-page v39-more">
-      <header class="v39-page-head">
-        <div class="v39-eyebrow"><span>SYSTEM</span><span>${String(MORE_ITEMS.length).padStart(2,'0')}</span></div>
-        <div class="v39-page-title">MORE</div>
-      </header>
-
-      <div class="v39-more-grid">
-        ${MORE_ITEMS.map((m,i)=>`
-          <button class="v39-more-row" onclick="go('${m.id}')">
-            <span>${String(i+1).padStart(2,'0')}</span>
-            <span><b>${m.title}</b><small>${m.sub}</small></span>
-            <span>→</span>
-          </button>`).join('')}
+    <main class="v45-screen">
+      <section class="v45-hero v45-tone-white">
+        <div class="v45-overline"><span>System</span><span>${String(MORE_ITEMS.length).padStart(2,'0')}</span></div>
+        <div class="v45-display">MORE</div>
+        <h1 class="v45-title">Utility deck</h1>
+        <p class="v45-sub">항공 · 예산 · 회화 · 체크리스트까지 여기로 모아둡니다.</p>
+      </section>
+      <div class="v45-more-grid">
+        ${MORE_ITEMS.map((m,i)=>`<button class="v45-more-row" onclick="go('${m.id}')"><span>${String(i+1).padStart(2,'0')}</span><span><b>${m.title}</b><small>${m.sub}</small></span><span>→</span></button>`).join('')}
       </div>
     </main>`;
 }
