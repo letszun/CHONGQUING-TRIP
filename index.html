@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#121212">
+<meta name="theme-color" content="#F0EEEB">
 <title>Chongqing City</title>
 <link rel="manifest" href="manifest.json">
 <style>
@@ -650,6 +650,218 @@ textarea::placeholder,input::placeholder{color:rgba(244,240,232,.45)}
   .ticket-action-grid{grid-template-columns:1fr 1fr}
 }
 
+
+/* v24 — native snap UX + warm white / warm gray / lemon */
+:root{
+  --bg:#F1EFE9;
+  --paper:#F7F5F0;
+  --warm:#DDD9CF;
+  --warm-2:#CFCBC1;
+  --lemon:#E7F15A;
+  --ink:#1F1F1B;
+  --muted:rgba(31,31,27,.60);
+  --line:rgba(31,31,27,.13);
+  --grey:var(--paper);
+  --charcoal:var(--ink);
+  --blue:var(--lemon);
+  --blue-2:#A7B300;
+  --shadow:0 10px 24px rgba(54,52,46,.09),0 1px 0 rgba(255,255,255,.55) inset;
+}
+html{background:var(--bg)}
+body{background:linear-gradient(180deg,#F3F1EB 0%,#ECE9E1 100%);color:var(--ink);font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif}
+.app{width:min(100%,760px);padding:0 16px 126px;color:var(--ink)}
+.section-sub,.hero-sub{display:none!important}
+.page-minimal-head{padding:calc(22px + env(safe-area-inset-top)) 0 12px}
+.micro-label{font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--muted)}
+.minimal-title{margin:7px 0 0;font-family:var(--english);font-size:clamp(46px,12vw,76px);line-height:.84;letter-spacing:-.08em;font-weight:900;color:var(--ink)}
+.head-rule{height:1px;background:var(--ink);opacity:.16;margin-top:14px}
+.bottom-nav{background:rgba(31,31,27,.94);border:0;box-shadow:0 14px 36px rgba(31,31,27,.18)}
+.nav-btn{color:rgba(247,245,240,.62)}
+.nav-btn.active{background:var(--lemon);color:var(--ink)}
+.nav-btn i{font-size:14px}.nav-btn .nav-label{font-size:8px;letter-spacing:.12em}
+
+/* stable native horizontal snap */
+.snap-shell{margin-top:2px}
+.snap-rail{display:flex;gap:12px;overflow-x:auto;overflow-y:visible;padding:8px 14px 18px 2px;scroll-snap-type:x mandatory;scroll-padding-inline:2px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none}
+.snap-rail::-webkit-scrollbar{display:none}
+.snap-card,.pass-sheet{position:relative;flex:0 0 min(86vw,520px);scroll-snap-align:start;scroll-snap-stop:normal;border:1px solid rgba(31,31,27,.08);box-shadow:var(--shadow);color:var(--ink);overflow:hidden}
+.snap-card{min-height:360px;border-radius:30px;padding:18px;display:flex;flex-direction:column}
+.tone-paper{background:var(--paper)!important;color:var(--ink)!important}.tone-warm{background:var(--warm)!important;color:var(--ink)!important}.tone-lemon{background:var(--lemon)!important;color:var(--ink)!important}
+.snap-card-top,.snap-foot,.pass-head,.pass-bottom,.index-top,.index-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.snap-card-top{font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.14em}
+.snap-big{margin-top:28px;font-family:var(--english);font-size:54px;line-height:.86;letter-spacing:-.07em;font-weight:900}
+.snap-title{margin-top:12px;font-size:28px;line-height:1;font-weight:850;letter-spacing:-.045em}
+.snap-sub{margin-top:12px;font-size:13px;line-height:1.55;max-width:30ch;color:rgba(31,31,27,.78)}
+.snap-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.rail-pill{min-height:38px;padding:0 14px;border-radius:999px;border:1px solid rgba(31,31,27,.14);background:rgba(255,255,255,.35);font-size:10px;font-weight:850;letter-spacing:.08em;color:var(--ink)}
+.rail-pill.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.snap-foot{margin-top:auto;padding-top:20px;border-top:1px dashed rgba(31,31,27,.24);font-size:10px;font-weight:750;letter-spacing:.05em}
+.snap-footer{display:flex;justify-content:space-between;align-items:center;padding:0 2px 8px}
+.snap-dots{display:flex;align-items:center;gap:6px}.snap-dot{width:8px;height:8px;border-radius:999px;background:rgba(31,31,27,.18);padding:0}.snap-dot.active{width:26px;background:var(--ink)}
+.swipe-label{font-family:var(--english);font-size:9px;letter-spacing:.16em;color:var(--muted)}
+.utility-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.utility-strip button{min-height:72px;border-radius:20px;background:var(--paper);border:1px solid rgba(31,31,27,.08);padding:10px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);box-shadow:var(--shadow)}
+.utility-strip b{font-family:var(--english);font-size:9px;letter-spacing:.14em;color:var(--muted)}.utility-strip span{font-family:var(--english);font-size:13px;font-weight:900;letter-spacing:-.03em}
+
+/* plan cards: no absolute positioning, no pointer capture */
+.plan-rail{padding-bottom:22px;align-items:flex-start}
+.pass-sheet{flex-basis:min(88vw,540px);border-radius:30px;padding:18px;min-height:0}
+.pass-eyebrow{font-family:var(--english);font-size:10px;letter-spacing:.14em;font-weight:800}.pass-date{font-family:var(--english);font-size:46px;line-height:.9;letter-spacing:-.07em;font-weight:900;margin-top:8px}.pass-day{font-family:var(--english);font-size:12px;font-weight:850;letter-spacing:.12em}
+.pass-route{margin-top:18px;font-size:27px;font-weight:850;letter-spacing:-.05em;line-height:1}.pass-meta{display:grid;gap:4px;margin-top:10px;font-size:11px;color:rgba(31,31,27,.70)}
+.pass-perf{border-top:1px dashed rgba(31,31,27,.28);margin:18px -18px 14px;position:relative}.pass-perf:before,.pass-perf:after{content:'';position:absolute;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg)}.pass-perf:before{left:-9px}.pass-perf:after{right:-9px}
+.pass-events{display:grid;gap:8px}.pass-event{display:grid;grid-template-columns:52px 1fr 18px;gap:9px;align-items:start;width:100%;padding:10px 10px;border-radius:16px;background:rgba(255,255,255,.35);border:1px solid rgba(31,31,27,.07);text-align:left;color:var(--ink)}.pass-event.static{opacity:.82}.pass-time{font-family:var(--english);font-size:10px;font-weight:850;padding-top:2px}.pass-event b{display:block;font-size:13px;line-height:1.25}.pass-event small{display:block;margin-top:3px;font-size:10px;line-height:1.35;color:rgba(31,31,27,.62)}.pass-event i{font-style:normal;font-size:12px}.pass-bottom{margin-top:14px;padding-top:12px;border-top:1px solid rgba(31,31,27,.12);font-size:10px;font-weight:800;letter-spacing:.05em}
+
+.light-filters{margin:0 0 8px;padding:6px 0}.filter{background:var(--paper);color:var(--ink);border:1px solid rgba(31,31,27,.08);box-shadow:none}.filter.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.index-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:8px}.index-card{aspect-ratio:1/1;border-radius:26px;padding:14px;text-align:left;display:flex;flex-direction:column;color:var(--ink);border:1px solid rgba(31,31,27,.08);box-shadow:var(--shadow)}.index-top{font-family:var(--english);font-size:9px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.index-name{margin-top:28px;font-size:clamp(20px,5.4vw,26px);font-weight:850;line-height:1.04;letter-spacing:-.045em;word-break:keep-all}.index-en{margin-top:8px;font-size:10px;line-height:1.4;color:rgba(31,31,27,.62)}.index-bottom{margin-top:auto;padding-top:10px;border-top:1px solid rgba(31,31,27,.13);font-size:9px;font-weight:800;letter-spacing:.04em}
+.tool-list{display:grid;gap:8px;margin-top:10px}.tool-row{min-height:88px;border-radius:22px;background:var(--paper);border:1px solid rgba(31,31,27,.08);display:grid;grid-template-columns:36px 1fr 28px;gap:8px;align-items:center;padding:12px 14px;color:var(--ink);box-shadow:var(--shadow);text-align:left}.tool-row.lemon{background:var(--lemon)}.tool-num{font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.12em}.tool-main b{display:block;font-family:var(--english);font-size:25px;letter-spacing:-.05em}.tool-main small{display:block;margin-top:4px;font-size:11px;color:rgba(31,31,27,.62)}.tool-arrow{font-size:20px;font-weight:900}
+
+/* every old color token is now light + dark text */
+.color-red,.color-lav,.color-sand{background:var(--lemon)!important;color:var(--ink)!important}.color-blue,.color-pink,.color-black{background:var(--warm)!important;color:var(--ink)!important}.color-yellow,.color-mint,.color-white{background:var(--paper)!important;color:var(--ink)!important}
+.color-red *, .color-lav *, .color-sand *, .color-blue *, .color-pink *, .color-black *, .color-yellow *, .color-mint *, .color-white *{-webkit-text-fill-color:currentColor!important}
+
+/* secondary pages: eliminate white-on-white */
+.secondary-back button,.back{background:var(--paper)!important;color:var(--ink)!important;border:1px solid rgba(31,31,27,.10)!important;box-shadow:none!important}
+.booking,.input-card,.info-chip,.note-card,.expense-item,.talk-card,.task,.maybe-card,.weather-card,.status-card,.notice-card,.emergency-card,.detail-section{background:var(--paper)!important;color:var(--ink)!important;border:1px solid rgba(31,31,27,.08)!important;box-shadow:var(--shadow)!important}
+.booking *,.input-card *,.info-chip *,.note-card *,.expense-item *,.talk-card *,.task *,.maybe-card *,.weather-card *,.status-card *,.notice-card *,.emergency-card *,.detail-section *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.booking-memo,.detail-memo{background:rgba(31,31,27,.045)!important;color:var(--ink)!important}.booking-memo label,.input-card label,.note-card label{color:var(--muted)!important}.booking-memo textarea,.input-card input,.input-card select,.note-card textarea,.detail-memo{color:var(--ink)!important}.booking-memo textarea::placeholder,.input-card input::placeholder,.note-card textarea::placeholder,.detail-memo::placeholder{color:rgba(31,31,27,.42)!important}
+.money-total{background:var(--lemon)!important;color:var(--ink)!important}.money-total *{color:inherit!important}.inline-btn,.action-btn{background:var(--ink)!important;color:var(--paper)!important;border:0!important}.action-btn.light{background:var(--paper)!important;color:var(--ink)!important;border:1px solid rgba(31,31,27,.10)!important}
+
+/* detail boarding pass — rectangular image, no masks */
+.detail-page-light{display:grid;gap:12px;padding:calc(16px + env(safe-area-inset-top)) 0 94px;color:var(--ink)}.detail-back button{min-height:40px;padding:0 14px;border-radius:999px;background:var(--paper);color:var(--ink);border:1px solid rgba(31,31,27,.10);font-size:11px;font-weight:800;letter-spacing:.08em}
+.boarding-ticket{position:relative;background:var(--lemon);border:1px solid rgba(31,31,27,.10);border-radius:32px;padding:18px;overflow:hidden;box-shadow:var(--shadow);color:var(--ink)}.boarding-ticket:before,.boarding-ticket:after{content:'';position:absolute;top:65%;width:22px;height:22px;border-radius:50%;background:var(--bg);transform:translateY(-50%)}.boarding-ticket:before{left:-11px}.boarding-ticket:after{right:-11px}.bt-top{display:flex;justify-content:space-between;gap:12px;font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.14em}.bt-title{margin-top:18px;font-size:34px;line-height:.95;font-weight:850;letter-spacing:-.055em}.bt-cn{margin-top:8px;font-size:14px;font-weight:700}.bt-en{margin-top:3px;font-family:var(--english);font-size:14px;color:rgba(31,31,27,.60)}.bt-meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.bt-meta span{display:inline-flex;padding:7px 9px;border-radius:999px;background:rgba(255,255,255,.38);border:1px solid rgba(31,31,27,.08);font-size:9px;font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.detail-image-frame{width:100%;aspect-ratio:16/9;margin-top:16px;border-radius:20px;overflow:hidden;background:var(--warm-2);-webkit-mask-image:none!important;mask-image:none!important}.detail-image-frame img{width:100%;height:100%;object-fit:cover}.detail-image-frame.fallback{display:grid;place-items:center;font-family:var(--english);font-size:24px;font-weight:900;letter-spacing:.12em;color:rgba(31,31,27,.35)}
+.bt-perf{margin:18px -18px 14px;border-top:1px dashed rgba(31,31,27,.30)}.bt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.bt-grid>div{min-height:64px;padding:10px;border-radius:15px;background:rgba(255,255,255,.30);border:1px solid rgba(31,31,27,.07)}.bt-grid span{display:block;font-family:var(--english);font-size:8px;font-weight:800;letter-spacing:.12em;color:rgba(31,31,27,.55)}.bt-grid b{display:block;margin-top:6px;font-size:11px;line-height:1.35;word-break:break-word}.bt-status{width:100%;min-height:44px;margin-top:12px;border-radius:15px;background:var(--ink);color:var(--paper);font-size:11px;font-weight:850;letter-spacing:.08em}
+.stub-panel{background:var(--paper);border:1px solid rgba(31,31,27,.08);border-radius:24px;padding:15px;color:var(--ink);box-shadow:var(--shadow)}.stub-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding-bottom:11px;border-bottom:1px solid rgba(31,31,27,.11);font-family:var(--english);font-size:10px;font-weight:800;letter-spacing:.13em}.stub-panel p{margin:12px 0 0;font-size:14px;line-height:1.62;color:var(--ink)!important}.stub-panel ul{margin:12px 0 0;padding-left:18px;display:grid;gap:7px}.stub-panel li{font-size:14px;line-height:1.5;color:var(--ink)!important}.stub-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.stub-actions button,.stub-actions a{min-height:46px;border-radius:14px;background:var(--warm);border:1px solid rgba(31,31,27,.08);display:flex;align-items:center;justify-content:center;padding:8px;text-align:center;font-size:11px;font-weight:800;color:var(--ink)!important}.light-memo{width:100%;min-height:130px;margin-top:12px;border-radius:15px;border:1px solid rgba(31,31,27,.10);background:#ECE9E1;color:var(--ink);padding:12px;font-size:13px;line-height:1.6}.light-memo::placeholder{color:rgba(31,31,27,.40)}
+
+/* splash matches light theme */
+.splash-screen{background:linear-gradient(180deg,#F3F1EB 0%,#E6E2D8 100%)!important}.splash-noise{opacity:.025}.splash-back{background:var(--warm)!important}.splash-mid{background:var(--lemon)!important}.splash-front{background:var(--paper)!important;border:1px solid rgba(31,31,27,.08)!important;color:var(--ink)!important}.splash-kicker,.splash-brand,.splash-city,.splash-chip{color:var(--ink)!important}.splash-city{color:#889300!important}.splash-chip{background:var(--warm)!important;border-color:rgba(31,31,27,.08)!important}.splash-barcode{background:repeating-linear-gradient(90deg,var(--ink) 0 3px,transparent 3px 5px,var(--ink) 5px 7px,transparent 7px 9px)!important}
+
+@media (max-width:560px){.snap-card{flex-basis:88vw}.pass-sheet{flex-basis:90vw}.utility-strip{gap:6px}.utility-strip button{min-height:66px;padding:9px}.index-grid{gap:10px}.index-card{border-radius:23px}.stub-actions{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.snap-rail{scroll-snap-type:x proximity}}
+
+
+/* v25 — reference palette + editorial serif titles + swipe-first PLAN */
+:root{
+  --ref-cream:#F0EEEB;
+  --ref-sage:#BAC5BB;
+  --ref-brown:#431705;
+  --ref-coral:#F73D37;
+  --bg:var(--ref-cream);
+  --paper:var(--ref-cream);
+  --warm:var(--ref-sage);
+  --lemon:var(--ref-coral);
+  --ink:var(--ref-brown);
+  --charcoal:var(--ref-brown);
+  --grey:var(--ref-cream);
+  --blue:var(--ref-coral);
+  --blue-2:var(--ref-brown);
+  --muted:rgba(67,23,5,.58);
+  --line:rgba(67,23,5,.14);
+  --display-serif:"Iowan Old Style","Palatino Linotype","Book Antiqua","Noto Serif KR","AppleMyungjo",Georgia,serif;
+  --body-sans:"Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",Arial,sans-serif;
+  --shadow:0 10px 24px rgba(67,23,5,.08),0 1px 0 rgba(255,255,255,.45) inset;
+}
+html{background:var(--ref-cream)!important}
+body{background:var(--ref-cream)!important;color:var(--ref-brown)!important;font-family:var(--body-sans)!important;font-weight:450}
+.app{color:var(--ref-brown)!important}
+
+/* display typography */
+.minimal-title,.hero-title,.section-title,.snap-big,.snap-title,.pass-date,.pass-route,.index-name,.bt-title,.booking .title,.maybe-card .title,.money-total .num,.weather-temp{
+  font-family:var(--display-serif)!important;
+  font-weight:700!important;
+  letter-spacing:-.045em!important;
+}
+.minimal-title{font-size:clamp(48px,13vw,80px)!important;line-height:.86!important}
+.pass-date{font-size:48px!important;line-height:.9!important}
+.pass-route{font-size:29px!important;line-height:1.02!important}
+.index-name{font-size:clamp(21px,5.6vw,28px)!important;line-height:1.05!important}
+.bt-title{font-size:clamp(36px,9vw,54px)!important;line-height:.95!important}
+.micro-label,.pass-eyebrow,.pass-day,.pass-time,.index-top,.index-en,.index-bottom,.tool-num,.tool-main small,.snap-foot,.booking .type,.booking .code,.stub-head,.bt-top,.bt-meta,.bt-grid,.nav-label,.filter,.rail-pill,.plan-swipe-top,.plan-scroll-controls{font-family:var(--body-sans)!important;font-weight:600!important}
+
+/* exact palette */
+.tone-paper{background:var(--ref-cream)!important;color:var(--ref-brown)!important}
+.tone-warm{background:var(--ref-sage)!important;color:var(--ref-brown)!important}
+.tone-lemon{background:var(--ref-coral)!important;color:var(--ref-cream)!important}
+.tone-lemon *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.tone-lemon .pass-event,.tone-lemon .rail-pill{background:rgba(240,238,235,.14)!important;border-color:rgba(240,238,235,.22)!important;color:var(--ref-cream)!important}
+.tone-lemon .pass-event small,.tone-lemon .pass-meta{color:rgba(240,238,235,.76)!important}
+.tone-lemon .pass-perf,.tone-lemon .pass-bottom{border-color:rgba(240,238,235,.28)!important}
+.tone-paper .pass-event,.tone-warm .pass-event{background:rgba(240,238,235,.46)!important;border-color:rgba(67,23,5,.08)!important;color:var(--ref-brown)!important}
+.tone-paper .pass-event small,.tone-warm .pass-event small,.tone-paper .pass-meta,.tone-warm .pass-meta{color:rgba(67,23,5,.62)!important}
+
+/* legacy colored surfaces constrained to four-color system */
+.color-red,.color-lav{background:var(--ref-coral)!important;color:var(--ref-cream)!important}
+.color-blue,.color-pink,.color-black{background:var(--ref-sage)!important;color:var(--ref-brown)!important}
+.color-yellow,.color-mint,.color-white,.color-sand{background:var(--ref-cream)!important;color:var(--ref-brown)!important}
+.color-red *,.color-lav *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.color-blue *,.color-pink *,.color-black *,.color-yellow *,.color-mint *,.color-white *,.color-sand *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+
+/* NAV */
+.bottom-nav{background:rgba(67,23,5,.96)!important;box-shadow:0 14px 34px rgba(67,23,5,.18)!important}
+.nav-btn{color:rgba(240,238,235,.62)!important}
+.nav-btn.active{background:var(--ref-coral)!important;color:var(--ref-cream)!important}
+
+/* PLAN: horizontal swipe is primary */
+.plan-head{padding-bottom:4px}
+.plan-snap{margin-top:0;overflow:visible}
+.plan-swipe-top{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 8px;color:var(--ref-brown);font-size:10px;letter-spacing:.13em}
+.plan-swipe-word{display:inline-flex;align-items:center;gap:8px}.plan-swipe-word:after{content:'→';font-size:16px;color:var(--ref-coral)}
+.plan-rail{gap:12px!important;padding:8px 38px 18px 2px!important;scroll-snap-type:x mandatory!important;scroll-padding-left:2px!important;touch-action:pan-x pan-y!important;overscroll-behavior-inline:contain!important;cursor:grab}
+.plan-rail.is-dragging{cursor:grabbing;scroll-snap-type:none!important;user-select:none}
+.plan-rail .pass-sheet{flex:0 0 min(82vw,520px)!important;scroll-snap-align:start!important;scroll-snap-stop:normal!important}
+.plan-scroll-track{height:3px;background:rgba(67,23,5,.12);border-radius:999px;overflow:hidden;margin:0 4px 10px}
+.snap-progress-fill{display:block;width:20%;height:100%;background:var(--ref-coral);border-radius:inherit;transition:width .18s ease}
+.plan-scroll-controls{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;gap:10px;padding:0 2px;color:rgba(67,23,5,.58);font-size:9px;letter-spacing:.14em;text-align:center}
+.plan-scroll-btn{width:42px;height:42px;border-radius:999px;background:var(--ref-brown);color:var(--ref-cream)!important;font-size:17px;display:grid;place-items:center}
+.plan-scroll-btn:disabled{opacity:.24}
+
+/* filters & controls */
+.filter{background:var(--ref-cream)!important;color:var(--ref-brown)!important;border-color:rgba(67,23,5,.12)!important}
+.filter.active{background:var(--ref-brown)!important;color:var(--ref-cream)!important}
+.rail-pill.dark,.inline-btn,.action-btn{background:var(--ref-brown)!important;color:var(--ref-cream)!important}
+.rail-pill:not(.dark),.action-btn.light{background:var(--ref-cream)!important;color:var(--ref-brown)!important;border-color:rgba(67,23,5,.14)!important}
+
+/* indexes */
+.index-card{border-color:rgba(67,23,5,.10)!important}
+.index-card.tone-lemon .index-en,.index-card.tone-lemon .index-bottom{color:rgba(240,238,235,.78)!important}
+.index-card.tone-warm .index-en,.index-card.tone-warm .index-bottom,.index-card.tone-paper .index-en,.index-card.tone-paper .index-bottom{color:rgba(67,23,5,.62)!important}
+
+/* secondary pages / contrast */
+.secondary-back button,.back,.booking,.input-card,.info-chip,.note-card,.expense-item,.talk-card,.task,.maybe-card,.weather-card,.status-card,.notice-card,.emergency-card,.detail-section,.stub-panel{background:var(--ref-cream)!important;color:var(--ref-brown)!important;border-color:rgba(67,23,5,.10)!important}
+.booking *,.input-card *,.info-chip *,.note-card *,.expense-item *,.talk-card *,.task *,.maybe-card *,.weather-card *,.status-card *,.notice-card *,.emergency-card *,.detail-section *,.stub-panel *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.money-total{background:var(--ref-coral)!important;color:var(--ref-cream)!important}
+.money-total *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+
+/* detailed ticket: deep-brown main pass + cream/sage stubs */
+.detail-page-light{color:var(--ref-brown)!important}
+.boarding-ticket{background:var(--ref-brown)!important;color:var(--ref-cream)!important;border-color:rgba(67,23,5,.12)!important}
+.boarding-ticket *{color:inherit!important;-webkit-text-fill-color:currentColor!important}
+.boarding-ticket .detail-image-frame{background:var(--ref-cream)!important;border-color:rgba(240,238,235,.16)!important}
+.boarding-ticket .bt-meta span,.boarding-ticket .bt-grid>div,.boarding-ticket .bt-status{background:rgba(240,238,235,.10)!important;border-color:rgba(240,238,235,.16)!important;color:var(--ref-cream)!important}
+.boarding-ticket .bt-status{background:var(--ref-coral)!important;border-color:var(--ref-coral)!important}
+.stub-panel:nth-of-type(even){background:var(--ref-sage)!important}
+.stub-panel::before{background:var(--ref-coral)!important}
+.stub-actions button,.stub-actions a{background:var(--ref-brown)!important;color:var(--ref-cream)!important;border:0!important}
+.light-memo{background:rgba(67,23,5,.05)!important;color:var(--ref-brown)!important;border-color:rgba(67,23,5,.10)!important}
+.light-memo::placeholder{color:rgba(67,23,5,.42)!important}
+
+/* splash */
+.splash-screen{background:var(--ref-cream)!important}
+.splash-back{background:var(--ref-sage)!important}
+.splash-mid{background:var(--ref-coral)!important}
+.splash-front{background:var(--ref-brown)!important;color:var(--ref-cream)!important;border-color:rgba(67,23,5,.10)!important}
+.splash-kicker,.splash-brand,.splash-chip{color:var(--ref-cream)!important}
+.splash-brand{font-family:var(--display-serif)!important;font-weight:700!important}
+.splash-city{color:var(--ref-coral)!important}
+.splash-chip{background:rgba(240,238,235,.10)!important;border-color:rgba(240,238,235,.15)!important}
+.splash-barcode{background:repeating-linear-gradient(90deg,var(--ref-cream) 0 3px,transparent 3px 5px,var(--ref-cream) 5px 7px,transparent 7px 9px)!important}
+
+@media(max-width:560px){
+  .plan-rail .pass-sheet{flex-basis:82vw!important}
+  .plan-rail{padding-right:48px!important}
+  .minimal-title{font-size:56px!important}
+}
+
 </style>
 </head>
 <body>
@@ -744,7 +956,7 @@ const SPOTS={
   xiahao:{kind:'Old Street',name:'Xiahaoli',cn:'下浩里',area:'충칭 시내',date:'08.28',duration:'1–1.5 hr',search:'下浩里老街',map:'下浩里老街 重庆',summary:'남안구의 오래된 산비탈 거리. 해질 무렵 분위기가 좋습니다.',highlights:['골목·계단 풍경','야경 전 산책'],tips:['룽먼하오와 이어보기 좋음'],photo:'https://loremflickr.com/960/720/oldstreet,night?lock=115'}
 };
 const FOODS={
-  milktea:{kind:'Drink',name:'Milk Tea',cn:'奶茶',date:'08.25',duration:'10 min',search:'奶茶 少糖 少冰',map:'奶茶 重庆',summary:'첫날 해방비에서 한 잔. 주문할 때는 당도와 얼음을 같이 말하면 편합니다.',order:['三分糖 = 30% 당도','少冰 = 얼음 적게','珍珠 = 펄 추가'],tips:['더우면 첫 잔으로 좋음'],photo:'https://loremflickr.com/960/720/milk-tea?lock=201'},
+  milktea:{kind:'Drink',name:'Milk Tea',cn:'奶茶',date:'08.25',duration:'10 min',search:'奶茶 少糖 少冰',map:'奶茶 重庆',summary:'첫날 해방비에서 한 잔. 주문할 때는 당도와 얼음을 같이 말하면 편합니다.',order:['三分糖，谢谢。 = 당도 30%로 해주세요','七分糖，谢谢。 = 당도 70%로 해주세요','全糖，谢谢。 = 당도 100%로 해주세요','少冰 = 얼음 적게','珍珠 = 펄 추가'],tips:['더우면 첫 잔으로 좋음'],photo:'https://loremflickr.com/960/720/milk-tea?lock=201'},
   yangrou:{kind:'Dinner',name:'Wulong Lamb',cn:'碗碗羊肉 / 羊肉汤',date:'08.26',duration:'1 hr',search:'羊肉汤 武隆',map:'羊肉汤 武隆',summary:'우롱에서 먹는 지역식 저녁. 뜨끈하고 든든한 편입니다.',order:['양고기탕 또는 양고기 볶음','밥이나 면 추가 가능'],tips:['천생삼교 후 저녁으로 무난함'],photo:'https://loremflickr.com/960/720/lamb,soup?lock=202'},
   kaoyu:{kind:'Dinner',name:'Kao Yu',cn:'烤鱼',date:'08.27',duration:'1–1.5 hr',search:'烤匠麻辣烤鱼 观音桥',map:'烤匠麻辣烤鱼 观音桥',summary:'생선을 구운 뒤 육수와 함께 내는 충칭식 카오위. 둘이 먹기 좋습니다.',order:['麻辣烤鱼 또는 豆花烤鱼','채소 추가 가능','맵기 微辣 가능'],tips:['관음교 저녁 메인 메뉴로 추천'],photo:'https://loremflickr.com/960/720/grilled-fish,food?lock=203'},
   xiaomian:{kind:'Noodle',name:'Xiao Mian',cn:'重庆小面',date:'08.28 / 08.29',duration:'20–30 min',search:'重庆小面',map:'重庆小面 重庆',summary:'충칭식 매운 면. 점심이나 출국 전 간단한 식사로 좋습니다.',order:['기본 샤오몐','맵기 조절 가능'],tips:['땅콩·파 향이 강할 수 있음'],photo:'https://loremflickr.com/960/720/noodles,china?lock=204'},
@@ -834,82 +1046,58 @@ function renderToday(){
   const day=t.day;
   const next=t.mode==='during'?nextEventForDay(day):day.events[0];
   const nextFood=day.events.find(e=>e[3]==='food');
-  const todayCards=[
-    {
-      color:'color-black', tone:'dark', stamp:0,
-      kicker:'LIVE', big:t.mode==='during'?'NOW':'D-1', title:t.label,
-      body:`${t.title}<br>${day.date} · ${day.dow}`,
-      note:`${day.sleep}`,
-      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('plan')">PLAN</button><button class="ticket-mini" onclick="go('book')">PASS</button></div>`
-    },
-    {
-      color:'color-blue', tone:'dark', stamp:1,
-      kicker:'NEXT', big:'→', title:next[1],
-      body:`${next[0]}<br>${next[2]||''}`,
-      note:`FOOD · ${nextFood?nextFood[1]:day.food}`,
-      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('eat')">EAT</button><button class="ticket-mini" onclick="go('spots')">SPOTS</button></div>`
-    },
-    {
-      color:'color-yellow', tone:'light', stamp:2,
-      kicker:'ROUTE', big:day.id<10?`0${day.id}`:String(day.id), title:day.name,
-      body:`${day.events.slice(0,4).map(e=>`<div class="deck-row"><div class="time">${e[0]}</div><div><div class="title">${e[1]}</div><div class="sub">${e[2]||''}</div></div></div>`).join('')}`,
-      note:`SWIPE`,
-      extra:''
-    },
-    {
-      color:'color-lav', tone:'dark', stamp:0,
-      kicker:'CTRL', big:'+7', title:'TOOLS',
-      body:'BOOK · MONEY · TALK · CHECK',
-      note:`기능은 그대로, 표정만 바꿨습니다.`,
-      extra:`<div class="deck-actions"><button class="ticket-mini" onclick="go('money')">SPLIT</button><button class="ticket-mini" onclick="go('more')">MORE</button></div>`
-    }
+  const cards=[
+    {tone:'lemon',code:'01',label:'STATUS',big:t.label,title:t.title,sub:`${day.date} · ${day.dow}`,foot:day.sleep,actions:`<button class="rail-pill dark" onclick="go('plan')">PLAN</button><button class="rail-pill" onclick="go('book')">PASS</button>`},
+    {tone:'paper',code:'02',label:'NEXT',big:next[0],title:next[1],sub:next[2]||'',foot:`FOOD · ${nextFood?nextFood[1]:day.food}`,actions:`<button class="rail-pill dark" onclick="go('spots')">SPOTS</button><button class="rail-pill" onclick="go('eat')">EAT</button>`},
+    {tone:'warm',code:'03',label:'ROUTE',big:`DAY ${String(day.id).padStart(2,'0')}`,title:day.name,sub:day.events.slice(0,4).map(e=>`${e[0]} ${e[1]}`).join(' · '),foot:day.place,actions:''},
+    {tone:'paper',code:'04',label:'TOOLS',big:'CTRL',title:'BOOK · MONEY · TALK',sub:'여행 중 자주 쓰는 기능',foot:'CHECK · MAYBE · WEATHER',actions:`<button class="rail-pill dark" onclick="go('more')">OPEN</button>`}
   ];
-  document.getElementById('today').innerHTML=`
-    <div class="travel-shell dark-mode-shell">
-      <div class="travel-head page-top minimal-head">
-        <div class="kicker">CHONGQING / LIVE</div>
-        <h1 class="section-title cryptic-title">CITY</h1>
-        <div class="stamp-burst ${mask(1)}"></div>
-        <div class="travel-meta"><span class="travel-chip">08.25–08.29</span><span class="travel-chip">2P</span><span class="travel-chip">CKG ↔ WULONG</span></div>
-      </div>
-      <div class="deck-shell" id="todayDeck">
-        <div class="deck-stage wallet-stage">${todayCards.map((c,i)=>`<article class="deck-card wallet-card ${c.color}" data-index="${i}" data-tone="${c.tone}"><div class="deck-stamp ${mask(c.stamp)}"></div><div class="deck-kicker">${c.kicker}</div><div class="deck-big">${c.big}</div><div class="deck-title-ko">${c.title}</div><div class="deck-body">${c.body}</div>${c.extra}<div class="deck-note"><div class="deck-mini">${c.note}</div><div class="deck-mini">${i+1}/${todayCards.length}</div></div></article>`).join('')}</div>
-        <div class="deck-controls wallet-controls"><div class="deck-dots">${todayCards.map((_,i)=>`<button class="deck-dot ${i===0?'active':''}" data-go="${i}" aria-label="card ${i+1}"></button>`).join('')}</div><div class="deck-arrows"><button class="deck-nav-btn" data-dir="prev" aria-label="previous">←</button><button class="deck-nav-btn" data-dir="next" aria-label="next">→</button></div></div>
-      </div>
-      <div class="ticket-grid quick-wallet-grid">
-        <button class="ticket-shortcut color-black" onclick="go('book')"><div class="small">01</div><strong>PASS</strong><p>Flights · Trains · Hotels</p><div class="corner-stamp ${mask(0)}"></div></button>
-        <button class="ticket-shortcut color-blue" onclick="go('talk')"><div class="small">02</div><strong>TALK</strong><p>Travel phrases</p><div class="corner-stamp ${mask(1)}"></div></button>
-        <button class="ticket-shortcut color-yellow" onclick="go('money')"><div class="small">03</div><strong>SPLIT</strong><p>Budget · Couple</p><div class="corner-stamp ${mask(2)}"></div></button>
-        <button class="ticket-shortcut color-lav" onclick="go('more')"><div class="small">04</div><strong>CTRL</strong><p>More tools</p><div class="corner-stamp ${mask(0)}"></div></button>
-      </div>
-    </div>`;
-  setTimeout(()=>initCardDeck('todayDeck',0),0);
+  document.getElementById('today').innerHTML=`<div class="page-minimal-head"><div class="micro-label">CQ / 2026</div><h1 class="minimal-title">TODAY</h1><div class="head-rule"></div></div><div class="snap-shell" id="todayRail"><div class="snap-rail">${cards.map((c,i)=>`<article class="snap-card tone-${c.tone}"><div class="snap-card-top"><span>${c.label}</span><span>${c.code}/04</span></div><div class="snap-big">${c.big}</div><div class="snap-title">${c.title}</div><div class="snap-sub">${c.sub}</div><div class="snap-actions">${c.actions}</div><div class="snap-foot"><span>${c.foot}</span><span>→</span></div></article>`).join('')}</div><div class="snap-footer"><div class="snap-dots">${cards.map((_,i)=>`<button class="snap-dot ${i===0?'active':''}" data-go="${i}" aria-label="card ${i+1}"></button>`).join('')}</div><span class="swipe-label">SWIPE</span></div></div><div class="utility-strip"><button onclick="go('book')"><b>01</b><span>PASS</span></button><button onclick="go('talk')"><b>02</b><span>TALK</span></button><button onclick="go('money')"><b>03</b><span>SPLIT</span></button><button onclick="go('more')"><b>04</b><span>MORE</span></button></div>`;
+  setTimeout(()=>initSnapRail('todayRail'),0);
 }
 
 function renderPlan(){
   document.getElementById('plan').innerHTML=`
-    <div class="travel-shell plan-deck dark-mode-shell">
-      <div class="travel-head page-top minimal-head">
-        <div class="kicker">BOARDING PASSES</div>
-        <h1 class="hero-title en-title cryptic-title">PASS</h1>
-        <div class="stamp-burst ${mask(2)}"></div>
-        <div class="travel-meta"><span class="travel-chip">5 CARDS</span><span class="travel-chip">SWIPE</span></div>
+    <div class="page-minimal-head plan-head">
+      <div class="micro-label">BOARDING / 05</div>
+      <h1 class="minimal-title">PASS</h1>
+      <div class="head-rule"></div>
+    </div>
+    <div class="snap-shell plan-snap" id="planRail">
+      <div class="plan-swipe-top">
+        <span class="plan-swipe-word">SWIPE</span>
+        <span class="snap-count">01 / ${String(DAYS.length).padStart(2,'0')}</span>
       </div>
-      <div class="deck-shell" id="planDeck">
-        <div class="deck-stage pass-stage">${DAYS.map((d,i)=>`<article class="deck-card plan-ticket pass-card ${color(i)}" data-index="${i}" data-tone="${['color-yellow','color-sand'].includes(color(i))?'light':'dark'}"><div class="deck-stamp ${mask(i)}"></div><div class="day-top"><div><div class="deck-kicker">DAY ${String(i+1).padStart(2,'0')}</div><div class="deck-big">${d.date}</div><div class="day-stay">${d.name}</div></div><div class="day-date"><b>${d.dow}</b><span>${d.place}</span></div></div><div class="deck-list">${d.events.map(e=>{const [time,title,sub,type,id]=e;return type?`<button class="deck-row" onclick="openDetail('${type}','${id}','plan')"><div class="time">${time}</div><div><div class="title">${title}</div><div class="sub">${sub||''}</div></div></button>`:`<div class="deck-row"><div class="time">${time}</div><div><div class="title">${title}</div><div class="sub">${sub||''}</div></div></div>`}).join('')}</div><div class="deck-note"><div class="deck-mini">${d.sleep}</div><div class="deck-mini">${i+1}/${DAYS.length}</div></div></article>`).join('')}</div>
-        <div class="deck-controls wallet-controls"><div class="deck-dots">${DAYS.map((_,i)=>`<button class="deck-dot ${i===0?'active':''}" data-go="${i}" aria-label="day ${i+1}"></button>`).join('')}</div><div class="deck-arrows"><button class="deck-nav-btn" data-dir="prev" aria-label="previous">←</button><button class="deck-nav-btn" data-dir="next" aria-label="next">→</button></div></div>
+      <div class="snap-rail plan-rail" aria-label="5일 여행 일정 가로 스크롤">
+        ${DAYS.map((d,i)=>`<article class="pass-sheet tone-${i%3===0?'lemon':i%3===1?'paper':'warm'}" data-card-index="${i}">
+          <div class="pass-head">
+            <div><span class="pass-eyebrow">DAY ${String(i+1).padStart(2,'0')}</span><div class="pass-date">${d.date}</div></div>
+            <div class="pass-day">${d.dow}</div>
+          </div>
+          <div class="pass-route">${d.name}</div>
+          <div class="pass-meta"><span>${d.place}</span><span>${d.sleep}</span></div>
+          <div class="pass-perf"></div>
+          <div class="pass-events">${d.events.map(e=>{const [time,title,sub,type,id]=e;return type?`<button class="pass-event" onclick="openDetail('${type}','${id}','plan')"><span class="pass-time">${time}</span><span><b>${title}</b><small>${sub||''}</small></span><i>↗</i></button>`:`<div class="pass-event static"><span class="pass-time">${time}</span><span><b>${title}</b><small>${sub||''}</small></span><i>·</i></div>`}).join('')}</div>
+          <div class="pass-bottom"><span>FOOD · ${d.food}</span><span>${i+1}/5</span></div>
+        </article>`).join('')}
+      </div>
+      <div class="plan-scroll-track" aria-hidden="true"><span class="snap-progress-fill"></span></div>
+      <div class="plan-scroll-controls">
+        <button class="plan-scroll-btn" data-snap-prev aria-label="이전 일정">←</button>
+        <span>DRAG / SWIPE</span>
+        <button class="plan-scroll-btn" data-snap-next aria-label="다음 일정">→</button>
       </div>
     </div>`;
-  setTimeout(()=>initCardDeck('planDeck',0),0);
+  setTimeout(()=>initSnapRail('planRail'),0);
 }
 
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
-  document.getElementById('spots').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">LOCATION INDEX</div><h1 class="section-title cryptic-title">INDEX</h1><div class="stamp-burst ${mask(0)}"></div></div><div class="filters filters-min">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div><div class="journal-grid wallet-grid">${entries.map(([id,v],i)=>`<button class="catalog-card journal-card wallet-item ${color(i+1)} ${isVisited('spot',id)?'visited':''}" onclick="openDetail('spot','${id}','spots')"><span class="catalog-chip">${v.kind}</span><div class="wallet-code">0${i+1}</div><div class="catalog-name">${SPOT_KO[id]||v.name}</div><div class="catalog-en">${v.name}</div><div class="catalog-meta">${v.area} · ${v.date}</div><div class="catalog-arrow">→</div></button>`).join('')}</div>`
+  document.getElementById('spots').innerHTML=`<div class="page-minimal-head"><div class="micro-label">LOCATION INDEX</div><h1 class="minimal-title">SPOTS</h1><div class="head-rule"></div></div><div class="filters light-filters">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="filter ${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div><div class="index-grid">${entries.map(([id,v],i)=>`<button class="index-card tone-${i%3===0?'lemon':i%3===1?'paper':'warm'}" onclick="openDetail('spot','${id}','spots')"><div class="index-top"><span>${String(i+1).padStart(2,'0')}</span><span>${v.kind}</span></div><div class="index-name">${SPOT_KO[id]||v.name}</div><div class="index-en">${v.cn} · ${v.name}</div><div class="index-bottom"><span>${v.area}</span><span>${v.date}</span></div></button>`).join('')}</div>`
 }
 
 function renderEat(){
-  document.getElementById('eat').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">FOOD INDEX</div><h1 class="section-title cryptic-title">TASTE</h1><div class="stamp-burst ${mask(1)}"></div></div><div class="journal-grid wallet-grid">${Object.entries(FOODS).map(([id,v],i)=>`<button class="catalog-card journal-card wallet-item ${color(i+2)} ${isVisited('food',id)?'visited':''}" onclick="openDetail('food','${id}','eat')"><span class="catalog-chip">${v.kind}</span><div class="wallet-code">F${i+1}</div><div class="catalog-name">${FOOD_KO[id]||v.name}</div><div class="catalog-en">${v.name}</div><div class="catalog-meta">${v.date}</div><div class="catalog-arrow">→</div></button>`).join('')}</div>`
+  document.getElementById('eat').innerHTML=`<div class="page-minimal-head"><div class="micro-label">FOOD INDEX</div><h1 class="minimal-title">EAT</h1><div class="head-rule"></div></div><div class="index-grid">${Object.entries(FOODS).map(([id,v],i)=>`<button class="index-card tone-${i%3===0?'warm':i%3===1?'lemon':'paper'}" onclick="openDetail('food','${id}','eat')"><div class="index-top"><span>F${String(i+1).padStart(2,'0')}</span><span>${v.kind}</span></div><div class="index-name">${FOOD_KO[id]||v.name}</div><div class="index-en">${v.cn} · ${v.name}</div><div class="index-bottom"><span>${v.date}</span><span>${isVisited('food',id)?'DONE':'OPEN'}</span></div></button>`).join('')}</div>`
 }
 
 function bookingPlaceholder(type){if(type==='Flight')return '편명, 터미널, 체크인 시간, 좌석, 환승 메모 등';if(type==='Train')return '열차번호, 출발·도착시간, 좌석, 역 출입구 등';if(type==='Hotel')return '중국어 주소, 전화번호, 체크인 시간, 예약번호 등';if(type==='Ticket')return '예약번호, 입장시간, QR/수령 방법 등';return '주소, 시간, 예약번호 등 필요한 정보를 적어두세요.'}
@@ -928,87 +1116,14 @@ function renderTalk(filter='ALL'){const labels=[['ALL','전체'],['HOTEL','숙�
 function renderCheck(){document.getElementById('check').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Before departure</div><h1 class="section-title">CHECK</h1></div><div class="check-list">${CHECKS.map((t,i)=>`<label class="task ${state['check'+i]?'done':''}"><input type="checkbox" ${state['check'+i]?'checked':''} onchange="state['check${i}']=this.checked;save();renderCheck()"><span class="txt">${t}</span></label>`).join('')}</div><div class="note-card"><label>Notes</label><textarea id="freeNote" placeholder="예약번호, 숙소 주소, 살 것">${esc(state.freeNote||'')}</textarea></div>`;document.getElementById('freeNote').oninput=e=>{state.freeNote=e.target.value;save()}}
 function renderMaybe(){document.getElementById('maybe').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Extra options</div><h1 class="section-title">MAYBE</h1><p class="section-sub">시간이 남을 때 넣을 후보들.</p></div><div class="maybe-list">${MAYBE.map((m,i)=>`<article class="maybe-card ${color(i+3)}"><div class="type en-title">${m.type}</div><div class="title">${m.title}</div><div class="sub">${m.cn}<br>${m.why}<br><b>${m.when}</b></div></article>`).join('')}</div>`}
 function renderDetail(type,id,from){
-  const data=type==='food'?FOODS[id]:SPOTS[id];
-  if(!data){go('plan');return}
+  const data=type==='food'?FOODS[id]:SPOTS[id]; if(!data){go('plan');return}
   const idx=Object.keys(type==='food'?FOODS:SPOTS).indexOf(id);
   const links=mapLinks(data.map||data.search||data.cn);
-  const isFood=type==='food';
-  const bullets=isFood?data.order:data.highlights;
-  const visited=isVisited(type,id);
-  const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
+  const isFood=type==='food'; const bullets=isFood?data.order:data.highlights;
+  const visited=isVisited(type,id); const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
   const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
   const code=`${isFood?'FD':'SP'}-${String(idx+1).padStart(2,'0')}`;
-  const tone=['color-yellow','color-sand'].includes(color(idx+1))?'light':'dark';
-  document.getElementById('detail').innerHTML=`
-    <div class="detail-top ticket-detail-page">
-      <div class="secondary-back detail-back"><button onclick="go('${from||'plan'}')">← BACK</button></div>
-      <article class="ticket-hero ${color(idx+1)}" data-tone="${tone}">
-        <div class="ticket-perf left"></div>
-        <div class="ticket-perf right"></div>
-        <div class="ticket-hero-top">
-          <div>
-            <div class="ticket-label">${isFood?'FOOD PASS':'CITY PASS'}</div>
-            <div class="ticket-code en-title">${code}</div>
-          </div>
-          <button class="ticket-state ${visited?'is-on':''}" onclick="toggleVisited('${type}','${id}')">${visited?'DONE':'OPEN'}</button>
-        </div>
-        <div class="ticket-hero-name">${koName}</div>
-        <div class="ticket-hero-sub">${data.cn}</div>
-        <div class="ticket-hero-en en-title">${data.name}</div>
-        <div class="ticket-pill-row">
-          <span>${data.kind}</span>
-          <span>${data.date}</span>
-          ${data.area?`<span>${data.area}</span>`:''}
-          ${data.duration?`<span>${data.duration}</span>`:''}
-        </div>
-        <div class="ticket-photo-wrap">
-          <div class="ticket-photo-frame ${mask(idx)}" id="photoFrame">
-            <img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';">
-          </div>
-        </div>
-        <div class="ticket-cut-line"></div>
-        <div class="ticket-facts-grid">
-          <div class="ticket-fact"><span>TYPE</span><strong>${isFood?'FOOD':'SPOT'}</strong></div>
-          <div class="ticket-fact"><span>STATUS</span><strong>${visited?'DONE':'OPEN'}</strong></div>
-          <div class="ticket-fact"><span>SEARCH</span><strong>${(data.search||data.cn).slice(0,18)}</strong></div>
-          <div class="ticket-fact"><span>MAP</span><strong>${data.map||data.search||data.cn}</strong></div>
-        </div>
-        <div class="ticket-barcode big"></div>
-      </article>
-
-      <section class="ticket-section-wrap">
-        <article class="ticket-panel">
-          <div class="ticket-panel-head"><span class="mini-kicker">ABOUT</span><span class="mini-code">01</span></div>
-          <p class="ticket-copy">${data.summary}</p>
-        </article>
-
-        <article class="ticket-panel">
-          <div class="ticket-panel-head"><span class="mini-kicker">${isFood?'ORDER':'HIGHLIGHTS'}</span><span class="mini-code">02</span></div>
-          <ul class="ticket-list">${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
-        </article>
-
-        <article class="ticket-panel action-panel">
-          <div class="ticket-panel-head"><span class="mini-kicker">TOOLS</span><span class="mini-code">03</span></div>
-          <div class="ticket-action-grid">
-            <button class="ticket-action" onclick="copyText('${esc(data.cn)}')">중국어명 복사</button>
-            <button class="ticket-action" onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button>
-            <a class="ticket-action" href="${links.amap}" target="_blank" rel="noopener">高德地图</a>
-            <a class="ticket-action" href="${links.google}" target="_blank" rel="noopener">Google Maps</a>
-          </div>
-          <div class="ticket-note-box">중국 현지에서는 <b>高德地图</b>를 우선 사용하고, Google Maps는 보조 링크로 두면 됩니다.</div>
-        </article>
-
-        <article class="ticket-panel memo-panel">
-          <div class="ticket-panel-head"><span class="mini-kicker">MY MEMO</span><span class="mini-code">04</span></div>
-          <textarea class="ticket-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea>
-        </article>
-
-        <article class="ticket-panel">
-          <div class="ticket-panel-head"><span class="mini-kicker">NOTE</span><span class="mini-code">05</span></div>
-          <ul class="ticket-list">${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
-        </article>
-      </section>
-    </div>`
+  document.getElementById('detail').innerHTML=`<div class="detail-page-light"><div class="detail-back"><button onclick="go('${from||'plan'}')">← BACK</button></div><article class="boarding-ticket"><div class="bt-top"><span>${isFood?'FOOD PASS':'CITY PASS'}</span><b>${code}</b></div><div class="bt-title">${koName}</div><div class="bt-cn">${data.cn}</div><div class="bt-en">${data.name}</div><div class="bt-meta"><span>${data.kind}</span><span>${data.date}</span>${data.area?`<span>${data.area}</span>`:''}${data.duration?`<span>${data.duration}</span>`:''}</div><div class="detail-image-frame" id="photoFrame"><img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';"></div><div class="bt-perf"></div><div class="bt-grid"><div><span>STATUS</span><b>${visited?'DONE':'OPEN'}</b></div><div><span>TYPE</span><b>${isFood?'FOOD':'SPOT'}</b></div><div><span>SEARCH</span><b>${data.search||data.cn}</b></div><div><span>AREA</span><b>${data.area||'CHONGQING'}</b></div></div><button class="bt-status" onclick="toggleVisited('${type}','${id}')">${visited?'표시 해제':'방문 완료'}</button></article><section class="stub-panel"><div class="stub-head"><b>01</b><span>ABOUT</span></div><p>${data.summary}</p></section><section class="stub-panel"><div class="stub-head"><b>02</b><span>${isFood?'ORDER':'HIGHLIGHTS'}</span></div><ul>${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section><section class="stub-panel"><div class="stub-head"><b>03</b><span>TOOLS</span></div><div class="stub-actions"><button onclick="copyText('${esc(data.cn)}')">중국어명 복사</button><button onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button><a href="${links.amap}" target="_blank" rel="noopener">高德地图</a><a href="${links.google}" target="_blank" rel="noopener">Google Maps</a></div></section><section class="stub-panel"><div class="stub-head"><b>04</b><span>MY MEMO</span></div><textarea class="light-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea></section><section class="stub-panel"><div class="stub-head"><b>05</b><span>NOTE</span></div><ul>${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section></div>`
 }
 
 function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
@@ -1017,8 +1132,59 @@ function renderWeatherCards(cache){const root=document.getElementById('weatherCa
 function renderWeather(){document.getElementById('weather').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">WEATHER · WULONG STATUS</div><h1 class="section-title">WEATHER</h1><p class="section-sub">온라인일 때 최신 날씨를 불러옵니다. 우롱 관광지 운영 여부는 공식 페이지에서 마지막으로 확인하세요.</p></div><div id="weatherCards" class="weather-grid"></div><div class="action-row"><button class="action-btn" onclick="loadWeather(true)">날씨 새로고침</button><a class="action-btn light" href="https://www.wlkst.com/" target="_blank" rel="noopener">우롱 공식 관광</a></div><div class="notice-card"><b>우롱 체크</b><span>천생삼교 · 용수협지봉 · 선녀산은 폭우 시 운영이 바뀔 수 있습니다. 출발 직전 공지를 우선 확인하세요.</span></div>`;loadWeather(false)}
 function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
 function renderMore(){
-  document.getElementById('more').innerHTML=`<div class="travel-head section-top minimal-head"><div class="kicker">SYSTEM</div><h1 class="section-title cryptic-title">CTRL</h1><div class="stamp-burst ${mask(2)}"></div></div><div class="more-grid ctrl-grid">${MORE_ITEMS.map((m,i)=>`<button class="more-card ctrl-card ${color(i+1)}" onclick="go('${m.id}')"><div class="more-index">0${i+1}</div><div class="more-title">${m.title}</div><div class="more-sub">${m.sub}</div><div class="more-arrow">→</div></button>`).join('')}</div>`
+  document.getElementById('more').innerHTML=`<div class="page-minimal-head"><div class="micro-label">TRIP SYSTEM</div><h1 class="minimal-title">MORE</h1><div class="head-rule"></div></div><div class="tool-list">${MORE_ITEMS.map((m,i)=>`<button class="tool-row ${i===0||i===3?'lemon':''}" onclick="go('${m.id}')"><span class="tool-num">0${i+1}</span><span class="tool-main"><b>${m.title}</b><small>${m.sub}</small></span><span class="tool-arrow">→</span></button>`).join('')}</div>`
 }
+
+function initSnapRail(id){
+  const root=document.getElementById(id); if(!root) return;
+  const rail=root.querySelector('.snap-rail');
+  const dots=[...root.querySelectorAll('.snap-dot')];
+  const count=root.querySelector('.snap-count');
+  const progress=root.querySelector('.snap-progress-fill');
+  const prev=root.querySelector('[data-snap-prev]');
+  const next=root.querySelector('[data-snap-next]');
+  if(!rail) return;
+  const cards=[...rail.children];
+  let active=0, raf=0;
+
+  const cardLeft=(i)=>Math.max(0,cards[i].offsetLeft-rail.offsetLeft-2);
+  const goTo=(i,behavior='smooth')=>{
+    const target=Math.max(0,Math.min(cards.length-1,i));
+    rail.scrollTo({left:cardLeft(target),behavior});
+  };
+  const update=()=>{
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      const center=rail.scrollLeft+rail.clientWidth/2;
+      let best=0,dist=Infinity;
+      cards.forEach((card,i)=>{const c=card.offsetLeft-rail.offsetLeft+card.offsetWidth/2;const d=Math.abs(c-center);if(d<dist){dist=d;best=i}});
+      active=best;
+      dots.forEach((dot,i)=>dot.classList.toggle('active',i===active));
+      if(count) count.textContent=`${String(active+1).padStart(2,'0')} / ${String(cards.length).padStart(2,'0')}`;
+      if(progress) progress.style.width=`${((active+1)/cards.length)*100}%`;
+      if(prev) prev.disabled=active===0;
+      if(next) next.disabled=active===cards.length-1;
+    });
+  };
+
+  rail.addEventListener('scroll',update,{passive:true});
+  dots.forEach((dot,i)=>dot.onclick=()=>goTo(i));
+  if(prev) prev.onclick=()=>goTo(active-1);
+  if(next) next.onclick=()=>goTo(active+1);
+
+  // Desktop: click-and-drag. Touch devices keep native scrolling, avoiding scroll jank.
+  let dragging=false,startX=0,startScroll=0,pid=null;
+  rail.addEventListener('pointerdown',e=>{
+    if(e.pointerType!=='mouse'||e.target.closest('button,a,input,textarea,select,label')) return;
+    dragging=true;pid=e.pointerId;startX=e.clientX;startScroll=rail.scrollLeft;rail.classList.add('is-dragging');
+    try{rail.setPointerCapture(pid)}catch(_){ }
+  });
+  rail.addEventListener('pointermove',e=>{if(!dragging||e.pointerId!==pid)return;rail.scrollLeft=startScroll-(e.clientX-startX)});
+  const endDrag=()=>{dragging=false;rail.classList.remove('is-dragging')};
+  rail.addEventListener('pointerup',endDrag);rail.addEventListener('pointercancel',endDrag);
+  update();
+}
+
 function initCardDeck(id,start=0){
   const root=document.getElementById(id); if(!root) return;
   const stage=root.querySelector('.deck-stage'); if(!stage) return;
@@ -1063,7 +1229,7 @@ function initSplash(){
     document.body.classList.remove('splash-lock');
     sessionStorage.setItem('cqSplashSeen','1');
     setTimeout(()=>splash.remove(),560);
-  },1500);
+  },1050);
 }
 
 function route(){const hash=(location.hash||'#today').slice(1);const p=hash.split('/');if(p[0]==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav(p[3]||'plan');return}

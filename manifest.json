@@ -1,20 +1,20 @@
 {
-  "name": "Chongqing City — Card Pass",
-  "short_name": "CQ Card",
+  "name": "Chongqing City — Editorial Pass",
+  "short_name": "CQ Pass",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#0f0f10",
-  "theme_color": "#0f0f10",
+  "background_color": "#F0EEEB",
+  "theme_color": "#F0EEEB",
   "description": "Chongqing & Wulong trip planner — Korean-first mobile UX",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%232E2D2D'/%3E%3Crect x='18' y='18' width='156' height='156' rx='32' fill='%23E8F985'/%3E%3Ctext x='96' y='112' text-anchor='middle' font-family='Arial' font-size='58' font-weight='800' fill='%232E2D2D'%3ECQ%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%23431705'/%3E%3Crect x='18' y='18' width='156' height='156' rx='32' fill='%23F73D37'/%3E%3Ctext x='96' y='112' text-anchor='middle' font-family='Arial' font-size='58' font-weight='800' fill='%23431705'%3ECQ%3C/text%3E%3C/svg%3E",
       "sizes": "192x192",
       "type": "image/svg+xml"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%232E2D2D'/%3E%3Crect x='40' y='40' width='432' height='432' rx='92' fill='%23E8F985'/%3E%3Ctext x='256' y='302' text-anchor='middle' font-family='Arial' font-size='170' font-weight='800' fill='%232E2D2D'%3ECQ%3C/text%3E%3C/svg%3E",
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%23431705'/%3E%3Crect x='40' y='40' width='432' height='432' rx='92' fill='%23F73D37'/%3E%3Ctext x='256' y='302' text-anchor='middle' font-family='Arial' font-size='170' font-weight='800' fill='%23431705'%3ECQ%3C/text%3E%3C/svg%3E",
       "sizes": "512x512",
       "type": "image/svg+xml"
     }
