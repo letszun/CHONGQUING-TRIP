@@ -573,9 +573,87 @@ textarea::placeholder,input::placeholder{color:rgba(244,240,232,.45)}
 #today button *,#plan button *,#spots button *,#eat button *,#more button *{-webkit-text-fill-color:currentColor !important}
 @media (max-width:560px){.pass-stage{height:596px}.wallet-stage{height:420px}.more-title{font-size:28px}}
 
+
+/* v23 — fix detail readability + ticket detail + splash */
+.splash-lock{overflow:hidden}
+.splash-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(circle at 50% 20%, rgba(92,124,255,.22), transparent 32%), linear-gradient(180deg,#0b0b0c 0%, #141416 100%);opacity:1;transition:opacity .48s ease, transform .48s ease}
+.splash-screen.is-hidden{opacity:0;pointer-events:none;transform:scale(1.02)}
+.splash-noise{position:absolute;inset:0;opacity:.06;background-image:radial-gradient(circle at 20% 20%, #fff 1px, transparent 1.5px), radial-gradient(circle at 80% 70%, #fff 1px, transparent 1.5px);background-size:28px 28px, 36px 36px}
+.splash-stack{position:relative;width:min(78vw,320px);height:min(66vh,440px)}
+.splash-pass{position:absolute;left:0;right:0;margin:auto;border-radius:34px;box-shadow:0 24px 60px rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.06)}
+.splash-back{top:72px;width:88%;height:58%;background:linear-gradient(145deg,#2c365f 0%,#151a2f 100%);transform:rotate(-9deg) translateY(18px)}
+.splash-mid{top:40px;width:92%;height:62%;background:linear-gradient(180deg,#ece7df 0%,#dbd5cc 100%);transform:rotate(7deg)}
+.splash-front{top:0;width:100%;height:68%;padding:26px 24px;background:linear-gradient(180deg,#1b1b1d 0%, #111214 100%);display:flex;flex-direction:column;justify-content:flex-start;transform:translateY(12px);animation:splashFloat 1.6s ease both}
+@keyframes splashFloat{0%{transform:translateY(28px) scale(.96);opacity:0}100%{transform:translateY(0) scale(1);opacity:1}}
+.splash-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,240,232,.56);font-family:var(--english)}
+.splash-brand{margin-top:12px;font-family:var(--english);font-size:52px;line-height:.86;letter-spacing:-.08em;font-weight:900;color:var(--grey)}
+.splash-city{margin-top:10px;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-2);font-family:var(--english)}
+.splash-chip{margin-top:auto;display:inline-flex;align-self:flex-start;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-family:var(--english)}
+.splash-barcode{margin-top:20px;height:52px;border-radius:10px;background:repeating-linear-gradient(90deg, rgba(244,240,232,.94) 0 3px, transparent 3px 5px, rgba(244,240,232,.94) 5px 7px, transparent 7px 9px);opacity:.92}
+
+/* fix detail text visibility */
+.detail-top,.ticket-detail-page{color:var(--grey)}
+.ticket-detail-page .secondary-back button{background:rgba(255,255,255,.08);color:var(--grey);border:1px solid rgba(255,255,255,.08)}
+.ticket-detail-page .action-row,.ticket-detail-page .detail-section,.ticket-detail-page .map-note,.ticket-detail-page .detail-card,.ticket-detail-page .detail-memo, .ticket-detail-page p,.ticket-detail-page li,.ticket-detail-page h3,.ticket-detail-page span,.ticket-detail-page strong,.ticket-detail-page a,.ticket-detail-page button{color:inherit}
+
+.ticket-detail-page{display:grid;gap:14px;padding-bottom:92px}
+.ticket-hero{position:relative;overflow:hidden;border-radius:34px;padding:18px 18px 16px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.06)}
+.ticket-hero::before{content:'';position:absolute;left:0;right:0;top:76%;border-top:1px dashed currentColor;opacity:.18}
+.ticket-hero .ticket-hero-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.ticket-label{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-family:var(--english)}
+.ticket-code{margin-top:7px;font-size:14px;font-weight:800;letter-spacing:.12em}
+.ticket-state{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:inherit}
+.ticket-state.is-on{background:var(--blue);border-color:transparent;color:#fff}
+.ticket-hero-name{margin-top:16px;font-family:var(--english);font-size:40px;line-height:.88;letter-spacing:-.07em;font-weight:900;color:inherit;word-break:keep-all}
+.ticket-hero-sub{margin-top:10px;font-size:15px;line-height:1.4;opacity:.82}
+.ticket-hero-en{margin-top:4px;font-size:16px;line-height:1.25;opacity:.6}
+.ticket-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.ticket-pill-row span{display:inline-flex;padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.08);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.ticket-photo-wrap{margin-top:16px;padding:14px;border-radius:26px;background:rgba(255,255,255,.08)}
+.ticket-photo-frame{height:200px;display:grid;place-items:center;overflow:hidden;border-radius:24px;background:rgba(255,255,255,.06)}
+.ticket-photo-frame img{width:100%;height:100%;object-fit:cover}
+.ticket-photo-frame.fallback{font-family:var(--english);font-size:28px;letter-spacing:.12em;opacity:.32}
+.ticket-cut-line{margin-top:16px;height:1px;background:transparent}
+.ticket-facts-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.ticket-fact{padding:12px 12px 11px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);min-height:70px}
+.ticket-fact span{display:block;font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;opacity:.64}
+.ticket-fact strong{display:block;margin-top:8px;font-size:13px;line-height:1.35;font-weight:800;word-break:break-word}
+.ticket-barcode.big{margin-top:16px;height:56px;border-radius:12px;background:repeating-linear-gradient(90deg, currentColor 0 3px, transparent 3px 5px, currentColor 5px 6px, transparent 6px 9px);opacity:.78}
+.ticket-perf{position:absolute;top:74%;width:22px;height:22px;border-radius:999px;background:var(--bg);transform:translateY(-50%)}
+.ticket-perf.left{left:-11px}.ticket-perf.right{right:-11px}
+
+.ticket-section-wrap{display:grid;gap:12px}
+.ticket-panel{position:relative;padding:16px 16px 16px 18px;border-radius:28px;background:linear-gradient(180deg,#1a1a1c 0%,#151517 100%);border:1px solid rgba(255,255,255,.06);box-shadow:var(--shadow);color:var(--grey)}
+.ticket-panel::before{content:'';position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--blue);border-radius:28px 0 0 28px}
+.ticket-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.mini-kicker{font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-2);font-family:var(--english)}
+.mini-code{font-size:11px;font-weight:800;letter-spacing:.12em;opacity:.56;font-family:var(--english)}
+.ticket-copy{margin:0;font-size:14px;line-height:1.6;color:var(--grey)!important}
+.ticket-list{margin:0;padding-left:18px;display:grid;gap:8px}
+.ticket-list li{font-size:14px;line-height:1.5;color:var(--grey)!important}
+.ticket-action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ticket-action{min-height:48px;padding:0 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:800;line-height:1.3;color:var(--grey)!important;text-decoration:none}
+.ticket-action:active{transform:scale(.98)}
+.ticket-note-box{margin-top:12px;padding:12px 13px;border-radius:16px;background:rgba(255,255,255,.05);font-size:12px;line-height:1.55;color:rgba(244,240,232,.82)!important}
+.ticket-memo{width:100%;min-height:140px;padding:14px 14px;border-radius:18px;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.08)!important;color:var(--grey)!important;resize:vertical}
+.ticket-memo::placeholder{color:rgba(244,240,232,.42)!important}
+
+.ticket-hero.color-yellow,.ticket-hero.color-sand{color:#111}
+.ticket-hero.color-yellow .ticket-state,.ticket-hero.color-sand .ticket-state,.ticket-hero.color-yellow .ticket-pill-row span,.ticket-hero.color-sand .ticket-pill-row span,.ticket-hero.color-yellow .ticket-fact,.ticket-hero.color-sand .ticket-fact,.ticket-hero.color-yellow .ticket-photo-wrap,.ticket-hero.color-sand .ticket-photo-wrap{background:rgba(17,17,17,.06);border-color:rgba(17,17,17,.08)}
+.ticket-hero.color-yellow .ticket-state.is-on,.ticket-hero.color-sand .ticket-state.is-on{background:var(--blue);color:#fff}
+.ticket-hero.color-yellow::before,.ticket-hero.color-sand::before{opacity:.14}
+.ticket-hero.color-yellow .ticket-barcode.big,.ticket-hero.color-sand .ticket-barcode.big{opacity:.86}
+
+@media (max-width:560px){
+  .ticket-hero-name{font-size:34px}
+  .ticket-photo-frame{height:180px}
+  .ticket-action-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 </head>
 <body>
+<div class="splash-screen" id="splashScreen" aria-hidden="true"><div class="splash-noise"></div><div class="splash-stack"><div class="splash-pass splash-back"></div><div class="splash-pass splash-mid"></div><div class="splash-pass splash-front"><div class="splash-kicker">TRAVEL PASS</div><div class="splash-brand">CQ PASS</div><div class="splash-city">CHONGQING CITY</div><div class="splash-chip">08.25–08.29 · 2P</div><div class="splash-barcode"></div></div></div></div>
 <div class="app">
   <section id="today" class="view"></section>
   <section id="plan" class="view"></section>
@@ -849,8 +927,90 @@ function renderTalk(filter='ALL'){const labels=[['ALL','전체'],['HOTEL','숙�
 
 function renderCheck(){document.getElementById('check').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Before departure</div><h1 class="section-title">CHECK</h1></div><div class="check-list">${CHECKS.map((t,i)=>`<label class="task ${state['check'+i]?'done':''}"><input type="checkbox" ${state['check'+i]?'checked':''} onchange="state['check${i}']=this.checked;save();renderCheck()"><span class="txt">${t}</span></label>`).join('')}</div><div class="note-card"><label>Notes</label><textarea id="freeNote" placeholder="예약번호, 숙소 주소, 살 것">${esc(state.freeNote||'')}</textarea></div>`;document.getElementById('freeNote').oninput=e=>{state.freeNote=e.target.value;save()}}
 function renderMaybe(){document.getElementById('maybe').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Extra options</div><h1 class="section-title">MAYBE</h1><p class="section-sub">시간이 남을 때 넣을 후보들.</p></div><div class="maybe-list">${MAYBE.map((m,i)=>`<article class="maybe-card ${color(i+3)}"><div class="type en-title">${m.type}</div><div class="title">${m.title}</div><div class="sub">${m.cn}<br>${m.why}<br><b>${m.when}</b></div></article>`).join('')}</div>`}
-function renderDetail(type,id,from){const data=type==='food'?FOODS[id]:SPOTS[id];if(!data){go('plan');return}const idx=Object.keys(type==='food'?FOODS:SPOTS).indexOf(id);const links=mapLinks(data.map||data.search||data.cn);const isFood=type==='food';const bullets=isFood?data.order:data.highlights;const visited=isVisited(type,id);const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
- document.getElementById('detail').innerHTML=`<div class="detail-top"><button class="back" onclick="go('${from||'plan'}')">← Back</button><div class="detail-card ${color(idx+1)}"><div class="type en-title">${data.kind}</div><div class="name">${koName}</div><div class="cn">${data.cn} · <span class="en-title">${data.name}</span></div><div class="detail-tags"><span>${data.date}</span>${data.area?`<span>${data.area}</span>`:''}${data.duration?`<span>${data.duration}</span>`:''}</div><div class="photo-shell"><div class="photo-frame ${mask(idx)}" id="photoFrame"><img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';"></div><div class="detail-caption">Representative image</div></div></div><div class="action-row"><button class="action-btn light" onclick="toggleVisited('${type}','${id}')">${visited?'표시 해제':'방문 완료'}</button><button class="action-btn" onclick="copyText('${esc(data.cn)}')">중국어명 복사</button><button class="action-btn" onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button></div><div class="action-row"><a class="action-btn light" href="${links.amap}" target="_blank" rel="noopener">高德地图</a><a class="action-btn light" href="${links.google}" target="_blank" rel="noopener">Google Maps</a></div><div class="map-note">중국 현지에서는 高德地图를 우선 사용하고, Google Maps는 보조 링크로 두었습니다.</div><section class="detail-section"><h3>About</h3><p>${data.summary}</p></section><section class="detail-section"><h3>${isFood?'Order':'Highlights'}</h3><ul>${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section><section class="detail-section"><h3>MY MEMO</h3><textarea class="detail-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea></section><section class="detail-section"><h3>Note</h3><ul>${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul></section></div>`}
+function renderDetail(type,id,from){
+  const data=type==='food'?FOODS[id]:SPOTS[id];
+  if(!data){go('plan');return}
+  const idx=Object.keys(type==='food'?FOODS:SPOTS).indexOf(id);
+  const links=mapLinks(data.map||data.search||data.cn);
+  const isFood=type==='food';
+  const bullets=isFood?data.order:data.highlights;
+  const visited=isVisited(type,id);
+  const koName=isFood?(FOOD_KO[id]||data.name):(SPOT_KO[id]||data.name);
+  const memoPlaceholder=isFood?'식당명, 주소, 예약시간, 전화번호, 주문할 메뉴 등을 적어두세요.':'주소, 입장시간, 티켓, 교통·만남 장소 등을 적어두세요.';
+  const code=`${isFood?'FD':'SP'}-${String(idx+1).padStart(2,'0')}`;
+  const tone=['color-yellow','color-sand'].includes(color(idx+1))?'light':'dark';
+  document.getElementById('detail').innerHTML=`
+    <div class="detail-top ticket-detail-page">
+      <div class="secondary-back detail-back"><button onclick="go('${from||'plan'}')">← BACK</button></div>
+      <article class="ticket-hero ${color(idx+1)}" data-tone="${tone}">
+        <div class="ticket-perf left"></div>
+        <div class="ticket-perf right"></div>
+        <div class="ticket-hero-top">
+          <div>
+            <div class="ticket-label">${isFood?'FOOD PASS':'CITY PASS'}</div>
+            <div class="ticket-code en-title">${code}</div>
+          </div>
+          <button class="ticket-state ${visited?'is-on':''}" onclick="toggleVisited('${type}','${id}')">${visited?'DONE':'OPEN'}</button>
+        </div>
+        <div class="ticket-hero-name">${koName}</div>
+        <div class="ticket-hero-sub">${data.cn}</div>
+        <div class="ticket-hero-en en-title">${data.name}</div>
+        <div class="ticket-pill-row">
+          <span>${data.kind}</span>
+          <span>${data.date}</span>
+          ${data.area?`<span>${data.area}</span>`:''}
+          ${data.duration?`<span>${data.duration}</span>`:''}
+        </div>
+        <div class="ticket-photo-wrap">
+          <div class="ticket-photo-frame ${mask(idx)}" id="photoFrame">
+            <img src="${data.photo}" alt="${data.name}" referrerpolicy="no-referrer" onerror="this.remove();document.getElementById('photoFrame').classList.add('fallback');document.getElementById('photoFrame').textContent='PHOTO';">
+          </div>
+        </div>
+        <div class="ticket-cut-line"></div>
+        <div class="ticket-facts-grid">
+          <div class="ticket-fact"><span>TYPE</span><strong>${isFood?'FOOD':'SPOT'}</strong></div>
+          <div class="ticket-fact"><span>STATUS</span><strong>${visited?'DONE':'OPEN'}</strong></div>
+          <div class="ticket-fact"><span>SEARCH</span><strong>${(data.search||data.cn).slice(0,18)}</strong></div>
+          <div class="ticket-fact"><span>MAP</span><strong>${data.map||data.search||data.cn}</strong></div>
+        </div>
+        <div class="ticket-barcode big"></div>
+      </article>
+
+      <section class="ticket-section-wrap">
+        <article class="ticket-panel">
+          <div class="ticket-panel-head"><span class="mini-kicker">ABOUT</span><span class="mini-code">01</span></div>
+          <p class="ticket-copy">${data.summary}</p>
+        </article>
+
+        <article class="ticket-panel">
+          <div class="ticket-panel-head"><span class="mini-kicker">${isFood?'ORDER':'HIGHLIGHTS'}</span><span class="mini-code">02</span></div>
+          <ul class="ticket-list">${(bullets||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
+        </article>
+
+        <article class="ticket-panel action-panel">
+          <div class="ticket-panel-head"><span class="mini-kicker">TOOLS</span><span class="mini-code">03</span></div>
+          <div class="ticket-action-grid">
+            <button class="ticket-action" onclick="copyText('${esc(data.cn)}')">중국어명 복사</button>
+            <button class="ticket-action" onclick="copyText('${esc(data.search||data.cn)}')">검색어 복사</button>
+            <a class="ticket-action" href="${links.amap}" target="_blank" rel="noopener">高德地图</a>
+            <a class="ticket-action" href="${links.google}" target="_blank" rel="noopener">Google Maps</a>
+          </div>
+          <div class="ticket-note-box">중국 현지에서는 <b>高德地图</b>를 우선 사용하고, Google Maps는 보조 링크로 두면 됩니다.</div>
+        </article>
+
+        <article class="ticket-panel memo-panel">
+          <div class="ticket-panel-head"><span class="mini-kicker">MY MEMO</span><span class="mini-code">04</span></div>
+          <textarea class="ticket-memo" placeholder="${memoPlaceholder}" oninput="saveDetailMemo('${type}','${id}',this.value)">${esc(detailMemo(type,id))}</textarea>
+        </article>
+
+        <article class="ticket-panel">
+          <div class="ticket-panel-head"><span class="mini-kicker">NOTE</span><span class="mini-code">05</span></div>
+          <ul class="ticket-list">${(data.tips||[]).map(x=>`<li>${x}</li>`).join('')}</ul>
+        </article>
+      </section>
+    </div>`
+}
+
 function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
 async function loadWeather(force=false){const root=document.getElementById('weatherCards');if(!root)return;const cached=state.weatherCache;const fresh=cached&&Date.now()-cached.time<30*60*1000;if(cached&&!force){renderWeatherCards(cached);if(fresh)return}root.innerHTML='<div class="status-card">날씨 불러오는 중…</div>';try{const urls=[['충칭',29.563,106.5516],['우롱',29.325,107.76]];const rows=[];for(const [name,lat,lon] of urls){const u=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=Asia%2FShanghai`;const r=await fetch(u);if(!r.ok)throw new Error('weather');const j=await r.json();rows.push({name,...j.current})}state.weatherCache={time:Date.now(),rows};save();renderWeatherCards(state.weatherCache)}catch(e){root.innerHTML='<div class="status-card"><b>날씨를 불러오지 못했습니다.</b><br><span>인터넷 연결 후 다시 시도하세요. 캐시된 값이 있으면 마지막 값이 표시됩니다.</span></div>';if(cached)renderWeatherCards(cached)}}
 function renderWeatherCards(cache){const root=document.getElementById('weatherCards');if(!root)return;root.innerHTML=cache.rows.map((w,i)=>`<article class="weather-card ${color(i+1)}"><div class="weather-name">${w.name}</div><div class="weather-temp">${Math.round(w.temperature_2m)}°</div><div class="weather-desc">${weatherText(w.weather_code)} · 체감 ${Math.round(w.apparent_temperature)}° · 강수 ${w.precipitation||0} mm</div></article>`).join('')+`<div class="weather-updated">마지막 확인: ${new Date(cache.time).toLocaleString('ko-KR')}</div>`}
@@ -890,6 +1050,22 @@ function initCardDeck(id,start=0){
   paint();
 }
 
+
+function initSplash(){
+  const splash=document.getElementById('splashScreen');
+  if(!splash) return;
+  const seen=sessionStorage.getItem('cqSplashSeen');
+  if(seen){splash.classList.add('is-hidden'); setTimeout(()=>splash.remove(),420); return;}
+  document.body.classList.add('splash-lock');
+  requestAnimationFrame(()=>splash.classList.add('is-active'));
+  setTimeout(()=>{
+    splash.classList.add('is-hidden');
+    document.body.classList.remove('splash-lock');
+    sessionStorage.setItem('cqSplashSeen','1');
+    setTimeout(()=>splash.remove(),560);
+  },1500);
+}
+
 function route(){const hash=(location.hash||'#today').slice(1);const p=hash.split('/');if(p[0]==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav(p[3]||'plan');return}
   const view=['today','plan','spots','eat','book','money','talk','check','maybe','more','weather','emergency'].includes(p[0])?p[0]:'today';
   if(view==='today') renderToday();
@@ -906,7 +1082,7 @@ function route(){const hash=(location.hash||'#today').slice(1);const p=hash.spli
   if(view==='emergency') renderEmergency();
   show(view); nav(view);
 }
-window.addEventListener('hashchange',route); route();
+window.addEventListener('hashchange',route); route(); initSplash();
 if('serviceWorker' in navigator) window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').then(r=>r.update()).catch(()=>{}));
 </script>
 </body>

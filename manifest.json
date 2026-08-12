@@ -1,11 +1,11 @@
 {
-  "name": "Chongqing City — Dark Pass",
-  "short_name": "CQ Pass",
+  "name": "Chongqing City — Card Pass",
+  "short_name": "CQ Card",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#101010",
-  "theme_color": "#121212",
+  "background_color": "#0f0f10",
+  "theme_color": "#0f0f10",
   "description": "Chongqing & Wulong trip planner — Korean-first mobile UX",
   "icons": [
     {
