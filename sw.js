@@ -1,4 +1,4 @@
-const CACHE='cq-trip-v61-version';
+const CACHE='cq-trip-v62-version-trullion-contrast';
 const ASSETS=['./','./index.html','./manifest.json','./version-patch.js'];
 async function withVersion(r){
   const text=await r.text();
