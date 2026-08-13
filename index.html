@@ -329,12 +329,173 @@ html,body,.app{background:#050E29!important}
 .today-line small{color:rgba(5,14,41,.60)!important}
 .today-line{border-color:rgba(5,14,41,.12)!important}
 
+
+/* v56 — switchable reference themes; color layer only */
+html[data-theme="blue"]{
+ --t-bg:#050E29;--t-paper:#E1F0FE;--t-ink:#050E29;--t-field:#FFFFFF;
+ --t-c1:#4BB3FE;--t-c2:#56F99A;--t-c3:#4B5AFE;--t-c4:#E1F0FE;--t-action:#0F1B64;
+ --on-c1:#050E29;--on-c2:#050E29;--on-c3:#FFFFFF;--on-c4:#050E29;--on-action:#FFFFFF;
+ --muted-paper:rgba(5,14,41,.60);--muted-c1:rgba(5,14,41,.62);--muted-c2:rgba(5,14,41,.62);--muted-c3:rgba(255,255,255,.76);--muted-c4:rgba(5,14,41,.60);--muted-action:rgba(255,255,255,.76)
+}
+html[data-theme="permanent"]{
+ --t-bg:#272727;--t-paper:#F4F4F4;--t-ink:#000000;--t-field:#FFFFFF;
+ --t-c1:#EA2F2F;--t-c2:#F4EFCE;--t-c3:#F76F61;--t-c4:#F4F4F4;--t-action:#000000;
+ --on-c1:#000000;--on-c2:#000000;--on-c3:#000000;--on-c4:#000000;--on-action:#FFFFFF;
+ --muted-paper:rgba(0,0,0,.58);--muted-c1:rgba(0,0,0,.66);--muted-c2:rgba(0,0,0,.58);--muted-c3:rgba(0,0,0,.62);--muted-c4:rgba(0,0,0,.58);--muted-action:rgba(255,255,255,.74)
+}
+html[data-theme="trullion"]{
+ --t-bg:#222721;--t-paper:#E8E9E4;--t-ink:#111713;--t-field:#F5F6F4;
+ --t-c1:#307FDE;--t-c2:#918B75;--t-c3:#AFBADB;--t-c4:#E8E9E4;--t-action:#305A75;
+ --on-c1:#07121B;--on-c2:#111713;--on-c3:#111713;--on-c4:#111713;--on-action:#FFFFFF;
+ --muted-paper:rgba(17,23,19,.58);--muted-c1:rgba(7,18,27,.66);--muted-c2:rgba(17,23,19,.66);--muted-c3:rgba(17,23,19,.58);--muted-c4:rgba(17,23,19,.58);--muted-action:rgba(255,255,255,.76)
+}
+html[data-theme="forest"]{
+ --t-bg:#202823;--t-paper:#F1F0E8;--t-ink:#152019;--t-field:#FFFFFF;
+ --t-c1:#A9C7B0;--t-c2:#D6C7A1;--t-c3:#9EB6C3;--t-c4:#E4E9DF;--t-action:#375E4B;
+ --on-c1:#152019;--on-c2:#152019;--on-c3:#152019;--on-c4:#152019;--on-action:#FFFFFF;
+ --muted-paper:rgba(21,32,25,.60);--muted-c1:rgba(21,32,25,.62);--muted-c2:rgba(21,32,25,.62);--muted-c3:rgba(21,32,25,.62);--muted-c4:rgba(21,32,25,.58);--muted-action:rgba(255,255,255,.76)
+}
+html[data-theme="emerald"]{
+ --t-bg:#232C29;--t-paper:#FFFFFF;--t-ink:#071B15;--t-field:#F2F7F5;
+ --t-c1:#5CE6BD;--t-c2:#E9FFFA;--t-c3:#EBEBEB;--t-c4:#FFFFFF;--t-action:#023A2D;
+ --on-c1:#071B15;--on-c2:#071B15;--on-c3:#071B15;--on-c4:#071B15;--on-action:#FFFFFF;
+ --muted-paper:rgba(7,27,21,.58);--muted-c1:rgba(7,27,21,.60);--muted-c2:rgba(7,27,21,.56);--muted-c3:rgba(7,27,21,.56);--muted-c4:rgba(7,27,21,.56);--muted-action:rgba(255,255,255,.76)
+}
+html[data-theme="silence"]{
+ --t-bg:#262422;--t-paper:#F3EAE3;--t-ink:#080706;--t-field:#FFFDFC;
+ --t-c1:#FF073B;--t-c2:#D0C9C3;--t-c3:#000000;--t-c4:#F3EAE3;--t-action:#131210;
+ --on-c1:#000000;--on-c2:#000000;--on-c3:#FFFFFF;--on-c4:#080706;--on-action:#FFFFFF;
+ --muted-paper:rgba(8,7,6,.58);--muted-c1:rgba(0,0,0,.68);--muted-c2:rgba(0,0,0,.58);--muted-c3:rgba(255,255,255,.74);--muted-c4:rgba(8,7,6,.58);--muted-action:rgba(255,255,255,.74)
+}
+
+/* bind existing semantic variables to active theme */
+html[data-theme]{--bg:var(--t-bg)!important;--paper:var(--t-paper)!important;--ink:var(--t-ink)!important;--muted:var(--muted-paper)!important;--pink:var(--t-c1)!important;--mint:var(--t-c2)!important;--lav:var(--t-c3)!important;--lime:var(--t-c4)!important;--blue:var(--t-action)!important;--foundation:var(--t-ink)!important;--structure:var(--t-action)!important;--clarity:var(--t-c1)!important;--energy:var(--t-c2)!important;--framework:var(--t-paper)!important;--slate:var(--t-c3)!important;--pale:var(--t-c4)!important}
+html[data-theme],html[data-theme] body,html[data-theme] .app{background:var(--t-bg)!important}
+html[data-theme] .bottom-nav{background:color-mix(in srgb,var(--t-bg) 95%,#000 5%)!important}
+html[data-theme] .nav-btn.active{background:var(--t-paper)!important;color:var(--t-ink)!important}
+html[data-theme] .hero:not(.pink):not(.mint):not(.lav),html[data-theme] .card:not(.pink):not(.mint):not(.lav):not(.lime):not(.blue),html[data-theme] .fact,html[data-theme] .detail-section:not(.pink):not(.mint):not(.lav):not(.lime),html[data-theme] .address-card,html[data-theme] .field,html[data-theme] .info,html[data-theme] .expense,html[data-theme] .weather-card,html[data-theme] .map-card,html[data-theme] .real-map-card,html[data-theme] .links-min{background:var(--t-paper)!important;color:var(--t-ink)!important}
+
+/* semantic color cards + foreground contracts */
+html[data-theme] .pink{background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .mint{background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .lav{background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .lime{background:var(--t-c4)!important;color:var(--on-c4)!important}
+html[data-theme] .blue{background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .pink .micro,html[data-theme] .pink .meta,html[data-theme] .pink small,html[data-theme] .pink em,html[data-theme] .pink>span{color:var(--muted-c1)!important}
+html[data-theme] .mint .micro,html[data-theme] .mint .meta,html[data-theme] .mint small,html[data-theme] .mint em,html[data-theme] .mint>span{color:var(--muted-c2)!important}
+html[data-theme] .lav .micro,html[data-theme] .lav .meta,html[data-theme] .lav small,html[data-theme] .lav em,html[data-theme] .lav>span{color:var(--muted-c3)!important}
+html[data-theme] .lime .micro,html[data-theme] .lime .meta,html[data-theme] .lime small,html[data-theme] .lime em,html[data-theme] .lime>span{color:var(--muted-c4)!important}
+html[data-theme] .blue .micro,html[data-theme] .blue .meta,html[data-theme] .blue small,html[data-theme] .blue em,html[data-theme] .blue>span{color:var(--muted-action)!important}
+
+/* repeated card cycles */
+html[data-theme] .item-card:nth-child(4n+1),html[data-theme] .more-item:nth-child(4n+1){background:var(--t-c4)!important;color:var(--on-c4)!important}
+html[data-theme] .item-card:nth-child(4n+2),html[data-theme] .more-item:nth-child(4n+2){background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .item-card:nth-child(4n+3),html[data-theme] .more-item:nth-child(4n+3){background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .item-card:nth-child(4n),html[data-theme] .more-item:nth-child(4n){background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .item-card:nth-child(4n+1) small,html[data-theme] .item-card:nth-child(4n+1) em,html[data-theme] .more-item:nth-child(4n+1) small{color:var(--muted-c4)!important}
+html[data-theme] .item-card:nth-child(4n+2) small,html[data-theme] .item-card:nth-child(4n+2) em,html[data-theme] .more-item:nth-child(4n+2) small{color:var(--muted-c1)!important}
+html[data-theme] .item-card:nth-child(4n+3) small,html[data-theme] .item-card:nth-child(4n+3) em,html[data-theme] .more-item:nth-child(4n+3) small{color:var(--muted-c2)!important}
+html[data-theme] .item-card:nth-child(4n) small,html[data-theme] .item-card:nth-child(4n) em,html[data-theme] .more-item:nth-child(4n) small{color:var(--muted-c3)!important}
+
+/* plan: outer theme color, inner rows always calm paper */
+html[data-theme] .plan-card.pink{background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .plan-card.mint{background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .plan-card.lav{background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .plan-card.lime{background:var(--t-c4)!important;color:var(--on-c4)!important}
+html[data-theme] .plan-card.pink .plan-head,html[data-theme] .plan-card.pink .plan-place{color:var(--muted-c1)!important}
+html[data-theme] .plan-card.mint .plan-head,html[data-theme] .plan-card.mint .plan-place{color:var(--muted-c2)!important}
+html[data-theme] .plan-card.lav .plan-head,html[data-theme] .plan-card.lav .plan-place{color:var(--muted-c3)!important}
+html[data-theme] .plan-card.lime .plan-head,html[data-theme] .plan-card.lime .plan-place{color:var(--muted-c4)!important}
+html[data-theme] .plan-event,html[data-theme] .plan-foot>div,html[data-theme] .plan-foot>button{background:color-mix(in srgb,var(--t-paper) 93%,#fff 7%)!important;color:var(--t-ink)!important}
+html[data-theme] .plan-event small,html[data-theme] .plan-foot span,html[data-theme] .plan-foot>button span{color:var(--muted-paper)!important}
+
+/* TODAY keeps same composition, recolored by theme */
+html[data-theme] .today-board{background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .today-next-inline{background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .today-next-inline span{color:var(--muted-c3)!important}
+html[data-theme] .today-timeline,html[data-theme] .today-line{color:var(--on-c2)!important}
+html[data-theme] .today-line small{color:var(--muted-c2)!important}
+html[data-theme] .today-line{border-color:color-mix(in srgb,var(--on-c2) 16%,transparent)!important}
+html[data-theme] .today-summary>div{background:var(--t-c4)!important;color:var(--on-c4)!important}
+html[data-theme] .today-summary>button{background:var(--t-c1)!important;color:var(--on-c1)!important}
+
+/* detail contrast audited per surface */
+html[data-theme] .detail-head.pink,html[data-theme] .detail-section.pink{background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .detail-head.mint,html[data-theme] .detail-section.mint,html[data-theme] .food-guide{background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .detail-head.lav,html[data-theme] .detail-section.lav{background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .detail-head.lime,html[data-theme] .detail-section.lime{background:var(--t-c4)!important;color:var(--on-c4)!important}
+html[data-theme] .detail-head.pink p,html[data-theme] .detail-head.pink .micro,html[data-theme] .detail-section.pink>span,html[data-theme] .detail-section.pink .detail-list i{color:var(--muted-c1)!important}
+html[data-theme] .detail-head.mint p,html[data-theme] .detail-head.mint .micro,html[data-theme] .detail-section.mint>span,html[data-theme] .detail-section.mint .detail-list i,html[data-theme] .food-guide>span{color:var(--muted-c2)!important}
+html[data-theme] .detail-head.lav p,html[data-theme] .detail-head.lav .micro,html[data-theme] .detail-section.lav>span,html[data-theme] .detail-section.lav .detail-list i{color:var(--muted-c3)!important}
+html[data-theme] .detail-head.lime p,html[data-theme] .detail-head.lime .micro,html[data-theme] .detail-section.lime>span,html[data-theme] .detail-section.lime .detail-list i{color:var(--muted-c4)!important}
+html[data-theme] .detail-section .detail-list b,html[data-theme] .detail-section .body,html[data-theme] .food-guide-copy{color:inherit!important}
+html[data-theme] .detail-list>div{border-color:color-mix(in srgb,currentColor 14%,transparent)!important}
+html[data-theme] .food-phrase{background:color-mix(in srgb,var(--t-paper) 92%,#fff 8%)!important;color:var(--t-ink)!important}
+html[data-theme] .food-phrase b{color:var(--t-ink)!important}html[data-theme] .food-phrase small{color:var(--muted-paper)!important}
+html[data-theme] .fact,html[data-theme] .tool-grid button,html[data-theme] .tool-grid a{background:var(--t-paper)!important;color:var(--t-ink)!important}
+html[data-theme] .fact span{color:var(--muted-paper)!important}
+html[data-theme] .memo-dark{background:var(--t-field)!important;color:var(--t-ink)!important;-webkit-text-fill-color:var(--t-ink)!important;border:1px solid color-mix(in srgb,var(--t-ink) 10%,transparent)!important}
+html[data-theme] .memo-dark::placeholder{color:color-mix(in srgb,var(--t-ink) 42%,transparent)!important;-webkit-text-fill-color:color-mix(in srgb,var(--t-ink) 42%,transparent)!important}
+
+/* actions / booking / flight / hotel */
+html[data-theme] .flight-head,html[data-theme] .add-expense,html[data-theme] .hotel-actions button:first-child,html[data-theme] .action-grid button{background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .flight-head>span{color:var(--muted-action)!important}
+html[data-theme] .flight-route,html[data-theme] .money-total{background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .flight-route span,html[data-theme] .money-total span,html[data-theme] .money-total em{color:var(--muted-c1)!important}
+html[data-theme] .hotel-head{background:var(--t-c3)!important;color:var(--on-c3)!important}
+html[data-theme] .hotel-head p,html[data-theme] .hotel-head .micro{color:var(--muted-c3)!important}
+html[data-theme] .booking.blue{background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .booking.blue .booking-top,html[data-theme] .booking.blue .booking-meta,html[data-theme] .booking.blue .booking-note,html[data-theme] .booking.blue .booking-open{color:var(--muted-action)!important}
+html[data-theme] .booking.blue .booking-title,html[data-theme] .booking.blue .booking-flight-code{color:var(--on-action)!important}
+
+/* supporting UI */
+html[data-theme] .filter.active,html[data-theme] .atlas-pin,html[data-theme] .map-popup button{background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .check input{accent-color:var(--t-c3)!important}
+html[data-theme] .emergency-grid a:nth-child(1){background:var(--t-c1)!important;color:var(--on-c1)!important}
+html[data-theme] .emergency-grid a:nth-child(2){background:var(--t-c2)!important;color:var(--on-c2)!important}
+html[data-theme] .emergency-grid a:nth-child(3){background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .map-pin circle{fill:var(--t-action)!important}html[data-theme] .map-river{stroke:var(--t-c1)!important}
+html[data-theme] .map-paper,html[data-theme] .map-canvas{background:var(--t-paper)!important;fill:var(--t-paper)!important}
+html[data-theme] .toast{background:var(--t-paper)!important;color:var(--t-ink)!important}
+
+/* Theme picker */
+.theme-grid{display:grid;gap:10px}.theme-choice{width:100%;border:0;border-radius:22px;padding:14px;background:var(--t-paper);color:var(--t-ink);box-shadow:var(--shadow);text-align:left}.theme-choice.active{outline:2px solid var(--t-c1)!important;outline-offset:-2px!important}.theme-choice-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.theme-choice-top b{font-size:16px;letter-spacing:-.02em}.theme-choice-top span{font-size:9px;color:var(--muted-paper);font-weight:740}.theme-swatches{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:12px}.theme-swatches i{height:34px;border-radius:10px;display:block;border:1px solid rgba(0,0,0,.06)}
+
+
+/* v57 — Silence dark-card separation */
+html[data-theme="silence"] .lav,
+html[data-theme="silence"] .blue,
+html[data-theme="silence"] .plan-card.lav,
+html[data-theme="silence"] .booking.blue,
+html[data-theme="silence"] .flight-head{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),var(--shadow)!important;
+}
+
+
+/* v58 — darker Silence + expandable discovery cards */
+html[data-theme="silence"]{--t-bg:#262422!important}
+html[data-theme="silence"] .lav,
+html[data-theme="silence"] .blue,
+html[data-theme="silence"] .plan-card.lav,
+html[data-theme="silence"] .booking.blue,
+html[data-theme="silence"] .flight-head,
+html[data-theme="silence"] .explore-more-card{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),var(--shadow)!important;
+}
+.explore-more-card{min-width:0;min-height:126px;border:0;border-radius:22px;padding:16px;background:var(--t-action,var(--blue));color:var(--on-action,#fff);box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left}
+.explore-more-card b{font-size:20px;line-height:1.05;letter-spacing:-.035em}.explore-more-card span{font-size:25px;line-height:1;align-self:flex-end;opacity:.75}
+.extra-section{display:grid;gap:10px;margin-top:2px}.extra-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:4px 3px 0;color:rgba(255,255,255,.76)}.extra-head b{font-size:13px;line-height:1.25;font-weight:760;letter-spacing:-.02em}.extra-head span{font-size:10px;opacity:.55}
+.extra-grid .item-card{min-height:146px}
+html[data-theme] .explore-more-card{background:var(--t-action)!important;color:var(--on-action)!important}
+html[data-theme] .explore-more-card span{color:var(--muted-action)!important}
+@media(max-width:390px){.explore-more-card{min-height:112px}.extra-grid .item-card{min-height:132px}}
+
 </style>
 </head>
 <body>
 <div class="app">
  <section id="today" class="view"></section><section id="plan" class="view"></section><section id="spots" class="view"></section><section id="eat" class="view"></section><section id="more" class="view"></section>
- <section id="book" class="view"></section><section id="money" class="view"></section><section id="talk" class="view"></section><section id="check" class="view"></section><section id="maybe" class="view"></section><section id="weather" class="view"></section><section id="emergency" class="view"></section><section id="detail" class="view"></section>
+ <section id="book" class="view"></section><section id="money" class="view"></section><section id="talk" class="view"></section><section id="check" class="view"></section><section id="maybe" class="view"></section><section id="weather" class="view"></section><section id="emergency" class="view"></section><section id="theme" class="view"></section><section id="detail" class="view"></section>
 </div><nav id="bottomNav" class="bottom-nav"></nav><div id="toast" style="display:none"></div>
 <script>
 const COLORS=['','pink','mint','lav','lime']; const tone=i=>COLORS[(i%4)+1];
@@ -418,6 +579,14 @@ shibati:{name:'십팔제',en:'Shibati',cn:'十八梯',area:'충칭',kind:'Old St
 xiahao:{name:'샤하오리',en:'Xiahaoli',cn:'下浩里',area:'충칭',kind:'Old Street',date:'08.28',summary:'강변 경사면의 옛거리와 재생 공간.',highlights:['강변','골목'],tips:['낮 산책 추천'],search:'下浩里 重庆'},
 kuaixinglou:{name:'쿠이싱러우',en:'Kuixing Building',cn:'魁星楼',area:'충칭',kind:'View',date:'08.29',summary:'해방비 가까이에 있는 짧은 마지막 관광 포인트. 충칭 특유의 고저차와 건물 사이 풍경을 빠르게 보기 좋습니다.',highlights:['临江门 인근','짧은 관람 가능','숙소에서 접근 쉬움'],tips:['비행일이라 오래 머물지 않기','10시 전후 숙소로 돌아가 짐 찾기'],search:'魁星楼 重庆'}
 };
+const MORE_SPOTS={
+chaotianmen:{name:'차오톈먼 · 래플스시티',en:'Chaotianmen · Raffles City',cn:'朝天门广场 · 重庆来福士',area:'충칭',kind:'View',date:'OPTION',summary:'장강과 자링강이 만나는 충칭의 대표 수변 랜드마크 구역. 강변 산책과 현대적인 스카이라인을 함께 보기 좋습니다.',highlights:['두 강이 만나는 도심 수변','래플스시티 스카이라인','강변 산책'],tips:['낮과 해질녘 모두 보기 좋음'],search:'朝天门广场 重庆来福士 重庆'},
+huguang:{name:'후광회관',en:'Huguang Guild Hall',cn:'湖广会馆',area:'충칭',kind:'Culture',date:'OPTION',summary:'명·청대 회관 건축과 충칭의 이주 역사를 함께 볼 수 있는 대형 고건축군.',highlights:['청대 고건축','정교한 목조 장식','이주 문화 전시'],tips:['건축 디테일을 천천히 보기 좋은 곳'],search:'湖广会馆 重庆'},
+threegorges:{name:'충칭 중국삼협박물관',en:'Chongqing China Three Gorges Museum',cn:'重庆中国三峡博物馆',area:'충칭',kind:'Museum',date:'OPTION',summary:'바위문화·삼협·항전·도시사까지 충칭의 역사와 문화를 폭넓게 보는 종합 박물관.',highlights:['삼협 문화','고대 바위 문화','충칭 도시사'],tips:['월요일 휴관 여부 확인','실내 일정이 필요할 때 좋음'],search:'重庆中国三峡博物馆'},
+cqart:{name:'충칭미술관',en:'Chongqing Art Museum',cn:'重庆美术馆',area:'충칭',kind:'Art',date:'OPTION',summary:'해방비 가까이에서 전시를 짧게 보기 좋은 도심 미술관. 날씨가 덥거나 비 올 때 넣기 편한 선택지입니다.',highlights:['해방비 도보권','현대 미술 전시','짧은 실내 관람'],tips:['전시 일정과 월요일 휴관 여부 확인'],search:'重庆美术馆'},
+shanchengxiang:{name:'산청샹',en:'Shancheng Alley',cn:'山城巷',area:'충칭',kind:'Walk',date:'OPTION',summary:'절벽과 경사면을 따라 이어지는 오래된 골목에서 충칭 특유의 산성 지형을 느끼기 좋은 산책 구역.',highlights:['경사 골목','강 조망','옛 도심 분위기'],tips:['편한 신발 권장','한낮 더위 피하기'],search:'山城巷 重庆'},
+jiangbeizui:{name:'장베이쭈이 강변공원',en:'Jiangbeizui Riverbank Park',cn:'江北嘴江滩公园',area:'충칭',kind:'Night',date:'OPTION',summary:'강 건너편에서 홍야동·첸쓰먼대교·래플스시티 쪽 스카이라인을 바라보기 좋은 강변 산책 포인트.',highlights:['홍야동 맞은편 뷰','강변 산책','야경'],tips:['밤에 야경 대안으로 좋음'],search:'江北嘴江滩公园 重庆'}
+};
 const FOODS={
 milktea:{name:'밀크티',en:'Milk Tea',cn:'奶茶',kind:'Drink',date:'08.25',summary:'충칭에서 자주 마시게 될 밀크티. 당도 표현을 저장해두면 주문이 편합니다.',order:['三分糖 — 당도 30%','七分糖 — 당도 70%','全糖 — 당도 100%','少冰 — 얼음 적게'],tips:['30%: 三分糖','70%: 七分糖','100%: 全糖'],search:'奶茶 重庆'},
 yangrou:{name:'우롱 양고기',en:'Wulong Lamb',cn:'武隆羊肉',kind:'Meal',date:'08.26',summary:'우롱에서 먹기 좋은 지역 대표 양고기 요리.',order:['羊肉 — 양고기','不要太辣 — 너무 맵지 않게'],tips:['현지 식당은 메뉴판 사진 활용'],search:'武隆羊肉'},
@@ -428,6 +597,14 @@ dimsum:{name:'딤섬',en:'Dim Sum',cn:'点心',kind:'Meal',date:'08.28',summary:
 chaoshou:{name:'홍유차오쇼우',en:'Red Oil Wontons',cn:'红油抄手',kind:'Meal',date:'08.28',summary:'매콤한 홍유 양념에 완탕처럼 빚은 차오쇼우를 비벼 먹는 충칭식 간단 식사. 샤오몐과 겹치지 않으면서 빠르게 먹기 좋습니다.',order:['红油抄手 — 홍유차오쇼우','微辣 — 약간 맵게','不要香菜 — 고수 빼주세요'],tips:['작은 점심으로 적당','매운맛 조절 가능'],search:'红油抄手 重庆'},
 shandongfood:{name:'산둥 음식',en:'Shandong Cuisine',cn:'鲁菜',kind:'Meal',date:'08.29',summary:'지난공항 환승 중 산둥 지역 음식을 가볍게 먹는 시간. 국제선 수속 시간을 남겨두고 메뉴 하나 정도만 간단히 먹는 편이 좋습니다.',order:['鲁菜 — 산둥 요리','不要太辣 — 너무 맵지 않게','快一点，谢谢 — 조금 빨리 부탁해요'],tips:['18:30 전에는 식사 마치기','수하물 재위탁 필요 시 식사보다 환승 수속 우선'],search:'济南遥墙国际机场 鲁菜'}
 };
+const MORE_FOODS={
+hotpot:{name:'충칭 훠궈',en:'Chongqing Hotpot',cn:'重庆火锅',kind:'Meal',date:'OPTION',summary:'충칭을 대표하는 음식. 우지(牛油) 베이스의 붉은 국물에 고기·내장·채소 등을 익혀 먹는 스타일이 가장 전형적입니다.',order:['重庆火锅 — 충칭 훠궈','鸳鸯锅 — 반반 냄비','微辣 — 약간 맵게'],tips:['처음이면 반반 냄비가 편함'],search:'重庆火锅 重庆'},
+chuanchuan:{name:'촨촨샹',en:'Chuan Chuan',cn:'串串香',kind:'Meal',date:'OPTION',summary:'꼬치에 꽂힌 재료를 매운 국물에 익혀 먹는 충칭식 꼬치 훠궈. 다양한 재료를 조금씩 맛보기 좋습니다.',order:['串串香 — 촨촨샹','微辣 — 약간 맵게','少麻 — 마라향 덜'],tips:['꼬치 수나 무게로 계산하는 곳이 많음'],search:'串串香 重庆'},
+shaokao:{name:'충칭 샤오카오',en:'Chongqing Barbecue',cn:'重庆烧烤',kind:'Night',date:'OPTION',summary:'고기·채소·해산물에 향신료를 강하게 입혀 먹는 충칭식 야식 바비큐. 늦은 밤 간식으로 특히 잘 어울립니다.',order:['烧烤 — 바비큐','微辣 — 약간 맵게','孜然少一点 — 쯔란 조금만'],tips:['늦은 밤 간식 옵션'],search:'重庆烧烤'},
+laziji:{name:'거러산 라즈지',en:'Gele Mountain Spicy Chicken',cn:'歌乐山辣子鸡',kind:'Meal',date:'OPTION',summary:'바삭하게 튀긴 닭고기를 마른 고추와 화자오에 볶아내는 충칭의 대표 장후차이 계열 요리.',order:['歌乐山辣子鸡','少辣一点 — 덜 맵게','两个人吃，小份就好 — 2인 작은 양'],tips:['고추 사이에서 닭 조각을 찾는 재미가 있는 메뉴'],search:'歌乐山辣子鸡 重庆'},
+suanlafen:{name:'산라펀',en:'Hot and Sour Sweet Potato Noodles',cn:'酸辣粉',kind:'Snack',date:'OPTION',summary:'고구마 전분 면에 새콤하고 매운 국물을 더한 충칭 대표 간식. 먹자거리에서 소량으로 맛보기 좋습니다.',order:['酸辣粉 — 산라펀','微辣 — 약간 맵게','不要香菜 — 고수 제외'],tips:['간식이나 가벼운 한 끼로 좋음'],search:'酸辣粉 重庆'},
+bingfen:{name:'빙펀 · 빙탕위안',en:'Ice Jelly · Iced Tangyuan',cn:'冰粉 · 冰汤圆',kind:'Dessert',date:'OPTION',summary:'매운 음식 사이에 먹기 좋은 차가운 디저트류. 빙펀이나 얼음이 들어간 탕위안은 입안을 식히는 데 잘 어울립니다.',order:['冰粉 — 빙펀','冰汤圆 — 빙탕위안','少糖 — 덜 달게'],tips:['매운 식사 뒤 디저트로 추천'],search:'冰粉 冰汤圆 重庆'}
+};
 const FOOD_GUIDE={
   milktea:{tip:'당도 → 얼음 → 토핑 순서로 말하면 가장 간단합니다.',phrases:[['三分糖，少冰，谢谢。','당도 30% · 얼음 적게'],['加珍珠，谢谢。','펄 추가해주세요']]},
   yangrou:{tip:'2명이면 처음부터 큰 양을 시키기보다 작은 양으로 시작하는 편이 편합니다.',phrases:[['两个人吃，帮我们推荐一下。','두 명이 먹을 건데 추천해주세요'],['微辣，不要香菜。','약간 맵게 · 고수 빼주세요']]},
@@ -436,7 +613,13 @@ const FOOD_GUIDE={
   xiaolongxia:{tip:'손으로 먹는 경우가 많아서 장갑을 같이 요청하면 편합니다.',phrases:[['微辣，少麻。','약간 맵게 · 마라향 덜'],['请给我们手套，谢谢。','장갑 주세요']]},
   dimsum:{tip:'한 번에 많이 시키기보다 한 바구니씩 추가하면 양 조절이 쉽습니다.',phrases:[['一笼虾饺，一笼烧卖。','하가우 한 바구니 · 샤오마이 한 바구니'],['有不辣的吗？','안 매운 메뉴가 있나요?']]},
   chaoshou:{tip:'한 그릇만 빠르게 먹기 좋은 메뉴라 어링얼창 이후 점심으로 넣기 편합니다.',phrases:[['一碗红油抄手，微辣。','홍유차오쇼우 한 그릇 · 약간 맵게'],['不要香菜，谢谢。','고수 빼주세요']]},
-  shandongfood:{tip:'지난공항 환승 시간이 있으니 메뉴 하나만 빠르게 주문하고 국제선 수속 시간을 남겨두세요.',phrases:[['想吃一个山东特色菜。','산둥 대표 메뉴 하나 먹고 싶어요'],['我们赶飞机，请快一点。','비행기 타야 해서 조금 빨리 부탁해요']]}
+
+  hotpot:{tip:'처음 먹는다면 매운 홍탕만 고집하기보다 鸳鸯锅(반반 냄비)로 시작하면 편합니다.',phrases:[['我们要鸳鸯锅，微辣。','반반 냄비 · 약간 맵게'],['毛肚和鸭肠各来一份。','마오두와 오리창자 각각 1인분']]},
+  chuanchuan:{tip:'여러 꼬치를 조금씩 고른 뒤 맵기를 정하면 주문이 간단합니다.',phrases:[['我们自己选串，可以吗？','꼬치는 저희가 직접 고르면 되나요?'],['微辣，少麻。','약간 맵게 · 마라향 덜']]},
+  shaokao:{tip:'야식으로는 가지·갈비·고기 꼬치처럼 2~3가지만 먼저 주문하고 추가하는 편이 좋습니다.',phrases:[['先来这些，不够再加。','일단 이것만, 부족하면 더 주문할게요'],['微辣，孜然少一点。','약간 맵게 · 쯔란 조금만']]},
+  laziji:{tip:'닭보다 고추가 훨씬 많아 보이는 게 정상인 메뉴입니다. 2명이면 작은 접시가 있는지 먼저 물어보세요.',phrases:[['两个人吃，小份就可以。','두 명이라 작은 양이면 돼요'],['少辣一点，谢谢。','조금 덜 맵게 부탁해요']]},
+  suanlafen:{tip:'먹자거리에서 한 그릇을 둘이 나눠 맛보기 좋은 간식입니다.',phrases:[['一碗酸辣粉，微辣。','산라펀 한 그릇 · 약간 맵게'],['不要香菜，谢谢。','고수 빼주세요']]},
+  bingfen:{tip:'매운 음식 뒤에 달고 차가운 디저트가 필요할 때 주문하기 좋습니다.',phrases:[['一份冰粉，少糖。','빙펀 하나 · 덜 달게'],['有冰汤圆吗？','빙탕위안 있나요?']]},  shandongfood:{tip:'지난공항 환승 시간이 있으니 메뉴 하나만 빠르게 주문하고 국제선 수속 시간을 남겨두세요.',phrases:[['想吃一个山东特色菜。','산둥 대표 메뉴 하나 먹고 싶어요'],['我们赶飞机，请快一点。','비행기 타야 해서 조금 빨리 부탁해요']]}
 };
 const BOOKINGS=[
 {type:'Hotel',title:'ISBELLO Lixin Landmark High Altitude Hotel (Jiefangbei Branch)',code:'HOTEL 1',tone:'blue',hotelKey:'isbello',meta:['08.25–08.26 · 1박','解放碑'],note:'1일차 충칭 숙소'},
@@ -475,7 +658,7 @@ const PHRASES=[
 ['안녕하세요.','你好。','ETC'],['감사합니다.','谢谢。','ETC'],['이 주소로 가주세요.','请去这个地址。','MOVE'],['여기 세워주세요.','请在这里停车。','MOVE'],['체크인하고 싶어요.','我想办理入住。','HOTEL'],['예약했어요.','我有预订。','HOTEL'],['두 명이에요.','两位。','FOOD'],['덜 맵게 해주세요.','请少辣。','FOOD'],['고수 빼주세요.','不要香菜。','FOOD'],['당도 30%로 해주세요.','三分糖。','FOOD'],['당도 70%로 해주세요.','七分糖。','FOOD'],['당도 100%로 해주세요.','全糖。','FOOD'],['알리페이 돼요?','可以用支付宝吗？','PAY'],['얼마예요?','多少钱？','PAY'],['도와주세요.','请帮帮我。','ETC']
 ];
 const CHECKS=['여권 · 중국 입국 준비','항공편 편명/시간 메모','김포→인천공항 공항 변경 환승 · 수하물 수령 후 바로 이동','SC4610 인천공항 T1 체크인 시간 재확인','ISBELLO 체크인 정보 확인','Guilai Boutique Hotel 주소 저장','谢小姐的家江景民宿 숙박등록 확인','충칭↔우롱 고속철 티켓 확인','천생삼교 · 선녀산 · 부용동 티켓 확인','지난공항 SC8802→SC8013 수하물 연결/재위탁 여부 확인','고덕지도/알리페이 오프라인 대비','보조배터리 · 충전 케이블','우롱 우비 · 편한 신발'];
-const MORE=[['book','BOOKINGS','항공 · 기차 · 숙소'],['money','MONEY','예산 · 정산'],['talk','TALK','여행 회화'],['check','CHECK','체크리스트'],['maybe','MAYBE','후보 일정'],['weather','WEATHER','날씨'],['emergency','EMERGENCY','긴급']];
+const MORE=[['book','BOOKINGS','항공 · 기차 · 숙소'],['money','MONEY','예산 · 정산'],['talk','TALK','여행 회화'],['check','CHECK','체크리스트'],['maybe','MAYBE','후보 일정'],['weather','WEATHER','날씨'],['emergency','EMERGENCY','긴급'],['theme','THEME','컬러 테마']];
 const MAP_POINTS={city:{ciqikou:[45,122],liziba:[104,104],ering:[132,132],tmpgov:[128,174],guanyinqiao:[188,52],jiujie:[244,62],jiefangbei:[208,132],bayi:[220,151],hongyadong:[265,110],luohansi:[282,150],shibati:[198,190],xiahao:[278,220],kuaixinglou:[246,132]},wulong:{fairymountain:[172,70],tiansheng:[108,162],furong:[274,186]}};
 const REAL_MAP_POINTS={
   city:{
@@ -529,10 +712,29 @@ function initRealMaps(filter='ALL'){
     document.querySelectorAll('.leaflet-map').forEach(el=>{el.innerHTML='<div class="map-loading">실제 지도 엔진을 불러오지 못했습니다.<br>장소 상세의 高德地图 링크를 이용해주세요.</div>'});
   });
 }
-let state=JSON.parse(localStorage.getItem('cq49')||'{}'); state.bookingMemos??={};state.links??={};state.detailMemos??={};state.splitItems??=[];
+const THEMES={
+  blue:{name:'BLUE',colors:['#050E29','#4B5AFE','#4BB3FE','#56F99A','#E1F0FE'],bg:'#050E29'},
+  permanent:{name:'PERMANENT',colors:['#272727','#EA2F2F','#F76F61','#F4EFCE','#F4F4F4'],bg:'#272727'},
+  trullion:{name:'TRULLION',colors:['#222721','#307FDE','#918B75','#AFBADB','#E8E9E4'],bg:'#222721'},
+  forest:{name:'FOREST',colors:['#202823','#375E4B','#A9C7B0','#D6C7A1','#9EB6C3'],bg:'#202823'},
+  emerald:{name:'EMERALD',colors:['#232C29','#023A2D','#5CE6BD','#E9FFFA','#FFFFFF'],bg:'#232C29'},
+  silence:{name:'SILENCE',colors:['#262422','#000000','#FF073B','#D0C9C3','#F3EAE3'],bg:'#262422'}
+};
+function applyTheme(id){
+  const key=THEMES[id]?id:'blue';
+  document.documentElement.dataset.theme=key;
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.setAttribute('content',THEMES[key].bg);
+}
+function setTheme(id){state.theme=id;save();applyTheme(id);renderTheme()}
+function renderTheme(){
+  const current=state.theme||'blue';
+  document.getElementById('theme').innerHTML=`${sec('THEME')}<div class="theme-grid">${Object.entries(THEMES).map(([id,t])=>`<button class="theme-choice ${current===id?'active':''}" onclick="setTheme('${id}')"><div class="theme-choice-top"><b>${t.name}</b><span>${current===id?'SELECTED':''}</span></div><div class="theme-swatches">${t.colors.map(c=>`<i style="background:${c}"></i>`).join('')}</div></button>`).join('')}</div>`;
+}
+let state=JSON.parse(localStorage.getItem('cq49')||'{}'); state.bookingMemos??={};state.links??={};state.detailMemos??={};state.splitItems??=[]; state.theme??='blue';applyTheme(state.theme);
 const save=()=>localStorage.setItem('cq49',JSON.stringify(state)); const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function go(id){location.hash=id}function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id)?.classList.add('active');window.scrollTo(0,0)}
-function nav(cur){const group=['book','money','talk','check','maybe','weather','emergency','detail'].includes(cur)?'more':cur;document.getElementById('bottomNav').innerHTML=[['today','Today'],['plan','Plan'],['spots','Spot'],['eat','Eat'],['more','More']].map(([id,l])=>`<button class="nav-btn ${id===group?'active':''}" onclick="go('${id}')">${l}</button>`).join('')}
+function nav(cur){const group=['book','money','talk','check','maybe','weather','emergency','theme','detail'].includes(cur)?'more':cur;document.getElementById('bottomNav').innerHTML=[['today','Today'],['plan','Plan'],['spots','Spot'],['eat','Eat'],['more','More']].map(([id,l])=>`<button class="nav-btn ${id===group?'active':''}" onclick="go('${id}')">${l}</button>`).join('')}
 function copyText(t){navigator.clipboard?.writeText(t).catch(()=>{});toast('복사했습니다.')}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.cssText='display:block;position:fixed;left:50%;bottom:82px;transform:translateX(-50%);z-index:99;background:#f6f3ed;color:#171719;padding:9px 13px;border-radius:999px;font-size:12px;box-shadow:0 12px 28px rgba(0,0,0,.28)';setTimeout(()=>e.style.display='none',1300)}
 function mapLinks(q){const e=encodeURIComponent(q);return{amap:`https://uri.amap.com/search?keyword=${e}`,google:`https://www.google.com/maps/search/?api=1&query=${e}`}}
 function tripDayForToday(){
@@ -569,12 +771,20 @@ function renderToday(){
 function renderPlan(){
   document.getElementById('plan').innerHTML=`<main class="stack"><section class="hero"><div class="meta"><span>08.25 — 08.29</span><span>05 DAYS</span></div><div class="display">PLAN</div></section>${DAYS.map((d,i)=>{const hotelKey=DAY_HOTELS[d.id];return `<section class="card ${tone(i)} plan-card"><div class="plan-head"><span>DAY ${i+1}</span><span>${d.dow}</span></div><div class="plan-date">${d.date}</div><div class="plan-name">${d.name}</div><div class="plan-place">${d.place}</div><div class="plan-events">${d.events.map(e=>{const [time,t,sub,type,id]=e;const r=`<time>${time}</time><span><b>${t}</b>${sub?`<small>${sub}</small>`:''}</span><i>${type?'→':''}</i>`;return type?`<button class="plan-event" onclick="openEvent('${type}','${id}','plan')">${r}</button>`:`<div class="plan-event">${r}</div>`}).join('')}</div><div class="plan-foot"><div><span>FOOD</span><b>${d.food}</b></div>${hotelKey?`<button class="plan-foot-hotel" onclick="location.hash='hotel/${hotelKey}'"><span>SLEEP</span><b>${d.sleep}</b><i>→</i></button>`:`<div><span>SLEEP</span><b>${d.sleep}</b></div>`}</div></section>`}).join('')}</main>`;
 }
+let spotMoreOpen=false,eatMoreOpen=false,currentSpotFilter='ALL';
+function toggleSpotMore(){spotMoreOpen=!spotMoreOpen;renderSpots(currentSpotFilter)}
+function toggleEatMore(){eatMoreOpen=!eatMoreOpen;renderEat()}
+function moreSpotCards(){return Object.entries(MORE_SPOTS).map(([id,v])=>`<button class="item-card" onclick="openDetail('moreSpot','${id}','spots')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}
+function moreFoodCards(){return Object.entries(MORE_FOODS).map(([id,v])=>`<button class="item-card" onclick="openDetail('moreFood','${id}','eat')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}
 function renderSpots(filter='ALL'){
+  currentSpotFilter=filter;
+  if(filter==='WULONG')spotMoreOpen=false;
   const ent=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
-  document.getElementById('spots').innerHTML=`<main class="stack"><section class="hero lav"><div class="meta"><span>SPOT</span><span>${ent.length}</span></div><div class="display">SPOT</div><div class="filters">${[['ALL','ALL'],['CITY','CITY'],['WULONG','WULONG']].map(([v,l])=>`<button class="filter ${filter===v?'active':''}" onclick="renderSpots('${v}')">${l}</button>`).join('')}</div></section>${realMapHtml(filter)}<div class="item-grid">${ent.map(([id,v])=>`<button class="item-card" onclick="openDetail('spot','${id}','spots')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}</div></main>`;
+  const showMore=filter!=='WULONG';
+  document.getElementById('spots').innerHTML=`<main class="stack"><section class="hero lav"><div class="meta"><span>SPOT</span><span>${ent.length}</span></div><div class="display">SPOT</div><div class="filters">${[['ALL','ALL'],['CITY','CITY'],['WULONG','WULONG']].map(([v,l])=>`<button class="filter ${filter===v?'active':''}" onclick="renderSpots('${v}')">${l}</button>`).join('')}</div></section>${realMapHtml(filter)}<div class="item-grid">${ent.map(([id,v])=>`<button class="item-card" onclick="openDetail('spot','${id}','spots')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}${showMore?`<button class="explore-more-card" onclick="toggleSpotMore()"><b>${spotMoreOpen?'접기':'더보기'}</b><span>${spotMoreOpen?'−':'＋'}</span></button>`:''}</div>${showMore&&spotMoreOpen?`<section class="extra-section"><div class="extra-head"><b>충칭 더 둘러보기</b><span>${Object.keys(MORE_SPOTS).length}</span></div><div class="item-grid extra-grid">${moreSpotCards()}</div></section>`:''}</main>`;
   setTimeout(()=>initRealMaps(filter),0);
 }
-function renderEat(){document.getElementById('eat').innerHTML=`<main class="stack"><section class="hero pink"><div class="meta"><span>EAT</span><span>${Object.keys(FOODS).length}</span></div><div class="display">EAT</div></section><div class="item-grid">${Object.entries(FOODS).map(([id,v])=>`<button class="item-card" onclick="openDetail('food','${id}','eat')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}</div></main>`}
+function renderEat(){document.getElementById('eat').innerHTML=`<main class="stack"><section class="hero pink"><div class="meta"><span>EAT</span><span>${Object.keys(FOODS).length}</span></div><div class="display">EAT</div></section><div class="item-grid">${Object.entries(FOODS).map(([id,v])=>`<button class="item-card" onclick="openDetail('food','${id}','eat')"><b>${v.name}</b><small>${v.cn}</small><em>VIEW →</em></button>`).join('')}<button class="explore-more-card" onclick="toggleEatMore()"><b>${eatMoreOpen?'접기':'더보기'}</b><span>${eatMoreOpen?'−':'＋'}</span></button></div>${eatMoreOpen?`<section class="extra-section"><div class="extra-head"><b>충칭 더 먹어보기</b><span>${Object.keys(MORE_FOODS).length}</span></div><div class="item-grid extra-grid">${moreFoodCards()}</div></section>`:''}</main>`}
 function renderMore(){document.getElementById('more').innerHTML=`<main class="stack"><section class="hero"><div class="meta"><span>MORE</span></div><div class="display">MORE</div></section><div class="more-list">${MORE.map(([id,t,s],i)=>`<button class="more-item ${tone(i)}" onclick="go('${id}')"><div><b>${t}</b><small>${s}</small></div><i>→</i></button>`).join('')}</div></main>`}
 function sec(title,id){return `<div class="secondary-head"><button class="back" onclick="go('more')">← MORE</button><span>${title}</span></div><div class="secondary-title">${title}</div>`}
 function linkKey(scope,id){return scope+':'+id}function renderLinks(scope,id){const k=linkKey(scope,id),arr=state.links[k]||[];return `<div class="links-min"><div class="links-head"><span>LINKS</span><button onclick="toggleLink('${scope}','${id}')">＋</button></div>${arr.map((x,i)=>`<div class="saved-link"><a href="${esc(x.url)}" target="_blank">${esc(x.name||x.url)}</a><button onclick="removeLink('${scope}','${id}',${i})">삭제</button></div>`).join('')}<div id="linkedit-${scope}-${id}"></div></div>`}function toggleLink(scope,id){const el=document.getElementById(`linkedit-${scope}-${id}`);if(!el)return;el.innerHTML=el.innerHTML?'':`<div class="link-editor"><input id="ln-${scope}-${id}" placeholder="이름"><input id="lu-${scope}-${id}" placeholder="https://"><div class="link-actions"><button class="save" onclick="saveLink('${scope}','${id}')">SAVE</button><button class="cancel" onclick="toggleLink('${scope}','${id}')">CANCEL</button></div></div>`}function saveLink(scope,id){const n=document.getElementById(`ln-${scope}-${id}`).value,u=document.getElementById(`lu-${scope}-${id}`).value;if(!u)return;const k=linkKey(scope,id);(state.links[k]??=[]).push({name:n,url:u});save();route()}function removeLink(scope,id,i){state.links[linkKey(scope,id)].splice(i,1);save();route()}
@@ -593,9 +803,11 @@ const PHOTO_QUERY={
   tiansheng:'wulong,karst,bridge',fairymountain:'wulong,mountain,grassland',furong:'wulong,cave',guanyinqiao:'chongqing,city,night',jiujie:'chongqing,night,street',
   luohansi:'chongqing,temple',ciqikou:'chongqing,old,town',liziba:'chongqing,monorail',ering:'chongqing,eling,city',shibati:'chongqing,old,street',xiahao:'chongqing,old,street',kuaixinglou:'chongqing,skyline,building',
   milktea:'milk,tea,boba',yangrou:'lamb,chinese,food',kaoyu:'grilled,fish,chinese',xiaomian:'chongqing,noodles',xiaolongxia:'spicy,crayfish',dimsum:'dim,sum',chaoshou:'wonton,chinese,food',shandongfood:'shandong,chinese,food',
+  chaotianmen:'chongqing,chaotianmen,raffles',huguang:'chongqing,huguang,guild,hall',threegorges:'chongqing,three,gorges,museum',cqart:'chongqing,art,museum',shanchengxiang:'chongqing,old,alley',jiangbeizui:'chongqing,river,night',
+  hotpot:'chongqing,hotpot',chuanchuan:'chinese,skewers,hotpot',shaokao:'chinese,barbecue,skewers',laziji:'spicy,chicken,chinese',suanlafen:'hot,sour,noodles,chinese',bingfen:'chinese,ice,jelly,dessert',
   longshuixia:'wulong,canyon,waterfall',beicang:'chongqing,cafe,street',nansin:'chongqing,river,night'
 };
-const PHOTO_LOCK={jiefangbei:101,hongyadong:102,bayi:103,tmpgov:104,tiansheng:105,fairymountain:106,furong:107,guanyinqiao:108,jiujie:109,luohansi:110,ciqikou:111,liziba:112,ering:113,shibati:114,xiahao:115,kuaixinglou:116,milktea:201,yangrou:202,kaoyu:203,xiaomian:204,xiaolongxia:205,dimsum:206,chaoshou:207,shandongfood:208,longshuixia:301,beicang:302,nansin:303};
+const PHOTO_LOCK={jiefangbei:101,hongyadong:102,bayi:103,tmpgov:104,tiansheng:105,fairymountain:106,furong:107,guanyinqiao:108,jiujie:109,luohansi:110,ciqikou:111,liziba:112,ering:113,shibati:114,xiahao:115,kuaixinglou:116,milktea:201,yangrou:202,kaoyu:203,xiaomian:204,xiaolongxia:205,dimsum:206,chaoshou:207,shandongfood:208,longshuixia:301,beicang:302,nansin:303,chaotianmen:401,huguang:402,threegorges:403,cqart:404,shanchengxiang:405,jiangbeizui:406,hotpot:501,chuanchuan:502,shaokao:503,laziji:504,suanlafen:505,bingfen:506};
 function detailImage(type,id,alt){
   const q=encodeURIComponent(PHOTO_QUERY[id]||'chongqing,travel');
   const src=`https://loremflickr.com/960/720/${q}?lock=${PHOTO_LOCK[id]||499}`;
@@ -605,8 +817,9 @@ function detailImage(type,id,alt){
 function renderFoodGuide(id){const g=FOOD_GUIDE[id];if(!g)return '';return `<section class="detail-section food-guide"><span>ORDER TIP</span><p class="food-guide-copy">${g.tip}</p><div class="food-phrase-list">${g.phrases.map(([zh,ko])=>`<button class="food-phrase" onclick="copyText('${zh}')"><span><b>${zh}</b><small>${ko}</small></span><i>＋</i></button>`).join('')}</div></section>`}
 function openDetail(type,id,from){location.hash=`detail/${type}/${id}/${from}`}
 function renderDetail(type,id,from){
-  const d=type==='food'?FOODS[id]:SPOTS[id];if(!d){go(from||'spots');return}
-  const isFood=type==='food',arr=isFood?d.order:d.highlights,links=mapLinks(d.search||d.cn),memoKey=`${type}:${id}`;
+  const isFood=type==='food'||type==='moreFood';
+  const d=type==='food'?FOODS[id]:type==='moreFood'?MORE_FOODS[id]:type==='moreSpot'?MORE_SPOTS[id]:SPOTS[id];if(!d){go(from||'spots');return}
+  const arr=isFood?d.order:d.highlights,links=mapLinks(d.search||d.cn),memoKey=`${type}:${id}`;
   document.getElementById('detail').innerHTML=`<main class="stack"><div class="detail-nav"><button class="back" onclick="go('${from||'spots'}')">← BACK</button><span>${isFood?'FOOD':'SPOT'}</span></div><section class="detail-head ${isFood?'pink':'mint'}"><span class="micro">${d.kind}</span><h1>${d.name}</h1><p>${d.cn}<br>${d.en||''}</p></section>${detailImage(type,id,d.name)}<div class="fact-grid"><div class="fact"><span>DATE</span><b>${d.date}</b></div><div class="fact"><span>${isFood?'TYPE':'AREA'}</span><b>${isFood?d.kind:d.area}</b></div><div class="fact"><span>STATUS</span><b>OPEN</b></div></div><section class="detail-section"><span>ABOUT</span><p class="body">${d.summary}</p></section><section class="detail-section ${isFood?'lav':'lime'}"><span>${isFood?'ORDER':'HIGHLIGHTS'}</span><div class="detail-list">${(arr||[]).map((x,i)=>`<div><i>${String(i+1).padStart(2,'0')}</i><b>${x}</b></div>`).join('')}</div></section>${isFood?renderFoodGuide(id):''}<section class="detail-section"><span>TOOLS</span><div class="tool-grid"><button onclick="copyText('${esc(d.cn)}')">COPY 中文</button><button onclick="copyText('${esc(d.search||d.cn)}')">COPY SEARCH</button><a href="${links.amap}" target="_blank">高德地图 ↗</a><a href="${links.google}" target="_blank">GOOGLE ↗</a></div></section><section class="detail-section"><span>MEMO</span><textarea class="memo-dark" placeholder="주소 · 주문 · 시간 등을 적어두세요." oninput="state.detailMemos['${memoKey}']=this.value;save()">${esc(state.detailMemos[memoKey]||'')}</textarea></section>${renderLinks('detail',memoKey)}</main>`;
 }
 function renderMaybeDetail(id){
@@ -622,6 +835,6 @@ function renderHotel(key){
   const h=HOTEL_DETAILS[key];if(!h){go('book');return}const links=mapLinks(h.address);
   document.getElementById('detail').innerHTML=`<main class="stack hotel-detail"><div class="detail-nav"><button class="back" onclick="go('book')">← BOOKINGS</button><span>HOTEL</span></div><section class="hotel-head"><span class="micro">${h.stay}</span><h1>${h.name}</h1><p>${h.enName}</p></section><section class="address-card"><span>ADDRESS</span><div class="cn-address">${h.address}</div><div class="en-address">${h.enAddress}</div></section><div class="grid2"><div class="card mint"><span class="micro">AREA</span><div class="body"><b>${h.area}</b></div></div><div class="card pink"><span class="micro">STAY</span><div class="body"><b>${h.stay}</b></div></div></div><div class="hotel-actions"><button onclick="copyText('${esc(h.address)}')">COPY ADDRESS</button><button onclick="copyText('${esc(h.name)}')">COPY HOTEL</button><a href="${links.amap}" target="_blank">高德地图 ↗</a><a href="${links.google}" target="_blank">GOOGLE ↗</a></div></main>`;
 }
-function route(){const p=(location.hash||'#today').slice(1).split('/');const v=p[0];if(v==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav('detail');return}if(v==='hotel'){renderHotel(p[1]);show('detail');nav('detail');return}if(v==='flight'){renderFlight(p[1],p[2]||'book');show('detail');nav('detail');return}if(v==='maybeDetail'){renderMaybeDetail(p[1]);show('detail');nav('detail');return}const allowed=['today','plan','spots','eat','more','book','money','talk','check','maybe','weather','emergency'];const id=allowed.includes(v)?v:'today';({today:renderToday,plan:renderPlan,spots:renderSpots,eat:renderEat,more:renderMore,book:renderBook,money:renderMoney,talk:renderTalk,check:renderCheck,maybe:renderMaybe,weather:renderWeather,emergency:renderEmergency}[id])();show(id);nav(id)}
+function route(){const p=(location.hash||'#today').slice(1).split('/');const v=p[0];if(v==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav('detail');return}if(v==='hotel'){renderHotel(p[1]);show('detail');nav('detail');return}if(v==='flight'){renderFlight(p[1],p[2]||'book');show('detail');nav('detail');return}if(v==='maybeDetail'){renderMaybeDetail(p[1]);show('detail');nav('detail');return}const allowed=['today','plan','spots','eat','more','book','money','talk','check','maybe','weather','emergency','theme'];const id=allowed.includes(v)?v:'today';({today:renderToday,plan:renderPlan,spots:renderSpots,eat:renderEat,more:renderMore,book:renderBook,money:renderMoney,talk:renderTalk,check:renderCheck,maybe:renderMaybe,weather:renderWeather,emergency:renderEmergency,theme:renderTheme}[id])();show(id);nav(id)}
 window.addEventListener('hashchange',route);if(!location.hash)history.replaceState(null,'','#today');route();if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script></body></html>
