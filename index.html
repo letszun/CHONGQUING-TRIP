@@ -5662,6 +5662,25 @@ img{display:block;max-width:100%}
   .v45-title{font-size:24px}
 }
 
+
+/* v46 cleanup and reference-driven refinement */
+:root{--v46-bg:#151618;--v46-card:#f7f5f0;--v46-card-2:#efece5;--v46-ink:#131416;--v46-muted:rgba(19,20,22,.58);--v46-pink:#efcfe0;--v46-lilac:#ddd4f2;--v46-mint:#d6ebe7;--v46-blue:#2d48d8;--v46-black:#17181a;--v46-shadow:0 18px 40px rgba(0,0,0,.22)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}button,input,textarea,select,a{outline:none}button:focus,button:active,input:focus,textarea:focus,select:focus,a:focus{outline:none;box-shadow:none}
+html,body,.app{background:var(--v46-bg)!important}.view{padding:14px 16px 112px!important;max-width:430px;margin:0 auto}body,button,input,textarea,select{font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Helvetica,Arial,"Pretendard","Noto Sans KR",sans-serif!important}
+.secondary-back,.section-top,.filters,.booking-list,.check-list,.talk-list,.maybe-list,.weather-grid,.emergency-grid,.expense-list,.input-grid,.info-list,.v40-split-summary,.action-row{max-width:100%;margin-left:auto;margin-right:auto}.section-top.compact,.section-top{padding:4px 4px 0!important;margin-bottom:10px!important}.section-sub{display:none!important}.kicker{font-size:10px!important;letter-spacing:.14em!important;color:rgba(255,255,255,.38)!important}.section-title{font-size:28px!important;letter-spacing:-.05em!important;color:#fff!important;margin:.12em 0 0!important}.secondary-back button{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.08)!important;color:rgba(255,255,255,.92)!important}
+.bottom-nav{display:flex!important;justify-content:space-between;align-items:center;gap:8px;padding:8px 10px!important;background:rgba(18,19,20,.92)!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:999px!important;box-shadow:0 16px 36px rgba(0,0,0,.32)!important;backdrop-filter:blur(18px)!important}.nav-btn{flex:1 1 0;padding:10px 8px!important;border-radius:999px!important;min-width:0;transition:background .2s,color .2s,transform .2s}.nav-btn .nav-index{display:none!important}.nav-btn .nav-label{font-size:11px!important;font-weight:700!important;letter-spacing:.08em!important;display:block}.nav-btn.active{background:var(--v46-card)!important;color:var(--v46-ink)!important;transform:translateY(-1px)}.nav-btn:not(.active){color:rgba(255,255,255,.52)!important}
+.booking,.talk-card,.note-card,.maybe-card,.weather-card,.task,.expense-item,.input-card,.info-chip,.user-links-section,.status-card,.notice-card,.emergency-card,.user-link-item{border-radius:22px!important;box-shadow:var(--v46-shadow)!important;background:var(--v46-card)!important;color:var(--v46-ink)!important;padding:16px!important}.booking-list,.check-list,.talk-list,.maybe-list,.weather-grid,.expense-list,.action-row{gap:12px!important}.booking .row,.expense-item,.user-link-item{align-items:flex-start!important}.booking .type,.booking .code,.booking label,.input-card label,.note-card label,.user-links-head span,.weather-updated,.task .txt,.talk-card .ko,.talk-card .zh,.maybe-card .type,.notice-card span,.booking .meta,.weather-desc,.maybe-card .sub,.expense-item span,.input-card select,.input-card input,.booking textarea,.note-card textarea,.link-editor input,.link-editor textarea,.user-link-url,.user-link-name{color:var(--v46-muted)!important}.booking .title,.weather-name,.weather-temp,.expense-item b,.info-chip b,.maybe-card .title,.talk-card .ko,strong{color:var(--v46-ink)!important}.booking textarea,.note-card textarea,.input-card input,.input-card select,.link-editor input,.link-editor textarea,.user-link-url,.user-link-name{background:var(--v46-card-2)!important;border-radius:16px!important;border:0!important;padding:13px 14px!important}textarea::placeholder,input::placeholder{color:rgba(19,20,22,.35)!important}
+.inline-btn,.action-btn,.user-links-head button,.user-link-actions button,.link-editor .user-link-save,.link-editor .user-link-cancel,.expense-item .right button{border:0!important;border-radius:14px!important;padding:11px 13px!important;font-size:12px!important;font-weight:700!important;letter-spacing:.04em!important;box-shadow:none!important}.inline-btn,.user-links-head button,.link-editor .user-link-save,.expense-item .right button{background:var(--v46-black)!important;color:#fff!important}.action-btn{background:var(--v46-blue)!important;color:#fff!important}.action-btn.light,.user-link-actions button,.link-editor .user-link-cancel{background:var(--v46-card-2)!important;color:var(--v46-ink)!important}
+.filter{background:rgba(255,255,255,.06)!important;color:rgba(255,255,255,.64)!important;border:1px solid rgba(255,255,255,.08)!important;border-radius:999px!important;padding:10px 14px!important;box-shadow:none!important;-webkit-appearance:none;appearance:none}.filter.active{background:var(--v46-card)!important;color:var(--v46-ink)!important;border-color:transparent!important}.filters{display:flex!important;gap:8px!important;flex-wrap:wrap}
+.color-red{background:var(--v46-pink)!important;color:var(--v46-ink)!important}.color-yellow{background:var(--v46-card)!important;color:var(--v46-ink)!important}.color-blue{background:var(--v46-blue)!important;color:#fff!important}.color-blue .ko,.color-blue .zh,.color-blue .type,.color-blue .sub,.color-blue span,.color-blue label,.color-blue .meta,.color-blue .txt{color:rgba(255,255,255,.86)!important}.color-blue .title,.color-blue strong,.color-blue b{color:#fff!important}.color-lav{background:var(--v46-lilac)!important;color:var(--v46-ink)!important}.color-pink{background:var(--v46-pink)!important;color:var(--v46-ink)!important}.color-mint{background:var(--v46-mint)!important;color:var(--v46-ink)!important}.color-sand,.color-white{background:var(--v46-card)!important;color:var(--v46-ink)!important}
+.v45-screen{gap:12px!important}.v45-hero,.v45-card,.v45-panel,.v45-map-panel,.v45-block,.v45-info-card,.v45-list-card,.v45-plan-card,.v45-detail-head,.v45-detail-section,.v45-fact,.v45-photo,.v45-chip,.v45-item-card,.v45-more-row{box-shadow:var(--v46-shadow)!important;border-radius:26px!important}.v45-hero{padding:18px 18px 20px!important}.v45-overline{font-size:10px!important;letter-spacing:.14em!important;color:rgba(19,20,22,.56)!important}.v45-display{font-size:40px!important;line-height:.92!important;margin-top:8px!important}.v45-title{font-size:28px!important;line-height:.95!important;margin-top:4px!important}.v45-sub,.v45-map-head span,.v45-section-head span{display:none!important}.v45-mini-action{box-shadow:var(--v46-shadow)!important;padding:16px 16px 18px!important;border-radius:22px!important}.v45-mini-main{font-size:22px!important}.v45-list-card{padding:10px!important}.v45-row,.v45-row-static{padding:14px 14px 15px!important;grid-template-columns:62px 1fr 18px!important;border-radius:20px!important;align-items:flex-start!important}.v45-row b,.v45-row-static b{font-size:16px!important}.v45-row small,.v45-row-static small{font-size:12px!important}.v45-chip{padding:14px 16px!important}.v45-section-head{padding:2px 4px 0!important}.v45-section-head b{font-size:10px!important;color:rgba(255,255,255,.44)!important}
+.v45-plan-stack{gap:12px!important}.v45-plan-card{padding:16px!important;gap:10px!important}.v45-plan-top{font-size:10px!important}.v45-plan-date{font-size:38px!important}.v45-plan-name{font-size:24px!important}.v45-plan-place{font-size:13px!important;color:var(--v46-muted)!important}.v45-plan-event{padding:12px 13px!important;border-radius:18px!important;grid-template-columns:56px 1fr 16px!important;background:rgba(255,255,255,.76)!important}.v45-plan-foot div{padding:12px 14px!important;border-radius:18px!important}
+.v45-map-panel{padding:14px!important}.v45-map-head{margin-bottom:10px!important}.v45-map-head b{font-size:18px!important}.v45-map-board{height:auto!important;min-height:340px!important;padding:16px 14px 14px!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;background:#e8e5df!important;border-radius:24px!important;overflow:hidden!important}.v45-map-board::before{opacity:.3!important}.v45-map-board::after{width:24%!important;left:38%!important;right:auto!important;top:-8%!important;bottom:-8%!important;height:120%!important;opacity:.5!important}.v45-map-cluster{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:auto!important;z-index:2;background:rgba(255,255,255,.62);border-radius:22px;padding:10px;backdrop-filter:blur(4px)}.v45-map-cluster-label{font-size:10px!important;margin-bottom:6px!important;color:rgba(19,20,22,.44)!important}.v45-map-dot{padding:10px!important;border-radius:16px!important;gap:8px!important}.v45-map-dot b{font-size:12px!important;line-height:1.28!important;display:block}.v45-map-dot span{font-size:10px!important;line-height:1.3!important;display:block;margin-top:2px}.v45-map-dot i{font-size:14px!important;opacity:.7}.v45-map-side{display:none!important}
+.v45-card-grid{gap:12px!important}.v45-item-card{min-height:170px!important;padding:16px!important;border-radius:24px!important}.v45-item-name{font-size:22px!important}.v45-item-cn{font-size:13px!important;line-height:1.45!important;min-height:38px!important;color:var(--v46-muted)!important}.v45-item-top i,.v45-item-bottom i{font-size:10px!important;color:var(--v46-muted)!important}.v45-item-bottom{padding-top:10px!important}.v45-filter-row{display:flex!important;gap:8px!important;flex-wrap:wrap;margin-top:14px}.v45-filter-row button{padding:10px 14px!important;border-radius:999px!important;background:rgba(19,20,22,.08)!important;color:rgba(19,20,22,.58)!important}.v45-filter-row button.active{background:var(--v46-black)!important;color:#fff!important}
+.v45-detail-nav{padding:0 2px}.v45-detail-nav button{background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.08)!important;color:rgba(255,255,255,.92)!important}.v45-detail-count{color:rgba(255,255,255,.42)!important}.v45-detail-head{padding:18px!important}.v45-detail-title{font-size:30px!important}.v45-detail-name{font-size:13px!important}.v45-photo img{height:220px!important}.v45-fact-grid{gap:10px!important}.v45-fact{padding:14px!important;border-radius:20px!important}.v45-detail-section{padding:16px!important;border-radius:24px!important}.v45-detail-label{margin-bottom:10px!important}.v45-detail-text{font-size:14px!important;line-height:1.65!important}.v45-detail-list div{padding:10px 0!important}.v45-tool-grid a,.v45-tool-grid button{background:rgba(255,255,255,.8)!important;border-radius:14px!important;padding:13px 14px!important;font-weight:700!important}.v45-memo{background:var(--v46-black)!important;color:#fff!important;border-radius:18px!important;padding:14px 16px!important;min-height:104px!important}.v45-memo::placeholder{color:rgba(255,255,255,.76)!important}.v36-links .user-links-head button,.v45-detail-section .user-links-head button{background:var(--v46-black)!important;color:#fff!important;border-radius:14px!important}
+.v45-more-grid{gap:10px!important}.v45-more-row{padding:16px 18px!important;grid-template-columns:38px 1fr 16px!important;border-radius:22px!important}.v45-more-row b{font-size:20px!important}.v45-more-row small{font-size:12px!important;line-height:1.45!important}.user-links-head{margin-bottom:10px!important}.user-links-section{padding:16px!important}.note-card label,.input-card label,.booking-memo label,.user-links-head span{display:block;font-size:10px!important;font-weight:800!important;letter-spacing:.14em!important;text-transform:uppercase!important;margin-bottom:8px!important;color:var(--v46-muted)!important}.task{display:flex!important;align-items:center!important;gap:12px!important;padding:14px 16px!important}.task input{width:18px;height:18px;accent-color:var(--v46-blue)}.task .txt{font-size:14px!important;line-height:1.55!important;color:var(--v46-ink)!important}.maybe-card .title{font-size:18px!important;line-height:1.1!important;margin-bottom:6px!important}.maybe-card .sub,.talk-card .zh,.weather-desc,.booking .meta,.notice-card span{font-size:13px!important;line-height:1.58!important}.talk-card .ko{font-size:16px!important;font-weight:800!important;line-height:1.24!important;margin-bottom:8px!important}.talk-card .zh{display:block;margin-bottom:10px!important}.weather-grid,.talk-list,.booking-list,.check-list,.maybe-list,.expense-list{grid-template-columns:1fr!important}.weather-card,.notice-card,.emergency-card{padding:16px!important}.emergency-grid{gap:12px!important}.emergency-card strong{font-size:26px!important}.input-grid,.info-list,.v40-split-summary,.v40-split-grid,.v40-money-info,.v40-budget-grid{gap:10px!important}.money-total{border-radius:26px!important;padding:18px 18px 20px!important;background:var(--v46-card)!important;box-shadow:var(--v46-shadow)!important}.money-total .num{font-size:40px!important;line-height:.92!important;color:var(--v46-ink)!important}.money-total .num small{font-size:18px!important;color:var(--v46-muted)!important}.info-chip span{display:block;font-size:11px!important;letter-spacing:.1em!important;text-transform:uppercase!important;color:var(--v46-muted)!important;margin-bottom:6px!important}.info-chip b{font-size:15px!important;line-height:1.45!important}.expense-item .right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}.expense-item .right strong{font-size:15px!important;color:var(--v46-ink)!important}.notice-card b{display:block;font-size:16px!important;line-height:1.2!important;margin-bottom:6px!important;color:var(--v46-ink)!important}.notice-card span{color:var(--v46-muted)!important}
+@media (max-width:390px){.view{padding-left:14px!important;padding-right:14px!important}.v45-map-board,.v45-card-grid,.v45-fact-grid,.v45-tool-grid,.input-grid,.info-list,.v40-split-summary,.v40-split-grid,.v40-money-info,.v40-budget-grid,.emergency-grid{grid-template-columns:1fr!important}.v45-mini-main{font-size:20px!important}}
+
 </style>
 </head>
 <body>
@@ -5828,12 +5847,8 @@ function toast(msg='COPIED'){const t=document.getElementById('toast');t.textCont
 async function copyText(v){try{await navigator.clipboard.writeText(v);toast()}catch(e){toast('LONG PRESS TO COPY')}}
 function nav(current){
   const group=['book','money','talk','check','maybe','weather','emergency'].includes(current)?'more':current;
-  const items=[['today','TODAY'],['plan','PLAN'],['spots','SPOTS'],['eat','EAT'],['more','MORE']];
-  document.getElementById('bottomNav').innerHTML=items.map(([id,label],i)=>`
-    <button class="nav-btn ${group===id?'active':''}" aria-label="${label}" onclick="go('${id}')">
-      <span class="nav-index">${String(i+1).padStart(2,'0')}</span>
-      <span class="nav-label">${label}</span>
-    </button>`).join('');
+  const items=[['today','Today'],['plan','Plan'],['spots','Spot'],['eat','Eat'],['more','More']];
+  document.getElementById('bottomNav').innerHTML=items.map(([id,label])=>`<button class="nav-btn ${group===id?'active':''}" aria-label="${label}" onclick="go('${id}')"><span class="nav-label">${label}</span></button>`).join('');
 }
 
 function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}
@@ -5864,10 +5879,9 @@ function svgPlaceholder(title,sub,bg='#f8f6f1',fg='#121314'){
 function renderSpotMap(filter='ALL'){
   const cityIds=SPOT_MAP_LAYOUT.city.filter(id=>filter==='ALL'||filter==='CHONGQING');
   const wulongIds=SPOT_MAP_LAYOUT.wulong.filter(id=>filter==='ALL'||filter==='WULONG');
-  const cityHtml=cityIds.map(id=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
-  const wulongHtml=wulongIds.map(id=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
-  const side=(filter==='WULONG')?`<div class="v45-map-side"><b>WULONG</b><span>천생삼교 · 선녀산 · 부용동</span></div>`:`<div class="v45-map-side"><b>CITY</b><span>해방비 · 홍야동 · 자기구고진 · 리즈바</span></div>`;
-  return `<section class="v45-map-panel"><div class="v45-map-head"><div><b>SPOT MAP</b><span>마지막 포스터 레퍼런스처럼 장소를 한 보드에 모았습니다.</span></div><span>${filter==='ALL'?'CITY + WULONG':filter}</span></div><div class="v45-map-board">${side}${cityIds.length?`<div class="v45-map-cluster city"><div class="v45-map-cluster-label">Chongqing core</div>${cityHtml}</div>`:''}${wulongIds.length?`<div class="v45-map-cluster wulong"><div class="v45-map-cluster-label">Wulong</div>${wulongHtml}</div>`:''}</div></section>`;
+  const cityHtml=cityIds.map((id,idx)=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${String(idx+1).padStart(2,'0')} · ${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
+  const wulongHtml=wulongIds.map((id,idx)=>`<button class="v45-map-dot" onclick="openDetail('spot','${id}','spots')"><div><b>${String(idx+1).padStart(2,'0')} · ${SPOT_KO[id]||SPOTS[id].name}</b><span>${SPOTS[id].cn}</span></div><i>↗</i></button>`).join('');
+  return `<section class="v45-map-panel"><div class="v45-map-head"><div><b>SPOT MAP</b></div></div><div class="v45-map-board">${cityIds.length?`<div class="v45-map-cluster city"><div class="v45-map-cluster-label">Chongqing</div>${cityHtml}</div>`:''}${wulongIds.length?`<div class="v45-map-cluster wulong"><div class="v45-map-cluster-label">Wulong</div>${wulongHtml}</div>`:''}</div></section>`;
 }
 
 function renderToday(){
@@ -5918,373 +5932,19 @@ function renderToday(){
     </main>`;
 }
 function renderPlan(){
-  document.getElementById('plan').innerHTML=`
-    <main class="v45-screen">
-      <section class="v45-hero v45-tone-white">
-        <div class="v45-overline"><span>08.25 — 08.29</span><span>05 DAYS</span></div>
-        <div class="v45-display">PLAN</div>
-        <h1 class="v45-title">CHONGQING · WULONG</h1>
-        <p class="v45-sub">박스와 파스텔 컬러를 다시 살리고, 스크롤은 세로로 길게 정리했습니다.</p>
-      </section>
-
-      <div class="v45-plan-stack">
-        ${DAYS.map((d,i)=>`
-          <section class="v45-plan-card ${tone(i+1)}">
-            <div class="v45-plan-top"><span>DAY ${String(i+1).padStart(2,'0')}</span><span>${d.dow}</span></div>
-            <div class="v45-plan-date">${d.date.replace('.',' / ')}</div>
-            <div class="v45-plan-name">${d.name}</div>
-            <div class="v45-plan-place">${d.place}</div>
-            <div class="v45-plan-events">
-              ${d.events.map(e=>{
-                const [time,title,sub,type,id]=e;
-                const row=`<time>${time}</time><span class="v45-plan-copy"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span><span class="v45-plan-arrow">${type?'→':''}</span>`;
-                return type
-                  ? `<button class="v45-plan-event" onclick="openDetail('${type}','${id}','plan')">${row}</button>`
-                  : `<div class="v45-plan-event static">${row}</div>`;
-              }).join('')}
-            </div>
-            <div class="v45-plan-foot"><div><span>Food</span><b>${d.food}</b></div><div><span>Sleep</span><b>${d.sleep}</b></div></div>
-          </section>`).join('')}
-      </div>
-    </main>`;
+  document.getElementById('plan').innerHTML=`<main class="v45-screen"><section class="v45-hero v45-tone-white"><div class="v45-overline"><span>08.25 — 08.29</span><span>05 DAYS</span></div><div class="v45-display">PLAN</div></section><div class="v45-plan-stack">${DAYS.map((d,i)=>`<section class="v45-plan-card ${tone(i+1)}"><div class="v45-plan-top"><span>DAY ${String(i+1).padStart(2,'0')}</span><span>${d.dow}</span></div><div class="v45-plan-date">${d.date.replace('.',' / ')}</div><div class="v45-plan-name">${d.name}</div><div class="v45-plan-place">${d.place}</div><div class="v45-plan-events">${d.events.map(e=>{const [time,title,sub,type,id]=e;const row=`<time>${time}</time><span class="v45-plan-copy"><b>${title}</b>${sub?`<small>${sub}</small>`:''}</span><span class="v45-plan-arrow">${type?'→':''}</span>`;return type?`<button class="v45-plan-event" onclick="openDetail('${type}','${id}','plan')">${row}</button>`:`<div class="v45-plan-event static">${row}</div>`;}).join('')}</div><div class="v45-plan-foot"><div><span>Food</span><b>${d.food}</b></div><div><span>Sleep</span><b>${d.sleep}</b></div></div></section>`).join('')}</div></main>`;
 }
+
 function renderSpots(filter='ALL'){
   const entries=Object.entries(SPOTS).filter(([,v])=>filter==='ALL'||(filter==='WULONG'?v.area==='우롱':v.area!=='우롱'));
-  document.getElementById('spots').innerHTML=`
-    <main class="v45-screen">
-      <section class="v45-hero v45-tone-lav">
-        <div class="v45-overline"><span>Location index</span><span>${String(entries.length).padStart(2,'0')}</span></div>
-        <div class="v45-display">SPOTS</div>
-        <h1 class="v45-title">Places to go</h1>
-        <div class="v45-filter-row">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div>
-      </section>
-      ${renderSpotMap(filter)}
-      <div class="v45-card-grid">
-        ${entries.map(([id,v],i)=>`
-          <button class="v45-item-card ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')">
-            <span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.area==='우롱'?'WULONG':'CITY'}</i></span>
-            <span class="v45-item-name">${SPOT_KO[id]||v.name}</span>
-            <span class="v45-item-cn">${v.cn}<br>${v.kind}</span>
-            <span class="v45-item-bottom"><i>${v.date}</i><i>${isVisited('spot',id)?'DONE':'VIEW →'}</i></span>
-          </button>`).join('')}
-      </div>
-    </main>`;
+  document.getElementById('spots').innerHTML=`<main class="v45-screen"><section class="v45-hero v45-tone-lav"><div class="v45-overline"><span>SPOTS</span><span>${String(entries.length).padStart(2,'0')}</span></div><div class="v45-display">SPOT</div><div class="v45-filter-row">${[['ALL','ALL'],['CHONGQING','CITY'],['WULONG','WULONG']].map(([f,label])=>`<button class="${filter===f?'active':''}" onclick="renderSpots('${f}')">${label}</button>`).join('')}</div></section>${renderSpotMap(filter)}<div class="v45-card-grid">${entries.map(([id,v],i)=>`<button class="v45-item-card ${isVisited('spot',id)?'is-done':''}" onclick="openDetail('spot','${id}','spots')"><span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.area==='우롱'?'WULONG':'CITY'}</i></span><span class="v45-item-name">${SPOT_KO[id]||v.name}</span><span class="v45-item-cn">${v.cn}<br>${v.kind}</span><span class="v45-item-bottom"><i>${v.date}</i><i>${isVisited('spot',id)?'DONE':'VIEW →'}</i></span></button>`).join('')}</div></main>`;
 }
+
 function renderEat(){
   const entries=Object.entries(FOODS);
-  document.getElementById('eat').innerHTML=`
-    <main class="v45-screen">
-      <section class="v45-hero v45-tone-pink">
-        <div class="v45-overline"><span>Food index</span><span>${String(entries.length).padStart(2,'0')}</span></div>
-        <div class="v45-display">EAT</div>
-        <h1 class="v45-title">Food checklist</h1>
-        <p class="v45-sub">주문 메모와 당도 표현까지 상세에 그대로 살아 있습니다.</p>
-      </section>
-      <div class="v45-card-grid">
-        ${entries.map(([id,v],i)=>`
-          <button class="v45-item-card ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')">
-            <span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.kind}</i></span>
-            <span class="v45-item-name">${FOOD_KO[id]||v.name}</span>
-            <span class="v45-item-cn">${v.cn}<br>${v.date}</span>
-            <span class="v45-item-bottom"><i>${isVisited('food',id)?'DONE':'FOOD'}</i><i>VIEW →</i></span>
-          </button>`).join('')}
-      </div>
-    </main>`;
-}
-function bookingPlaceholder(type){if(type==='Flight')return '편명, 터미널, 체크인 시간, 좌석, 환승 메모 등';if(type==='Train')return '열차번호, 출발·도착시간, 좌석, 역 출입구 등';if(type==='Hotel')return '중국어 주소, 전화번호, 체크인 시간, 예약번호 등';if(type==='Ticket')return '예약번호, 입장시간, QR/수령 방법 등';return '주소, 시간, 예약번호 등 필요한 정보를 적어두세요.'}
-
-function safeLinkEditorId(scope,a,b=''){
-  return `link-editor-${scope}-${String(a)}-${String(b)}`.replace(/[^a-zA-Z0-9_-]/g,'_');
-}
-function getStoredLinks(scope,a,b=''){
-  if(scope==='booking'){
-    state.bookingLinks=state.bookingLinks||{};
-    return state.bookingLinks[a]||[];
-  }
-  state.detailLinks=state.detailLinks||{spot:{},food:{}};
-  state.detailLinks[a]=state.detailLinks[a]||{};
-  return state.detailLinks[a][b]||[];
-}
-function setStoredLinks(scope,a,b,list){
-  if(scope==='booking'){
-    state.bookingLinks=state.bookingLinks||{};
-    state.bookingLinks[a]=list;
-  }else{
-    state.detailLinks=state.detailLinks||{spot:{},food:{}};
-    state.detailLinks[a]=state.detailLinks[a]||{};
-    state.detailLinks[a][b]=list;
-  }
-  save();
-}
-function normalizeUserUrl(raw){
-  let url=String(raw||'').trim();
-  if(!url) return '';
-  if(/^\/\//.test(url)) return 'https:'+url;
-  if(/^[a-z][a-z0-9+.-]*:/i.test(url)) return url;
-  return 'https://'+url;
-}
-function isUnsafeUserUrl(url){
-  return /^(javascript|data|vbscript|file):/i.test(String(url||'').trim());
-}
-function defaultLinkName(url){
-  try{
-    const u=new URL(url);
-    return u.hostname.replace(/^www\./,'')||'LINK';
-  }catch(e){
-    const scheme=(String(url).match(/^([a-z][a-z0-9+.-]*):/i)||[])[1];
-    return scheme?scheme.toUpperCase():'LINK';
-  }
-}
-function openStoredLink(scope,a,b,index){
-  const item=getStoredLinks(scope,a,b)[index];
-  if(!item) return;
-  const url=normalizeUserUrl(item.url);
-  if(!url||isUnsafeUserUrl(url)) return toast('INVALID LINK');
-  if(/^https?:/i.test(url)){
-    const w=window.open(url,'_blank','noopener,noreferrer');
-    if(!w) window.location.href=url;
-  }else{
-    window.location.href=url;
-  }
-}
-function toggleLinkEditor(scope,a,b=''){
-  const el=document.getElementById(safeLinkEditorId(scope,a,b));
-  if(!el) return;
-  el.hidden=!el.hidden;
-  if(!el.hidden){
-    const name=el.querySelector('.user-link-name');
-    if(name) setTimeout(()=>name.focus(),40);
-  }
-}
-function clearLinkEditor(scope,a,b=''){
-  const el=document.getElementById(safeLinkEditorId(scope,a,b));
-  if(!el) return;
-  el.dataset.editIndex='';
-  const name=el.querySelector('.user-link-name');
-  const url=el.querySelector('.user-link-url');
-  const saveBtn=el.querySelector('.user-link-save');
-  if(name) name.value='';
-  if(url) url.value='';
-  if(saveBtn) saveBtn.textContent='SAVE LINK';
-}
-function cancelLinkEditor(scope,a,b=''){
-  clearLinkEditor(scope,a,b);
-  const el=document.getElementById(safeLinkEditorId(scope,a,b));
-  if(el) el.hidden=true;
-}
-function editStoredLink(scope,a,b,index){
-  const item=getStoredLinks(scope,a,b)[index];
-  const el=document.getElementById(safeLinkEditorId(scope,a,b));
-  if(!item||!el) return;
-  el.hidden=false;
-  el.dataset.editIndex=String(index);
-  el.querySelector('.user-link-name').value=item.name||'';
-  el.querySelector('.user-link-url').value=item.url||'';
-  el.querySelector('.user-link-save').textContent='UPDATE LINK';
-  setTimeout(()=>el.querySelector('.user-link-name').focus(),40);
-}
-function saveStoredLink(scope,a,b=''){
-  const el=document.getElementById(safeLinkEditorId(scope,a,b));
-  if(!el) return;
-  const url=normalizeUserUrl(el.querySelector('.user-link-url').value);
-  if(!url) return toast('URL REQUIRED');
-  if(isUnsafeUserUrl(url)) return toast('INVALID LINK');
-  let name=el.querySelector('.user-link-name').value.trim();
-  if(!name) name=defaultLinkName(url);
-  const list=[...getStoredLinks(scope,a,b)];
-  const editIndex=el.dataset.editIndex;
-  const item={name,url};
-  if(editIndex!=='' && Number.isInteger(Number(editIndex)) && list[Number(editIndex)]){
-    list[Number(editIndex)]=item;
-  }else{
-    list.push(item);
-  }
-  setStoredLinks(scope,a,b,list);
-  toast('LINK SAVED');
-  if(scope==='booking') renderBook();
-  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
-}
-function removeStoredLink(scope,a,b,index){
-  if(!confirm('이 링크를 삭제할까요?')) return;
-  const list=[...getStoredLinks(scope,a,b)];
-  list.splice(index,1);
-  setStoredLinks(scope,a,b,list);
-  if(scope==='booking') renderBook();
-  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
-}
-function moveStoredLink(scope,a,b,index,dir){
-  const list=[...getStoredLinks(scope,a,b)];
-  const target=index+dir;
-  if(index<0||index>=list.length||target<0||target>=list.length) return;
-  [list[index],list[target]]=[list[target],list[index]];
-  setStoredLinks(scope,a,b,list);
-  if(scope==='booking') renderBook();
-  else renderDetail(a,b,location.hash.split('/')[3]||'spots');
-}
-function renderSavedLinks(scope,a,b=''){
-  const list=getStoredLinks(scope,a,b);
-  if(!list.length) return `<div class="user-link-empty">저장된 링크 없음</div>`;
-  return `<div class="user-link-list">${list.map((item,i)=>`
-    <div class="user-link-row">
-      <button class="user-link-open" onclick="openStoredLink('${scope}','${a}','${b}',${i})">
-        <span class="user-link-no">${String(i+1).padStart(2,'0')}</span>
-        <span class="user-link-copy">
-          <b>${esc(item.name||'LINK')}</b>
-          <small>${esc(item.url||'')}</small>
-        </span>
-        <span class="user-link-go">↗</span>
-      </button>
-      <div class="user-link-tools">
-        <button onclick="moveStoredLink('${scope}','${a}','${b}',${i},-1)" ${i===0?'disabled':''} aria-label="위로 이동">↑</button>
-        <button onclick="moveStoredLink('${scope}','${a}','${b}',${i},1)" ${i===list.length-1?'disabled':''} aria-label="아래로 이동">↓</button>
-        <button onclick="editStoredLink('${scope}','${a}','${b}',${i})">EDIT</button>
-        <button class="delete" onclick="removeStoredLink('${scope}','${a}','${b}',${i})">×</button>
-      </div>
-    </div>`).join('')}</div>`;
-}
-function renderLinkEditor(scope,a,b=''){
-  const id=safeLinkEditorId(scope,a,b);
-  return `<div class="user-link-editor" id="${id}" data-edit-index="" hidden>
-    <label><span>NAME</span><input class="user-link-name" type="text" placeholder="예약 페이지 / 샤오홍슈 후기"></label>
-    <label><span>URL / DEEP LINK</span><input class="user-link-url" type="url" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="https://… 또는 app-scheme://…"></label>
-    <div class="user-link-editor-actions">
-      <button class="user-link-save" onclick="saveStoredLink('${scope}','${a}','${b}')">SAVE LINK</button>
-      <button onclick="cancelLinkEditor('${scope}','${a}','${b}')">CANCEL</button>
-    </div>
-    <p>웹 주소 또는 앱이 지원하는 딥링크를 저장할 수 있습니다.</p>
-  </div>`;
+  document.getElementById('eat').innerHTML=`<main class="v45-screen"><section class="v45-hero v45-tone-pink"><div class="v45-overline"><span>EAT</span><span>${String(entries.length).padStart(2,'0')}</span></div><div class="v45-display">EAT</div></section><div class="v45-card-grid">${entries.map(([id,v],i)=>`<button class="v45-item-card ${isVisited('food',id)?'is-done':''}" onclick="openDetail('food','${id}','eat')"><span class="v45-item-top"><i>${String(i+1).padStart(2,'0')}</i><i>${v.kind}</i></span><span class="v45-item-name">${FOOD_KO[id]||v.name}</span><span class="v45-item-cn">${v.cn}<br>${v.date}</span><span class="v45-item-bottom"><i>${isVisited('food',id)?'DONE':'FOOD'}</i><i>VIEW →</i></span></button>`).join('')}</div></main>`;
 }
 
-function saveBookingMemo(i,v){state.bookingMemos=state.bookingMemos||{};state.bookingMemos[i]=v;save()}
-function saveDetailMemo(type,id,v){state.detailMemos=state.detailMemos||{spot:{},food:{}};state.detailMemos[type]=state.detailMemos[type]||{};state.detailMemos[type][id]=v;save()}
-function detailMemo(type,id){return (((state.detailMemos||{})[type]||{})[id])||''}
-function renderBook(){
-  document.getElementById('book').innerHTML=`
-    <div class="secondary-back"><button onclick="go('more')">← 더보기</button></div>
-    <div class="section-top compact">
-      <div class="kicker">FLIGHTS · TRAINS · HOTELS</div>
-      <h1 class="section-title">BOOKINGS</h1>
-    </div>
-    <div class="booking-list v40-booking-list">
-      ${BOOKINGS.map((b,i)=>`
-        <article class="booking v40-booking">
-          <div class="row">
-            <div>
-              <div class="type en-title">${b.type}</div>
-              <div class="title en-title">${b.title}</div>
-            </div>
-            <div class="code en-title">${b.code}</div>
-          </div>
-          <div class="meta">${b.meta.map(x=>`${x}`).join('<br>')}</div>
-          <div class="meta v40-booking-note">${b.note}</div>
-
-          <div class="booking-memo v40-field-card">
-            <label>MEMO</label>
-            <textarea placeholder="${bookingPlaceholder(b.type)}" oninput="saveBookingMemo(${i},this.value)">${esc((state.bookingMemos||{})[i]||'')}</textarea>
-          </div>
-
-          <section class="user-links-section booking-links-section v40-links-card">
-            <div class="user-links-head">
-              <span>LINKS</span>
-              <button onclick="toggleLinkEditor('booking','${i}','')">＋ ADD</button>
-            </div>
-            ${renderSavedLinks('booking',String(i),'')}
-            ${renderLinkEditor('booking',String(i),'')}
-          </section>
-        </article>`).join('')}
-    </div>`;
-}
-function calcSplit(){const total=(Number(state.base||0)+Number(state.shop||0))*2;const items=state.splitItems||[];const jy=items.filter(x=>x.payer==='지윤').reduce((a,b)=>a+Number(b.amount||0),0);const bf=items.filter(x=>x.payer==='남자친구').reduce((a,b)=>a+Number(b.amount||0),0);const paidTotal=jy+bf;const half=paidTotal/2;let settlement='아직 정산 없음';if(paidTotal>0){if(jy>half) settlement=`남자친구 → 지윤 ${Math.round((jy-half)*100)/100}元`; else if(bf>half) settlement=`지윤 → 남자친구 ${Math.round((bf-half)*100)/100}元`; else settlement='딱 반반'}return {total,jy,bf,paidTotal,settlement}}
-function addSplit(){const item=document.getElementById('splitItem').value.trim();const amount=Number(document.getElementById('splitAmount').value||0);const payer=document.getElementById('splitPayer').value;if(!item||!amount)return toast('ITEM & AMOUNT');state.splitItems=state.splitItems||[];state.splitItems.unshift({id:Date.now(),item,amount,payer});save();renderMoney();toast('ADDED')}
-function removeSplit(id){state.splitItems=(state.splitItems||[]).filter(x=>x.id!==id);save();renderMoney()}
-function renderMoney(){
-  const split=calcSplit();
-  document.getElementById('money').innerHTML=`
-    <div class="secondary-back"><button onclick="go('more')">← 더보기</button></div>
-    <div class="section-top compact">
-      <div class="kicker">BUDGET · COUPLE SPLIT</div>
-      <h1 class="section-title">MONEY</h1>
-    </div>
-
-    <div class="money-total v40-money-total">
-      <div class="num en-title">${split.total.toLocaleString()} <small>CNY</small></div>
-    </div>
-
-    <div class="input-grid v40-budget-grid">
-      <div class="input-card v40-field-card">
-        <label>BASE / PERSON</label>
-        <input id="base" inputmode="numeric" value="${state.base||1800}">
-      </div>
-      <div class="input-card v40-field-card">
-        <label>SHOPPING / PERSON</label>
-        <input id="shop" inputmode="numeric" value="${state.shop||250}">
-      </div>
-    </div>
-
-    <div class="info-list v40-money-info">
-      <div class="info-chip"><span>우롱 관광지 · 공연 제외</span><b>≈ 310 / 인</b></div>
-      <div class="info-chip"><span>충칭↔우롱 고속철</span><b>≈ 150 / 인</b></div>
-      <div class="info-chip"><span>공동지출</span><b>${split.paidTotal.toLocaleString()}元</b></div>
-      <div class="info-chip"><span>현재 정산</span><b>${split.settlement}</b></div>
-    </div>
-
-    <div class="note-card v40-field-card v40-expense-note">
-      <label>NOTE</label>
-      <textarea id="expenseNote" placeholder="8/27 카오위 186위안 / 둘이 반반">${esc(state.expenseNote||'')}</textarea>
-    </div>
-
-    <div class="section-top v40-split-head">
-      <div class="kicker">COUPLE SPLIT</div>
-      <h1 class="section-title">SPLIT</h1>
-    </div>
-
-    <div class="input-grid v40-split-grid">
-      <div class="input-card v40-field-card">
-        <label>ITEM</label>
-        <input id="splitItem" placeholder="카오위">
-      </div>
-      <div class="input-card v40-field-card">
-        <label>AMOUNT</label>
-        <input id="splitAmount" inputmode="numeric" placeholder="186">
-      </div>
-      <div class="input-card select v40-field-card">
-        <label>PAYER</label>
-        <select id="splitPayer">
-          <option>지윤</option>
-          <option>남자친구</option>
-        </select>
-      </div>
-      <div class="input-card v40-add-card">
-        <button class="inline-btn" onclick="addSplit()">ADD EXPENSE →</button>
-      </div>
-    </div>
-
-    <div class="v40-split-summary">
-      <div class="info-chip"><span>지윤 결제</span><b>${split.jy.toLocaleString()}元</b></div>
-      <div class="info-chip"><span>남자친구 결제</span><b>${split.bf.toLocaleString()}元</b></div>
-    </div>
-
-    <div class="expense-list v40-expense-list">
-      ${(state.splitItems||[]).map((x,i)=>`
-        <div class="expense-item">
-          <div class="left"><b>${esc(x.item)}</b><span>${x.payer}</span></div>
-          <div class="right"><strong>${Number(x.amount).toLocaleString()}元</strong><button onclick="removeSplit(${x.id})">삭제</button></div>
-        </div>`).join('')||'<div class="note-card v40-empty-state">아직 입력한 공동지출이 없습니다.</div>'}
-    </div>`;
-
-  const updateTarget=()=>{
-    const el=document.querySelector('#money .money-total .num');
-    if(el)el.innerHTML=`${((Number(state.base||0)+Number(state.shop||0))*2).toLocaleString()} <small>CNY</small>`;
-  };
-  document.getElementById('base').oninput=e=>{state.base=Number(e.target.value||0);save();updateTarget()};
-  document.getElementById('shop').oninput=e=>{state.shop=Number(e.target.value||0);save();updateTarget()};
-  document.getElementById('expenseNote').oninput=e=>{state.expenseNote=e.target.value;save()};
-}
-function phraseCategory(i){if(i<=4)return 'HOTEL';if(i<=10)return 'MOVE';if(i<=19)return 'FOOD';if(i<=25)return 'PAY';return 'ETC'}
-function renderTalk(filter='ALL'){const labels=[['ALL','전체'],['HOTEL','숙소'],['MOVE','이동'],['FOOD','식당'],['PAY','결제'],['ETC','기타']];const rows=PHRASES.map((p,i)=>({p,i,cat:phraseCategory(i)})).filter(x=>filter==='ALL'||x.cat===filter);document.getElementById('talk').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">USEFUL CHINESE</div><h1 class="section-title">TALK</h1><p class="section-sub">상황별로 골라서 복사하면 됩니다.</p></div><div class="filters">${labels.map(([v,l])=>`<button class="filter ${filter===v?'active':''}" onclick="renderTalk('${v}')">${l}</button>`).join('')}</div><div class="talk-list">${rows.map(({p:[ko,zh],i})=>`<div class="talk-card ${color(i+2)}"><div class="ko">${ko}</div><div class="zh">${zh}</div><button class="inline-btn" onclick="copyText('${esc(zh)}')">복사</button></div>`).join('')}</div>`}
-
-function renderCheck(){document.getElementById('check').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Before departure</div><h1 class="section-title">CHECK</h1></div><div class="check-list">${CHECKS.map((t,i)=>`<label class="task ${state['check'+i]?'done':''}"><input type="checkbox" ${state['check'+i]?'checked':''} onchange="state['check${i}']=this.checked;save();renderCheck()"><span class="txt">${t}</span></label>`).join('')}</div><div class="note-card"><label>Notes</label><textarea id="freeNote" placeholder="예약번호, 숙소 주소, 살 것">${esc(state.freeNote||'')}</textarea></div>`;document.getElementById('freeNote').oninput=e=>{state.freeNote=e.target.value;save()}}
-function renderMaybe(){document.getElementById('maybe').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">Extra options</div><h1 class="section-title">MAYBE</h1><p class="section-sub">시간이 남을 때 넣을 후보들.</p></div><div class="maybe-list">${MAYBE.map((m,i)=>`<article class="maybe-card ${color(i+3)}"><div class="type en-title">${m.type}</div><div class="title">${m.title}</div><div class="sub">${m.cn}<br>${m.why}<br><b>${m.when}</b></div></article>`).join('')}</div>`}
 function renderDetail(type,id,from){
   const data=type==='food'?FOODS[id]:SPOTS[id]; if(!data){go('plan');return}
   const links=mapLinks(data.map||data.search||data.cn);
@@ -6321,117 +5981,12 @@ function renderDetail(type,id,from){
 function weatherText(code){if(code===0)return '맑음';if([1,2,3].includes(code))return '구름';if([45,48].includes(code))return '안개';if([51,53,55,56,57].includes(code))return '이슬비';if([61,63,65,66,67,80,81,82].includes(code))return '비';if([71,73,75,77,85,86].includes(code))return '눈';if([95,96,99].includes(code))return '뇌우';return '확인 필요'}
 async function loadWeather(force=false){const root=document.getElementById('weatherCards');if(!root)return;const cached=state.weatherCache;const fresh=cached&&Date.now()-cached.time<30*60*1000;if(cached&&!force){renderWeatherCards(cached);if(fresh)return}root.innerHTML='<div class="status-card">날씨 불러오는 중…</div>';try{const urls=[['충칭',29.563,106.5516],['우롱',29.325,107.76]];const rows=[];for(const [name,lat,lon] of urls){const u=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,precipitation,weather_code&timezone=Asia%2FShanghai`;const r=await fetch(u);if(!r.ok)throw new Error('weather');const j=await r.json();rows.push({name,...j.current})}state.weatherCache={time:Date.now(),rows};save();renderWeatherCards(state.weatherCache)}catch(e){root.innerHTML='<div class="status-card"><b>날씨를 불러오지 못했습니다.</b><br><span>인터넷 연결 후 다시 시도하세요. 캐시된 값이 있으면 마지막 값이 표시됩니다.</span></div>';if(cached)renderWeatherCards(cached)}}
 function renderWeatherCards(cache){const root=document.getElementById('weatherCards');if(!root)return;root.innerHTML=cache.rows.map((w,i)=>`<article class="weather-card ${color(i+1)}"><div class="weather-name">${w.name}</div><div class="weather-temp">${Math.round(w.temperature_2m)}°</div><div class="weather-desc">${weatherText(w.weather_code)} · 체감 ${Math.round(w.apparent_temperature)}° · 강수 ${w.precipitation||0} mm</div></article>`).join('')+`<div class="weather-updated">마지막 확인: ${new Date(cache.time).toLocaleString('ko-KR')}</div>`}
-function renderWeather(){document.getElementById('weather').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">WEATHER · WULONG STATUS</div><h1 class="section-title">WEATHER</h1><p class="section-sub">온라인일 때 최신 날씨를 불러옵니다. 우롱 관광지 운영 여부는 공식 페이지에서 마지막으로 확인하세요.</p></div><div id="weatherCards" class="weather-grid"></div><div class="action-row"><button class="action-btn" onclick="loadWeather(true)">날씨 새로고침</button><a class="action-btn light" href="https://www.wlkst.com/" target="_blank" rel="noopener">우롱 공식 관광</a></div><div class="notice-card"><b>우롱 체크</b><span>천생삼교 · 용수협지봉 · 선녀산은 폭우 시 운영이 바뀔 수 있습니다. 출발 직전 공지를 우선 확인하세요.</span></div>`;loadWeather(false)}
-function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1><p class="section-sub">급할 때 바로 누르거나 복사할 정보만 모았습니다.</p></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
+function renderWeather(){document.getElementById('weather').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">WEATHER</div><h1 class="section-title">WEATHER</h1></div><div id="weatherCards" class="weather-grid"></div><div class="action-row"><button class="action-btn" onclick="loadWeather(true)">날씨 새로고침</button><a class="action-btn light" href="https://www.wlkst.com/" target="_blank" rel="noopener">우롱 공식 관광</a></div><div class="notice-card"><b>우롱 체크</b><span>천생삼교 · 용수협지봉 · 선녀산은 폭우 시 운영이 바뀔 수 있습니다. 출발 직전 공지를 우선 확인하세요.</span></div>`;loadWeather(false)}
+
+function renderEmergency(){document.getElementById('emergency').innerHTML=`<div class="secondary-back"><button onclick="go('more')">← 더보기</button></div><div class="section-top compact"><div class="kicker">EMERGENCY</div><h1 class="section-title">EMERGENCY</h1></div><div class="emergency-grid"><a class="emergency-card color-red" href="tel:110"><span>경찰</span><strong>110</strong></a><a class="emergency-card color-yellow" href="tel:120"><span>구급</span><strong>120</strong></a><a class="emergency-card color-blue" href="tel:119"><span>소방</span><strong>119</strong></a></div><div class="talk-list"><div class="talk-card color-white"><div class="ko">도와주세요.</div><div class="zh">请帮帮我。</div><button class="inline-btn" onclick="copyText('请帮帮我。')">복사</button></div><div class="talk-card color-pink"><div class="ko">병원에 가야 해요.</div><div class="zh">我需要去医院。</div><button class="inline-btn" onclick="copyText('我需要去医院。')">복사</button></div><div class="talk-card color-mint"><div class="ko">경찰을 불러주세요.</div><div class="zh">请帮我报警。</div><button class="inline-btn" onclick="copyText('请帮我报警。')">복사</button></div></div><div class="notice-card"><b>민감정보</b><span>여권번호·카드번호 같은 정보는 이 앱 메모에 저장하지 않는 것을 권장합니다.</span></div>`}
+
 function renderMore(){
-  document.getElementById('more').innerHTML=`
-    <main class="v45-screen">
-      <section class="v45-hero v45-tone-white">
-        <div class="v45-overline"><span>System</span><span>${String(MORE_ITEMS.length).padStart(2,'0')}</span></div>
-        <div class="v45-display">MORE</div>
-        <h1 class="v45-title">Utility deck</h1>
-        <p class="v45-sub">항공 · 예산 · 회화 · 체크리스트까지 여기로 모아둡니다.</p>
-      </section>
-      <div class="v45-more-grid">
-        ${MORE_ITEMS.map((m,i)=>`<button class="v45-more-row" onclick="go('${m.id}')"><span>${String(i+1).padStart(2,'0')}</span><span><b>${m.title}</b><small>${m.sub}</small></span><span>→</span></button>`).join('')}
-      </div>
-    </main>`;
-}
-function initSnapRail(id){
-  const root=document.getElementById(id); if(!root) return;
-  const rail=root.querySelector('.snap-rail');
-  const dots=[...root.querySelectorAll('.snap-dot')];
-  const count=root.querySelector('.snap-count');
-  const progress=root.querySelector('.snap-progress-fill');
-  const prev=root.querySelector('[data-snap-prev]');
-  const next=root.querySelector('[data-snap-next]');
-  if(!rail) return;
-  const cards=[...rail.children];
-  let active=0, raf=0;
-
-  const cardLeft=(i)=>Math.max(0,cards[i].offsetLeft-rail.offsetLeft-2);
-  const goTo=(i,behavior='smooth')=>{
-    const target=Math.max(0,Math.min(cards.length-1,i));
-    rail.scrollTo({left:cardLeft(target),behavior});
-  };
-  const update=()=>{
-    cancelAnimationFrame(raf);
-    raf=requestAnimationFrame(()=>{
-      const center=rail.scrollLeft+rail.clientWidth/2;
-      let best=0,dist=Infinity;
-      cards.forEach((card,i)=>{const c=card.offsetLeft-rail.offsetLeft+card.offsetWidth/2;const d=Math.abs(c-center);if(d<dist){dist=d;best=i}});
-      active=best;
-      dots.forEach((dot,i)=>dot.classList.toggle('active',i===active));
-      if(count) count.textContent=`${String(active+1).padStart(2,'0')} / ${String(cards.length).padStart(2,'0')}`;
-      if(progress) progress.style.width=`${((active+1)/cards.length)*100}%`;
-      if(prev) prev.disabled=active===0;
-      if(next) next.disabled=active===cards.length-1;
-    });
-  };
-
-  rail.addEventListener('scroll',update,{passive:true});
-  dots.forEach((dot,i)=>dot.onclick=()=>goTo(i));
-  if(prev) prev.onclick=()=>goTo(active-1);
-  if(next) next.onclick=()=>goTo(active+1);
-
-  // Desktop: click-and-drag. Touch devices keep native scrolling, avoiding scroll jank.
-  let dragging=false,startX=0,startScroll=0,pid=null;
-  rail.addEventListener('pointerdown',e=>{
-    if(e.pointerType!=='mouse'||e.target.closest('button,a,input,textarea,select,label')) return;
-    dragging=true;pid=e.pointerId;startX=e.clientX;startScroll=rail.scrollLeft;rail.classList.add('is-dragging');
-    try{rail.setPointerCapture(pid)}catch(_){ }
-  });
-  rail.addEventListener('pointermove',e=>{if(!dragging||e.pointerId!==pid)return;rail.scrollLeft=startScroll-(e.clientX-startX)});
-  const endDrag=()=>{dragging=false;rail.classList.remove('is-dragging')};
-  rail.addEventListener('pointerup',endDrag);rail.addEventListener('pointercancel',endDrag);
-  update();
-}
-
-function initCardDeck(id,start=0){
-  const root=document.getElementById(id); if(!root) return;
-  const stage=root.querySelector('.deck-stage'); if(!stage) return;
-  const cards=[...stage.querySelectorAll('.deck-card')]; if(!cards.length) return;
-  let current=Math.max(0,Math.min(start,cards.length-1));
-  let dragging=false,startX=0,dx=0,pointerId=null;
-  const interactiveSel='button,a,textarea,input,select,label';
-  const paint=()=>{
-    cards.forEach((card,i)=>{
-      const diff=(i-current+cards.length)%cards.length;
-      card.classList.remove('is-top','is-next','is-third','is-hidden');
-      card.style.opacity='1';
-      card.style.pointerEvents='auto';
-      if(diff===0){card.classList.add('is-top'); card.style.transform=`translate3d(${dx}px,0,0) rotate(${dx/20}deg) scale(1)`;}
-      else if(diff===1){card.classList.add('is-next'); card.style.transform='translate3d(0,18px,0) scale(.97)';}
-      else if(diff===2){card.classList.add('is-third'); card.style.transform='translate3d(0,34px,0) scale(.94)';}
-      else{card.classList.add('is-hidden'); card.style.transform='translate3d(0,52px,0) scale(.91)'; card.style.opacity='.05'; card.style.pointerEvents='none';}
-    });
-    root.querySelectorAll('.deck-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
-  };
-  const commit=(dir)=>{dx=0;dragging=false;if(dir==='next') current=(current+1)%cards.length; else if(dir==='prev') current=(current-1+cards.length)%cards.length;cards.forEach(c=>c.classList.remove('dragging'));paint();};
-  const reset=()=>{dx=0;dragging=false;cards.forEach(c=>c.classList.remove('dragging'));paint();};
-  stage.onpointerdown=(e)=>{if(e.target.closest(interactiveSel)) return;dragging=true;pointerId=e.pointerId;startX=e.clientX;dx=0;const top=cards[current]; if(top){top.classList.add('dragging'); try{top.setPointerCapture(pointerId)}catch(_){}}};
-  stage.onpointermove=(e)=>{if(!dragging||e.pointerId!==pointerId) return;dx=e.clientX-startX;paint();};
-  stage.onpointerup=(e)=>{if(!dragging||e.pointerId!==pointerId) return;if(dx<-70) commit('next'); else if(dx>70) commit('prev'); else reset();};
-  stage.onpointercancel=reset;
-  root.querySelectorAll('[data-dir]').forEach(btn=>btn.onclick=()=>commit(btn.dataset.dir));
-  root.querySelectorAll('.deck-dot').forEach(btn=>btn.onclick=()=>{current=Number(btn.dataset.go)||0; reset();});
-  paint();
-}
-
-
-function initSplash(){
-  const splash=document.getElementById('splashScreen');
-  if(!splash) return;
-  const seen=sessionStorage.getItem('cqSplashSeen');
-  if(seen){splash.classList.add('is-hidden'); setTimeout(()=>splash.remove(),420); return;}
-  document.body.classList.add('splash-lock');
-  requestAnimationFrame(()=>splash.classList.add('is-active'));
-  setTimeout(()=>{
-    splash.classList.add('is-hidden');
-    document.body.classList.remove('splash-lock');
-    sessionStorage.setItem('cqSplashSeen','1');
-    setTimeout(()=>splash.remove(),560);
-  },1050);
+  document.getElementById('more').innerHTML=`<main class="v45-screen"><section class="v45-hero v45-tone-white"><div class="v45-overline"><span>UTILITY</span><span>${String(MORE_ITEMS.length).padStart(2,'0')}</span></div><div class="v45-display">MORE</div></section><div class="v45-more-grid">${MORE_ITEMS.map((m,i)=>`<button class="v45-more-row" onclick="go('${m.id}')"><span>${String(i+1).padStart(2,'0')}</span><span><b>${m.title}</b><small>${m.sub}</small></span><span>→</span></button>`).join('')}</div></main>`;
 }
 
 function route(){const hash=(location.hash||'#today').slice(1);const p=hash.split('/');if(p[0]==='detail'){renderDetail(p[1],p[2],p[3]);show('detail');nav(p[3]||'plan');return}
