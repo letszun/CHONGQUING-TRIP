@@ -1,11 +1,17 @@
 const CACHE='cq-trip-v61-version';
-const ASSETS=['./','./index.html','./manifest.json'];
+const ASSETS=['./','./index.html','./manifest.json','./version-patch.js'];
+async function withVersion(r){
+  const text=await r.text();
+  const html=text.includes('version-patch.js')?text:text.replace('</body>','<script src="./version-patch.js"></script></body>');
+  const h=new Headers(r.headers);h.delete('content-length');h.delete('content-encoding');
+  return new Response(html,{status:r.status,statusText:r.statusText,headers:h});
+}
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{
   if(e.request.method!=='GET')return;
   if(e.request.mode==='navigate'){
-    e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(CACHE).then(cache=>cache.put('./index.html',c));return r}).catch(()=>caches.match('./index.html')));
+    e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(CACHE).then(cache=>cache.put('./index.html',c));return withVersion(r)}).catch(async()=>withVersion(await caches.match('./index.html'))));
     return;
   }
   if(new URL(e.request.url).origin!==self.location.origin)return;
