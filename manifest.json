@@ -1,11 +1,11 @@
 {
-  "name": "Chongqing Atlas v46",
+  "name": "Chongqing Atlas v48",
   "short_name": "CQ Atlas",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#F4F2EC",
-  "theme_color": "#1746F5",
+  "background_color": "#171719",
+  "theme_color": "#171719",
   "description": "Chongqing & Wulong trip planner — Korean-first mobile UX",
   "icons": [
     {
